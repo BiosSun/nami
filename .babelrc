@@ -1,0 +1,25 @@
+{
+    "presets": [["env", {
+        "modules": false,
+        "targets": {
+            "browsers": [
+                "last 2 versions",
+                "chrome >= 49",
+                "firefox >= 42",
+                "safari >= 9.1",
+                "opera >= 36",
+                "edge >= 16",
+                "ios >= 9.3",
+                "android >= 5.0",
+                "and_chr >= 49",
+                "and_uc >= 11.8",
+                "samsung >= 5"
+            ]
+        }
+    }]],
+    "plugins": [
+        "transform-react-jsx",
+        "transform-object-rest-spread",
+        "syntax-dynamic-import"
+    ]
+}

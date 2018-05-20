@@ -100,3 +100,10 @@ Temporary Items
 #-----------------------------
 # 项目相关
 #-----------------------------
+
+yarn.lock
+lib
+src/**/*.d.ts
+docs/**/*.d.ts
+docs/datas/
+docs/demos/

@@ -1,0 +1,29 @@
+{
+    "exclude": ["src/**/demos/*", "node_modules"],
+    "compilerOptions": {
+        "outDir": ".",
+        "baseUrl": ".",
+        "paths": {
+            "nami": ["./src/index.ts"],
+            "@components/*": ["./src/components/*"],
+            "@utils/*": ["./src/utils/*"],
+            "@docs/components/*": ["./docs/src/components/*"],
+            "@docs/views/*": ["./docs/src/views/*"],
+            "@docs/utils/*": ["./docs/src/utils/*"],
+            "@docs/datas/*": ["./docs/datas/*"],
+            "@docs/demos/*": ["./docs/demos/*"]
+        },
+        "lib": ["dom", "es2015", "es2016"],
+        "jsx": "preserve",
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "noImplicitAny": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "removeComments": false,
+        "preserveConstEnums": true,
+        "skipLibCheck": true
+    }
+}
