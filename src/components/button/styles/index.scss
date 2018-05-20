@@ -1,0 +1,117 @@
+@charset "utf-8";
+
+@import '@nami//styles/basis';
+@import './utils';
+
+.button,
+.button__text {
+    display: inline-flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.button {
+    $size: var(--button-size-base);
+    $pv: calc(var(--distance-vertical) * 0.25);
+    $ph: calc(var(--distance-horizontal) * 1.25);
+    $f: var(--font-size-base);
+    $b: 1px;
+    $br: 4px;
+
+    height: $size;
+    min-width: $size;
+    padding: $pv $ph;
+
+    font-size: $f;
+    line-height: calc(#{$size} - #{$pv} * 2 - #{$b} * 2);
+    text-align: center;
+
+    border-radius: 4px;
+
+    background-color: var(--background-color);
+    border: $b solid var(--line-color);
+    color: inherit;
+
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover,
+    &:focus {
+        border-color: var(--primary-color-quiet);
+        background-color: var(--primary-color-quiet);
+        color: var(--background-color);
+    }
+
+    &:active {
+        border-color: var(--primary-color-loud);
+        background-color: var(--primary-color-loud);
+        color: var(--background-color);
+    }
+
+    &:disabled,
+    &--disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+}
+
+@each $name in primary, text, info, success, warning, danger {
+    .button--#{$name} {
+        @include button-solid(
+            var(-- #{$name}-color),
+            var(-- #{$name}-color-quiet),
+            var(-- #{$name}-color-loud)
+        );
+    }
+}
+
+.button--outline {
+    background-color: transparent;
+
+    @each $name in primary, text, info, success, warning, danger {
+        &.button--#{$name} {
+            @include button-outline(
+                var(-- #{$name}-color),
+                var(-- #{$name}-color-quiet),
+                var(-- #{$name}-color-loud)
+            );
+        }
+    }
+}
+
+.button--flat {
+    background-color: transparent;
+    border-color: transparent;
+
+    &:hover,
+    &:focus {
+        color: inherit;
+        border-color: transparent;
+        background-color: var(--background-color-quiet);
+    }
+
+    &:active {
+        color: inherit;
+        border-color: transparent;
+        background-color: var(--background-color-loud);
+    }
+
+    @each $name in primary, text, info, success, warning, danger {
+        &.button--#{$name} {
+            @include button-flat(var(-- #{$name}-color));
+        }
+    }
+}
+
+.button--round {
+    border-radius: 100px;
+}
+
+.button--circle {
+    padding-left: 0;
+    padding-right: 0;
+    border-radius: 100px;
+}
