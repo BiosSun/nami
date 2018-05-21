@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+/// 移除一个数字类型值的单位
+/// @link https://css-tricks.com/snippets/sass/strip-unit-function/ Strip-unit Function
+@function strip-unit($number) {
+    @if type-of($number) == 'number' and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+
+    @return $number;
+}
+
+/// 限定某个值在指定的区间内
+/// @param {number} $val - 待限定的值；
+/// @param {number} $min - 最小值；
+/// @param {number} $max - 最大值；
+@function limit($val, $min, $max) {
+    @return max($min, min($val, $max));
+}
