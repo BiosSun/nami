@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+.app-header {
+    width: 100%;
+    border-bottom: 1px solid var(--line-color);
+
+    &--borderless {
+        border-bottom: 0;
+    }
+}

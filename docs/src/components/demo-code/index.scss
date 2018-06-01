@@ -1,0 +1,230 @@
+@charset "utf-8";
+
+.app-demo {
+    border: 1px solid var(--line-color);
+    border-radius: 6px;
+
+    &__stage {
+        padding: 20px;
+
+        hr {
+            margin-left: -20px;
+            margin-right: -20px;
+        }
+    }
+
+    &__code {
+        > pre {
+            margin: 0;
+            padding: 0;
+            border-radius: 0 0 6px 6px;
+            border-top: 1px solid var(--line-color);
+
+            > code {
+                margin: 0;
+                padding: 16px 20px;
+                border-radius: inherit;
+            }
+        }
+
+        &__handle-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 100%;
+            height: 30px;
+            padding: 0;
+
+            border: 0;
+            border-top: 1px solid var(--line-color);
+            border-radius: 0 0 6px 6px;
+
+            font-size: var(--font-size-small);
+            line-height: 30px;
+            color: var(--text-color-quiet);
+
+            cursor: pointer;
+
+            > .icon {
+                width: var(--font-size-small);
+                margin-right: 0.6em;
+            }
+
+            &:hover {
+                color: var(--text-color);
+            }
+
+            &:focus {
+                outline: 0;
+            }
+        }
+    }
+}
+
+.app-demo__stage {
+    .box-h-large {
+        padding-top: 0;
+        padding-bottom: 60px;
+    }
+
+    .box-h-middle {
+        padding-top: 0;
+        padding-bottom: 40px;
+    }
+
+    .box-h-small {
+        padding-top: 20px;
+        padding-bottom: 0;
+    }
+}
+
+// menu
+// -----------------------------------------------------------------------------
+
+.app-demo-menu {
+    > .app-demo__stage > .menu--vertical {
+        width: 160px;
+    }
+
+    .menu__space,
+    .menu__flexible-space {
+        background: var(--background-color-loud);
+    }
+}
+
+.app-demo-menu-flexible-space-vertical {
+    .menu--vertical {
+        height: 200px;
+    }
+}
+
+// grid
+// -----------------------------------------------------------------------------
+
+.app-demo-grid {
+    .grid {
+        text-align: center;
+
+        &:not(:first-child) {
+            margin-top: 10px;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
+    }
+
+    .grid__col {
+        padding: 6px 0;
+        background-color: var(--line-color);
+        min-height: 38px;
+        line-height: 26px;
+
+        border-right: 1px solid var(--background-color);
+
+        &:last-child {
+            border-right: none;
+        }
+    }
+}
+
+.app-demo-grid-gutter {
+    .grid__col {
+        border-right: none;
+    }
+}
+
+.app-demo-grid-justify,
+.app-demo-grid-align,
+.app-demo-grid-col-align {
+    .grid {
+        background: var(--background-color-quiet);
+    }
+
+    .grid__col {
+        border-right: none;
+
+        &:not(:first-child) {
+            margin-left: 3px;
+        }
+
+        &:not(:last-child) {
+            margin-right: 3px;
+        }
+    }
+}
+
+.app-demo-grid-align,
+.app-demo-grid-col-align {
+    .grid {
+        height: 120px;
+    }
+}
+
+.app-demo-grid-col-align {
+    .grid__col--align-start,
+    .grid__col--align-end,
+    .grid__col--align-center,
+    .grid__col--align-baseline,
+    .grid__col--align-stretch {
+        background: var(--primary-color);
+    }
+}
+
+// icons
+// -----------------------------------------------------------------------------
+
+.app-demo-icon {
+    .icon-box-list {
+        display: flex;
+
+        margin: 0;
+        padding: 1px 0 0 1px;
+
+        list-style: none;
+    }
+
+    .icon-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        width: 16.66%;
+        height: 100px;
+
+        margin: -1px 0 0 -1px;
+        padding: 0;
+
+        color: #666;
+
+        border: 1px solid transparent;
+        border-radius: 5px;
+
+        > .icon {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 18px;
+        }
+
+        > .icon-box__name {
+            font-size: var(--font-size-small);
+        }
+
+        &:hover {
+            border-color: var(--line-color);
+        }
+    }
+}
+
+// button
+// -----------------------------------------------------------------------------
+
+.app-demo-button {
+    > .app-demo__stage {
+        .button + .button {
+            margin-left: calc(var(--distance-horizontal) * 0.7);
+        }
+    }
+}
