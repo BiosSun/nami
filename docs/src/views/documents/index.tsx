@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { RouteComponentProps } from 'react-router-dom'
+import { RouteComponentProps, Redirect } from 'react-router-dom'
 
 import Document from '@docs/components/document'
 import DocumentNav from '@docs/components/document-nav'
@@ -15,7 +15,13 @@ interface DocumentsViewRouteParams {
 interface DocumentsViewProps extends RouteComponentProps<DocumentsViewRouteParams, {}> {}
 
 interface DocumentsViewState {
+    // 必要的数据是否已加载完毕
+    finish?: boolean
+
+    // 组件导航信息（必要数据）
     componentNavInfo?: ComponentNavInfo
+
+    // 当前所浏览的组件信息
     componentInfo?: ComponentInfo
 }
 
@@ -26,12 +32,15 @@ export default class DocumentsView extends Component<DocumentsViewProps, Documen
         this.state = {
             componentNavInfo: undefined,
             componentInfo: undefined,
+            finish: false,
         }
     }
 
     async componentDidMount() {
-        const componentNavInfo = await this.loadComponentNavInfo()
-        this.setState({ componentNavInfo })
+        this.setState({
+            finish: true,
+            componentNavInfo: await this.loadComponentNavInfo(),
+        })
     }
 
     async componentDidUpdate() {
@@ -53,9 +62,8 @@ export default class DocumentsView extends Component<DocumentsViewProps, Documen
         const loadedComponentName = this.getLoadedComponentName()
         const loadComponentName = this.getLoadComponentName()
 
-        if (loadedComponentName !== loadComponentName) {
-            const name = this.getLoadComponentName()
-            const componentInfo = await import(`@docs/datas/components/${name}.json`)
+        if (loadComponentName && loadComponentName !== loadedComponentName) {
+            const componentInfo = await import(`@docs/datas/components/${loadComponentName}.json`)
             return componentInfo.default // webpack package need use default
         } else {
             return this.state.componentInfo
@@ -70,23 +78,33 @@ export default class DocumentsView extends Component<DocumentsViewProps, Documen
 
     /** 获取待加载的组件信息的名称 */
     getLoadComponentName() {
+        return this.props.match.params.subname
+    }
+
+    /** 获取第一篇文档的地址 */
+    getFirstDocumentPath() {
         const { componentNavInfo } = this.state
-        return (
-            this.props.match.params.subname ||
-            (componentNavInfo && componentNavInfo['general'][0].name)
-        )
+        const firstComponentName = componentNavInfo.general[0].name
+        return `/documents/components/${firstComponentName}`
     }
 
     render() {
-        const { componentNavInfo, componentInfo } = this.state
+        const { match } = this.props
+        const { finish, componentNavInfo, componentInfo } = this.state
 
-        return (
-            <div className="app-view">
-                <div className="app-sidebar">
-                    <DocumentNav componentNavInfo={componentNavInfo} />
+        if (!finish) {
+            return <div className="app-view">loading ...</div>
+        } else if (!match.params.name) {
+            return <Redirect to={this.getFirstDocumentPath()} />
+        } else {
+            return (
+                <div className="app-view">
+                    <div className="app-sidebar">
+                        <DocumentNav componentNavInfo={componentNavInfo} />
+                    </div>
+                    <Document className="app-content" componentInfo={componentInfo} />
                 </div>
-                <Document className="app-content" componentInfo={componentInfo} />
-            </div>
-        )
+            )
+        }
     }
 }
