@@ -20,10 +20,6 @@ function Index() {
     )
 }
 
-function About() {
-    return <div className="app-view">About</div>
-}
-
 interface AppProps {}
 interface AppState {}
 
@@ -39,7 +35,6 @@ export default class App extends Component<AppProps, AppState> {
 
                 <Route path="/" exact component={Index} />
                 <Route path="/documents/:name?/:subname?" component={DocumentsView} />
-                <Route path="/about" component={About} />
 
                 <Route path="/" component={Footer} />
             </React.Fragment>
