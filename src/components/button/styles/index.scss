@@ -61,9 +61,9 @@
 @each $name in primary, text, info, success, warning, danger {
     .button--#{$name} {
         @include button-solid(
-            var(-- #{$name}-color),
-            var(-- #{$name}-color-quiet),
-            var(-- #{$name}-color-loud)
+            var(--#{$name}-color),
+            var(--#{$name}-color-quiet),
+            var(--#{$name}-color-loud)
         );
     }
 }
@@ -74,9 +74,9 @@
     @each $name in primary, text, info, success, warning, danger {
         &.button--#{$name} {
             @include button-outline(
-                var(-- #{$name}-color),
-                var(-- #{$name}-color-quiet),
-                var(-- #{$name}-color-loud)
+                var(--#{$name}-color),
+                var(--#{$name}-color-quiet),
+                var(--#{$name}-color-loud)
             );
         }
     }
@@ -101,7 +101,7 @@
 
     @each $name in primary, text, info, success, warning, danger {
         &.button--#{$name} {
-            @include button-flat(var(-- #{$name}-color));
+            @include button-flat(var(--#{$name}-color));
         }
     }
 }
