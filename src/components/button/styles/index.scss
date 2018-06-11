@@ -71,6 +71,8 @@
 .button--outline {
     background-color: transparent;
 
+    @include button-outline(var(--text-color), var(--text-color), var(--text-color-loud));
+
     @each $name in primary, info, success, warning, danger {
         &.button--#{$name} {
             @include button-outline(
