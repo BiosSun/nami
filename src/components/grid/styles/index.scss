@@ -1,0 +1,81 @@
+@charset "utf-8";
+
+@import '@nami//styles/basis';
+
+$-grid-justify: (
+    (start, flex-start),
+    (end, flex-end),
+    (center),
+    (space-between),
+    (space-around)
+);
+
+$-grid-align: (
+    (start, flex-start),
+    (end, flex-end),
+    (center),
+    (baseline),
+    (stretch)
+);
+
+$-grid-gutter: (
+    ('', calc(var(--distance-horizontal) / 2)),
+    ('small', calc(var(--distance-horizontal) / 4)),
+    ('large', calc(var(--distance-horizontal)))
+);
+
+.grid {
+    display: flex;
+
+    @each $name, $val in $-grid-justify {
+        &--justify-#{$name} {
+            justify-content: $val or $name;
+        }
+    }
+
+    @each $name, $val in $-grid-align {
+        &--align-#{$name} {
+            align-items: $val or $name;
+        }
+    }
+
+    @each $name, $half-gutter-width in $-grid-gutter {
+        $suffix: if(str-length($name) == 0, '', '-#{$name}');
+
+        &--gutter#{$suffix} {
+            margin-left: calc(#{$half-gutter-width} * -1);
+            margin-right: calc(#{$half-gutter-width} * -1);
+
+            > .grid__col {
+                margin-left: $half-gutter-width;
+                margin-right: $half-gutter-width;
+            }
+        }
+    }
+}
+
+.grid__col {
+    flex: 1 1 0;
+
+    @at-root %col-fixed-width {
+        box-sizing: border-box;
+        flex: 0 0 auto;
+    }
+
+    @for $i from 1 through 24 {
+        &--#{$i} {
+            @extend %col-fixed-width;
+            width: calc(#{100% * $i} / var(--grid-column-number));
+        }
+
+        &--offset-#{$i} {
+            margin-left: calc(#{100% * $i} / var(--grid-column-number));
+        }
+    }
+
+    @each $name, $val in $-grid-align {
+        &--align-#{$name} {
+            align-self: $val or $name;
+        }
+    }
+}
