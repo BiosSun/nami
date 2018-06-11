@@ -74,23 +74,26 @@ export default class Demo extends Component<DemoProps, DemoState> {
         const name = componentInfo.codes[id].name
         const { expand } = this.state
 
-        const classes = classnames(
-            'app-demo rio-block',
-            `app-demo-${componentInfo.name.toLowerCase()}`,
-            {
-                [`app-demo-${componentInfo.name.toLowerCase()}-${name}`]: !!name,
+        const classes = {
+            root: classnames(`app-demo rio-block`, {
                 'app-demo--expand': expand,
-            }
-        )
+            }),
+
+            stage: classnames(
+                `app-demo__stage`,
+                `demo-${componentInfo.name.toLowerCase()}`,
+                `demo-${componentInfo.name.toLowerCase()}-${name}`
+            ),
+
+            code: `app-demo__code`,
+            codeHandleBar: `app-demo__code__handle-bar`,
+        }
 
         return (
-            <div className={classes}>
-                <div className="app-demo__stage">{this.renderDemoComponent(id)}</div>
-                <div className="app-demo__code">
-                    <button
-                        className="app-demo__code__handle-bar"
-                        onClick={this.onCodeHandleBarClick}
-                    >
+            <div className={classes.root}>
+                <div className={classes.stage}>{this.renderDemoComponent(id)}</div>
+                <div className={classes.code}>
+                    <button className={classes.codeHandleBar} onClick={this.onCodeHandleBarClick}>
                         <Icon name={expand ? 'up' : 'down'} />
                         {expand ? '隐藏' : '展开'}代码
                     </button>

@@ -82,8 +82,8 @@
 // menu
 // -----------------------------------------------------------------------------
 
-.app-demo-menu {
-    > .app-demo__stage > .menu--vertical {
+.demo-menu {
+    > .menu--vertical {
         width: 160px;
     }
 
@@ -93,7 +93,7 @@
     }
 }
 
-.app-demo-menu-flexible-space-vertical {
+.demo-menu-flexible-space-vertical {
     .menu--vertical {
         height: 200px;
     }
@@ -102,7 +102,7 @@
 // grid
 // -----------------------------------------------------------------------------
 
-.app-demo-grid {
+.demo-grid {
     .grid {
         text-align: center;
 
@@ -129,15 +129,15 @@
     }
 }
 
-.app-demo-grid-gutter {
+.demo-grid-gutter {
     .grid__col {
         border-right: none;
     }
 }
 
-.app-demo-grid-justify,
-.app-demo-grid-align,
-.app-demo-grid-col-align {
+.demo-grid-justify,
+.demo-grid-align,
+.demo-grid-col-align {
     .grid {
         background: var(--background-color-quiet);
     }
@@ -155,14 +155,14 @@
     }
 }
 
-.app-demo-grid-align,
-.app-demo-grid-col-align {
+.demo-grid-align,
+.demo-grid-col-align {
     .grid {
         height: 120px;
     }
 }
 
-.app-demo-grid-col-align {
+.demo-grid-col-align {
     .grid__col--align-start,
     .grid__col--align-end,
     .grid__col--align-center,
@@ -175,7 +175,7 @@
 // icons
 // -----------------------------------------------------------------------------
 
-.app-demo-icon {
+.demo-icon {
     .icon-box-list {
         display: flex;
 
@@ -221,10 +221,8 @@
 // button
 // -----------------------------------------------------------------------------
 
-.app-demo-button {
-    > .app-demo__stage {
-        .button + .button {
-            margin-left: calc(var(--distance-horizontal) * 0.7);
-        }
+.demo-button {
+    .button + .button {
+        margin-left: calc(var(--distance-horizontal) * 0.7);
     }
 }
