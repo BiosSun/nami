@@ -9,9 +9,7 @@
 
 .app-view {
     flex: 1 0 auto;
-}
 
-.app-view {
     display: flex;
     justify-content: center;
 
@@ -31,27 +29,4 @@
     flex: 1 1 auto;
     max-width: 840px;
     padding: calc(var(--distance-vertical) * 2) calc(var(--distance-horizontal) * 1);
-}
-
-.app-masthead {
-    width: 782px;
-    margin: auto;
-    padding: 50px;
-
-    flex: 0 0 auto;
-}
-
-.app-masthead__logo {
-    width: 100%;
-    height: auto;
-}
-
-.app-masthead__slogen {
-    margin: 20px 0;
-
-    font-size: 47px;
-    line-height: 60px;
-    color: var(--text-color);
-    text-align: center;
-    font-weight: 300;
 }

@@ -3,22 +3,11 @@ import { Route } from 'react-router-dom'
 
 import Header from '@docs/components/header'
 import Footer from '@docs/components/footer'
-import Logo from '@docs/components/logo'
 
 import DocumentsView from '@docs/views/documents'
+import IndexView from '@docs/views/index'
 
 import './app.scss'
-
-function Index() {
-    return (
-        <div className="app-view">
-            <div className="app-masthead">
-                <Logo className="app-masthead__logo" />
-                <h1 className="app-masthead__slogen">一个简洁的 UI 组件库</h1>
-            </div>
-        </div>
-    )
-}
 
 interface AppProps {}
 interface AppState {}
@@ -33,7 +22,7 @@ export default class App extends Component<AppProps, AppState> {
             <React.Fragment>
                 <Route path="/" component={Header} />
 
-                <Route path="/" exact component={Index} />
+                <Route path="/" exact component={IndexView} />
                 <Route path="/documents/:name?/:subname?" component={DocumentsView} />
 
                 <Route path="/" component={Footer} />
