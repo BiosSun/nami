@@ -17,25 +17,25 @@ Nami 是一个由个人开发和维护的 UI 组件库，使用 React + TypeScri
 
 因为 Nami 使用了 CSS Variables 等技术，因此其兼容性程度并不高，一些较老的浏览器（比如所有版本的 IE）将不会受到支持。以下是 Nami 的兼容性列表：
 
-*   Desktop
-    *   `Chrome` 49+
-    *   `Firefox` 42+
-    *   `Safari` 9.1
-    *   `Opera` 36+
-    *   `Edge` 16+
-    *   `IE` _no support_
-*   Mobile
-    *   `iOS` 9.3+
-    *   `Android` 5+
-    *   `Chrome Android` 49+
-    *   `Firefox Android` 29+
-    *   `Samsung Internet` 5+
-    *   `UC for Android` 11.8+
-    *   `Opera Mobile` 46+
-    *   `Opera Mini` _no support_
-    *   `IE Mobile` _no support_
-    *   `QQ` _no support_
-    *   `Baidu` _no support_
+-   Desktop
+    -   `Chrome` 49+
+    -   `Firefox` 42+
+    -   `Safari` 9.1
+    -   `Opera` 36+
+    -   `Edge` 16+
+    -   `IE` _no support_
+-   Mobile
+    -   `iOS` 9.3+
+    -   `Android` 5+
+    -   `Chrome Android` 49+
+    -   `Firefox Android` 29+
+    -   `Samsung Internet` 5+
+    -   `UC for Android` 11.8+
+    -   `Opera Mobile` 46+
+    -   `Opera Mini` _no support_
+    -   `IE Mobile` _no support_
+    -   `QQ` _no support_
+    -   `Baidu` _no support_
 
 ## 技术选型
 

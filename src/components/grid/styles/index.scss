@@ -2,21 +2,9 @@
 
 @import '@nami//styles/basis';
 
-$-grid-justify: (
-    (start, flex-start),
-    (end, flex-end),
-    (center),
-    (space-between),
-    (space-around)
-);
+$-grid-justify: ((start, flex-start), (end, flex-end), (center), (space-between), (space-around));
 
-$-grid-align: (
-    (start, flex-start),
-    (end, flex-end),
-    (center),
-    (baseline),
-    (stretch)
-);
+$-grid-align: ((start, flex-start), (end, flex-end), (center), (baseline), (stretch));
 
 $-grid-gutter: (
     ('', calc(var(--distance-horizontal) / 2)),
