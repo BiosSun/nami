@@ -32,8 +32,6 @@ export default class DocumentsView extends Component<DocumentsViewProps, Documen
     async componentDidMount() {
         const componentNavInfo = await this.loadComponentNavInfo()
         this.setState({ componentNavInfo })
-
-        console.info('did mount')
     }
 
     async componentDidUpdate() {
