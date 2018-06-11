@@ -58,7 +58,7 @@
     }
 }
 
-@each $name in primary, text, info, success, warning, danger {
+@each $name in primary, info, success, warning, danger {
     .button--#{$name} {
         @include button-solid(
             var(--#{$name}-color),
@@ -71,7 +71,7 @@
 .button--outline {
     background-color: transparent;
 
-    @each $name in primary, text, info, success, warning, danger {
+    @each $name in primary, info, success, warning, danger {
         &.button--#{$name} {
             @include button-outline(
                 var(--#{$name}-color),
@@ -99,7 +99,7 @@
         background-color: var(--background-color-loud);
     }
 
-    @each $name in primary, text, info, success, warning, danger {
+    @each $name in primary, info, success, warning, danger {
         &.button--#{$name} {
             @include button-flat(var(--#{$name}-color));
         }

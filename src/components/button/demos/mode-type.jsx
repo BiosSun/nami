@@ -4,7 +4,6 @@ render(
     <div>
         <Button>Button</Button>
         <Button type="primary">Button</Button>
-        <Button type="text">Button</Button>
         <Button type="info">Button</Button>
         <Button type="success">Button</Button>
         <Button type="warning">Button</Button>
@@ -14,9 +13,6 @@ render(
 
         <Button round>Button</Button>
         <Button round type="primary">
-            Button
-        </Button>
-        <Button round type="text">
             Button
         </Button>
         <Button round type="info">
@@ -36,9 +32,6 @@ render(
 
         <Button outline>Button</Button>
         <Button outline type="primary">
-            Button
-        </Button>
-        <Button outline type="text">
             Button
         </Button>
         <Button outline type="info">
@@ -62,9 +55,6 @@ render(
         <Button outline round type="primary">
             Button
         </Button>
-        <Button outline round type="text">
-            Button
-        </Button>
         <Button outline round type="info">
             Button
         </Button>
@@ -82,9 +72,6 @@ render(
 
         <Button flat>Button</Button>
         <Button flat type="primary">
-            Button
-        </Button>
-        <Button flat type="text">
             Button
         </Button>
         <Button flat type="info">
@@ -108,9 +95,6 @@ render(
         <Button circle type="primary">
             <Icon name="up" />
         </Button>
-        <Button circle type="text">
-            <Icon name="up" />
-        </Button>
         <Button circle type="info">
             <Icon name="up" />
         </Button>
@@ -132,9 +116,6 @@ render(
         <Button circle outline type="primary">
             <Icon name="up" />
         </Button>
-        <Button circle outline type="text">
-            <Icon name="up" />
-        </Button>
         <Button circle outline type="info">
             <Icon name="up" />
         </Button>
@@ -154,9 +135,6 @@ render(
             <Icon name="up" />
         </Button>
         <Button circle flat type="primary">
-            <Icon name="up" />
-        </Button>
-        <Button circle flat type="text">
             <Icon name="up" />
         </Button>
         <Button circle flat type="info">

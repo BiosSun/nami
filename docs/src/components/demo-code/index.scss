@@ -223,6 +223,6 @@
 
 .demo-button {
     .button + .button {
-        margin-left: calc(var(--distance-horizontal) * 0.7);
+        margin-left: var(--distance-horizontal);
     }
 }
