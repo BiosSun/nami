@@ -18,8 +18,10 @@
     },
     "dependencies": {
         "classnames": "^2.2.5",
+        "popper.js": "^1.14.3",
         "react": "^16.4.0",
-        "react-dom": "^16.4.0"
+        "react-dom": "^16.4.0",
+        "shallowequal": "^1.0.2"
     },
     "devDependencies": {
         "@types/classnames": "^2.2.3",
@@ -30,6 +32,7 @@
         "@types/react-router": "^4.0.25",
         "@types/react-router-dom": "^4.2.6",
         "@types/react-syntax-highlighter": "^0.0.5",
+        "@types/shallowequal": "^0.2.3",
         "ansi-colors": "^1.1.0",
         "app-root-path": "^2.0.1",
         "babel-core": "^6.26.0",
