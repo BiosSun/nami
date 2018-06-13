@@ -33,8 +33,6 @@ export interface MenuProps extends CommonProps<Menu> {
     // parent?: MenuProps
 }
 
-interface MenuState {}
-
 /**
  * @component
  *
@@ -117,7 +115,7 @@ interface MenuState {}
  *     {@demo "./demos/space-vertical.jsx"}
  *     {@demo "./demos/flexible-space-vertical.jsx"}
  */
-export default class Menu extends Component<MenuProps, MenuState> {
+export default class Menu extends Component<MenuProps> {
     static Item = Item
     static ItemGroup = ItemGroup
     static Divider = Divider

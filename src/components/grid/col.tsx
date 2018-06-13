@@ -24,15 +24,13 @@ export interface ColProps extends CommonProps<Col> {
     align?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
 }
 
-interface ColState {}
-
 /**
  * @component
  *
  * @displayname 栅格列
  * @parent Grid
  */
-export default class Col extends Component<ColProps, ColState> {
+export default class Col extends Component<ColProps> {
     render() {
         const { span, offset, align, children, className, style } = this.props
         const classes = classnames(

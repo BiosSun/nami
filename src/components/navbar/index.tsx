@@ -14,8 +14,6 @@ export interface NavbarProps extends CommonProps<Navbar> {
     children?: React.ReactNode
 }
 
-interface NavbarState {}
-
 /**
  * @component
  *
@@ -28,7 +26,7 @@ interface NavbarState {}
  *
  *     {@demo "./demos/common.tsx"}
  */
-export default class Navbar extends Component<NavbarProps, NavbarState> {
+export default class Navbar extends Component<NavbarProps> {
     static Brand = Brand
 
     render() {

@@ -23,9 +23,7 @@ interface DocumentProps {
     componentInfo: ComponentInfo
 }
 
-interface DocumentState {}
-
-export default class Document extends Component<DocumentProps, DocumentState> {
+export default class Document extends Component<DocumentProps> {
     render() {
         const classes = classnames('app-document', 'rio', this.props.className)
         const { componentInfo } = this.props

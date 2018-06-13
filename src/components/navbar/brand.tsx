@@ -9,15 +9,13 @@ export interface BrandProps extends CommonProps<Brand> {
     children?: React.ReactNode
 }
 
-interface BrandState {}
-
 /**
  * @component
  *
  * @displayname 导航栏标识
  * @parent Navbar
  */
-export default class Brand extends Component<BrandProps, BrandState> {
+export default class Brand extends Component<BrandProps> {
     render() {
         const { children, className, style } = this.props
         const classes = classnames('navbar-brand', className)

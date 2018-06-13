@@ -29,8 +29,6 @@ export interface GridProps extends CommonProps<Grid> {
     gutter?: boolean | 'small' | 'large'
 }
 
-interface GridState {}
-
 /**
  * @component
  *
@@ -80,7 +78,7 @@ interface GridState {}
  *
  *     {@demo "./demos/col-align.jsx"}
  */
-export default class Grid extends Component<GridProps, GridState> {
+export default class Grid extends Component<GridProps> {
     static Col = Col
 
     render() {

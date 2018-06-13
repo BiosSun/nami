@@ -43,8 +43,6 @@ export interface ButtonProps extends CommonProps<Button> {
     children: React.ReactNode
 }
 
-interface ButtonState {}
-
 /**
  * @component
  *
@@ -69,7 +67,7 @@ interface ButtonState {}
  *
  *     {@demo "./demos/disabled.jsx"}
  */
-export default class Button extends Component<ButtonProps, ButtonState> {
+export default class Button extends Component<ButtonProps> {
     static defaultProps = {
         mode: 'plain',
     }

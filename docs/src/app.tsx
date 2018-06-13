@@ -9,11 +9,8 @@ import IndexView from '@docs/views/index'
 
 import './app.scss'
 
-interface AppProps {}
-interface AppState {}
-
-export default class App extends Component<AppProps, AppState> {
-    constructor(props: AppProps) {
+export default class App extends Component {
+    constructor(props: {}) {
         super(props)
     }
 

@@ -9,9 +9,8 @@ import MenuItemLink from '@docs/components/menu-item-link'
 import './index.scss'
 
 export interface HeaderProps extends RouteComponentProps<{}, {}> {}
-export interface HeaderState {}
 
-export default class Header extends Component<HeaderProps, HeaderProps> {
+export default class Header extends Component<HeaderProps> {
     render() {
         const classes = classnames('app-header', {
             'app-header--borderless': this.props.location.pathname === '/',

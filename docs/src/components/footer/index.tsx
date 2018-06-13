@@ -2,10 +2,7 @@ import React, { Component } from 'react'
 
 import './index.scss'
 
-export interface FooterProps {}
-export interface FooterState {}
-
-export default class Footer extends Component<FooterProps, FooterProps> {
+export default class Footer extends Component {
     render() {
         return (
             <div className="app-footer">
