@@ -38,7 +38,7 @@ export interface ButtonProps extends CommonProps<Button> {
     readonly disabled?: boolean
 
     /**
-     * 按钮点击事件处理函数
+     * 按钮点击事件处理函数；
      */
     readonly onClick: (e: MouseEvent<HTMLElement>) => void
 
