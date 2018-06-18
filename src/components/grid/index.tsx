@@ -11,22 +11,22 @@ export interface GridProps extends CommonProps<Grid> {
     /**
      * 栅格中的列元素
      */
-    children?: React.ReactNode
+    readonly children?: React.ReactNode
 
     /**
      * 所有列的水平对齐方式
      */
-    justify?: 'start' | 'end' | 'center' | 'space-between' | 'space-around'
+    readonly justify?: 'start' | 'end' | 'center' | 'space-between' | 'space-around'
 
     /**
      * 所有列的垂直对齐方式
      */
-    align?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
+    readonly align?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
 
     /**
      * 是否在列之间加槽，及槽宽配置
      */
-    gutter?: boolean | 'small' | 'large'
+    readonly gutter?: boolean | 'small' | 'large'
 }
 
 /**

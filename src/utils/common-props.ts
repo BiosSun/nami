@@ -9,22 +9,22 @@ export default interface CommonProps<T> {
     /**
      * 自定义样式名称
      */
-    className?: string
+    readonly className?: string
 
     /**
      * 自定义样式
      */
-    style?: object
+    readonly style?: object
 
     /**
      * @private
      * @description 组件实例标识符
      */
-    key?: React.Key
+    readonly key?: React.Key
 
     /**
      * @private
      * @description 引用组件实例
      */
-    ref?: React.Ref<T>
+    readonly ref?: React.Ref<T>
 }

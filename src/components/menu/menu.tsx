@@ -13,24 +13,18 @@ export interface MenuProps extends CommonProps<Menu> {
      * 菜单展示模式
      * @default 'horizontal'
      */
-    mode?: 'horizontal' | 'vertical'
+    readonly mode?: 'horizontal' | 'vertical'
 
     /**
      * 该菜单中所包含的菜单项
      */
-    children?: ReactNode
+    readonly children?: ReactNode
 
     /**
      * 是否是子菜单
      * @private
      */
-    subMenu?: boolean
-
-    // /**
-    //  * 父菜单的配置参数
-    //  * @private
-    //  */
-    // parent?: MenuProps
+    readonly subMenu?: boolean
 }
 
 /**

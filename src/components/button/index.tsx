@@ -9,38 +9,38 @@ export interface ButtonProps extends CommonProps<Button> {
      * 按钮类型；
      * @default 'type'
      */
-    type: 'primary' | 'info' | 'success' | 'warning' | 'danger'
+    readonly type: 'primary' | 'info' | 'success' | 'warning' | 'danger'
 
     /**
      * 轮廓按钮；
      */
-    outline: boolean
+    readonly outline: boolean
 
     /**
      * 文字按钮；
      */
-    flat: boolean
+    readonly flat: boolean
 
     /**
      * 圆角按钮；
      */
-    round: boolean
+    readonly round: boolean
 
     /**
      * 圆形按钮；
      */
-    circle: boolean
+    readonly circle: boolean
 
     /**
      * 是否已禁用；
      * @default false
      */
-    disabled?: boolean
+    readonly disabled?: boolean
 
     /**
      * 按钮中显示的内容；
      */
-    children: React.ReactNode
+    readonly children: React.ReactNode
 }
 
 /**

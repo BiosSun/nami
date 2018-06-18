@@ -11,7 +11,7 @@ export interface NavbarProps extends CommonProps<Navbar> {
     /**
      * 导航栏内容项
      */
-    children?: React.ReactNode
+    readonly children?: React.ReactNode
 }
 
 /**

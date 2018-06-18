@@ -6,7 +6,7 @@ export interface BrandProps extends CommonProps<Brand> {
     /**
      * 自定义标识内容；
      */
-    children?: React.ReactNode
+    readonly children?: React.ReactNode
 }
 
 /**

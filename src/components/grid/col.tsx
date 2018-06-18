@@ -6,22 +6,22 @@ export interface ColProps extends CommonProps<Col> {
     /**
      * 栅格列宽
      */
-    span?: number
+    readonly span?: number
 
     /**
      * 列偏移量
      */
-    offset?: number
+    readonly offset?: number
 
     /**
      * 列中的内容
      */
-    children?: React.ReactNode
+    readonly children?: React.ReactNode
 
     /**
      * 该列的垂直对齐方式
      */
-    align?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
+    readonly align?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
 }
 
 /**
