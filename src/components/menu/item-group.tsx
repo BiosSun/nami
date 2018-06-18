@@ -41,13 +41,9 @@ interface ItemGroupState {
  * @parent Menu
  */
 export default class ItemGroup extends Component<ItemGroupProps, ItemGroupState> {
-    constructor(props: ItemGroupProps, context?: any) {
-        super(props, context)
-
-        this.state = {
-            items: undefined,
-            headerContent: undefined,
-        }
+    readonly state: ItemGroupState = {
+        items: undefined,
+        headerContent: undefined,
     }
 
     static getDerivedStateFromProps(nextProps: ItemGroupProps): ItemGroupState {

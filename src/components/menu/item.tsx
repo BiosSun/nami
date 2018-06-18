@@ -55,15 +55,11 @@ interface ItemState {
  * @parent Menu
  */
 export default class Item extends Component<ItemProps, ItemState> {
-    constructor(props: ItemProps, context?: any) {
-        super(props, context)
-
-        this.state = {
-            hover: false,
-            open: !!props.defaultOpen,
-            subMenu: undefined,
-            headerContent: undefined,
-        }
+    readonly state: ItemState = {
+        hover: false,
+        open: !!this.props.defaultOpen,
+        subMenu: undefined,
+        headerContent: undefined,
     }
 
     onItemHeaderMouseEnter = () => {
