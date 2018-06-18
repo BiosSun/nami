@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, MouseEvent } from 'react'
 import classnames from 'classnames'
 import CommonProps from '@utils/common-props'
 
@@ -36,6 +36,11 @@ export interface ButtonProps extends CommonProps<Button> {
      * @default false
      */
     readonly disabled?: boolean
+
+    /**
+     * 按钮点击事件处理函数
+     */
+    readonly onClick: (e: MouseEvent<HTMLElement>) => void
 
     /**
      * 按钮中显示的内容；
@@ -80,6 +85,7 @@ export default class Button extends Component<ButtonProps> {
             round,
             circle,
             disabled,
+            onClick,
             children,
             className,
             style,
@@ -103,7 +109,7 @@ export default class Button extends Component<ButtonProps> {
         }
 
         return (
-            <button className={classes.root} style={style} disabled={disabled}>
+            <button className={classes.root} style={style} disabled={disabled} onClick={onClick}>
                 <span className={classes.text}>{children}</span>
             </button>
         )
