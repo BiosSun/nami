@@ -103,7 +103,7 @@ export interface ComponentPropTypeInfo {
     /**
      * 该类型所属类别；
      */
-    type: 'intrinsic' | 'reference' | 'union' | 'stringLiteral'
+    type: 'intrinsic' | 'reference' | 'union' | 'stringLiteral' | 'function'
 
     /**
      * 如果是内部类型或引用类型，则该属性表示类型名称；
@@ -118,7 +118,17 @@ export interface ComponentPropTypeInfo {
     /**
      * 如果是字符串字面量，则该属性表示字面量值；
      */
-    value: string
+    value?: string
+
+    /**
+     * 如果是函数类型，则该属性表示函数的参数信息；
+     */
+    parameters?: ComponentPropInfo[]
+
+    /**
+     * 如果是函数类型，则该属性表示函数的返回结果信息；
+     */
+    result?: ComponentPropTypeInfo
 }
 
 export interface ComponentCodesInfo {

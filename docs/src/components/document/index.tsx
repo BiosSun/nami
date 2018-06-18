@@ -154,27 +154,29 @@ export default class Document extends Component<DocumentProps> {
     }
 
     renderPropType(type: ComponentPropTypeInfo): ReactNode {
+        const str = this.getPropTypeStr(type)
+        return <code>{str}</code>
+    }
+
+    getPropTypeStr(type: ComponentPropTypeInfo): string {
         switch (type.type) {
             case 'intrinsic':
             case 'reference':
-                return (
-                    <code key={`type-${type.name}`} className={`type__${type.type}`}>
-                        {type.name}
-                    </code>
-                )
+                return type.name
+
             case 'stringLiteral':
-                return (
-                    <code
-                        key={`type-string-literal-${type.value}`}
-                        className="type__string-literal"
-                    >
-                        '{type.value}'
-                    </code>
-                )
+                return `"` + type.value + `"`
+
             case 'union':
-                return type.types
-                    .map(this.renderPropType)
-                    .reduce((prev, curr) => [prev, ' | ', curr])
+                return type.types.map(this.getPropTypeStr).join(' | ')
+
+            case 'function':
+                const params = type.parameters.map(
+                    param => param.name + ': ' + this.getPropTypeStr(param.type)
+                )
+                const result = this.getPropTypeStr(type.result)
+
+                return `(${params}) => ${result}`
         }
     }
 
