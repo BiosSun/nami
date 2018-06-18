@@ -7,11 +7,13 @@ import React from 'react'
  */
 export default interface CommonProps<T> {
     /**
+     * @private
      * 自定义样式名称
      */
     readonly className?: string
 
     /**
+     * @private
      * 自定义样式
      */
     readonly style?: object

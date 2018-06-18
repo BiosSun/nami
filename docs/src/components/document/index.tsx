@@ -43,8 +43,10 @@ export default class Document extends Component<DocumentProps> {
                 {this.renderExamples(componentInfo.examples, componentInfo)}
 
                 <h2>参数</h2>
-                {this.renderProps(componentInfo.props, componentInfo.name)}
-                {this.renderSubComponents(componentInfo.subComponents)}
+
+                <h3>{componentInfo.name}</h3>
+                {this.renderProps(componentInfo.props)}
+                {this.renderSubComponents(componentInfo.subComponents, componentInfo)}
             </React.Fragment>
         )
     }
@@ -95,7 +97,10 @@ export default class Document extends Component<DocumentProps> {
         )
     }
 
-    renderSubComponents(subComponents: ComponentInfo[]): ReactElement<any>[] {
+    renderSubComponents(
+        subComponents: ComponentInfo[],
+        componentInfo: ComponentInfo
+    ): ReactElement<any>[] {
         if (!subComponents) {
             return undefined
         }
@@ -106,28 +111,33 @@ export default class Document extends Component<DocumentProps> {
 
             return (
                 <React.Fragment key={key}>
-                    {this.renderProps(subComponent.props, name)}
+                    <h3>{name}</h3>
+                    {this.renderSection(subComponent.text, componentInfo)}
+                    {this.renderProps(subComponent.props)}
                 </React.Fragment>
             )
         })
     }
 
-    renderProps(props: ComponentPropInfo[], title?: string): ReactElement<any> {
+    renderProps(props: ComponentPropInfo[]): ReactElement<any> {
+        const elements = props && props.map(prop => this.renderProp(prop))
+
+        if (!elements || elements.reduce((count, el) => (el ? count + 1 : count), 0) === 0) {
+            return
+        }
+
         return (
-            <React.Fragment>
-                {title ? <h3>{title}</h3> : undefined}
-                <table className="app-document__props">
-                    <thead>
-                        <tr>
-                            <th>参数</th>
-                            <th>说明</th>
-                            <th>类型</th>
-                            <th>默认值</th>
-                        </tr>
-                    </thead>
-                    <tbody>{props.map(prop => this.renderProp(prop))}</tbody>
-                </table>
-            </React.Fragment>
+            <table className="app-document__props">
+                <thead>
+                    <tr>
+                        <th>参数</th>
+                        <th>说明</th>
+                        <th>类型</th>
+                        <th>默认值</th>
+                    </tr>
+                </thead>
+                <tbody>{elements}</tbody>
+            </table>
         )
     }
 

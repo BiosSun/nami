@@ -9,6 +9,10 @@ export interface SpaceProps extends CommonProps<Space> {}
  *
  * @displayname 空隔
  * @parent Menu
+ *
+ * @description
+ *
+ *   菜单项间固定长度空隔；
  */
 export default class Space extends PureComponent<SpaceProps> {
     render() {

@@ -9,6 +9,10 @@ export interface FlexibleSpaceProps extends CommonProps<FlexibleSpace> {}
  *
  * @displayname 弹性空隔
  * @parent Menu
+ *
+ * @description
+ *
+ *   菜单项间弹性长度空隔；
  */
 export default class FlexibleSpace extends PureComponent<FlexibleSpaceProps> {
     render() {

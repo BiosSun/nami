@@ -9,6 +9,10 @@ export interface DividerProps extends CommonProps<Divider> {}
  *
  * @displayname 分隔线
  * @parent Menu
+ *
+ * @description
+ *
+ *   菜单项间分隔线；
  */
 export default class Divider extends PureComponent<DividerProps> {
     render() {
