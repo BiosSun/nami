@@ -62,15 +62,15 @@ export default class Item extends Component<ItemProps, ItemState> {
         headerContent: undefined,
     }
 
-    onItemHeaderMouseEnter = () => {
+    handleHeaderMouseEnter = () => {
         this.setState({ hover: true })
     }
 
-    onItemHeaderMouseLeave = () => {
+    handleHeaderMouseLeave = () => {
         this.setState({ hover: false })
     }
 
-    onItemHeaderClick = () => {
+    handleHeaderClick = () => {
         const hasSubMenu = !!this.state.subMenu
 
         if (hasSubMenu) {
@@ -111,9 +111,9 @@ export default class Item extends Component<ItemProps, ItemState> {
         const header = (
             <div
                 className={classes.header}
-                onMouseEnter={this.onItemHeaderMouseEnter}
-                onMouseLeave={this.onItemHeaderMouseLeave}
-                onClick={this.onItemHeaderClick}
+                onMouseEnter={this.handleHeaderMouseEnter}
+                onMouseLeave={this.handleHeaderMouseLeave}
+                onClick={this.handleHeaderClick}
             >
                 {headerContent}
                 {subMenu ? (
@@ -138,5 +138,3 @@ export default class Item extends Component<ItemProps, ItemState> {
         )
     }
 }
-
-export { Item }
