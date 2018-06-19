@@ -12,7 +12,7 @@
     ],
     "scripts": {
         "start": "del '_site' 'lib' 'docs/datas' 'docs/demos' && webpack-serve",
-        "format": "prettier --write './{src,docs,scripts}/**/*.{js,ts,tsx,json,scss,md}' './*.{js,json,md}'",
+        "format": "prettier --write './{src,docs,scripts}/**/*.{js,jsx,ts,tsx,json,scss,md}' './*.{js,json,md}'",
         "precommit": "pretty-quick --staged",
         "debug:docdata": "node ./scripts/doc-datas-generator-debug.js src/index.ts docs/datas docs/demos"
     },
