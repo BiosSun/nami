@@ -1,4 +1,4 @@
-import React, { Component, MouseEvent } from 'react'
+import React, { Component, ReactNode, MouseEvent } from 'react'
 import classnames from 'classnames'
 import CommonProps from '@utils/common-props'
 
@@ -45,7 +45,7 @@ export interface ButtonProps extends CommonProps<Button> {
     /**
      * 按钮中显示的内容；
      */
-    readonly children: React.ReactNode
+    readonly children: ReactNode
 }
 
 /**
