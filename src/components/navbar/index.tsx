@@ -25,7 +25,7 @@ export type NavbarProps = BaseNavbarProps & HTMLAttributes<HTMLDivElement>
  *
  *     提供一个页面级的水平布局导航栏组件。
  *
- *     {@demo "./demos/common.tsx"}
+ *     {@demo "./demos/common.jsx"}
  */
 export default class Navbar extends Component<NavbarProps> {
     static Brand = Brand
