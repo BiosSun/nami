@@ -1,17 +1,18 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent, SVGAttributes } from 'react'
 import classnames from 'classnames'
-import CommonProps from '@utils/common-props'
 
 import icons from './icons'
 
 import './styles'
 
-export interface IconProps extends CommonProps<Icon> {
+interface BaseIconProps {
     /**
      * 图标类型；
      */
     name?: string
 }
+
+export type IconProps = BaseIconProps & SVGAttributes<SVGElement>
 
 /**
  * @component
@@ -36,11 +37,11 @@ export interface IconProps extends CommonProps<Icon> {
  */
 export default class Icon extends PureComponent<IconProps> {
     render() {
-        const { name, className, style } = this.props
+        const { name, className, ...otherProps } = this.props
         const classes = classnames('icon', className)
 
         return (
-            <svg className={classes} width="16" height="16" viewBox="0 0 1024 1024" style={style}>
+            <svg {...otherProps} className={classes} width="16" height="16" viewBox="0 0 1024 1024">
                 {icons[name]()}
             </svg>
         )

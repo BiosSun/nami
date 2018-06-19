@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, HTMLAttributes } from 'react'
 import classnames from 'classnames'
-import CommonProps from '@utils/common-props'
 
-export interface ColProps extends CommonProps<Col> {
+interface BaseColProps {
     /**
      * 栅格列宽
      */
@@ -24,6 +23,8 @@ export interface ColProps extends CommonProps<Col> {
     readonly align?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
 }
 
+export type ColProps = BaseColProps & HTMLAttributes<HTMLDivElement>
+
 /**
  * @component
  *
@@ -32,7 +33,7 @@ export interface ColProps extends CommonProps<Col> {
  */
 export default class Col extends Component<ColProps> {
     render() {
-        const { span, offset, align, children, className, style } = this.props
+        const { span, offset, align, children, className, ...otherProps } = this.props
         const classes = classnames(
             'grid__col',
             {
@@ -44,7 +45,7 @@ export default class Col extends Component<ColProps> {
         )
 
         return (
-            <div className={classes} style={style}>
+            <div {...otherProps} className={classes}>
                 {children}
             </div>
         )

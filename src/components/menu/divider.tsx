@@ -1,8 +1,7 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent, HTMLAttributes } from 'react'
 import classnames from 'classnames'
-import CommonProps from '@utils/common-props'
 
-export interface DividerProps extends CommonProps<Divider> {}
+export type DividerProps = HTMLAttributes<HTMLDivElement>
 
 /**
  * @component
@@ -16,7 +15,7 @@ export interface DividerProps extends CommonProps<Divider> {}
  */
 export default class Divider extends PureComponent<DividerProps> {
     render() {
-        const { className, style } = this.props
+        const { className, ...otherProps } = this.props
 
         const classes = {
             root: classnames('menu__divider', className),
@@ -24,7 +23,7 @@ export default class Divider extends PureComponent<DividerProps> {
         }
 
         return (
-            <div className={classes.root} style={style}>
+            <div {...otherProps} className={classes.root}>
                 <div className={classes.inner} />
             </div>
         )

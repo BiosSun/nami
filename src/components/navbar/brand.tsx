@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component, HTMLAttributes } from 'react'
 import classnames from 'classnames'
-import CommonProps from '@utils/common-props'
 
-export interface BrandProps extends CommonProps<Brand> {
+interface BaseBrandProps {
     /**
      * 自定义标识内容；
      */
     readonly children?: React.ReactNode
 }
+
+export type BrandProps = BaseBrandProps & HTMLAttributes<HTMLDivElement>
 
 /**
  * @component
@@ -17,11 +18,11 @@ export interface BrandProps extends CommonProps<Brand> {
  */
 export default class Brand extends Component<BrandProps> {
     render() {
-        const { children, className, style } = this.props
+        const { children, className, ...otherProps } = this.props
         const classes = classnames('navbar-brand', className)
 
         return (
-            <div className={classes} style={style}>
+            <div {...otherProps} className={classes}>
                 {children}
             </div>
         )

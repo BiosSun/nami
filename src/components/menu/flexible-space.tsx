@@ -1,8 +1,7 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent, HTMLAttributes } from 'react'
 import classnames from 'classnames'
-import CommonProps from '@utils/common-props'
 
-export interface FlexibleSpaceProps extends CommonProps<FlexibleSpace> {}
+export type FlexibleSpaceProps = HTMLAttributes<HTMLDivElement>
 
 /**
  * @component
@@ -16,8 +15,8 @@ export interface FlexibleSpaceProps extends CommonProps<FlexibleSpace> {}
  */
 export default class FlexibleSpace extends PureComponent<FlexibleSpaceProps> {
     render() {
-        const { className, style } = this.props
+        const { className, ...otherProps } = this.props
         const classes = classnames('menu__flexible-space', className)
-        return <div className={classes} style={style} />
+        return <div {...otherProps} className={classes} />
     }
 }

@@ -1,10 +1,9 @@
-import React, { Component, ReactNode, MouseEvent } from 'react'
+import React, { Component, ReactNode, MouseEvent, ButtonHTMLAttributes } from 'react'
 import classnames from 'classnames'
-import CommonProps from '@utils/common-props'
 
 import './styles'
 
-export interface ButtonProps extends CommonProps<Button> {
+interface BaseButtonProps {
     /**
      * 按钮类型；
      * @default 'type'
@@ -48,6 +47,8 @@ export interface ButtonProps extends CommonProps<Button> {
     readonly children: ReactNode
 }
 
+export type ButtonProps = BaseButtonProps & ButtonHTMLAttributes<HTMLButtonElement>
+
 /**
  * @component
  *
@@ -88,7 +89,7 @@ export default class Button extends Component<ButtonProps> {
             onClick,
             children,
             className,
-            style,
+            ...otherProps
         } = this.props
 
         const classes = {
@@ -109,7 +110,7 @@ export default class Button extends Component<ButtonProps> {
         }
 
         return (
-            <button className={classes.root} style={style} disabled={disabled} onClick={onClick}>
+            <button {...otherProps} className={classes.root} disabled={disabled} onClick={onClick}>
                 <span className={classes.text}>{children}</span>
             </button>
         )

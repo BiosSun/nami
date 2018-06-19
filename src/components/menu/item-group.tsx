@@ -1,26 +1,17 @@
-import React, {
-    Component,
-    ReactNode,
-    ReactElement,
-    isValidElement,
-    Children,
-    cloneElement,
-    ReactChild,
-} from 'react'
-
+import React, { Component, ReactNode, ReactElement, ReactChild, HTMLAttributes } from 'react'
 import classnames from 'classnames'
-import CommonProps from '@utils/common-props'
 import childrenUtils from '@utils/children'
-
 import { ItemProps } from './item'
 
-export interface ItemGroupProps extends CommonProps<ItemGroup> {
+interface BaseItemGroupProps {
     /**
      * 该分组的头部内容及其所包含的菜单项<br/>
      * *第一个子元素将做为分组的头部内容，其余子元素为该分组中所包含的菜单项*
      */
     readonly children?: ReactNode
 }
+
+export type ItemGroupProps = BaseItemGroupProps & HTMLAttributes<HTMLDivElement>
 
 interface ItemGroupState {
     /**
@@ -56,7 +47,7 @@ export default class ItemGroup extends Component<ItemGroupProps, ItemGroupState>
     }
 
     render(): ReactNode {
-        const { className, style, children, ...otherProps } = this.props
+        const { className, children, ...otherProps } = this.props
         const { headerContent, items } = this.state
 
         const classes = {
@@ -65,12 +56,9 @@ export default class ItemGroup extends Component<ItemGroupProps, ItemGroupState>
         }
 
         return (
-            <div className={classes.root} style={style}>
+            <div {...otherProps} className={classes.root}>
                 <div className={classes.header}>{headerContent}</div>
-                {Children.map(
-                    items,
-                    item => isValidElement(item) && cloneElement(item, otherProps)
-                )}
+                {items}
             </div>
         )
     }

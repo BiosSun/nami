@@ -1,6 +1,5 @@
-import React, { Component, ReactNode } from 'react'
+import React, { Component, ReactNode, HTMLAttributes } from 'react'
 import classnames from 'classnames'
-import CommonProps from '@utils/common-props'
 
 import Item from './item'
 import ItemGroup from './item-group'
@@ -8,7 +7,7 @@ import Divider from './divider'
 import Space from './space'
 import FlexibleSpace from './flexible-space'
 
-export interface MenuProps extends CommonProps<Menu> {
+interface BaseMenuProps {
     /**
      * 菜单展示模式
      * @default 'horizontal'
@@ -26,6 +25,8 @@ export interface MenuProps extends CommonProps<Menu> {
      */
     readonly subMenu?: boolean
 }
+
+export type MenuProps = BaseMenuProps & HTMLAttributes<HTMLDivElement>
 
 /**
  * @component
@@ -117,9 +118,7 @@ export default class Menu extends Component<MenuProps> {
     static FlexibleSpace = FlexibleSpace
 
     render() {
-        const { children, className, style } = this.props
-
-        let { mode = 'horizontal', subMenu } = this.props
+        const { children, className, mode = 'horizontal', subMenu, ...otherProps } = this.props
 
         const classes = classnames(
             `menu`,
@@ -131,7 +130,7 @@ export default class Menu extends Component<MenuProps> {
         )
 
         return (
-            <div className={classes} style={style}>
+            <div {...otherProps} className={classes}>
                 {children}
             </div>
         )

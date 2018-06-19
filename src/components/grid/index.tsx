@@ -1,13 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component, HTMLAttributes } from 'react'
 import classnames from 'classnames'
-import CommonProps from '@utils/common-props'
 
 import Col from './col'
 export { default as Col, ColProps } from './col'
 
 import './styles'
 
-export interface GridProps extends CommonProps<Grid> {
+interface BaseGridProps {
     /**
      * 栅格中的列元素
      */
@@ -28,6 +27,8 @@ export interface GridProps extends CommonProps<Grid> {
      */
     readonly gutter?: boolean | 'small' | 'large'
 }
+
+export type GridProps = BaseGridProps & HTMLAttributes<HTMLDivElement>
 
 /**
  * @component
@@ -82,7 +83,7 @@ export default class Grid extends Component<GridProps> {
     static Col = Col
 
     render() {
-        const { align, justify, children, className, gutter, style } = this.props
+        const { align, justify, children, className, gutter, ...otherProps } = this.props
         const classes = classnames(
             'grid',
             {
@@ -94,7 +95,7 @@ export default class Grid extends Component<GridProps> {
         )
 
         return (
-            <div className={classes} style={style}>
+            <div {...otherProps} className={classes}>
                 {children}
             </div>
         )

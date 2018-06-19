@@ -1,12 +1,18 @@
-import React, { Component, ReactNode, ReactElement, ReactChild, cloneElement } from 'react'
+import React, {
+    Component,
+    ReactNode,
+    ReactElement,
+    ReactChild,
+    cloneElement,
+    HTMLAttributes,
+} from 'react'
 import classnames from 'classnames'
-import CommonProps from '@utils/common-props'
 import childrenUtils from '@utils/children'
 
 import { MenuProps } from './menu'
 import Icon from '@components/icon'
 
-export interface ItemProps extends CommonProps<Item> {
+interface BaseItemProps {
     /**
      * 该菜单项当前是否处于激活状态
      * @default false
@@ -25,6 +31,8 @@ export interface ItemProps extends CommonProps<Item> {
      */
     readonly children?: ReactNode
 }
+
+export type ItemProps = BaseItemProps & HTMLAttributes<HTMLDivElement>
 
 interface ItemState {
     /**
@@ -92,7 +100,7 @@ export default class Item extends Component<ItemProps, ItemState> {
     }
 
     render() {
-        const { active, className, style } = this.props
+        const { active, className, defaultOpen, ...otherProps } = this.props
         const { hover, open, headerContent, subMenu } = this.state
 
         const classes = {
@@ -131,7 +139,7 @@ export default class Item extends Component<ItemProps, ItemState> {
             : undefined
 
         return (
-            <div className={classes.root} style={style}>
+            <div {...otherProps} className={classes.root}>
                 {header}
                 {subMenuContainer}
             </div>
