@@ -114,7 +114,7 @@ function demoCodeCompleter(demoCode) {
         babelrc: false,
         parserOpts: {
             sourceType: 'module',
-            plugins: ['jsx'],
+            plugins: ['jsx', 'classProperties'],
         },
         plugins: [path.join(__dirname, 'babel-plugin-demo-code.js')],
     })
