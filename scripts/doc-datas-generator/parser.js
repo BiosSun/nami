@@ -96,7 +96,7 @@ function extractComponents(original) {
             }
 
             const _compt = _.chain(component)
-            const _props = _.chain(getComponentPropDefinition(_module, component.name) || {})
+            const _props = _.chain(getComponentProps(_module, _compt) || [])
 
             const name = component.name
             const displayName = findTag(_compt, 'displayname')
@@ -117,7 +117,6 @@ function extractComponents(original) {
                 text: getDescription(_compt),
 
                 props: _props
-                    .get('children')
                     .sortBy(['id'])
                     .map(prop => ({
                         name: prop.name,
@@ -223,13 +222,59 @@ function getComponentDefinition(_module) {
  * 从一个模块定义中找到某个组件所对应的 Props 定义
  * NOTE: 组件对应的 Props 应当与组件一起定义在同一个模块文件中
  */
-function getComponentPropDefinition(_module, componentName) {
-    const targetName = componentName + 'Props'
+function getComponentProps(_module, _compt) {
+    const compt = _compt.value()
 
-    return _module
-        .get('children')
-        .find(target => target.name === targetName)
+    if (compt.kindString !== 'Class') {
+        return undefined
+    }
+
+    const extended = _compt
+        .get('extendedTypes')
+        .find(ext =>
+            ['Component', 'React.Component', 'PureComponent', 'React.PureComponent'].includes(
+                ext.name
+            )
+        )
         .value()
+
+    if (!extended) {
+        return undefined
+    }
+
+    const comptPropsName = _.get(extended, 'typeArguments[0].name')
+
+    if (!comptPropsName) {
+        return undefined
+    }
+
+    return findPropsInModule(_module, comptPropsName)
+}
+
+/**
+ * 从一个模块定义中找到某个组件属性的定义
+ */
+function findPropsInModule(_module, propsName) {
+    const props = _module
+        .get('children')
+        .find(target => target.name === propsName)
+        .value()
+
+    if (!props) {
+        return undefined
+    }
+
+    switch (props.kindString) {
+        case 'Interface':
+            return props.children
+        case 'Type alias':
+            return _.chain(props)
+                .get('type.types')
+                .map(type => findPropsInModule(_module, type.name))
+                .flatten()
+                .compact()
+                .value()
+    }
 }
 
 /**
