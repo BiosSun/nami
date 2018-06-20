@@ -95,8 +95,8 @@ export default class Button extends Component<ButtonProps> {
         const classes = {
             root: classnames(
                 'button',
-                `button--${type}`,
                 {
+                    [`button--${type}`]: !!type,
                     [`button--outline`]: outline,
                     [`button--flat`]: flat,
                     [`button--round`]: round,
