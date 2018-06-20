@@ -1,0 +1,123 @@
+@charset "utf-8";
+
+@import '@nami//styles/basis';
+
+.popup-portal {
+    width: 0;
+    height: 0;
+    margin: 0;
+}
+
+.popup {
+    @include position(absolute, null, var(--popup-z-index));
+    display: none;
+}
+
+.popup--show {
+    display: block;
+}
+
+.popup__inner {
+    background: var(--background-color);
+    border-radius: var(--popup-radius);
+    box-shadow: var(--popup-shadow);
+    position: relative;
+}
+
+.popup__arrow {
+    $vertical-width: var(--popup-arrow-size);
+    $vertical-height: calc(var(--popup-arrow-size) * 0.5);
+    $vertical-margin: 0 var(--popup-arrow-margin);
+
+    $horizontal-width: $vertical-height;
+    $horizontal-height: $vertical-width;
+    $horizontal-margin: var(--popup-arrow-margin) 0;
+
+    @include size(var(--popup-arrow-size));
+    @include position(absolute, null);
+
+    clip-path: inset(0);
+
+    &:after {
+        content: '';
+        display: block;
+        @include size(var(--popup-arrow-size));
+        background: var(--background-color);
+        border-radius: var(--popup-arrow-radius);
+    }
+
+    @at-root %vertical-arrow {
+        width: $vertical-width;
+        height: $vertical-height;
+        margin: $vertical-margin;
+    }
+
+    @at-root %horizontal-arrow {
+        width: $horizontal-width;
+        height: $horizontal-height;
+        margin: $horizontal-margin;
+    }
+
+    @at-root .popup--has-arrow[x-at^='top'] {
+        padding-bottom: $vertical-height;
+
+        > .popup__arrow {
+            @extend %vertical-arrow;
+            bottom: 0;
+
+            &:after {
+                transform-origin: 100% 100%;
+                transform: translate(-50%, calc(-100% + #{$vertical-height})) rotate(45deg);
+
+                box-shadow: var(--popup-arrow-top-shadow);
+            }
+        }
+    }
+
+    @at-root .popup--has-arrow[x-at^='right'] {
+        padding-left: $horizontal-width;
+
+        > .popup__arrow {
+            @extend %horizontal-arrow;
+            left: 0;
+
+            &:after {
+                transform-origin: 0 100%;
+                transform: translate(0, -50%) rotate(45deg);
+
+                box-shadow: var(--popup-arrow-right-shadow);
+            }
+        }
+    }
+
+    @at-root .popup--has-arrow[x-at^='bottom'] {
+        padding-top: $vertical-height;
+
+        > .popup__arrow {
+            @extend %vertical-arrow;
+            top: 0;
+
+            &:after {
+                transform-origin: 0 0;
+                transform: translate(50%, 0) rotate(45deg);
+
+                box-shadow: var(--popup-arrow-bottom-shadow);
+            }
+        }
+    }
+
+    @at-root .popup--has-arrow[x-at^='left'] {
+        padding-right: $horizontal-width;
+
+        > .popup__arrow {
+            @extend %horizontal-arrow;
+            right: 0;
+
+            &:after {
+                transform-origin: 100% 0;
+                transform: translate(calc(-100% + #{$horizontal-width}), 50%) rotate(45deg);
+                box-shadow: var(--popup-arrow-left-shadow);
+            }
+        }
+    }
+}

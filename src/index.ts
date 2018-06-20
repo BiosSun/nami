@@ -1,5 +1,11 @@
 import './styles'
 
+// basic
+// -----------------------------------------------------------------------------
+
+export { default as Popup } from './components/popup'
+export * from './components/popup'
+
 // general
 // -----------------------------------------------------------------------------
 

@@ -226,3 +226,36 @@
         margin-left: var(--distance-horizontal);
     }
 }
+
+// popup
+// -----------------------------------------------------------------------------
+
+.demo-popup {
+    padding-top: calc(var(--distance-vertical) * 3);
+    padding-bottom: calc(var(--distance-vertical) * 3);
+
+    background: var(--background-color-loud);
+
+    text-align: center;
+}
+
+.demo-popup__console {
+    display: inline-block;
+    width: 400px;
+    padding: var(--distance-vertical) calc(var(--distance-horizontal) * 2);
+
+    background: var(--background-color);
+    border: 1px solid var(--line-color);
+}
+
+.demo-popup-default {
+    > .button {
+        width: 140px;
+    }
+}
+
+.demo-popup-panel {
+    > .popup__inner {
+        padding: calc(var(--distance-vertical) * 0.5) calc(var(--distance-horizontal) * 2);
+    }
+}
