@@ -29,9 +29,12 @@
 
         thead th,
         &__name,
-        &__type,
         &__default {
             white-space: nowrap;
+        }
+
+        &__type > code {
+            white-space: normal;
         }
     }
 }
