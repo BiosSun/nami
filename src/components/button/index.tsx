@@ -8,43 +8,43 @@ interface BaseButtonProps {
      * 按钮类型；
      * @default 'type'
      */
-    readonly type: 'primary' | 'info' | 'success' | 'warning' | 'danger'
+    type: 'primary' | 'info' | 'success' | 'warning' | 'danger'
 
     /**
      * 轮廓按钮；
      */
-    readonly outline: boolean
+    outline: boolean
 
     /**
      * 文字按钮；
      */
-    readonly flat: boolean
+    flat: boolean
 
     /**
      * 圆角按钮；
      */
-    readonly round: boolean
+    round: boolean
 
     /**
      * 圆形按钮；
      */
-    readonly circle: boolean
+    circle: boolean
 
     /**
      * 是否已禁用；
      * @default false
      */
-    readonly disabled?: boolean
+    disabled?: boolean
 
     /**
      * 按钮点击事件处理函数；
      */
-    readonly onClick: (e: MouseEvent<HTMLElement>) => void
+    onClick: (e: MouseEvent<HTMLElement>) => void
 
     /**
      * 按钮中显示的内容；
      */
-    readonly children: ReactNode
+    children: ReactNode
 }
 
 export type ButtonProps = BaseButtonProps & ButtonHTMLAttributes<HTMLButtonElement>

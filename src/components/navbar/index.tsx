@@ -10,7 +10,7 @@ interface BaseNavbarProps {
     /**
      * 导航栏内容项
      */
-    readonly children?: React.ReactNode
+    children?: React.ReactNode
 }
 
 export type NavbarProps = BaseNavbarProps & HTMLAttributes<HTMLDivElement>

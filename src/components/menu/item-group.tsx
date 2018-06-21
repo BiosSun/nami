@@ -8,7 +8,7 @@ interface BaseItemGroupProps {
      * 该分组的头部内容及其所包含的菜单项<br/>
      * *第一个子元素将做为分组的头部内容，其余子元素为该分组中所包含的菜单项*
      */
-    readonly children?: ReactNode
+    children?: ReactNode
 }
 
 export type ItemGroupProps = BaseItemGroupProps & HTMLAttributes<HTMLDivElement>
@@ -17,12 +17,12 @@ interface ItemGroupState {
     /**
      * 组件头部内容
      */
-    readonly headerContent: ReactChild
+    headerContent: ReactChild
 
     /**
      * 该分组内所包含的所有菜单项
      */
-    readonly items: ReactElement<ItemProps>[]
+    items: ReactElement<ItemProps>[]
 }
 
 /**
@@ -32,7 +32,7 @@ interface ItemGroupState {
  * @parent Menu
  */
 export default class ItemGroup extends Component<ItemGroupProps, ItemGroupState> {
-    readonly state: ItemGroupState = {
+    readonly state: Readonly<ItemGroupState> = {
         items: undefined,
         headerContent: undefined,
     }

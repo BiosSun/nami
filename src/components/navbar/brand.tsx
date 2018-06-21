@@ -5,7 +5,7 @@ interface BaseBrandProps {
     /**
      * 自定义标识内容；
      */
-    readonly children?: React.ReactNode
+    children?: React.ReactNode
 }
 
 export type BrandProps = BaseBrandProps & HTMLAttributes<HTMLDivElement>

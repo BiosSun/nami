@@ -5,22 +5,22 @@ interface BaseColProps {
     /**
      * 栅格列宽
      */
-    readonly span?: number
+    span?: number
 
     /**
      * 列偏移量
      */
-    readonly offset?: number
+    offset?: number
 
     /**
      * 列中的内容
      */
-    readonly children?: React.ReactNode
+    children?: React.ReactNode
 
     /**
      * 该列的垂直对齐方式
      */
-    readonly align?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
+    align?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
 }
 
 export type ColProps = BaseColProps & HTMLAttributes<HTMLDivElement>

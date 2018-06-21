@@ -12,18 +12,18 @@ interface BaseMenuProps {
      * 菜单展示模式
      * @default 'horizontal'
      */
-    readonly mode?: 'horizontal' | 'vertical'
+    mode?: 'horizontal' | 'vertical'
 
     /**
      * 该菜单中所包含的菜单项
      */
-    readonly children?: ReactNode
+    children?: ReactNode
 
     /**
      * 是否是子菜单
      * @private
      */
-    readonly subMenu?: boolean
+    subMenu?: boolean
 }
 
 export type MenuProps = BaseMenuProps & HTMLAttributes<HTMLDivElement>

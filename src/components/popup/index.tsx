@@ -18,36 +18,36 @@ interface BasePopupProps {
     /**
      * 该弹出层所绑定的目标元素，弹出层将相对该元素对齐
      */
-    readonly of: RefObject<ReactInstance> | ReactInstance
+    of: RefObject<ReactInstance> | ReactInstance
 
     /**
      * 弹出层相对于目标元素的位置
      * @default 'bottom'
      */
-    readonly at?: Popper.Placement
+    at?: Popper.Placement
 
     /**
      * 弹出层相对于目标元素的偏移长度
      * @default 0
      */
-    readonly offset?: number | string
+    offset?: number | string
 
     /**
      * 是否显示弹出层
      * @default false
      */
-    readonly show?: boolean
+    show?: boolean
 
     /**
      * 是否显示箭头指针
      * @default false
      */
-    readonly arrow?: boolean
+    arrow?: boolean
 
     /**
      * 弹出层内容
      */
-    readonly children?: ReactNode
+    children?: ReactNode
 }
 
 export type PopupProps = BasePopupProps & HTMLAttributes<HTMLDivElement>
@@ -56,22 +56,22 @@ interface PopupState {
     /**
      * 该弹出层所绑定的 DOM 结点
      */
-    readonly ofEl: Element
+    ofEl: Element
 
     /**
      * 要为弹出层设置的样式
      */
-    readonly style: Object
+    style: Object
 
     /**
      * 要为箭头指针设置的样式
      */
-    readonly arrowStyle: Object
+    arrowStyle: Object
 
     /**
      * 弹出层当前相对于目标元素的实际位置
      */
-    readonly at: Popper.Placement
+    at: Popper.Placement
 }
 
 /**
@@ -112,7 +112,7 @@ export default class Popup extends Component<PopupProps, PopupState> {
 
     portal: HTMLDivElement = document.createElement('div')
 
-    state: PopupState = {
+    readonly state: Readonly<PopupState> = {
         ofEl: null,
         style: null,
         arrowStyle: null,
