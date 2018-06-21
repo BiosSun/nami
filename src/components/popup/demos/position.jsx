@@ -1,4 +1,4 @@
-import { Popup } from 'nami'
+import { Popup, Input } from 'nami'
 
 class Demo extends Component {
     state = {
@@ -33,7 +33,7 @@ class Demo extends Component {
                         <option>left-end</option>
                     </select>
 
-                    <input
+                    <Input
                         value={offset || ''}
                         onChange={handleOffsetChange}
                         placeholder="offset"
