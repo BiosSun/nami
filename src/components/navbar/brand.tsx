@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 interface BaseBrandProps {
     /**
-     * 自定义标识内容；
+     * 自定义标识内容
      */
     children?: React.ReactNode
 }

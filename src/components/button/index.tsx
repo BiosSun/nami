@@ -5,44 +5,44 @@ import './styles'
 
 interface BaseButtonProps {
     /**
-     * 按钮类型；
+     * 按钮类型
      * @default 'type'
      */
     type: 'primary' | 'info' | 'success' | 'warning' | 'danger'
 
     /**
-     * 轮廓按钮；
+     * 轮廓按钮
      */
     outline: boolean
 
     /**
-     * 文字按钮；
+     * 文字按钮
      */
     flat: boolean
 
     /**
-     * 圆角按钮；
+     * 圆角按钮
      */
     round: boolean
 
     /**
-     * 圆形按钮；
+     * 圆形按钮
      */
     circle: boolean
 
     /**
-     * 是否已禁用；
+     * 是否已禁用
      * @default false
      */
     disabled?: boolean
 
     /**
-     * 按钮点击事件处理函数；
+     * 按钮点击事件处理函数
      */
     onClick: (e: MouseEvent<HTMLElement>) => void
 
     /**
-     * 按钮中显示的内容；
+     * 按钮中显示的内容
      */
     children: ReactNode
 }
