@@ -101,6 +101,7 @@ Temporary Items
 # 项目相关
 #-----------------------------
 
+.vscode
 yarn.lock
 lib
 src/**/*.d.ts
