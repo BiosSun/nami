@@ -259,3 +259,12 @@
         padding: calc(var(--distance-vertical) * 0.5) calc(var(--distance-horizontal) * 2);
     }
 }
+
+// input
+// -----------------------------------------------------------------------------
+
+.demo-input {
+    .input:not(:last-child) {
+        margin-bottom: var(--distance-vertical);
+    }
+}

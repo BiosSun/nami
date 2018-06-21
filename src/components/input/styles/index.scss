@@ -1,0 +1,71 @@
+@charset "utf-8";
+
+@import '@nami//styles/basis';
+@import './utils';
+
+.input {
+    display: inline-flex;
+    width: 100%;
+
+    > * {
+        flex: 0 0 auto;
+    }
+}
+
+.input__editor {
+    $size: var(--input-size-base);
+    $pv: calc(var(--distance-vertical) * 0.25);
+    $ph: calc(var(--distance-horizontal) * 0.75);
+    $f: var(--font-size-base);
+    $b: 1px;
+    $br: 4px;
+
+    flex: 1 1 auto;
+
+    height: $size;
+    padding: $pv $ph;
+
+    background: var(--background-color);
+    border: $b solid var(--line-color);
+    border-radius: $br;
+
+    font-size: $f;
+    line-height: calc(#{$size} - #{$pv} * 2 - #{$b} * 2);
+
+    transition-property: border-color, box-shadow;
+    transition-duration: 0.2s, 0.4s;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover:read-write:not(:disabled),
+    &:focus:read-write:not(:disabled) {
+        border-color: var(--primary-color);
+    }
+
+    &:focus:read-write:not(:disabled) {
+        box-shadow: 0 0 0 2px var(--primary-background-color);
+    }
+
+    &:disabled {
+        pointer-events: none;
+        opacity: 0.5;
+        background: var(--background-color-loud);
+    }
+
+    &::placeholder {
+        color: var(--placeholder-color);
+    }
+}
+
+@each $name in success, warning, danger {
+    .input--#{$name} {
+        > .input__editor:read-write:not(:disabled) {
+            @include input-editor-outline(
+                var(--#{$name}-color),
+                0 0 0 2px var(--#{$name}-background-color)
+            );
+        }
+    }
+}

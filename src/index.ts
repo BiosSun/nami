@@ -29,3 +29,9 @@ export * from './components/menu'
 
 export { default as Grid } from './components/grid'
 export * from './components/grid'
+
+// form
+// -----------------------------------------------------------------------------
+
+export { default as Input } from './components/input'
+export * from './components/input'
