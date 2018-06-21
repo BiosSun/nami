@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+@mixin input-editor-outline($color, $focus-shadow) {
+    border-color: $color;
+
+    &:focus {
+        box-shadow: $focus-shadow;
+    }
+}
