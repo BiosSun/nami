@@ -125,32 +125,7 @@ function extractComponents(original) {
                         type: prop.type,
                         flags: prop.flags,
                     }))
-                    .forEach(prop => {
-                        // 处理函数类型的字段
-                        const { type } = prop
-
-                        if (type.type !== 'reflection') {
-                            return
-                        }
-
-                        const sign = _.get(type, 'declaration.signatures[0]')
-
-                        if (!sign || sign.name !== '__call') {
-                            return
-                        }
-
-                        prop.type = {
-                            type: 'function',
-                            parameters: _.map(sign.parameters, param => ({
-                                name: param.name,
-                                text: getDescription(_.chain(param)),
-                                type: param.type,
-                                flags: param.flags,
-                                // TODO: default
-                            })),
-                            result: sign.type,
-                        }
-                    })
+                    .forEach(prop => (prop.type = parserPropType(prop.type)))
                     .value(),
 
                 examples: getExamples(_compt),
@@ -377,4 +352,40 @@ function getExamples(_target) {
     } else {
         return undefined
     }
+}
+
+/**
+ * 解析属性类型
+ * 主要目的是处理函数类型
+ */
+function parserPropType(type) {
+    switch (type.type) {
+        case 'reflection':
+            const sign = _.get(type, 'declaration.signatures[0]')
+
+            if (!sign || sign.name !== '__call') {
+                break
+            }
+
+            type = {
+                type: 'function',
+                parameters: _.map(sign.parameters, param => ({
+                    name: param.name,
+                    text: getDescription(_.chain(param)),
+                    type: param.type,
+                    flags: param.flags,
+                    // TODO: default
+                })),
+                result: sign.type,
+            }
+
+            break
+        case 'union':
+            type.types = type.types.map(parserPropType)
+            break
+        default:
+            break
+    }
+
+    return type
 }

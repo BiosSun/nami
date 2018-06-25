@@ -1,11 +1,5 @@
 import './styles'
 
-// basic
-// -----------------------------------------------------------------------------
-
-export { default as Popup } from './components/popup'
-export * from './components/popup'
-
 // general
 // -----------------------------------------------------------------------------
 
@@ -14,6 +8,9 @@ export * from './components/button'
 
 export { default as Icon } from './components/icon'
 export * from './components/icon'
+
+export { default as Popover } from './components/popover'
+export * from './components/popover'
 
 // navigation
 // -----------------------------------------------------------------------------

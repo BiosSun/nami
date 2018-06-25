@@ -1,8 +1,10 @@
 @charset "utf-8";
 
+$app-demo-border-radius: 6px;
+
 .app-demo {
     border: 1px solid var(--line-color);
-    border-radius: 6px;
+    border-radius: $app-demo-border-radius;
 
     &__stage {
         padding: 20px;
@@ -17,7 +19,7 @@
         > pre {
             margin: 0;
             padding: 0;
-            border-radius: 0 0 6px 6px;
+            border-radius: 0 0 $app-demo-border-radius $app-demo-border-radius;
             border-top: 1px solid var(--line-color);
 
             > code {
@@ -38,7 +40,7 @@
 
             border: 0;
             border-top: 1px solid var(--line-color);
-            border-radius: 0 0 6px 6px;
+            border-radius: 0 0 $app-demo-border-radius $app-demo-border-radius;
 
             font-size: var(--font-size-small);
             line-height: 30px;
@@ -63,6 +65,20 @@
 }
 
 .app-demo__stage {
+    border-radius: $app-demo-border-radius $app-demo-border-radius 0 0;
+
+    &:before,
+    &:after {
+        content: '.';
+
+        display: block;
+        height: 0;
+
+        font: 0/0 a;
+        color: transparent;
+        text-shadow: none;
+    }
+
     .box-h-large {
         padding-top: 0;
         padding-bottom: 60px;
@@ -227,37 +243,37 @@
     }
 }
 
-// popup
+// popover
 // -----------------------------------------------------------------------------
 
-.demo-popup {
-    padding-top: calc(var(--distance-vertical) * 3);
-    padding-bottom: calc(var(--distance-vertical) * 3);
+.demo-popover {
+    padding: 0;
 
     background: var(--background-color-loud);
 
-    text-align: center;
+    > .demo-popover__controller {
+        width: 100%;
+        padding: var(--distance-vertical) var(--distance-horizontal);
+
+        background: var(--background-color);
+        border-bottom: 1px solid var(--line-color);
+        border-radius: $app-demo-border-radius $app-demo-border-radius 0 0;
+    }
+
+    > .button {
+        display: block;
+        width: 160px;
+        margin: calc(var(--distance-vertical) * 3) auto;
+    }
 }
 
-.demo-popup__console {
+.demo-popover__console {
     display: inline-block;
     width: 400px;
     padding: var(--distance-vertical) calc(var(--distance-horizontal) * 2);
 
     background: var(--background-color);
     border: 1px solid var(--line-color);
-}
-
-.demo-popup-default {
-    > .button {
-        width: 140px;
-    }
-}
-
-.demo-popup-panel {
-    > .popup__inner {
-        padding: calc(var(--distance-vertical) * 0.5) calc(var(--distance-horizontal) * 2);
-    }
 }
 
 // input
