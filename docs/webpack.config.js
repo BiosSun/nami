@@ -8,7 +8,7 @@ const DocDatasGeneratorWebpackPlugin = require('../scripts/webpack-plugin-doc-da
 
 module.exports = (env, argv) => {
     const config = {
-        mode: env.production ? 'production' : 'none',
+        mode: env.production ? 'production' : 'development',
         target: 'web',
 
         entry: ['babel-polyfill', './docs/src/index.tsx'],
@@ -46,6 +46,11 @@ module.exports = (env, argv) => {
                         },
                         {
                             loader: 'ts-loader',
+                            options: {
+                                compilerOptions: {
+                                    sourceMap: true,
+                                },
+                            },
                         },
                     ],
                 },
@@ -113,6 +118,8 @@ module.exports = (env, argv) => {
         devServer: {
             contentBase: './lib',
         },
+
+        devtool: 'eval-source-map',
     }
 
     if (!env.production) {
