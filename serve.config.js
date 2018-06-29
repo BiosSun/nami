@@ -5,7 +5,6 @@ const convert = require('koa-connect')
 
 module.exports = {
     config: require('./docs/webpack.config')({ production: false }),
-    content: './_site',
     add(app, middleware, options) {
         app.use(convert(history({})))
     },

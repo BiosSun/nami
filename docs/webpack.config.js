@@ -11,7 +11,11 @@ module.exports = (env, argv) => {
         mode: env.production ? 'production' : 'development',
         target: 'web',
 
-        entry: ['babel-polyfill', './docs/src/index.tsx'],
+        entry: [
+            // 一般开发时使用的浏览器都比较新，因此大多都不需要引入 core-js
+            env.production ? 'babel-polyfill' : 'regenerator-runtime/runtime',
+            './docs/src/index.tsx',
+        ],
 
         output: {
             path: path.resolve(__dirname, '..', '_site'),
@@ -19,7 +23,7 @@ module.exports = (env, argv) => {
         },
 
         resolve: {
-            extensions: ['.json', '.js', '.jsx', '.ts', '.tsx', '.css', '.sass', '.scss'],
+            extensions: ['.json', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss'],
             alias: {
                 // nami
                 '@utils': path.resolve(__dirname, '..', 'src', 'utils'),
@@ -64,15 +68,7 @@ module.exports = (env, argv) => {
                     ],
                 },
                 {
-                    test: /\.css$/,
-                    exclude: /node_modules/,
-                    use: [
-                        env.production ? MiniCssExtractPlugin.loader : 'style-loader',
-                        'css-loader',
-                    ],
-                },
-                {
-                    test: /\.s[ac]ss$/,
+                    test: /\.scss$/,
                     exclude: /node_modules/,
                     use: [
                         env.production ? MiniCssExtractPlugin.loader : 'style-loader',
@@ -115,18 +111,7 @@ module.exports = (env, argv) => {
             }),
         ],
 
-        devServer: {
-            contentBase: './lib',
-        },
-
         devtool: 'eval-source-map',
-    }
-
-    if (!env.production) {
-        config.plugins.push(
-            new webpack.NamedModulesPlugin(),
-            new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify('development') })
-        )
     }
 
     return config
