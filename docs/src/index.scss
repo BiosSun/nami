@@ -20,6 +20,10 @@ $rio-code-size: var(--font-size-small);
 $rio-code-block-line-height: 1.8;
 @import '@node//rio-typesetting/sass/rio';
 
+@import '@node//nojiko/sass/nojiko';
+@import '@node//nojiko/sass/variables';
+@import '@node//nojiko/sass/elements';
+
 *,
 *:before,
 *:after {

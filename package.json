@@ -18,6 +18,8 @@
     },
     "dependencies": {
         "classnames": "^2.2.5",
+        "iterall": "^1.2.2",
+        "object.omit": "^3.0.0",
         "popper.js": "^1.14.3",
         "react": "^16.4.0",
         "react-dom": "^16.4.0",

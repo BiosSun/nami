@@ -13,6 +13,7 @@
             "@docs/datas/*": ["./docs/datas/*"],
             "@docs/demos/*": ["./docs/demos/*"]
         },
+        "typeRoots": ["./node_modules/@types", "./custom_typings"],
         "lib": ["dom", "es2015", "es2016"],
         "jsx": "preserve",
         "target": "esnext",

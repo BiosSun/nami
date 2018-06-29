@@ -178,7 +178,7 @@ export default class Document extends Component<DocumentProps> {
                 return `"` + type.value + `"`
 
             case 'union':
-                return type.types.map(this.getPropTypeStr).join(' | ')
+                return type.types.map(this.getPropTypeStr.bind(this)).join(' | ')
 
             case 'function':
                 const params = type.parameters.map(
