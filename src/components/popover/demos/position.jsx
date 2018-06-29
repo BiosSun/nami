@@ -1,4 +1,4 @@
-import { Popover, Grid, Button, Input } from 'nami'
+import { Popover, Grid, Button, TextBox } from 'nami'
 
 class Demo extends Component {
     state = {
@@ -54,7 +54,7 @@ class Demo extends Component {
                         </select>
                     </Grid.Col>
                     <Grid.Col span={4}>
-                        <Input
+                        <TextBox
                             value={this.state.offset.toString()}
                             onChange={e => this.setState({ offset: e.target.value })}
                             placeholder="offset"

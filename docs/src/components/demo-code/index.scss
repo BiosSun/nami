@@ -276,11 +276,11 @@ $app-demo-border-radius: 6px;
     border: 1px solid var(--line-color);
 }
 
-// input
+// textbox
 // -----------------------------------------------------------------------------
 
-.demo-input {
-    .input:not(:last-child) {
+.demo-textbox {
+    .textbox:not(:last-child) {
         margin-bottom: var(--distance-vertical);
     }
 }

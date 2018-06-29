@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 import './styles'
 
-interface BaseInputProps {
+interface BaseTextBoxProps {
     /**
      * 默认内容
      */
@@ -42,17 +42,17 @@ interface BaseInputProps {
     onChange?: (e: ChangeEvent<HTMLElement>) => void
 }
 
-export type InputProps = BaseInputProps & InputHTMLAttributes<HTMLInputElement>
+export type TextBoxProps = BaseTextBoxProps & InputHTMLAttributes<HTMLInputElement>
 
 /**
  * @component
  *
- * @displayname 输入框
+ * @displayname 文本框
  * @group form
  *
  * @description
  *
- *     用于输入内容；
+ *     用于输入一些简短的文本内容；
  *
  *     {@demo "./demos/default.jsx"}
  *
@@ -72,26 +72,26 @@ export type InputProps = BaseInputProps & InputHTMLAttributes<HTMLInputElement>
  *
  *     {@demo "./demos/disabled-has-state.jsx"}
  */
-export default class Input extends Component<InputProps> {
-    static defaultProps: InputProps = {
+export default class TextBox extends Component<TextBoxProps> {
+    static defaultProps: TextBoxProps = {
         type: 'text',
     }
 
     render() {
-        const { type, state, disabled, round, className, ...otherProps }: InputProps = this.props // NOTE: 这里通过指定 InputProps 类型以使 otherProps 变为可写的
+        const { type, state, disabled, round, className, ...otherProps }: TextBoxProps = this.props // NOTE: 这里通过指定 TextBoxProps 类型以使 otherProps 变为可写的
 
         const classes = {
             root: classnames(
-                'input',
+                'textbox',
                 {
-                    [`input--${state}`]: !!state,
-                    [`input--round`]: round,
-                    [`input--disabled`]: disabled,
+                    [`textbox--${state}`]: !!state,
+                    [`textbox--round`]: round,
+                    [`textbox--disabled`]: disabled,
                 },
                 className
             ),
 
-            editor: 'input__editor',
+            editor: 'textbox__editor',
         }
 
         if ('value' in otherProps) {

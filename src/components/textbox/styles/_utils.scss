@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-@mixin input-editor-outline($color, $focus-shadow) {
+@mixin textbox-editor-outline($color, $focus-shadow) {
     border-color: $color;
 
     &:focus {

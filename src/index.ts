@@ -30,5 +30,5 @@ export * from './components/grid'
 // form
 // -----------------------------------------------------------------------------
 
-export { default as Input } from './components/input'
-export * from './components/input'
+export { default as TextBox } from './components/textbox'
+export * from './components/textbox'
