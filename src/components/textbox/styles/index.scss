@@ -39,13 +39,21 @@
         outline: none;
     }
 
-    &:hover:read-write:not(:disabled),
-    &:focus:read-write:not(:disabled) {
+    &:hover,
+    &:focus {
         border-color: var(--primary-color);
     }
 
-    &:focus:read-write:not(:disabled) {
+    &:focus {
         box-shadow: 0 0 0 2px var(--primary-background-color);
+    }
+
+    &:read-only {
+        &:hover,
+        &:focus {
+            border-color: var(--line-color);
+            box-shadow: none;
+        }
     }
 
     &:disabled {
@@ -61,7 +69,7 @@
 
 @each $name in success, warning, danger {
     .nami-textbox--#{$name} {
-        > .nami-textbox__editor:read-write:not(:disabled) {
+        > .nami-textbox__editor {
             @include textbox-editor-outline(
                 var(--#{$name}-color),
                 0 0 0 2px var(--#{$name}-background-color)

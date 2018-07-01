@@ -6,4 +6,13 @@
     &:focus {
         box-shadow: $focus-shadow;
     }
+
+    &:read-only,
+    &:disabled {
+        border-color: var(--line-color);
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
 }
