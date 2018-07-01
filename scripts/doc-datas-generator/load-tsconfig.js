@@ -16,6 +16,9 @@ const IGNORED = [
     'sourceMap',
     'inlineSources',
     'removeComments',
+    'noImplicitAny',
+    'noUnusedLocals',
+    'noUnusedParameters',
 ]
 const caches = []
 

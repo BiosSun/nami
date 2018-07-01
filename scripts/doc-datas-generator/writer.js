@@ -11,7 +11,7 @@ const caches = {}
  * @param {string} output 数据写入目录路径（绝对路径）
  */
 module.exports = function writer(data, outputDir, codesOutputDir) {
-    originalWriter(data.original, outputDir) // TODO 不创建原始数据文件应该能提高执行效率，因为原始数据文件会很大
+    // originalWriter(data.original, outputDir)
     componentsWriter(data.components, outputDir)
     codesWriter(data.components, codesOutputDir)
     componentsIndexWriter(data.index, outputDir)

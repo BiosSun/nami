@@ -8,6 +8,18 @@ const appRoot = require('app-root-path')
 const outdent = require('outdent')
 const loadTSConfig = require('./load-tsconfig')
 
+const typedoc = require('typedoc')
+const typedocOptions = Object.assign({}, loadTSConfig(), {
+    module: 'file',
+    target: 'es6',
+    experimentalDecorators: true,
+    includeDeclarations: false,
+})
+
+const typedocApp = new typedoc.Application(typedocOptions)
+
+typedocApp.converter.removeComponent('git-hub')
+
 /**
  * 使用 typedoc 解析源代码并返回生成的文档数据
  *
@@ -21,7 +33,7 @@ const loadTSConfig = require('./load-tsconfig')
  *     - components {array<object>} 所有组件信息；
  *     - index {array<object>} 组件索引信息；
  */
-module.exports = function(entry) {
+module.exports = function parser(entry) {
     const result = {}
 
     const outputDir = path.join(appRoot.toString(), 'node_modules', '.tmp')
@@ -29,16 +41,6 @@ module.exports = function(entry) {
 
     fs.ensureDirSync(outputDir)
 
-    const typedoc = require('typedoc')
-
-    const typedocOptions = Object.assign({}, loadTSConfig(), {
-        module: 'commonjs',
-        target: 'es5',
-        exclude: '**/node_modules/**/*.*',
-        experimentalDecorators: true,
-    })
-
-    const typedocApp = new typedoc.Application(typedocOptions)
     const src = typedocApp.expandInputFiles([entry])
     const project = typedocApp.convert(src)
 
