@@ -3,7 +3,7 @@
 @import '@nami//styles/basis';
 @import './utils';
 
-.textbox {
+.nami-textbox {
     display: inline-flex;
     width: 100%;
 
@@ -12,8 +12,8 @@
     }
 }
 
-.textbox__editor {
-    $size: var(--textbox-size-base);
+.nami-textbox__editor {
+    $size: var(--nami-textbox-size-base);
     $pv: calc(var(--distance-vertical) * 0.25);
     $ph: calc(var(--distance-horizontal) * 0.75);
     $f: var(--font-size-base);
@@ -60,8 +60,8 @@
 }
 
 @each $name in success, warning, danger {
-    .textbox--#{$name} {
-        > .textbox__editor:read-write:not(:disabled) {
+    .nami-textbox--#{$name} {
+        > .nami-textbox__editor:read-write:not(:disabled) {
             @include textbox-editor-outline(
                 var(--#{$name}-color),
                 0 0 0 2px var(--#{$name}-background-color)

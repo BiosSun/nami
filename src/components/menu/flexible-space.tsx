@@ -16,7 +16,7 @@ export type FlexibleSpaceProps = HTMLAttributes<HTMLDivElement>
 export default class FlexibleSpace extends PureComponent<FlexibleSpaceProps> {
     render() {
         const { className, ...otherProps } = this.props
-        const classes = classnames('menu__flexible-space', className)
+        const classes = classnames('nami-menu__flexible-space', className)
         return <div {...otherProps} className={classes} />
     }
 }

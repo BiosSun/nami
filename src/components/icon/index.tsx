@@ -38,7 +38,7 @@ export type IconProps = BaseIconProps & SVGAttributes<SVGElement>
 export default class Icon extends PureComponent<IconProps> {
     render() {
         const { name, className, ...otherProps } = this.props
-        const classes = classnames('icon', className)
+        const classes = classnames('nami-icon', className)
 
         return (
             <svg {...otherProps} className={classes} width="16" height="16" viewBox="0 0 1024 1024">

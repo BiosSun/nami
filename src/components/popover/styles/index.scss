@@ -2,41 +2,41 @@
 
 @import '@nami//styles/basis';
 
-.popover-portal {
+.nami-popover-portal {
     width: 0;
     height: 0;
     margin: 0;
 }
 
-.popover {
-    @include position(absolute, null, var(--popover-z-index));
+.nami-popover {
+    @include position(absolute, null, var(--nami-popover-z-index));
     display: none;
 }
 
-.popover--open {
+.nami-popover--open {
     display: block;
 }
 
-.popover__inner {
+.nami-popover__inner {
     display: flex;
     flex-direction: column;
 
     background: var(--background-color);
-    border-radius: var(--popover-radius);
-    box-shadow: var(--popover-shadow);
+    border-radius: var(--nami-popover-radius);
+    box-shadow: var(--nami-popover-shadow);
     position: relative;
 }
 
-.popover__arrow {
-    $vertical-width: var(--popover-arrow-size);
-    $vertical-height: calc(var(--popover-arrow-size) * 0.5);
-    $vertical-margin: 0 var(--popover-arrow-margin);
+.nami-popover__arrow {
+    $vertical-width: var(--nami-popover-arrow-size);
+    $vertical-height: calc(var(--nami-popover-arrow-size) * 0.5);
+    $vertical-margin: 0 var(--nami-popover-arrow-margin);
 
     $horizontal-width: $vertical-height;
     $horizontal-height: $vertical-width;
-    $horizontal-margin: var(--popover-arrow-margin) 0;
+    $horizontal-margin: var(--nami-popover-arrow-margin) 0;
 
-    @include size(var(--popover-arrow-size));
+    @include size(var(--nami-popover-arrow-size));
     @include position(absolute, null);
 
     clip-path: inset(0);
@@ -44,9 +44,9 @@
     &:after {
         content: '';
         display: block;
-        @include size(var(--popover-arrow-size));
+        @include size(var(--nami-popover-arrow-size));
         background: var(--background-color);
-        border-radius: var(--popover-arrow-radius);
+        border-radius: var(--nami-popover-arrow-radius);
     }
 
     @at-root %vertical-arrow {
@@ -61,10 +61,10 @@
         margin: $horizontal-margin;
     }
 
-    @at-root .popover--has-arrow[x-at^='top'] {
+    @at-root .nami-popover--has-arrow[x-at^='top'] {
         padding-bottom: $vertical-height;
 
-        > .popover__arrow {
+        > .nami-popover__arrow {
             @extend %vertical-arrow;
             bottom: 0;
 
@@ -72,15 +72,15 @@
                 transform-origin: 100% 100%;
                 transform: translate(-50%, calc(-100% + #{$vertical-height})) rotate(45deg);
 
-                box-shadow: var(--popover-arrow-top-shadow);
+                box-shadow: var(--nami-popover-arrow-top-shadow);
             }
         }
     }
 
-    @at-root .popover--has-arrow[x-at^='right'] {
+    @at-root .nami-popover--has-arrow[x-at^='right'] {
         padding-left: $horizontal-width;
 
-        > .popover__arrow {
+        > .nami-popover__arrow {
             @extend %horizontal-arrow;
             left: 0;
 
@@ -88,15 +88,15 @@
                 transform-origin: 0 100%;
                 transform: translate(0, -50%) rotate(45deg);
 
-                box-shadow: var(--popover-arrow-right-shadow);
+                box-shadow: var(--nami-popover-arrow-right-shadow);
             }
         }
     }
 
-    @at-root .popover--has-arrow[x-at^='bottom'] {
+    @at-root .nami-popover--has-arrow[x-at^='bottom'] {
         padding-top: $vertical-height;
 
-        > .popover__arrow {
+        > .nami-popover__arrow {
             @extend %vertical-arrow;
             top: 0;
 
@@ -104,22 +104,22 @@
                 transform-origin: 0 0;
                 transform: translate(50%, 0) rotate(45deg);
 
-                box-shadow: var(--popover-arrow-bottom-shadow);
+                box-shadow: var(--nami-popover-arrow-bottom-shadow);
             }
         }
     }
 
-    @at-root .popover--has-arrow[x-at^='left'] {
+    @at-root .nami-popover--has-arrow[x-at^='left'] {
         padding-right: $horizontal-width;
 
-        > .popover__arrow {
+        > .nami-popover__arrow {
             @extend %horizontal-arrow;
             right: 0;
 
             &:after {
                 transform-origin: 100% 0;
                 transform: translate(calc(-100% + #{$horizontal-width}), 50%) rotate(45deg);
-                box-shadow: var(--popover-arrow-left-shadow);
+                box-shadow: var(--nami-popover-arrow-left-shadow);
             }
         }
     }

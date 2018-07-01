@@ -85,11 +85,11 @@ export default class Grid extends Component<GridProps> {
     render() {
         const { align, justify, children, className, gutter, ...otherProps } = this.props
         const classes = classnames(
-            'grid',
+            'nami-grid',
             {
-                [`grid--align-${align}`]: !!align,
-                [`grid--justify-${justify}`]: !!justify,
-                [`grid--gutter${typeof gutter === 'string' ? '-' + gutter : ''}`]: !!gutter,
+                [`nami-grid--align-${align}`]: !!align,
+                [`nami-grid--justify-${justify}`]: !!justify,
+                [`nami-grid--gutter${typeof gutter === 'string' ? '-' + gutter : ''}`]: !!gutter,
             },
             className
         )

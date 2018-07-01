@@ -18,8 +18,8 @@ export default class Divider extends PureComponent<DividerProps> {
         const { className, ...otherProps } = this.props
 
         const classes = {
-            root: classnames('menu__divider', className),
-            inner: classnames('menu__divider__inner'),
+            root: classnames('nami-menu__divider', className),
+            inner: classnames('nami-menu__divider__inner'),
         }
 
         return (

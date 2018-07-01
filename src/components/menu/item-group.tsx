@@ -51,8 +51,8 @@ export default class ItemGroup extends Component<ItemGroupProps, ItemGroupState>
         const { headerContent, items } = this.state
 
         const classes = {
-            root: classnames('menu__item-group', className),
-            header: 'menu__item-group__header',
+            root: classnames('nami-menu__item-group', className),
+            header: 'nami-menu__item-group__header',
         }
 
         return (

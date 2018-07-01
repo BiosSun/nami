@@ -94,19 +94,19 @@ export default class Button extends Component<ButtonProps> {
 
         const classes = {
             root: classnames(
-                'button',
+                'nami-button',
                 {
-                    [`button--${type}`]: !!type,
-                    [`button--outline`]: outline,
-                    [`button--flat`]: flat,
-                    [`button--round`]: round,
-                    [`button--circle`]: circle,
-                    [`button--disabled`]: disabled,
+                    [`nami-button--${type}`]: !!type,
+                    [`nami-button--outline`]: outline,
+                    [`nami-button--flat`]: flat,
+                    [`nami-button--round`]: round,
+                    [`nami-button--circle`]: circle,
+                    [`nami-button--disabled`]: disabled,
                 },
                 className
             ),
 
-            text: 'button__text',
+            text: 'nami-button__text',
         }
 
         return (

@@ -340,16 +340,16 @@ export default class Popover extends Component<PopoverProps, PopoverState> {
 
         const classes = {
             root: classnames(
-                'popover',
+                'nami-popover',
                 {
-                    [`popover--open`]: open,
-                    [`popover--has-arrow`]: arrow,
+                    [`nami-popover--open`]: open,
+                    [`nami-popover--has-arrow`]: arrow,
                 },
                 className
             ),
 
-            inner: classnames('popover__inner'),
-            arrow: classnames('popover__arrow'),
+            inner: classnames('nami-popover__inner'),
+            arrow: classnames('nami-popover__arrow'),
         }
 
         const otherProps = omit(this.props, Popover.propKeys)
@@ -530,7 +530,7 @@ export default class Popover extends Component<PopoverProps, PopoverState> {
 
     private createPortal(): HTMLDivElement {
         this.portal = document.createElement('div')
-        this.portal.classList.add('popover-portal')
+        this.portal.classList.add('nami-popover-portal')
 
         return this.portal
     }

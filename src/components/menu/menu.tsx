@@ -121,10 +121,10 @@ export default class Menu extends Component<MenuProps> {
         const { children, className, mode = 'horizontal', subMenu, ...otherProps } = this.props
 
         const classes = classnames(
-            `menu`,
+            `nami-menu`,
             {
-                [`menu--${mode}`]: !subMenu,
-                [`menu--submenu`]: subMenu,
+                [`nami-menu--${mode}`]: !subMenu,
+                [`nami-menu--submenu`]: subMenu,
             },
             className
         )

@@ -124,70 +124,70 @@
     /// ---------------------------
 
     /// 栅格列数
-    --grid-column-number: 24;
+    --nami-grid-column-number: 24;
 
     /// Menu
     /// ---------------------------
 
     /// 菜单项头部垂直内边距
-    --menu-item-header-padding-vertical: 8px;
+    --nami-menu-item-header-padding-vertical: 8px;
     /// 菜单项头部水平内边距
-    --menu-item-header-padding-horizontal: calc(var(--distance-horizontal) * 0.75);
+    --nami-menu-item-header-padding-horizontal: calc(var(--distance-horizontal) * 0.75);
     /// 菜单项头部文字大小
-    --menu-item-header-font-size: var(--font-size-base);
+    --nami-menu-item-header-font-size: var(--font-size-base);
     /// 菜单项头部文字行高
-    --menu-item-header-line-height: var(--line-height-base);
+    --nami-menu-item-header-line-height: var(--line-height-base);
     /// 菜单项头部文本颜色
-    --menu-item-header-color: var(--text-color-quiet);
+    --nami-menu-item-header-color: var(--text-color-quiet);
     /// 菜单项头部中的箭头图标的尺寸
-    --menu-item-header-arrows-size: var(--font-size-small);
+    --nami-menu-item-header-arrows-size: var(--font-size-small);
     /// 菜单项激活时的头部文本颜色
-    --menu-item-header-active-color: var(--text-color);
+    --nami-menu-item-header-active-color: var(--text-color);
 
     /// 菜单项头部垂直内边距
-    --menu-item-group-header-padding-vertical: 8px;
+    --nami-menu-item-group-header-padding-vertical: 8px;
     /// 菜单项头部水平内边距
-    --menu-item-group-header-padding-horizontal: calc(var(--distance-horizontal) * 0.75);
+    --nami-menu-item-group-header-padding-horizontal: calc(var(--distance-horizontal) * 0.75);
     /// 菜单分组头部文字大小
-    --menu-item-group-header-font-size: var(--font-size-small);
+    --nami-menu-item-group-header-font-size: var(--font-size-small);
     /// 菜单分组头部文字行高
-    --menu-item-group-header-line-height: var(--menu-item-header-line-height);
+    --nami-menu-item-group-header-line-height: var(--menu-item-header-line-height);
     /// 菜单分组头部文本颜色
-    --menu-item-group-header-color: var(--text-color-quiet);
+    --nami-menu-item-group-header-color: var(--text-color-quiet);
     /// 菜单分组中的菜单项的缩进量
-    --menu-item-group-indent: calc(var(--distance-horizontal) * 0.75);
+    --nami-menu-item-group-indent: calc(var(--distance-horizontal) * 0.75);
 
     /// 弹出式子菜单圆角
-    --menu-submenu-popup-border-radius: 6px;
+    --nami-menu-submenu-popup-border-radius: 6px;
 
     /// Button
     /// ---------------------------
 
-    --button-size-base: 38px;
+    --nami-button-size-base: 38px;
 
     /// TextBox
     /// ---------------------------
 
-    --textbox-size-base: 38px;
+    --nami-textbox-size-base: 38px;
 
     /// Popover
     /// ---------------------------
 
     /// 弹出层圆角
-    --popover-radius: 4px;
+    --nami-popover-radius: 4px;
     /// 弹出层阴影
-    --popover-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.35);
+    --nami-popover-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.35);
     /// 弹出层层级
-    --popover-z-index: 3;
+    --nami-popover-z-index: 3;
     /// 弹出层箭头尺寸
-    --popover-arrow-size: 14px;
+    --nami-popover-arrow-size: 14px;
     /// 弹出层箭头圆角
-    --popover-arrow-radius: 2px;
+    --nami-popover-arrow-radius: 2px;
     /// 弹出层箭头距离边角的最小距离
-    --popover-arrow-margin: calc(var(--popover-radius) + 10px);
+    --nami-popover-arrow-margin: calc(var(--popover-radius) + 10px);
     /// 弹出层箭头阴影
-    --popover-arrow-top-shadow: 1px 1px 1px -1px rgba(0, 0, 0, 0.84);
-    --popover-arrow-right-shadow: -1px 1px 1px -1px rgba(0, 0, 0, 0.74);
-    --popover-arrow-bottom-shadow: -1px -1px 1px -1px rgba(0, 0, 0, 0.54);
-    --popover-arrow-left-shadow: 1px -1px 1px -1px rgba(0, 0, 0, 0.74);
+    --nami-popover-arrow-top-shadow: 1px 1px 1px -1px rgba(0, 0, 0, 0.84);
+    --nami-popover-arrow-right-shadow: -1px 1px 1px -1px rgba(0, 0, 0, 0.74);
+    --nami-popover-arrow-bottom-shadow: -1px -1px 1px -1px rgba(0, 0, 0, 0.54);
+    --nami-popover-arrow-left-shadow: 1px -1px 1px -1px rgba(0, 0, 0, 0.74);
 }

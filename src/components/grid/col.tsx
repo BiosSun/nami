@@ -35,11 +35,11 @@ export default class Col extends Component<ColProps> {
     render() {
         const { span, offset, align, children, className, ...otherProps } = this.props
         const classes = classnames(
-            'grid__col',
+            'nami-grid__col',
             {
-                [`grid__col--${span}`]: !!span,
-                [`grid__col--offset-${offset}`]: !!offset,
-                [`grid__col--align-${align}`]: !!align,
+                [`nami-grid__col--${span}`]: !!span,
+                [`nami-grid__col--offset-${offset}`]: !!offset,
+                [`nami-grid__col--align-${align}`]: !!align,
             },
             className
         )

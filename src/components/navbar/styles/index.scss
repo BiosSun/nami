@@ -2,23 +2,23 @@
 
 @import '@nami//styles/basis';
 
-.navbar {
+.nami-navbar {
     display: flex;
     align-items: center;
 
     height: 100px;
     padding: 0 calc(var(--distance-horizontal) * 2.5);
 
-    > .navbar-brand {
+    > .nami-navbar-brand {
         margin-right: calc(var(--distance-horizontal) * 1.25);
     }
 
-    > .menu {
+    > .nami-menu {
         flex: 1 1 auto;
 
         &,
-        > .menu__item-group {
-            > .menu__item > .menu__item__header {
+        > .nami-menu__item-group {
+            > .nami-menu__item > .nami-menu__item__header {
                 font-size: var(--font-size-large);
                 line-height: var(--line-height-large);
             }
@@ -26,7 +26,7 @@
     }
 }
 
-.navbar-brand {
+.nami-navbar-brand {
     $height: 44px;
 
     height: $height;

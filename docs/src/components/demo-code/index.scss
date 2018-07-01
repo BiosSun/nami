@@ -99,18 +99,18 @@ $app-demo-border-radius: 6px;
 // -----------------------------------------------------------------------------
 
 .demo-menu {
-    > .menu--vertical {
+    > .nami-menu--vertical {
         width: 160px;
     }
 
-    .menu__space,
-    .menu__flexible-space {
+    .nami-menu__space,
+    .nami-menu__flexible-space {
         background: var(--background-color-loud);
     }
 }
 
 .demo-menu-flexible-space-vertical {
-    .menu--vertical {
+    .nami-menu--vertical {
         height: 200px;
     }
 }
@@ -119,7 +119,7 @@ $app-demo-border-radius: 6px;
 // -----------------------------------------------------------------------------
 
 .demo-grid {
-    .grid {
+    .nami-grid {
         text-align: center;
 
         &:not(:first-child) {
@@ -131,7 +131,7 @@ $app-demo-border-radius: 6px;
         }
     }
 
-    .grid__col {
+    .nami-grid__col {
         padding: 6px 0;
         background-color: var(--line-color);
         min-height: 38px;
@@ -146,7 +146,7 @@ $app-demo-border-radius: 6px;
 }
 
 .demo-grid-gutter {
-    .grid__col {
+    .nami-grid__col {
         border-right: none;
     }
 }
@@ -154,11 +154,11 @@ $app-demo-border-radius: 6px;
 .demo-grid-justify,
 .demo-grid-align,
 .demo-grid-col-align {
-    .grid {
+    .nami-grid {
         background: var(--background-color-quiet);
     }
 
-    .grid__col {
+    .nami-grid__col {
         border-right: none;
 
         &:not(:first-child) {
@@ -173,17 +173,17 @@ $app-demo-border-radius: 6px;
 
 .demo-grid-align,
 .demo-grid-col-align {
-    .grid {
+    .nami-grid {
         height: 120px;
     }
 }
 
 .demo-grid-col-align {
-    .grid__col--align-start,
-    .grid__col--align-end,
-    .grid__col--align-center,
-    .grid__col--align-baseline,
-    .grid__col--align-stretch {
+    .nami-grid__col--align-start,
+    .nami-grid__col--align-end,
+    .nami-grid__col--align-center,
+    .nami-grid__col--align-baseline,
+    .nami-grid__col--align-stretch {
         background: var(--primary-color);
     }
 }
@@ -218,7 +218,7 @@ $app-demo-border-radius: 6px;
         border: 1px solid transparent;
         border-radius: 5px;
 
-        > .icon {
+        > .nami-icon {
             width: 24px;
             height: 24px;
             margin-bottom: 18px;
@@ -238,7 +238,7 @@ $app-demo-border-radius: 6px;
 // -----------------------------------------------------------------------------
 
 .demo-button {
-    .button + .button {
+    .nami-button + .nami-button {
         margin-left: var(--distance-horizontal);
     }
 }
@@ -260,27 +260,18 @@ $app-demo-border-radius: 6px;
         border-radius: $app-demo-border-radius $app-demo-border-radius 0 0;
     }
 
-    > .button {
+    > .nami-button {
         display: block;
         width: 160px;
         margin: calc(var(--distance-vertical) * 3) auto;
     }
 }
 
-.demo-popover__console {
-    display: inline-block;
-    width: 400px;
-    padding: var(--distance-vertical) calc(var(--distance-horizontal) * 2);
-
-    background: var(--background-color);
-    border: 1px solid var(--line-color);
-}
-
 // textbox
 // -----------------------------------------------------------------------------
 
 .demo-textbox {
-    .textbox:not(:last-child) {
+    .nami-textbox:not(:last-child) {
         margin-bottom: var(--distance-vertical);
     }
 }

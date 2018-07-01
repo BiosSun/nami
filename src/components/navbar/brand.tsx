@@ -19,7 +19,7 @@ export type BrandProps = BaseBrandProps & HTMLAttributes<HTMLDivElement>
 export default class Brand extends Component<BrandProps> {
     render() {
         const { children, className, ...otherProps } = this.props
-        const classes = classnames('navbar-brand', className)
+        const classes = classnames('nami-navbar-brand', className)
 
         return (
             <div {...otherProps} className={classes}>

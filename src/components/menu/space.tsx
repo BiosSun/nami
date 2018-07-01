@@ -16,7 +16,7 @@ export type SpaceProps = HTMLAttributes<HTMLDivElement>
 export default class Space extends PureComponent<SpaceProps> {
     render() {
         const { className, ...otherProps } = this.props
-        const classes = classnames('menu__space', className)
+        const classes = classnames('nami-menu__space', className)
         return <div {...otherProps} className={classes} />
     }
 }

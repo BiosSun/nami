@@ -33,7 +33,7 @@ export default class Navbar extends Component<NavbarProps> {
     render() {
         const { children, className, ...otherProps } = this.props
 
-        const classes = classnames('navbar', className)
+        const classes = classnames('nami-navbar', className)
 
         return (
             <div {...otherProps} className={classes}>

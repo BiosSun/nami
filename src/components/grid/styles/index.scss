@@ -12,7 +12,7 @@ $-grid-gutter: (
     ('large', calc(var(--distance-horizontal)))
 );
 
-.grid {
+.nami-grid {
     display: flex;
 
     @each $name, $val in $-grid-justify {
@@ -34,7 +34,7 @@ $-grid-gutter: (
             margin-left: calc(#{$half-gutter-width} * -1);
             margin-right: calc(#{$half-gutter-width} * -1);
 
-            > .grid__col {
+            > .nami-grid__col {
                 margin-left: $half-gutter-width;
                 margin-right: $half-gutter-width;
             }
@@ -42,7 +42,7 @@ $-grid-gutter: (
     }
 }
 
-.grid__col {
+.nami-grid__col {
     flex: 1 1 0;
 
     @at-root %col-fixed-width {
@@ -53,11 +53,11 @@ $-grid-gutter: (
     @for $i from 1 through 24 {
         &--#{$i} {
             @extend %col-fixed-width;
-            width: calc(#{100% * $i} / var(--grid-column-number));
+            width: calc(#{100% * $i} / var(--nami-grid-column-number));
         }
 
         &--offset-#{$i} {
-            margin-left: calc(#{100% * $i} / var(--grid-column-number));
+            margin-left: calc(#{100% * $i} / var(--nami-grid-column-number));
         }
     }
 

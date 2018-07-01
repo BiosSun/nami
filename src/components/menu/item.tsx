@@ -105,15 +105,15 @@ export default class Item extends Component<ItemProps, ItemState> {
 
         const classes = {
             root: classnames(
-                'menu__item',
+                'nami-menu__item',
                 {
-                    'menu__item--active': active || hover || open,
-                    'menu__item--open': open,
+                    'nami-menu__item--active': active || hover || open,
+                    'nami-menu__item--open': open,
                 },
                 className
             ),
-            header: 'menu__item__header',
-            headerArrows: 'menu__item__header__arrows',
+            header: 'nami-menu__item__header',
+            headerArrows: 'nami-menu__item__header__arrows',
         }
 
         const header = (

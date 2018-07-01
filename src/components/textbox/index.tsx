@@ -82,16 +82,16 @@ export default class TextBox extends Component<TextBoxProps> {
 
         const classes = {
             root: classnames(
-                'textbox',
+                'nami-textbox',
                 {
-                    [`textbox--${state}`]: !!state,
-                    [`textbox--round`]: round,
-                    [`textbox--disabled`]: disabled,
+                    [`nami-textbox--${state}`]: !!state,
+                    [`nami-textbox--round`]: round,
+                    [`nami-textbox--disabled`]: disabled,
                 },
                 className
             ),
 
-            editor: 'textbox__editor',
+            editor: 'nami-textbox__editor',
         }
 
         if ('value' in otherProps) {
