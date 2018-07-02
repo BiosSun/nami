@@ -23,6 +23,11 @@ interface BaseCheckBoxProps {
     defaultChecked: boolean
 
     /**
+     * 表单值
+     */
+    value: string
+
+    /**
      * 状态
      */
     state: 'success' | 'warning' | 'danger'
@@ -107,7 +112,7 @@ export default class CheckBox extends PureComponent<CheckBoxProps, CheckBoxState
     }
 
     render() {
-        const { label, state, disabled, className } = this.props
+        const { label, value, state, disabled, className } = this.props
         const { checked } = this.state
 
         const classes = {
@@ -136,6 +141,7 @@ export default class CheckBox extends PureComponent<CheckBoxProps, CheckBoxState
                         type="checkbox"
                         disabled={disabled}
                         checked={checked}
+                        value={value}
                         onChange={this.handleChange}
                     />
                 </span>
