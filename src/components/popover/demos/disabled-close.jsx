@@ -1,4 +1,4 @@
-import { Popover, Button } from 'nami'
+import { Popover, Grid, CheckBox, Button } from 'nami'
 
 class Demo extends Component {
     state = {
@@ -44,32 +44,35 @@ class Demo extends Component {
 
         return (
             <div className="demo-popover__controller">
-                <label>
-                    <input
-                        type="checkbox"
-                        checked={disabledCloseOnOfClick}
-                        onChange={e => this.setState({ disabledCloseOnOfClick: e.target.checked })}
-                    />
-                    disabledCloseOnOfClick
-                </label>
-                <label>
-                    <input
-                        type="checkbox"
-                        checked={disabledCloseOnOtherClick}
-                        onChange={e =>
-                            this.setState({ disabledCloseOnOtherClick: e.target.checked })
-                        }
-                    />
-                    disabledCloseOnOtherClick
-                </label>
-                <label>
-                    <input
-                        type="checkbox"
-                        checked={disabledCloseOnEscape}
-                        onChange={e => this.setState({ disabledCloseOnEscape: e.target.checked })}
-                    />
-                    disabledCloseOnEscape
-                </label>
+                <Grid gutter>
+                    <Grid.Col>
+                        <CheckBox
+                            checked={disabledCloseOnOfClick}
+                            onChange={e =>
+                                this.setState({ disabledCloseOnOfClick: e.target.checked })
+                            }
+                            caption="disabledCloseOnOfClick"
+                        />
+                    </Grid.Col>
+                    <Grid.Col>
+                        <CheckBox
+                            checked={disabledCloseOnOtherClick}
+                            onChange={e =>
+                                this.setState({ disabledCloseOnOtherClick: e.target.checked })
+                            }
+                            caption="disabledCloseOnOtherClick"
+                        />
+                    </Grid.Col>
+                    <Grid.Col>
+                        <CheckBox
+                            checked={disabledCloseOnEscape}
+                            onChange={e =>
+                                this.setState({ disabledCloseOnEscape: e.target.checked })
+                            }
+                            caption="disabledCloseOnEscape"
+                        />
+                    </Grid.Col>
+                </Grid>
             </div>
         )
     }
