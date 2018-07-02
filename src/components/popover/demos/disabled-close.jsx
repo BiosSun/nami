@@ -47,29 +47,29 @@ class Demo extends Component {
                 <Grid gutter>
                     <Grid.Col>
                         <CheckBox
+                            label="disabledCloseOnOfClick"
                             checked={disabledCloseOnOfClick}
                             onChange={e =>
                                 this.setState({ disabledCloseOnOfClick: e.target.checked })
                             }
-                            caption="disabledCloseOnOfClick"
                         />
                     </Grid.Col>
                     <Grid.Col>
                         <CheckBox
+                            label="disabledCloseOnOtherClick"
                             checked={disabledCloseOnOtherClick}
                             onChange={e =>
                                 this.setState({ disabledCloseOnOtherClick: e.target.checked })
                             }
-                            caption="disabledCloseOnOtherClick"
                         />
                     </Grid.Col>
                     <Grid.Col>
                         <CheckBox
+                            label="disabledCloseOnEscape"
                             checked={disabledCloseOnEscape}
                             onChange={e =>
                                 this.setState({ disabledCloseOnEscape: e.target.checked })
                             }
-                            caption="disabledCloseOnEscape"
                         />
                     </Grid.Col>
                 </Grid>

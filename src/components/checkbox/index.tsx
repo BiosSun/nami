@@ -10,7 +10,7 @@ interface BaseCheckBoxProps {
     /**
      * 标题文本
      */
-    caption: string
+    label: string
 
     /**
      * 是否选中
@@ -82,7 +82,7 @@ interface CheckBoxState {
  */
 export default class CheckBox extends PureComponent<CheckBoxProps, CheckBoxState> {
     static propKeys: string[] = [
-        'caption',
+        'label',
         'checked',
         'defaultChecked',
         'state',
@@ -107,7 +107,7 @@ export default class CheckBox extends PureComponent<CheckBoxProps, CheckBoxState
     }
 
     render() {
-        const { caption, state, disabled, className } = this.props
+        const { label, state, disabled, className } = this.props
         const { checked } = this.state
 
         const classes = {
@@ -139,7 +139,7 @@ export default class CheckBox extends PureComponent<CheckBoxProps, CheckBoxState
                         onChange={this.handleChange}
                     />
                 </span>
-                {caption ? <span>{caption}</span> : null}
+                {label ? <span>{label}</span> : null}
             </label>
         )
     }

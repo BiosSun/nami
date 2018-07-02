@@ -2,8 +2,8 @@ import { CheckBox } from 'nami'
 
 render(
     <div>
-        <CheckBox state="success" caption="Success" />
-        <CheckBox state="warning" caption="Warning" />
-        <CheckBox state="danger" caption="Danger" />
+        <CheckBox label="Success" state="success" />
+        <CheckBox label="Warning" state="warning" />
+        <CheckBox label="Danger" state="danger" />
     </div>
 )
