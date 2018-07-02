@@ -275,3 +275,12 @@ $app-demo-border-radius: 6px;
         margin-bottom: var(--distance-vertical);
     }
 }
+
+// checkbox
+// -----------------------------------------------------------------------------
+
+.demo-checkbox {
+    .nami-checkbox:not(:last-child) {
+        margin-right: var(--distance-vertical);
+    }
+}

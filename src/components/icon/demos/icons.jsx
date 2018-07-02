@@ -19,6 +19,7 @@ render(
         <IconBox name="down" />
         <IconBox name="left" />
         <IconBox name="right" />
+        <IconBox name="check" />
         <IconBox name="github" />
     </IconBoxList>
 )

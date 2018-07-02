@@ -96,6 +96,11 @@ export type PopoverProps = BasePopoverProps & HTMLAttributes<HTMLDivElement>
 
 interface PopoverState {
     /**
+     * 是否为受控状态，this.controlled 属性的镜像，用于在 getDerivedStateFromProps 中访问
+     */
+    controlled: boolean
+
+    /**
      * 组件当前是否处于打开状态
      */
     open: boolean
@@ -231,6 +236,7 @@ export default class Popover extends Component<PopoverProps, PopoverState> {
 
     // 指定 state 默认值
     readonly state: PopoverState = {
+        controlled: this.controlled,
         open: !!(this.controlled ? this.props.open : this.props.defaultOpen),
         style: null,
         arrowStyle: null,
@@ -267,7 +273,7 @@ export default class Popover extends Component<PopoverProps, PopoverState> {
 
         return {
             ...state,
-            open: 'open' in props ? props.open : state.open,
+            open: state.controlled ? !!props.open : state.open,
         }
     }
 

@@ -95,6 +95,7 @@ export default class Demo extends Component<DemoProps, DemoState> {
                 <div className={classes.code}>
                     <button className={classes.codeHandleBar} onClick={this.onCodeHandleBarClick}>
                         <Icon name={expand ? 'up' : 'down'} />
+                        &nbsp;
                         {expand ? '隐藏' : '展开'}代码
                     </button>
                     {expand && this.renderCode(code)}

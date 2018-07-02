@@ -1,0 +1,117 @@
+@charset "utf-8";
+
+@import '@nami//styles/basis';
+@import './utils';
+
+.nami-checkbox {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+
+    @at-root .nami-checkbox__cell {
+        display: inline-block;
+        @include size(var(--nami-checkbox-size-base));
+        margin-right: calc(var(--distance-horizontal) * 0.4);
+
+        position: relative;
+    }
+
+    @at-root .nami-checkbox__cell__frame {
+        display: block;
+        @include size(100%);
+
+        border: 1px solid var(--line-color);
+        border-radius: 3px;
+        background-color: transparent;
+
+        transition: all 0.2s;
+    }
+
+    @at-root .nami-checkbox__cell__check {
+        @include position(absolute, 0, 1);
+        @include size(100%);
+        padding: 3px;
+
+        color: #fff;
+
+        opacity: 0;
+        transform: scale(0);
+
+        transition: all 0.2s;
+    }
+
+    @at-root .nami-checkbox__cell__input {
+        @include position(absolute, 0px, 2);
+        @include size(100%);
+        margin: 0;
+        padding: 0;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    // interaction
+    // ---------------------------
+
+    &:hover {
+        .nami-checkbox__cell__frame {
+            border-color: var(--primary-color);
+        }
+    }
+
+    &--checked {
+        .nami-checkbox__cell__frame {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+        }
+
+        .nami-checkbox__cell__check {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    // state
+    // ---------------------------
+
+    @each $name in success, warning, danger {
+        @at-root .nami-checkbox--#{$name} {
+            .nami-checkbox__cell__frame {
+                border-color: var(--#{$name}-color);
+            }
+
+            &:hover {
+                .nami-checkbox__cell__frame {
+                    border-color: var(--#{$name}-color);
+                }
+            }
+
+            &.nami-checkbox--checked {
+                .nami-checkbox__cell__frame {
+                    border-color: var(--#{$name}-color);
+                    background: var(--#{$name}-color);
+                }
+            }
+        }
+    }
+
+    // state
+    // ---------------------------
+
+    &--disabled {
+        color: var(--text-color-quiet);
+        pointer-events: none;
+        opacity: 0.5;
+
+        .nami-checkbox__cell__frame {
+            border-color: var(--line-color);
+            background: var(--background-color-loud);
+        }
+    }
+
+    &--disabled#{&}--checked {
+        .nami-checkbox__cell__frame {
+            border-color: var(--line-color);
+            background: var(--line-color);
+        }
+    }
+}
