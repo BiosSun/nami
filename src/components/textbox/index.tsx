@@ -31,7 +31,7 @@ interface BaseTextBoxProps {
     round?: boolean
 
     /**
-     * 是否已禁用
+     * 是否禁用
      * @default false
      */
     disabled?: boolean
@@ -58,13 +58,13 @@ export type TextBoxProps = BaseTextBoxProps & InputHTMLAttributes<HTMLInputEleme
  *
  * @example 状态
  *
- *     通过 `state` 参数定义按钮配状态：
+ *     通过 `state` 参数定义文本框状态：
  *
  *     {@demo "./demos/state.jsx"}
  *
  * @example 禁用、只读
  *
- *     通过 `disabled` 或 `readOnly` 参数，可以设置输入框为禁用或只读状态：
+ *     通过 `disabled` 或 `readOnly` 参数，可以设置文本框为禁用或只读状态：
  *
  *     {@demo "./demos/disabled.jsx"}
  *
