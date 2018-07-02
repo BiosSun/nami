@@ -32,3 +32,6 @@ export * from './components/grid'
 
 export { default as TextBox } from './components/textbox'
 export * from './components/textbox'
+
+export { default as CheckBox } from './components/checkbox'
+export * from './components/checkbox'
