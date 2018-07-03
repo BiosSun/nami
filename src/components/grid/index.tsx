@@ -2,7 +2,7 @@ import React, { Component, HTMLAttributes } from 'react'
 import classnames from 'classnames'
 
 import Col from './col'
-export { default as Col, ColProps } from './col'
+export { default as GridCol, ColProps as GridColProps } from './col'
 
 import './styles'
 
