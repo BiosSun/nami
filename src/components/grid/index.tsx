@@ -58,7 +58,7 @@ export type GridProps = BaseGridProps & HTMLAttributes<HTMLDivElement>
  *
  *     - `true` 普通槽宽，使用样式配置变量 `--distance-horizontal` 的宽度值；
  *     - `"large"` 较大槽宽，是普通槽宽的两倍；
- *     - `small` 较小槽宽，是普通槽宽的一半；
+ *     - `"small"` 较小槽宽，是普通槽宽的一半；
  *
  *     {@demo "./demos/gutter.jsx"}
  *
@@ -70,7 +70,7 @@ export type GridProps = BaseGridProps & HTMLAttributes<HTMLDivElement>
  *
  * @example - 对齐
  *
- *     在 `Grid` 上，我们可以控制该栅格内列的水平及垂直对齐方式。
+ *     在 `Grid` 上，我们可以控制该栅格内列的水平及垂直对齐方式：
  *
  *     {@demo "./demos/justify.jsx"}
  *     {@demo "./demos/align.jsx"}
