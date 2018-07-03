@@ -79,19 +79,29 @@ $app-demo-border-radius: 6px;
         text-shadow: none;
     }
 
+    .box {
+        min-height: 40px;
+        line-height: 40px;
+
+        background-color: var(--line-color);
+        text-align: center;
+    }
+
     .box-h-large {
-        padding-top: 0;
-        padding-bottom: 60px;
+        min-height: 100px;
+        padding: 50px 0 20px;
+        line-height: 30px;
     }
 
     .box-h-middle {
-        padding-top: 0;
-        padding-bottom: 40px;
+        min-height: 60px;
+        padding: 10px 0 20px;
+        line-height: 30px;
     }
 
     .box-h-small {
-        padding-top: 20px;
-        padding-bottom: 0;
+        min-height: 30px;
+        line-height: 30px;
     }
 }
 
@@ -120,8 +130,6 @@ $app-demo-border-radius: 6px;
 
 .demo-grid {
     .nami-grid {
-        text-align: center;
-
         &:not(:first-child) {
             margin-top: 10px;
         }
@@ -130,24 +138,21 @@ $app-demo-border-radius: 6px;
             margin-bottom: 10px;
         }
     }
-
-    .nami-grid__col {
-        padding: 6px 0;
-        background-color: var(--line-color);
-        min-height: 38px;
-        line-height: 26px;
-
-        border-right: 1px solid var(--background-color);
-
-        &:last-child {
-            border-right: none;
-        }
-    }
 }
 
-.demo-grid-gutter {
+.demo-grid-basic,
+.demo-grid-span,
+.demo-grid-offset {
     .nami-grid__col {
-        border-right: none;
+        > .box {
+            border-right: 1px solid var(--background-color);
+        }
+
+        &:last-child {
+            > .box {
+                border-right: none;
+            }
+        }
     }
 }
 
@@ -159,14 +164,15 @@ $app-demo-border-radius: 6px;
     }
 
     .nami-grid__col {
-        border-right: none;
+        padding-left: 3px;
+        padding-right: 3px;
 
-        &:not(:first-child) {
-            margin-left: 3px;
+        &:first-child {
+            padding-left: 0;
         }
 
-        &:not(:last-child) {
-            margin-right: 3px;
+        &:last-child {
+            padding-right: 0;
         }
     }
 }
@@ -184,7 +190,9 @@ $app-demo-border-radius: 6px;
     .nami-grid__col--align-center,
     .nami-grid__col--align-baseline,
     .nami-grid__col--align-stretch {
-        background: var(--primary-color);
+        > .box {
+            background: var(--primary-color);
+        }
     }
 }
 

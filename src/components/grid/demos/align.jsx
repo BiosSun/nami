@@ -6,13 +6,13 @@ render(
 
         <Grid align="start">
             <Grid.Col>
-                <div className="box-h-small">&nbsp;</div>
+                <div className="box box-h-small" />
             </Grid.Col>
             <Grid.Col>
-                <div className="box-h-large">&nbsp;</div>
+                <div className="box box-h-large" />
             </Grid.Col>
             <Grid.Col>
-                <div className="box-h-middle">&nbsp;</div>
+                <div className="box box-h-middle" />
             </Grid.Col>
         </Grid>
 
@@ -22,13 +22,13 @@ render(
 
         <Grid align="end">
             <Grid.Col>
-                <div className="box-h-small">&nbsp;</div>
+                <div className="box box-h-small" />
             </Grid.Col>
             <Grid.Col>
-                <div className="box-h-large">&nbsp;</div>
+                <div className="box box-h-large" />
             </Grid.Col>
             <Grid.Col>
-                <div className="box-h-middle">&nbsp;</div>
+                <div className="box box-h-middle" />
             </Grid.Col>
         </Grid>
 
@@ -38,13 +38,13 @@ render(
 
         <Grid align="center">
             <Grid.Col>
-                <div className="box-h-small">&nbsp;</div>
+                <div className="box box-h-small" />
             </Grid.Col>
             <Grid.Col>
-                <div className="box-h-large">&nbsp;</div>
+                <div className="box box-h-large" />
             </Grid.Col>
             <Grid.Col>
-                <div className="box-h-middle">&nbsp;</div>
+                <div className="box box-h-middle" />
             </Grid.Col>
         </Grid>
 
@@ -54,13 +54,13 @@ render(
 
         <Grid align="baseline">
             <Grid.Col>
-                <div className="box-h-small">text</div>
+                <div className="box box-h-small">text</div>
             </Grid.Col>
             <Grid.Col>
-                <div className="box-h-large">text</div>
+                <div className="box box-h-large">text</div>
             </Grid.Col>
             <Grid.Col>
-                <div className="box-h-middle">text</div>
+                <div className="box box-h-middle">text</div>
             </Grid.Col>
         </Grid>
 
@@ -70,13 +70,13 @@ render(
 
         <Grid align="stretch">
             <Grid.Col>
-                <div className="box-h-small">&nbsp;</div>
+                <div className="box box-h-small" />
             </Grid.Col>
             <Grid.Col>
-                <div className="box-h-large">&nbsp;</div>
+                <div className="box box-h-large" />
             </Grid.Col>
             <Grid.Col>
-                <div className="box-h-middle">&nbsp;</div>
+                <div className="box box-h-middle" />
             </Grid.Col>
         </Grid>
     </div>
