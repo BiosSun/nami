@@ -14,6 +14,7 @@ $-grid-gutter: (
 
 .nami-grid {
     display: flex;
+    flex-wrap: wrap;
 
     @each $name, $val in $-grid-justify {
         &--justify-#{$name} {
