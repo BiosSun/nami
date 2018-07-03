@@ -13,14 +13,14 @@ interface BaseColProps {
     offset?: number
 
     /**
-     * 列中的内容
-     */
-    children?: React.ReactNode
-
-    /**
      * 该列的垂直对齐方式
      */
     align?: 'start' | 'end' | 'center'
+
+    /**
+     * 列中的内容
+     */
+    children?: React.ReactNode
 }
 
 export type ColProps = BaseColProps & HTMLAttributes<HTMLDivElement>

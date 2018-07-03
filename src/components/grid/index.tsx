@@ -8,11 +8,6 @@ import './styles'
 
 interface BaseGridProps {
     /**
-     * 栅格中的列元素
-     */
-    children?: React.ReactNode
-
-    /**
      * 所有列的水平对齐方式
      */
     justify?: 'start' | 'end' | 'center' | 'between' | 'around'
@@ -26,6 +21,11 @@ interface BaseGridProps {
      * 是否在列之间加槽，及槽宽配置
      */
     gutter?: boolean | 'small' | 'large'
+
+    /**
+     * 栅格中的列元素
+     */
+    children?: React.ReactNode
 }
 
 export type GridProps = BaseGridProps & HTMLAttributes<HTMLDivElement>
