@@ -18,9 +18,9 @@ interface BaseGridProps {
     align?: 'start' | 'end' | 'center'
 
     /**
-     * 是否在列之间加槽，及槽宽配置
+     * 列之间是否有间距，及间距宽度配置
      */
-    gutter?: boolean | 'small' | 'large'
+    spacing?: boolean | 'small' | 'large'
 
     /**
      * 栅格中的列元素
@@ -52,15 +52,15 @@ export type GridProps = BaseGridProps & HTMLAttributes<HTMLDivElement>
  *
  *     {@demo "./demos/span.jsx"}
  *
- * @example - 槽宽
+ * @example - 列间距
  *
- *     栅格默认没有槽宽，可以通过参数 `gutter` 来设置，该参数提供了三个槽宽宽度：
+ *     栅格默认列之间没有间距，如果需要，可以通过参数 `spacing` 来设置，该参数提供了三个间距宽度：
  *
- *     - `true` 普通槽宽，使用样式配置变量 `--distance-horizontal` 的宽度值；
- *     - `"large"` 较大槽宽，是普通槽宽的两倍；
- *     - `"small"` 较小槽宽，是普通槽宽的一半；
+ *     - `true` 普通间距，使用样式配置变量 `--distance-horizontal` 的宽度值；
+ *     - `"large"` 较大间距，是普通间距的两倍；
+ *     - `"small"` 较小间距，是普通间距的一半；
  *
- *     {@demo "./demos/gutter.jsx"}
+ *     {@demo "./demos/spacing.jsx"}
  *
  * @example - 偏移
  *
@@ -83,13 +83,15 @@ export default class Grid extends Component<GridProps> {
     static Col = Col
 
     render() {
-        const { align, justify, children, className, gutter, ...otherProps } = this.props
+        const { align, justify, children, className, spacing, ...otherProps } = this.props
         const classes = classnames(
             'nami-grid',
             {
                 [`nami-grid--align-${align}`]: !!align,
                 [`nami-grid--justify-${justify}`]: !!justify,
-                [`nami-grid--gutter${typeof gutter === 'string' ? '-' + gutter : ''}`]: !!gutter,
+                [`nami-grid--spacing${
+                    typeof spacing === 'string' ? '-' + spacing : ''
+                }`]: !!spacing,
             },
             className
         )

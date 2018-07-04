@@ -2,7 +2,7 @@ import { Grid } from 'nami'
 
 render(
     <div>
-        <Grid gutter>
+        <Grid spacing>
             <Grid.Col>
                 <div className="box" />
             </Grid.Col>
@@ -19,7 +19,7 @@ render(
 
         <hr />
 
-        <Grid gutter="large">
+        <Grid spacing="large">
             <Grid.Col>
                 <div className="box" />
             </Grid.Col>
@@ -36,7 +36,7 @@ render(
 
         <hr />
 
-        <Grid gutter="small">
+        <Grid spacing="small">
             <Grid.Col>
                 <div className="box" />
             </Grid.Col>

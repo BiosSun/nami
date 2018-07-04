@@ -30,7 +30,7 @@ class Demo extends Component {
     renderController() {
         return (
             <div className="demo-popover__controller">
-                <Grid gutter>
+                <Grid spacing>
                     <Grid.Col span={4}>
                         <select
                             value={this.state.at}

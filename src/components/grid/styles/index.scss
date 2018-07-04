@@ -12,7 +12,7 @@ $-grid-justify: (
 
 $-grid-align: ((start, flex-start), (end, flex-end), (center));
 
-$-grid-gutter: (
+$-grid-spacing: (
     ('', calc(var(--distance-horizontal) / 2)),
     ('small', calc(var(--distance-horizontal) / 4)),
     ('large', calc(var(--distance-horizontal)))
@@ -34,16 +34,16 @@ $-grid-gutter: (
         }
     }
 
-    @each $name, $half-gutter-width in $-grid-gutter {
+    @each $name, $half-spacing-width in $-grid-spacing {
         $suffix: if(str-length($name) == 0, '', '-#{$name}');
 
-        &--gutter#{$suffix} {
-            margin-left: calc(#{$half-gutter-width} * -1);
-            margin-right: calc(#{$half-gutter-width} * -1);
+        &--spacing#{$suffix} {
+            margin-left: calc(#{$half-spacing-width} * -1);
+            margin-right: calc(#{$half-spacing-width} * -1);
 
             > .nami-grid__col {
-                padding-left: $half-gutter-width;
-                padding-right: $half-gutter-width;
+                padding-left: $half-spacing-width;
+                padding-right: $half-spacing-width;
             }
         }
     }

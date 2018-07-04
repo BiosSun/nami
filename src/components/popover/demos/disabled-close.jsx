@@ -44,7 +44,7 @@ class Demo extends Component {
 
         return (
             <div className="demo-popover__controller">
-                <Grid gutter>
+                <Grid spacing>
                     <Grid.Col>
                         <CheckBox
                             label="disabledCloseOnOfClick"
