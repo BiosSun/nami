@@ -47,3 +47,6 @@ export * from './components/textbox'
 
 export { default as CheckBox } from './components/checkbox'
 export * from './components/checkbox'
+
+export { default as Radio } from './components/radio'
+export * from './components/radio'
