@@ -20,7 +20,7 @@ interface BaseColProps {
     /**
      * 该列的垂直对齐方式
      */
-    align?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
+    align?: 'start' | 'end' | 'center'
 }
 
 export type ColProps = BaseColProps & HTMLAttributes<HTMLDivElement>

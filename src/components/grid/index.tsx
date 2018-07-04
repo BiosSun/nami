@@ -15,12 +15,12 @@ interface BaseGridProps {
     /**
      * 所有列的水平对齐方式
      */
-    justify?: 'start' | 'end' | 'center' | 'space-between' | 'space-around'
+    justify?: 'start' | 'end' | 'center' | 'between' | 'around'
 
     /**
      * 所有列的垂直对齐方式
      */
-    align?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
+    align?: 'start' | 'end' | 'center'
 
     /**
      * 是否在列之间加槽，及槽宽配置

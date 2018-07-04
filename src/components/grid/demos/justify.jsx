@@ -50,9 +50,9 @@ render(
 
         <hr />
 
-        <strong>space-between - 两端对齐</strong>
+        <strong>between - 两端对齐</strong>
 
-        <Grid justify="space-between">
+        <Grid justify="between">
             <Grid.Col span={4}>
                 <div className="box" />
             </Grid.Col>
@@ -66,9 +66,9 @@ render(
 
         <hr />
 
-        <strong>space-around - 分散对齐</strong>
+        <strong>around - 分散对齐</strong>
 
-        <Grid justify="space-around">
+        <Grid justify="around">
             <Grid.Col span={4}>
                 <div className="box" />
             </Grid.Col>

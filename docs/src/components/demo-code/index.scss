@@ -130,70 +130,67 @@ $app-demo-border-radius: 6px;
 
 .demo-grid {
     .nami-grid {
-        &:not(:first-child) {
-            margin-top: 10px;
-        }
+        margin-top: calc(var(--distance-vertical) / 2);
 
-        &:not(:last-child) {
-            margin-bottom: 10px;
+        &:first-child {
+            margin-top: 0;
         }
     }
-}
 
-.demo-grid-basic,
-.demo-grid-span,
-.demo-grid-offset {
     .nami-grid__col {
         > .box {
-            border-right: 1px solid var(--background-color);
+            margin-left: 1px;
         }
 
-        &:last-child {
+        &:first-child {
             > .box {
-                border-right: none;
+                margin-left: 0;
             }
         }
     }
 }
 
-.demo-grid-justify,
-.demo-grid-align,
-.demo-grid-col-align {
-    .nami-grid {
-        background: var(--background-color-quiet);
-    }
-
+.demo-grid-gutter {
     .nami-grid__col {
-        padding-left: 3px;
-        padding-right: 3px;
-
-        &:first-child {
-            padding-left: 0;
-        }
-
-        &:last-child {
-            padding-right: 0;
+        > .box {
+            margin-left: 0;
         }
     }
 }
 
-.demo-grid-align,
-.demo-grid-col-align {
+%demo-grid-bg {
+    .nami-grid {
+        background: var(--background-color-quiet);
+    }
+}
+
+%demo-grid-height {
     .nami-grid {
         height: 120px;
     }
 }
 
-.demo-grid-col-align {
-    .nami-grid__col--align-start,
-    .nami-grid__col--align-end,
-    .nami-grid__col--align-center,
-    .nami-grid__col--align-baseline,
-    .nami-grid__col--align-stretch {
+%demo-grid-col-primary {
+    .nami-grid__col {
         > .box {
             background: var(--primary-color);
         }
     }
+}
+
+.demo-grid-justify {
+    @extend %demo-grid-bg;
+}
+
+.demo-grid-align {
+    @extend %demo-grid-bg;
+    @extend %demo-grid-height;
+}
+
+.demo-grid-col-align {
+    @extend %demo-grid-bg;
+    @extend %demo-grid-height;
+    @extend %demo-grid-col-primary;
 }
 
 // icons
