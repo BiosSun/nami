@@ -7,6 +7,11 @@ import './styles'
 
 interface BaseCheckBoxProps {
     /**
+     * 该复选框所属分组的名字
+     */
+    name?: string
+
+    /**
      * 标题文本
      */
     label?: string
