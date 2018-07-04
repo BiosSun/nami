@@ -279,6 +279,28 @@ $app-demo-border-radius: 6px;
     @extend %demo-grid-col-primary;
 }
 
+// divider, space, flexible-space
+// -----------------------------------------------------------------------------
+
+.demo-divider,
+.demo-space,
+.demo-flexiblespace {
+    .nami-linear__item {
+        padding: calc(var(--distance-vertical) / 2) var(--distance-horizontal);
+    }
+
+    .nami-space,
+    .nami-flexible-space {
+        background: var(--background-color-loud);
+    }
+}
+
+.demo-flexiblespace {
+    .nami-linear--vertical {
+        height: 270px;
+    }
+}
+
 // icons
 // -----------------------------------------------------------------------------
 

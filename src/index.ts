@@ -30,6 +30,15 @@ export * from './components/linear'
 export { default as Grid } from './components/grid'
 export * from './components/grid'
 
+export { default as Divider } from './components/divider'
+export * from './components/divider'
+
+export { default as Space } from './components/space'
+export * from './components/space'
+
+export { default as FlexibleSpace } from './components/flexible-space'
+export * from './components/flexible-space'
+
 // form
 // -----------------------------------------------------------------------------
 
