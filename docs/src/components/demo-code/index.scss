@@ -397,3 +397,12 @@ $app-demo-border-radius: 6px;
         margin-right: var(--distance-vertical);
     }
 }
+
+// radio
+// -----------------------------------------------------------------------------
+
+.demo-radio {
+    .nami-radio:not(:last-child) {
+        margin-right: var(--distance-vertical);
+    }
+}
