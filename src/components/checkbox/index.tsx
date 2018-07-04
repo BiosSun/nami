@@ -1,6 +1,5 @@
-import React, { PureComponent, InputHTMLAttributes, ChangeEvent } from 'react'
+import React, { PureComponent, InputHTMLAttributes, ChangeEvent, LabelHTMLAttributes } from 'react'
 import classnames from 'classnames'
-import omit from 'object.omit'
 
 import Icon from '@components/icon'
 
@@ -10,27 +9,27 @@ interface BaseCheckBoxProps {
     /**
      * 标题文本
      */
-    label: string
+    label?: string
 
     /**
      * 是否选中
      */
-    checked: boolean
+    checked?: boolean
 
     /**
      * 默认是否选中
      */
-    defaultChecked: boolean
+    defaultChecked?: boolean
 
     /**
      * 表单值
      */
-    value: string
+    value?: string
 
     /**
      * 状态
      */
-    state: 'success' | 'warning' | 'danger'
+    state?: 'success' | 'warning' | 'danger'
 
     /**
      * 是否禁用
@@ -43,7 +42,8 @@ interface BaseCheckBoxProps {
     onChange?: (e: ChangeEvent<HTMLElement>) => void
 }
 
-export type CheckBoxProps = BaseCheckBoxProps & InputHTMLAttributes<HTMLInputElement>
+export type InputCheckBoxProps = BaseCheckBoxProps & InputHTMLAttributes<HTMLInputElement>
+export type CheckBoxProps = InputCheckBoxProps & LabelHTMLAttributes<HTMLLabelElement>
 
 interface CheckBoxState {
     /**
@@ -86,15 +86,6 @@ interface CheckBoxState {
  *     {@demo "./demos/disabled-has-state.jsx"}
  */
 export default class CheckBox extends PureComponent<CheckBoxProps, CheckBoxState> {
-    static propKeys: string[] = [
-        'label',
-        'checked',
-        'defaultChecked',
-        'state',
-        'disabled',
-        'onChange',
-    ]
-
     // 该组件实例是否处于受控状态
     controlled: boolean = 'checked' in this.props
 
@@ -112,7 +103,23 @@ export default class CheckBox extends PureComponent<CheckBoxProps, CheckBoxState
     }
 
     render() {
-        const { label, value, state, disabled, className } = this.props
+        const {
+            label,
+            state,
+            className,
+
+            name,
+            checked: _c,
+            defaultChecked,
+            value,
+            disabled,
+            onChange,
+            onFocus,
+            onBlur,
+
+            ...otherProps
+        } = this.props
+
         const { checked } = this.state
 
         const classes = {
@@ -131,19 +138,22 @@ export default class CheckBox extends PureComponent<CheckBoxProps, CheckBoxState
             cellInput: `nami-checkbox__cell__input`,
         }
 
+        const inputProps: InputCheckBoxProps = {
+            name,
+            checked,
+            value,
+            disabled,
+            onChange: this.handleChange,
+            onFocus,
+            onBlur,
+        }
+
         return (
-            <label {...omit(this.props, CheckBox.propKeys)} className={classes.root}>
+            <label {...otherProps} className={classes.root}>
                 <span className={classes.cell}>
+                    <input className={classes.cellInput} type="checkbox" {...inputProps} />
                     <span className={classes.cellFrame} />
                     <Icon className={classes.cellCheck} name="check" />
-                    <input
-                        className={classes.cellInput}
-                        type="checkbox"
-                        disabled={disabled}
-                        checked={checked}
-                        value={value}
-                        onChange={this.handleChange}
-                    />
                 </span>
                 {label ? <span>{label}</span> : null}
             </label>
