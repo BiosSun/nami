@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+@import '@nami//styles/basis';
+
+.nami-flexible-space {
+    align-self: stretch;
+}
+
+.nami-flexible-space--horizontal {
+    flex: 1 0 var(--distance-horizontal);
+}
+
+.nami-flexible-space--vertical {
+    flex: 1 0 var(--distance-vertical);
+}

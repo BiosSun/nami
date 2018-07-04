@@ -125,6 +125,92 @@ $app-demo-border-radius: 6px;
     }
 }
 
+// linear
+// -----------------------------------------------------------------------------
+
+.demo-linear {
+    .box {
+        min-width: 100px;
+    }
+
+    .nami-linear {
+        margin-top: calc(var(--distance-vertical) / 2);
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    .nami-linear--horizontal {
+        > .nami-linear__item {
+            > .box {
+                margin-left: 1px;
+            }
+
+            &:first-child {
+                > .box {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+
+    .nami-linear--vertical {
+        > .nami-linear__item {
+            > .box {
+                margin-top: 1px;
+            }
+
+            &:first-child {
+                > .box {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}
+
+.demo-linear-spacing-horizontal,
+.demo-linear-spacing-vertical {
+    .nami-linear {
+        > .nami-linear__item {
+            > .box {
+                margin: 0;
+            }
+        }
+    }
+}
+
+.demo-linear-spacing-vertical {
+    > div {
+        display: flex;
+    }
+
+    .nami-linear {
+        flex: 1 1 auto;
+
+        margin-top: 0;
+        margin-left: var(--distance-vertical);
+
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+}
+
+.demo-linear-justify,
+.demo-linear-align {
+    .nami-linear {
+        background: var(--background-color-quiet);
+    }
+}
+
+.demo-linear-align {
+    .nami-linear {
+        height: 120px;
+    }
+}
+
 // grid
 // -----------------------------------------------------------------------------
 
@@ -191,6 +277,28 @@ $app-demo-border-radius: 6px;
     @extend %demo-grid-bg;
     @extend %demo-grid-height;
     @extend %demo-grid-col-primary;
+}
+
+// divider, space, flexible-space
+// -----------------------------------------------------------------------------
+
+.demo-divider,
+.demo-space,
+.demo-flexiblespace {
+    .nami-linear__item {
+        padding: calc(var(--distance-vertical) / 2) var(--distance-horizontal);
+    }
+
+    .nami-space,
+    .nami-flexible-space {
+        background: var(--background-color-loud);
+    }
+}
+
+.demo-flexiblespace {
+    .nami-linear--vertical {
+        height: 270px;
+    }
 }
 
 // icons
