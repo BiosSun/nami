@@ -24,6 +24,9 @@ export * from './components/menu'
 // layout
 // -----------------------------------------------------------------------------
 
+export { default as Linear } from './components/linear'
+export * from './components/linear'
+
 export { default as Grid } from './components/grid'
 export * from './components/grid'
 

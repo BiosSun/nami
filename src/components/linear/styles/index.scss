@@ -1,0 +1,81 @@
+@charset "utf-8";
+
+@import '@nami//styles/basis';
+
+$-linear-justify: (
+    (start, flex-start),
+    (end, flex-end),
+    (center),
+    (between, space-between),
+    (around, space-around)
+);
+
+$-linear-align: ((start, flex-start), (end, flex-end), (center));
+
+$-linear-spacing: (
+    ('', calc(var(--distance-horizontal) / 2)),
+    ('small', calc(var(--distance-horizontal) / 4)),
+    ('large', calc(var(--distance-horizontal)))
+);
+
+.nami-linear {
+    display: flex;
+
+    &--horizontal {
+        flex-direction: row;
+    }
+
+    &--vertical {
+        flex-direction: column;
+    }
+
+    @each $name, $val in $-linear-justify {
+        &--justify-#{$name} {
+            justify-content: $val or $name;
+        }
+    }
+
+    @each $name, $val in $-linear-align {
+        &--align-#{$name} {
+            align-items: $val or $name;
+        }
+    }
+
+    @each $name, $half-spacing-width in $-linear-spacing {
+        $suffix: if(str-length($name) == 0, '', '-#{$name}');
+
+        &--spacing#{$suffix}#{&}--horizontal {
+            > .nami-linear__item {
+                padding-left: $half-spacing-width;
+                padding-right: $half-spacing-width;
+
+                &:first-child {
+                    padding-left: 0;
+                }
+
+                &:last-child {
+                    padding-right: 0;
+                }
+            }
+        }
+
+        &--spacing#{$suffix}#{&}--vertical {
+            > .nami-linear__item {
+                padding-top: $half-spacing-width;
+                padding-bottom: $half-spacing-width;
+
+                &:first-child {
+                    padding-top: 0;
+                }
+
+                &:last-child {
+                    padding-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+.nami-linear__item--fill {
+    flex-grow: 1;
+}
