@@ -26,11 +26,6 @@ interface BaseTextBoxProps {
     state?: 'success' | 'warning' | 'danger'
 
     /**
-     * 圆角框
-     */
-    round?: boolean
-
-    /**
      * 是否禁用
      * @default false
      */
@@ -78,14 +73,13 @@ export default class TextBox extends Component<TextBoxProps> {
     }
 
     render() {
-        const { type, state, disabled, round, className, ...otherProps }: TextBoxProps = this.props // NOTE: 这里通过指定 TextBoxProps 类型以使 otherProps 变为可写的
+        const { type, state, disabled, className, ...otherProps }: TextBoxProps = this.props // NOTE: 这里通过指定 TextBoxProps 类型以使 otherProps 变为可写的
 
         const classes = {
             root: classnames(
                 'nami-textbox',
                 {
                     [`nami-textbox--${state}`]: !!state,
-                    [`nami-textbox--round`]: round,
                     [`nami-textbox--disabled`]: disabled,
                 },
                 className
