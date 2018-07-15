@@ -1,4 +1,4 @@
-import { Popover, Button } from 'nami'
+import { Popover, Linear, Button } from 'nami'
 
 class Demo extends Component {
     state = {
@@ -36,12 +36,14 @@ class Demo extends Component {
         const { open } = this.state
 
         return (
-            <div className="demo-popover__controller">
-                <Button type="primary" onClick={() => this.setState({ open: true })}>
-                    Open Popover
-                </Button>
-                {open ? ' opened' : ' closed'}
-            </div>
+            <Linear className="demo-popover__controller" spacing align="center">
+                <Linear.Item>
+                    <Button type="primary" onClick={() => this.setState({ open: true })}>
+                        Open Popover
+                    </Button>
+                </Linear.Item>
+                <Linear.Item>{open ? ' opened' : ' closed'}</Linear.Item>
+            </Linear>
         )
     }
 }

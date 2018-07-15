@@ -1,4 +1,4 @@
-import { Popover, Grid, CheckBox, Button } from 'nami'
+import { Popover, Linear, CheckBox, Button } from 'nami'
 
 class Demo extends Component {
     state = {
@@ -43,37 +43,31 @@ class Demo extends Component {
         } = this.state
 
         return (
-            <div className="demo-popover__controller">
-                <Grid spacing>
-                    <Grid.Col>
-                        <CheckBox
-                            label="disabledCloseOnOfClick"
-                            checked={disabledCloseOnOfClick}
-                            onChange={e =>
-                                this.setState({ disabledCloseOnOfClick: e.target.checked })
-                            }
-                        />
-                    </Grid.Col>
-                    <Grid.Col>
-                        <CheckBox
-                            label="disabledCloseOnOtherClick"
-                            checked={disabledCloseOnOtherClick}
-                            onChange={e =>
-                                this.setState({ disabledCloseOnOtherClick: e.target.checked })
-                            }
-                        />
-                    </Grid.Col>
-                    <Grid.Col>
-                        <CheckBox
-                            label="disabledCloseOnEscape"
-                            checked={disabledCloseOnEscape}
-                            onChange={e =>
-                                this.setState({ disabledCloseOnEscape: e.target.checked })
-                            }
-                        />
-                    </Grid.Col>
-                </Grid>
-            </div>
+            <Linear className="demo-popover__controller" spacing>
+                <Linear.Item>
+                    <CheckBox
+                        label="disabledCloseOnOfClick"
+                        checked={disabledCloseOnOfClick}
+                        onChange={e => this.setState({ disabledCloseOnOfClick: e.target.checked })}
+                    />
+                </Linear.Item>
+                <Linear.Item>
+                    <CheckBox
+                        label="disabledCloseOnOtherClick"
+                        checked={disabledCloseOnOtherClick}
+                        onChange={e =>
+                            this.setState({ disabledCloseOnOtherClick: e.target.checked })
+                        }
+                    />
+                </Linear.Item>
+                <Linear.Item>
+                    <CheckBox
+                        label="disabledCloseOnEscape"
+                        checked={disabledCloseOnEscape}
+                        onChange={e => this.setState({ disabledCloseOnEscape: e.target.checked })}
+                    />
+                </Linear.Item>
+            </Linear>
         )
     }
 }
