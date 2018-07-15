@@ -45,6 +45,9 @@ export * from './components/flexible-space'
 export { default as TextBox } from './components/textbox'
 export * from './components/textbox'
 
+export { default as Select } from './components/select'
+export * from './components/select'
+
 export { default as CheckBox } from './components/checkbox'
 export * from './components/checkbox'
 

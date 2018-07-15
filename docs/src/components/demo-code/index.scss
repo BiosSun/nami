@@ -389,6 +389,15 @@ $app-demo-border-radius: 6px;
     }
 }
 
+// select
+// -----------------------------------------------------------------------------
+
+.demo-select {
+    .nami-select:not(:last-child) {
+        margin-bottom: var(--distance-vertical);
+    }
+}
+
 // checkbox
 // -----------------------------------------------------------------------------
 
