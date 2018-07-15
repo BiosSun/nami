@@ -101,7 +101,6 @@ export default class Button extends Component<ButtonProps> {
                     [`nami-button--flat`]: flat,
                     [`nami-button--round`]: round,
                     [`nami-button--circle`]: circle,
-                    [`nami-button--disabled`]: disabled,
                 },
                 className
             ),
