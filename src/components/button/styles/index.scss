@@ -1,7 +1,25 @@
 @charset "utf-8";
 
 @import '@nami//styles/basis';
-@import './utils';
+
+.nami-button {
+    --button-background: var(--background-color);
+    --button-border-color: var(--line-color);
+    --button-color: var(--text-color);
+
+    --button-hover-background: var(--primary-color-quiet);
+    --button-hover-border-color: var(--primary-color-quiet);
+    --button-hover-color: var(--background-color);
+    --button-focus-shadow-color: var(--primary-shadow-color);
+
+    --button-active-background: var(--primary-color-loud);
+    --button-active-border-color: var(--primary-color-loud);
+    --button-active-color: var(--background-color);
+
+    --button-disabled-background: var(--background-color-loud);
+    --button-disabled-border-color: var(--background-color-loud);
+    --button-disabled-color: var(--text-color);
+}
 
 .nami-button,
 .nami-button__text {
@@ -11,98 +29,125 @@
 }
 
 .nami-button {
-    $size: var(--nami-button-size-base);
-    $pv: calc(var(--distance-vertical) * 0.25);
-    $ph: calc(var(--distance-horizontal) * 1.25);
-    $f: var(--font-size-base);
-    $b: 1px;
-    $br: 4px;
+    @include nami-box-size(
+        $size: 'base',
+        $is-single: true,
+        $is-limit-min-width: true,
+        $padding-horizontal: calc(var(--distance-horizontal) * 1.25)
+    );
 
-    height: $size;
-    min-width: $size;
-    padding: $pv $ph;
-
-    font-size: $f;
-    line-height: calc(#{$size} - #{$pv} * 2 - #{$b} * 2);
     text-align: center;
 
-    border-radius: 4px;
-
-    background-color: var(--background-color);
-    border: $b solid var(--line-color);
-    color: inherit;
+    background: var(--button-background);
+    border-color: var(--button-border-color);
+    color: var(--button-color);
 
     cursor: pointer;
 
-    &:focus {
-        outline: none;
-    }
+    transition-property: color, background-color, border-color, box-shadow;
+    transition-duration: 0.2s, 0.2s, 0.2s, 0.4s;
 
     &:hover,
     &:focus {
-        border-color: var(--primary-color-quiet);
-        background-color: var(--primary-color-quiet);
-        color: var(--background-color);
+        background: var(--button-hover-background);
+        border-color: var(--button-hover-border-color);
+        color: var(--button-hover-color);
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px var(--button-focus-shadow-color);
     }
 
     &:active {
-        border-color: var(--primary-color-loud);
-        background-color: var(--primary-color-loud);
-        color: var(--background-color);
+        background: var(--button-active-background);
+        border-color: var(--button-active-border-color);
+        color: var(--button-active-color);
     }
 
     &:disabled {
         opacity: 0.5;
-        pointer-events: none;
+        cursor: not-allowed;
+
+        background: var(--button-disabled-background);
+        border-color: var(--button-disabled-border-color);
+        color: var(--button-disabled-color);
     }
 }
 
 @each $name in primary, info, success, warning, danger {
     .nami-button--#{$name} {
-        @include button-solid(
-            var(--#{$name}-color),
-            var(--#{$name}-color-quiet),
-            var(--#{$name}-color-loud)
-        );
+        --button-background: var(--#{$name}-color);
+        --button-hover-background: var(--#{$name}-color-quiet);
+        --button-active-background: var(--#{$name}-color-loud);
+
+        --button-border-color: transparent;
+        --button-hover-border-color: transparent;
+        --button-active-border-color: transparent;
+
+        --button-focus-shadow-color: var(--#{$name}-shadow-color);
+
+        --button-color: #fff;
+        --button-hover-color: #fff;
+        --button-active-color: #fff;
     }
 }
 
 .nami-button--outline {
-    background-color: transparent;
+    --button-color: var(--text-color);
+    --button-background: transparent;
+    --button-border-color: var(--line-color);
 
-    @include button-outline(var(--text-color), var(--text-color), var(--text-color-loud));
+    --button-hover-color: var(--primary-color);
+    --button-hover-background: transparent;
+    --button-hover-border-color: var(--primary-color);
+
+    --button-active-color: var(--primary-color-loud);
+    --button-active-background: var(--primary-background-color);
+    --button-active-border-color: var(--primary-color-loud);
+
+    --button-focus-shadow-color: var(--primary-shadow-color);
 
     @each $name in primary, info, success, warning, danger {
         &.nami-button--#{$name} {
-            @include button-outline(
-                var(--#{$name}-color),
-                var(--#{$name}-color-quiet),
-                var(--#{$name}-color-loud)
-            );
+            --button-color: var(--#{$name}-color);
+            --button-hover-color: var(--#{$name}-color);
+            --button-active-color: var(--#{$name}-color-loud);
+
+            --button-border-color: currentColor;
+            --button-hover-border-color: currentColor;
+            --button-active-border-color: currentColor;
+
+            --button-active-background: var(--#{$name}-background-color);
+
+            --button-focus-shadow-color: var(--#{$name}-shadow-color);
         }
     }
 }
 
 .nami-button--flat {
-    background-color: transparent;
-    border-color: transparent;
+    --button-background: transparent;
+    --button-hover-background: transparent;
+    --button-active-background: var(--background-color-loud);
 
-    &:hover,
-    &:focus {
-        color: inherit;
-        border-color: transparent;
-        background-color: var(--background-color-quiet);
-    }
+    --button-border-color: transparent;
+    --button-hover-border-color: transparent;
+    --button-active-border-color: transparent;
 
-    &:active {
-        color: inherit;
-        border-color: transparent;
-        background-color: var(--background-color-loud);
-    }
+    --button-disabled-background: transparent;
+    --button-disabled-border-color: transparent;
+
+    --button-color: var(--text-color);
+    --button-hover-color: var(--text-color);
+    --button-active-color: var(--text-color-loud);
+
+    --button-focus-shadow-color: transparent;
 
     @each $name in primary, info, success, warning, danger {
         &.nami-button--#{$name} {
-            @include button-flat(var(--#{$name}-color));
+            --button-color: var(--#{$name}-color);
+            --button-hover-color: var(--#{$name}-color);
+            --button-active-color: var(--#{$name}-color-loud);
         }
     }
 }

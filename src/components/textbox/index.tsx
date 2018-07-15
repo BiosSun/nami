@@ -63,7 +63,7 @@ export type TextBoxProps = BaseTextBoxProps & InputHTMLAttributes<HTMLInputEleme
  *
  *     {@demo "./demos/disabled.jsx"}
  *
- *     **注意：**禁用或只读输入框没有状态样式：
+ *     **注意：**禁用输入框没有状态样式：
  *
  *     {@demo "./demos/disabled-has-state.jsx"}
  */

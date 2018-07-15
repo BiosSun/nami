@@ -1,7 +1,21 @@
 @charset "utf-8";
 
 @import '@nami//styles/basis';
-@import './utils';
+
+.nami-textbox {
+    --textbox-color: var(--text-color);
+    --textbox-background: var(--background-color);
+    --textbox-border-color: var(--line-color);
+
+    --textbox-focus-color: var(--text-color);
+    --textbox-focus-background: var(--background-color);
+    --textbox-focus-border-color: var(--primary-color);
+    --textbox-focus-shadow-color: var(--primary-shadow-color);
+
+    --textbox-disabled-color: var(--text-color-quiet);
+    --textbox-disabled-background: var(--background-color-loud);
+    --textbox-disabled-border-color: var(--line-color);
+}
 
 .nami-textbox {
     display: inline-flex;
@@ -14,53 +28,46 @@
 }
 
 .nami-textbox__editor {
-    $size: var(--nami-textbox-size-base);
-    $pv: calc(var(--distance-vertical) * 0.25);
-    $ph: calc(var(--distance-horizontal) * 0.75);
-    $f: var(--font-size-base);
-    $b: 1px;
-    $br: 4px;
+    @include nami-box-size($size: 'base', $is-single: true, $is-limit-min-width: true);
 
     flex: 1 1 auto;
 
-    height: $size;
-    padding: $pv $ph;
-
-    background: var(--background-color);
-    border: $b solid var(--line-color);
-    border-radius: $br;
-
-    font-size: $f;
-    line-height: calc(#{$size} - #{$pv} * 2 - #{$b} * 2);
+    color: var(--textbox-color);
+    background: var(--textbox-background);
+    border-color: var(--textbox-border-color);
 
     transition-property: border-color, box-shadow;
     transition-duration: 0.2s, 0.4s;
 
-    &:focus {
-        outline: none;
-    }
-
     &:hover,
     &:focus {
-        border-color: var(--primary-color);
+        color: var(--textbox-focus-color);
+        background: var(--textbox-focus-background);
+        border-color: var(--textbox-focus-border-color);
     }
 
     &:focus {
-        box-shadow: 0 0 0 2px var(--primary-background-color);
+        outline: none;
+        box-shadow: 0 0 0 2px var(--textbox-focus-shadow-color);
     }
 
     &:read-only {
         &:hover,
         &:focus {
-            border-color: var(--line-color);
+            color: var(--textbox-color);
+            background: var(--textbox-background);
+            border-color: var(--textbox-border-color);
             box-shadow: none;
         }
     }
 
     &:disabled {
-        pointer-events: none;
         opacity: 0.5;
-        background: var(--background-color-loud);
+        cursor: not-allowed;
+
+        color: var(--textbox-disabled-color);
+        background: var(--textbox-disabled-background);
+        border-color: var(--textbox-disabled-border-color);
     }
 
     &::placeholder {
@@ -70,11 +77,8 @@
 
 @each $name in success, warning, danger {
     .nami-textbox--#{$name} {
-        > .nami-textbox__editor {
-            @include textbox-editor-outline(
-                var(--#{$name}-color),
-                0 0 0 2px var(--#{$name}-background-color)
-            );
-        }
+        --textbox-border-color: var(--#{$name}-color);
+        --textbox-focus-border-color: var(--#{$name}-color-loud);
+        --textbox-focus-shadow-color: var(--#{$name}-shadow-color);
     }
 }
