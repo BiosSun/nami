@@ -67,6 +67,7 @@
 
     &__arrows {
         transition: transform 0.2s;
+        margin-left: calc(var(--distance-horizontal) / 2);
     }
 }
 
