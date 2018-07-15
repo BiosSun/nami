@@ -40,6 +40,18 @@ interface BasePopoverProps {
     offset?: number | string
 
     /**
+     * 是否将弹出层的宽度限定为目标元素宽度
+     * @default false
+     */
+    widthFollowOf?: boolean
+
+    /**
+     * 是否将弹出层的最小宽度限定为目标元素宽度
+     * @default false
+     */
+    minWidthFollowOf?: boolean
+
+    /**
      * 是否打开弹出层
      */
     open?: boolean
@@ -138,6 +150,13 @@ interface PopoverState {
  *
  *     {@demo "./demos/position.jsx"}
  *
+ * @example - 限定宽度
+ *
+ *     一般弹出层的宽度由其内容来决定，但也可以指定在弹出层位于目标元素的上方或下方时，
+ *     设置弹出层的宽度（或最小宽度）为目标元素宽度：
+ *
+ *     {@demo "./demos/width-follow-of.jsx"}
+ *
  * @example - 箭头指针
  *
  *     通过设置 `arrow` 参数为 `true`，可以让弹出层额外显示一个箭头指针指向目标元素：
@@ -190,18 +209,22 @@ export default class Popover extends Component<PopoverProps, PopoverState> {
         at: 'bottom',
         offset: 0,
         event: 'click',
+        widthFollowOf: false,
+        minWidthFollowOf: false,
     }
 
     static propKeys: string[] = [
         'of',
         'at',
         'offset',
+        'widthFollowOf',
+        'minWidthFollowOf',
         'open',
         'defaultOpen',
         'event',
-        'disabledCloseOnEscape',
         'disabledCloseOnOfClick',
         'disabledCloseOnOtherClick',
+        'disabledCloseOnEscape',
         'onClose',
         'arrow',
         'children',
@@ -434,9 +457,9 @@ export default class Popover extends Component<PopoverProps, PopoverState> {
         const referenceEl = this.getReferenceElement()
         const popperEl = this.getPopperElement()
 
-        const { at, offset } = this.props
+        const { at, offset, widthFollowOf, minWidthFollowOf } = this.props
 
-        this.createPopper(referenceEl, popperEl, at, offset)
+        this.createPopper(referenceEl, popperEl, at, offset, widthFollowOf, minWidthFollowOf)
         this.updatePopper()
 
         if (!this.registeredToGlobalController) {
@@ -527,14 +550,18 @@ export default class Popover extends Component<PopoverProps, PopoverState> {
         reference: Element,
         popper: Element,
         placement: Popper.Placement,
-        offset: number | string
+        offset: number | string,
+        widthFollowOf: boolean,
+        minWidthFollowOf: boolean
     ): Popper {
         offset = typeof offset === 'string' && offset.includes(',') ? offset : '0, ' + offset
 
         if (
             this.popper &&
             this.popper.options.placement === placement &&
-            this.popper.options.modifiers.offset.offset === offset
+            this.popper.options.modifiers.offset.offset === offset &&
+            this.popper.options.modifiers.widthFollowOf.enabled === widthFollowOf &&
+            this.popper.options.modifiers.minWidthFollowOf.enabled === minWidthFollowOf
         ) {
             return this.popper
         } else {
@@ -543,12 +570,22 @@ export default class Popover extends Component<PopoverProps, PopoverState> {
             const options = {
                 placement,
                 modifiers: {
+                    widthFollowOf: {
+                        order: 1,
+                        enabled: widthFollowOf,
+                        fn: this.widthFollowOfModifier,
+                    },
+                    minWidthFollowOf: {
+                        order: 2,
+                        enabled: minWidthFollowOf,
+                        fn: this.minWidthFollowOfModifier,
+                    },
                     offset: { offset },
                     applyStyle: { enabled: false },
                     applyReactStyle: {
-                        enabled: true,
-                        fn: this.applyReactStyle,
                         order: 900,
+                        enabled: true,
+                        fn: this.applyReactStyleModifier,
                     },
                 },
             }
@@ -571,7 +608,11 @@ export default class Popover extends Component<PopoverProps, PopoverState> {
         this.popper = undefined
     }
 
-    private applyReactStyle = (
+    /**
+     * 一个 Popper.js 的 ModifierFn，
+     * 用于将最终的弹出层样式添加到 Popover 组件中。
+     */
+    private applyReactStyleModifier = (
         data: Popper.Data & { arrowStyles: CSSStyleDeclaration }
     ): Popper.Data => {
         this.setState(({ style, arrowStyle }) => ({
@@ -579,6 +620,32 @@ export default class Popover extends Component<PopoverProps, PopoverState> {
             arrowStyle: shallowequal(arrowStyle, data.arrowStyles) ? arrowStyle : data.arrowStyles,
             at: data.placement,
         }))
+
+        return data
+    }
+
+    /**
+     * 一个 Popper.js 的 ModifierFn，
+     * 用于限定 'popper' 的宽度为 'reference' 的宽度。
+     */
+    private widthFollowOfModifier = (data: Popper.Data): Popper.Data => {
+        data.offsets.popper.width = data.offsets.reference.width
+        data.styles.width = data.offsets.reference.width + 'px'
+        return data
+    }
+
+    /**
+     * 一个 Popper.js 的 ModifierFn，
+     * 用于限定 'popper' 的最小宽度为 'reference' 的宽度。
+     */
+    private minWidthFollowOfModifier = (data: Popper.Data): Popper.Data => {
+        const { popper, reference } = data.offsets
+
+        if (popper.width < reference.width) {
+            popper.width = reference.width
+        }
+
+        data.styles.minWidth = reference.width + 'px'
 
         return data
     }
