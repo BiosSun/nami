@@ -1,4 +1,4 @@
-import { Popover, Button } from 'nami'
+import { Popover, Grid, Select, Button } from 'nami'
 
 class Demo extends Component {
     state = {
@@ -25,23 +25,30 @@ class Demo extends Component {
     renderController() {
         return (
             <div className="demo-popover__controller">
-                <select value={this.state.at} onChange={e => this.setState({ at: e.target.value })}>
-                    <option>auto-start</option>
-                    <option>auto</option>
-                    <option>auto-end</option>
-                    <option>top-start</option>
-                    <option>top</option>
-                    <option>top-end</option>
-                    <option>right-start</option>
-                    <option>right</option>
-                    <option>right-end</option>
-                    <option>bottom-start</option>
-                    <option>bottom</option>
-                    <option>bottom-end</option>
-                    <option>left-start</option>
-                    <option>left</option>
-                    <option>left-end</option>
-                </select>
+                <Grid spacing>
+                    <Grid.Col span={4}>
+                        <Select
+                            value={this.state.at}
+                            onChange={e => this.setState({ at: e.detail.value })}
+                        >
+                            <Select.Option value="auto-start">auto-start</Select.Option>
+                            <Select.Option value="auto">auto</Select.Option>
+                            <Select.Option value="auto-end">auto-end</Select.Option>
+                            <Select.Option value="top-start">top-start</Select.Option>
+                            <Select.Option value="top">top</Select.Option>
+                            <Select.Option value="top-end">top-end</Select.Option>
+                            <Select.Option value="right-start">right-start</Select.Option>
+                            <Select.Option value="right">right</Select.Option>
+                            <Select.Option value="right-end">right-end</Select.Option>
+                            <Select.Option value="bottom-start">bottom-start</Select.Option>
+                            <Select.Option value="bottom">bottom</Select.Option>
+                            <Select.Option value="bottom-end">bottom-end</Select.Option>
+                            <Select.Option value="left-start">left-start</Select.Option>
+                            <Select.Option value="left">left</Select.Option>
+                            <Select.Option value="left-end">left-end</Select.Option>
+                        </Select>
+                    </Grid.Col>
+                </Grid>
             </div>
         )
     }
