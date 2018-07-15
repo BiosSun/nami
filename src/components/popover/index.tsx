@@ -221,8 +221,6 @@ export default class Popover extends Component<PopoverProps, PopoverState> {
 
     // 该组件实例是否处于受控状态
     controlled: boolean = 'open' in this.props
-    private didWarnUncontrolledToControlled: boolean = false
-    private didWarnControlledToUncontrolled: boolean = false
 
     // 该组件实例是否已经注册到全局控制器中
     private registeredToGlobalController: boolean = false
@@ -243,30 +241,16 @@ export default class Popover extends Component<PopoverProps, PopoverState> {
         super(props, context)
 
         if ('open' in this.props && 'defaultOpen' in this.props) {
-            warning(
-                'A component contains a popover with both `open` and `defaultOpen` props.',
-                'Popover component must be either controlled or uncontrolled',
-                '(specify either the `open` prop, or the `defaultOpen` prop, but not both).',
-                'Decide between using a controlled or uncontrolled input element and remove one of these props.'
-            )
+            warning.conflictOfControl('popover', 'open')
         }
 
         if ('open' in this.props && typeof this.props.onClose !== 'function') {
-            warning(
-                'Failed prop type: You provided a `open` prop to a popover component without an `onClose` handler.',
-                'This will render an unable to ' +
-                    (this.props.open ? 'close' : 'open') +
-                    ' popover.',
-                'If the popover component should be uncontroller use `defaultOpen`. Otherwise, set `onClose`.'
-            )
+            const unableTo = `${this.props.open ? 'close' : 'open'} popover`
+            warning.disappearedListenerInControlled('popover', 'open', 'onClose', unableTo)
         }
     }
 
     static getDerivedStateFromProps(props: PopoverProps, state: PopoverState): PopoverState {
-        if (!props.of) {
-            warning('Failed prop type: You shoule provide an `of` prop for popover component.')
-        }
-
         return {
             ...state,
             open: state.controlled ? !!props.open : state.open,
@@ -298,28 +282,12 @@ export default class Popover extends Component<PopoverProps, PopoverState> {
     }
 
     componentDidUpdate() {
-        if (
-            this.controlled &&
-            'defaultOpen' in this.props &&
-            !this.didWarnControlledToUncontrolled
-        ) {
-            warning(
-                'A component is changing a controlled popover to be uncontrolled.',
-                'Popover component should not switch from controlled to uncontrolled(or vice versa).',
-                'Decide between using a controlled or uncontrolled popover component for the lifetime of the component.'
-            )
-
-            this.didWarnControlledToUncontrolled = true
+        if (this.controlled && 'defaultOpen' in this.props) {
+            warning.controlledToUncontrolled('popover', this)
         }
 
-        if (!this.controlled && 'open' in this.props && !this.didWarnUncontrolledToControlled) {
-            warning(
-                'A component is changing a uncontrolled popover to be controlled.',
-                'Popover component should not switch from uncontrolled to controlled(or vice versa).',
-                'Decide between using a controlled or uncontrolled popover component for the lifetime of the component.'
-            )
-
-            this.didWarnUncontrolledToControlled = true
+        if (!this.controlled && 'open' in this.props) {
+            warning.uncontrolledToControlled('popover', this)
         }
 
         if (this.state.open) {
