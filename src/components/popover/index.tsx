@@ -6,9 +6,8 @@ import React, {
     RefObject,
     cloneElement,
     Fragment,
-    DOMElement,
-    ComponentElement,
     HTMLProps,
+    ReactElement,
 } from 'react'
 import { createPortal } from 'react-dom'
 import Popper from 'popper.js'
@@ -26,10 +25,7 @@ interface BasePopoverProps {
     /**
      * 该弹出层所绑定的目标元素，弹出层将相对该元素对齐
      */
-    of:
-        | ComponentElement<any, Component>
-        | DOMElement<any, Element>
-        | ((open: boolean) => ComponentElement<any, Component> | DOMElement<any, Element>)
+    of: ReactElement<any> | ((props: { open: boolean }) => ReactElement<any>)
 
     /**
      * 弹出层相对于目标元素的位置
@@ -392,7 +388,7 @@ export default class Popover extends Component<PopoverProps, PopoverState> {
     private renderReference() {
         const { props, state } = this
 
-        const reference = typeof props.of === 'function' ? props.of(state.open) : props.of
+        const reference = typeof props.of === 'function' ? props.of({ open: state.open }) : props.of
         const referenceProps: HTMLProps<Element> = {}
 
         const originalOnClick: (e: MouseEvent) => void = reference.props.onClick
