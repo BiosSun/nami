@@ -538,6 +538,8 @@ export default class Popover extends Component<PopoverProps, PopoverState> {
         ) {
             return this.popper
         } else {
+            this.destoryPopper()
+
             const options = {
                 placement,
                 modifiers: {
@@ -565,6 +567,8 @@ export default class Popover extends Component<PopoverProps, PopoverState> {
         if (this.popper) {
             this.popper.destroy()
         }
+
+        this.popper = undefined
     }
 
     private applyReactStyle = (
