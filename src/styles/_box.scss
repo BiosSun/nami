@@ -1,0 +1,94 @@
+@charset "utf-8";
+
+// box size
+// -----------------------------------------------------------------------------
+
+///
+/// 定义盒元素尺寸
+///
+/// 在 Nami 中，大多数组件在样式上都被视为一个盒元素，在盒元素上定义该组件的边框、内边距及文本样式，以此提供一致的样式。
+/// 对于单行元素，可以指定高度，内部文本的行高将由高度计算得来。
+///
+/// @param {"base" | "large" | "small"} $size - 盒元素尺寸
+/// @param {boolean} $is-single - 是否为单行盒元素
+/// @param {boolean} $is-limit-min-width - 是否限定盒元素的最小宽度（最小宽度等于最小高度）
+/// @param {length} $padding-horizontal - 自定义水平内边距，因为一些组件中可能需要更多的水平内边距，如 "Button" 组件
+/// @param {length} $border-width - 边框大小
+/// @param {string} $border-style - 边框样式，另外
+@mixin nami-box-size(
+    $size: 'base',
+    $is-single: false,
+    $is-limit-min-width: false,
+    $padding-horizontal: var(--box-#{$size}-padding-horizontal),
+    $border-width: var(--box-#{$size}-border-width),
+    $border-style: solid
+) {
+    $min-height: var(--box-#{$size}-min-height);
+
+    // border
+    $border-width-default: var(--box-#{$size}-border-width);
+    $border-width-top: nth(nami-expand($border-width), 1);
+    $border-width-right: nth(nami-expand($border-width), 2);
+    $border-width-bottom: nth(nami-expand($border-width), 3);
+    $border-width-left: nth(nami-expand($border-width), 4);
+
+    $border-radius: var(--box-#{$size}-border-radius);
+
+    // padding
+    $padding-vertical: var(--box-#{$size}-padding-vertical);
+
+    $padding: nami-shorthand(
+        nami-box-padding-side($padding-vertical, $border-width-top, $border-width-default)
+            nami-box-padding-side($padding-horizontal, $border-width-right, $border-width-default)
+            nami-box-padding-side($padding-vertical, $border-width-bottom, $border-width-default)
+            nami-box-padding-side($padding-horizontal, $border-width-left, $border-width-default)
+    );
+
+    // font
+    $font-size: var(--font-size-#{$size});
+    $line-height: var(--line-height-#{$size});
+
+    // print style
+    // ---------------------------
+
+    @if $is-single {
+        height: $min-height;
+    } @else {
+        min-height: $min-height;
+    }
+
+    @if $is-limit-min-width {
+        min-width: $min-height;
+    }
+
+    padding: $padding;
+
+    border-style: $border-style;
+    border-width: $border-width;
+    border-radius: $border-radius;
+
+    font-size: $font-size;
+    line-height: $line-height;
+
+    @if $is-single {
+        @include text-overflow-ellipsis();
+    }
+}
+
+///
+/// @access private
+///
+/// 计算盒元素中某个单一方向上的内边距
+///
+/// 因为 nami 中允许为盒元素自定义边框长度，因此需要根据边框长度调整其同一方向上的内边距的长度，
+/// 以保证内容区域保持在盒元素的中心。
+///
+@function nami-box-padding-side($padding, $border, $border-default) {
+    @if $border == $border-default {
+        @return $padding;
+    } @else if $border eq 0 {
+        @return calc(#{$padding} + #{$border-default});
+    } @else {
+        @return calc(#{$padding} - #{$border} + #{$border-default});
+    }
+}

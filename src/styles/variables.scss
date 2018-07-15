@@ -11,6 +11,39 @@
     /// 模块之间的水平间距
     --distance-horizontal: 20px;
 
+    /// 盒元素-普通尺寸-限定最小高度，同时作为单行盒元素的限定高度
+    --box-base-min-height: 36px;
+    /// 盒元素-普通尺寸-边框大小
+    --box-base-border-width: 1px;
+    /// 盒元素-普通尺寸-边框圆角大小
+    --box-base-border-radius: 4px;
+    /// 盒元素-普通尺寸-垂直内边距
+    --box-base-padding-vertical: 5px;
+    /// 盒元素-普通尺寸-水平内边距
+    --box-base-padding-horizontal: 10px;
+
+    /// 盒元素-较大尺寸-限定最小高度，同时作为单行盒元素的限定高度
+    --box-large-min-height: 46px;
+    /// 盒元素-较大尺寸-边框大小
+    --box-large-border-width: 1px;
+    /// 盒元素-较大尺寸-边框圆角大小
+    --box-large-border-radius: 6px;
+    /// 盒元素-较大尺寸-垂直内边距
+    --box-large-padding-vertical: 8px;
+    /// 盒元素-较大尺寸-水平内边距
+    --box-large-padding-horizontal: 14px;
+
+    /// 盒元素-较小尺寸-限定最小高度，同时作为单行盒元素的限定高度
+    --box-small-min-height: 28px;
+    /// 盒元素-较小尺寸-边框大小
+    --box-small-border-width: 1px;
+    /// 盒元素-较小尺寸-边框圆角大小
+    --box-small-border-radius: 3px;
+    /// 盒元素-较小尺寸-垂直内边距
+    --box-small-padding-vertical: 3px;
+    /// 盒元素-较小尺寸-水平内边距
+    --box-small-padding-horizontal: 8px;
+
     /// 排版
     /// ---------------------------
 

@@ -17,3 +17,54 @@
 @function limit($val, $min, $max) {
     @return max($min, min($val, $max));
 }
+
+/// 展开使用缩写格式声明的方向类型复合值，比如 margin，padding 属性的值。
+///
+/// @access private
+///
+/// @param {list} $shorthand - 待展开的数据
+///
+/// @example scss
+///     nami-expand(1px);             // 1px 1px 1px 1px
+///     nami-expand(1px 2px);         // 1px 2px 1px 2px
+///     nami-expand(1px 2px 3px);     // 1px 2px 3px 2px
+///     nami-expand(1px 2px 3px 4px); // 1px 2px 3px 4px
+@function nami-expand($shorthand) {
+    @if length($shorthand) == 1 {
+        @return nth($shorthand, 1) nth($shorthand, 1) nth($shorthand, 1) nth($shorthand, 1);
+    } @else if length($shorthand) == 2 {
+        @return nth($shorthand, 1) nth($shorthand, 2) nth($shorthand, 1) nth($shorthand, 2);
+    } @else if length($shorthand) == 3 {
+        @return nth($shorthand, 1) nth($shorthand, 2) nth($shorthand, 3) nth($shorthand, 2);
+    } @else {
+        @return $shorthand;
+    }
+}
+
+/// 合并四个方向值为缩写形式。
+///
+/// @access private
+///
+/// @param {list} $expand - 包含待合并的四个值的列表
+///
+/// @example scss
+///     nami-shorthand(1px 1px 1px 1px); // 1px
+///     nami-shorthand(1px 2px 1px 2px); // 1px 2px
+///     nami-shorthand(1px 2px 3px 2px); // 1px 2px 3px
+///     nami-shorthand(1px 2px 3px 4px); // 1px 2px 3px 4px
+@function nami-shorthand($expand) {
+    $t: nth($expand, 1);
+    $r: nth($expand, 2);
+    $b: nth($expand, 3);
+    $l: nth($expand, 4);
+
+    @if ($t == $r and $t == $b and $t == $l) {
+        @return $t;
+    } @else if ($t == $b and $l == $r) {
+        @return $t $l;
+    } @else if ($l == $r) {
+        @return $t $l $b;
+    } @else {
+        @return $t $r $b $l;
+    }
+}
