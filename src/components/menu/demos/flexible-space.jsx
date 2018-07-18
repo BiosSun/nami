@@ -1,9 +1,9 @@
-import { Menu } from 'nami'
+import { Menu, FlexibleSpace } from 'nami'
 
 render(
     <Menu>
         <Menu.Item>菜单项 一</Menu.Item>
-        <Menu.FlexibleSpace />
+        <FlexibleSpace />
         <Menu.Item>菜单项 二</Menu.Item>
         <Menu.Item>菜单项 三</Menu.Item>
     </Menu>

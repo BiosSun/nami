@@ -1,4 +1,4 @@
-import { Menu } from 'nami'
+import { Menu, Divider } from 'nami'
 
 render(
     <Menu>
@@ -8,7 +8,7 @@ render(
             菜单项 二
             <Menu>
                 <Menu.Item>子菜单项 一</Menu.Item>
-                <Menu.Divider />
+                <Divider />
                 <Menu.Item>子菜单项 二</Menu.Item>
                 <Menu.Item>子菜单项 三</Menu.Item>
             </Menu>

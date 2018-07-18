@@ -3,9 +3,6 @@ import classnames from 'classnames'
 
 import Item from './item'
 import ItemGroup from './item-group'
-import Divider from './divider'
-import Space from './space'
-import FlexibleSpace from './flexible-space'
 
 interface BaseMenuProps {
     /**
@@ -113,9 +110,6 @@ export type MenuProps = BaseMenuProps & HTMLAttributes<HTMLDivElement>
 export default class Menu extends Component<MenuProps> {
     static Item = Item
     static ItemGroup = ItemGroup
-    static Divider = Divider
-    static Space = Space
-    static FlexibleSpace = FlexibleSpace
 
     render() {
         const { children, className, mode = 'horizontal', subMenu, ...otherProps } = this.props
