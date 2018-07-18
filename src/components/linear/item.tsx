@@ -40,6 +40,8 @@ export type ItemProps = BaseItemProps & HTMLAttributes<HTMLDivElement>
  * @parent Linear
  */
 export default class Item extends Component<ItemProps> {
+    static displayName = 'Linear.Item'
+
     static defaultProps: ItemProps = {
         fill: false,
         component: 'div',
