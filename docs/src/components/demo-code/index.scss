@@ -105,17 +105,20 @@ $app-demo-border-radius: 6px;
     }
 }
 
-// menu
+// menu, navbar
 // -----------------------------------------------------------------------------
 
-.demo-menu {
+.demo-menu,
+.demo-navbar {
     ul,
     li {
         list-style: none;
         margin: 0;
         padding: 0;
     }
+}
 
+.demo-menu {
     > .nami-menu--vertical {
         width: 160px;
     }
