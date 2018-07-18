@@ -24,6 +24,12 @@ $rio-code-block-line-height: 1.8;
 @import '@node//nojiko/sass/variables';
 @import '@node//nojiko/sass/elements';
 
+// 额外增加两个级别的内外边距
+@include el-margin(null, '-xs', 5px, 5px);
+@include el-margin(null, '-xl', 40px, 40px);
+@include el-padding(null, '-xs', 5px, 5px);
+@include el-padding(null, '-xl', 40px, 40px);
+
 *,
 *:before,
 *:after {

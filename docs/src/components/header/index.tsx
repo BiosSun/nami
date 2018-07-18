@@ -32,7 +32,7 @@ export default class Header extends Component<HeaderProps> {
 
                     <Menu.Item>
                         <a href="https://github.com/biossun/nami" target="_blank">
-                            <Icon name="github" />
+                            <Icon className="mr-xs" name="github" />
                             GitHub
                         </a>
                     </Menu.Item>
