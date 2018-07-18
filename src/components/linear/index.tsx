@@ -97,8 +97,6 @@ export type LinearProps = BaseLinearProps & HTMLAttributes<HTMLDivElement>
 export default class Linear extends Component<LinearProps> {
     static Item = Item
 
-    static propKeys: string[] = ['direction', 'justify', 'align', 'spacing']
-
     static defaultProps: LinearProps = {
         direction: 'horizontal',
         component: 'div',
