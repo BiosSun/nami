@@ -109,12 +109,19 @@ $app-demo-border-radius: 6px;
 // -----------------------------------------------------------------------------
 
 .demo-menu {
+    ul,
+    li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
     > .nami-menu--vertical {
         width: 160px;
     }
 
-    .nami-menu__space,
-    .nami-menu__flexible-space {
+    .nami-space,
+    .nami-flexible-space {
         background: var(--background-color-loud);
     }
 }

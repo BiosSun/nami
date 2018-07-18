@@ -3,251 +3,100 @@
 @import '@nami//styles/basis';
 @import './utils';
 
-.nami-menu {
-    display: flex;
-}
-
 // item
 // -----------------------------------------------------------------------------
 
+.nami-menu,
+.nami-menu__item-group__items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
 .nami-menu__item {
     position: relative;
-}
 
-.nami-menu__item--active {
-    z-index: 1;
-}
+    &--active {
+        z-index: 1;
 
-.nami-menu__item__header {
-    @extend %menu__header;
-
-    padding: var(--nami-menu-item-header-padding-vertical)
-        var(--nami-menu-item-header-padding-horizontal);
-
-    font-size: var(--nami-menu-item-header-font-size);
-    line-height: var(--nami-menu-item-header-line-height);
-    color: var(--nami-menu-item-header-color);
-
-    > a {
-        color: inherit;
-
-        &:after {
-            content: '';
-            @include position(absolute, 0, 1);
-        }
-
-        &:hover,
-        &:focus,
-        &:visited {
-            color: inherit;
-            text-decoration: none;
+        > .nami-menu__item__header {
+            color: var(--text-color);
+            cursor: pointer;
         }
     }
 
-    .nami-menu__item--active > & {
-        color: var(--nami-menu-item-header-active-color);
-        cursor: pointer;
+    &--open {
+        > .nami-menu__item__header {
+            .nami-menu__item__header__arrows {
+                transform: rotateX(180deg);
+            }
+        }
+    }
+
+    &__header {
+        @extend %nami-menu__item;
+        color: var(--text-color-quiet);
+
+        &__arrows {
+            $size: calc(1em - 2px);
+
+            box-sizing: content-box;
+
+            width: $size;
+            height: $size;
+            margin-left: 0.6em;
+
+            transition: transform 0.2s;
+        }
     }
 }
-
-.nami-menu__item__header__arrows {
-    $size: calc(1em - 2px);
-
-    box-sizing: content-box;
-
-    width: $size;
-    height: $size;
-    padding-left: 0.4em;
-    margin-left: auto;
-}
-
-// item group
-// -----------------------------------------------------------------------------
 
 .nami-menu__item-group {
     display: flex;
+
+    &__header {
+        @extend %nami-menu__item;
+        color: var(--text-color-quiet);
+        opacity: 0.6;
+    }
 }
 
-.nami-menu__item-group__header {
-    @extend %menu__header;
-
-    padding: var(--nami-menu-item-group-header-padding-vertical)
-        var(--nami-menu-item-group-header-padding-horizontal);
-
-    font-size: var(--nami-menu-item-group-header-font-size);
-    line-height: var(--nami-menu-item-group-header-line-height);
-    color: var(--nami-menu-item-group-header-color);
-
-    opacity: 0.6;
-}
-
-// submenu
+// vertical mode
 // -----------------------------------------------------------------------------
 
-.nami-menu--submenu {
-    flex-direction: column;
-}
-
-// horizontal mode
-// -----------------------------------------------------------------------------
-
-.nami-menu--horizontal {
-    flex-direction: row;
-
-    // item group
-    // ---------------------------
-
-    > .nami-menu__item-group:not(:first-child) {
-        > .nami-menu__item-group__header {
-            padding-left: calc(
-                var(--nami-menu-item-group-header-padding-horizontal) + var(--distance-horizontal) *
-                    0.5
-            );
-        }
-    }
-
-    // divider, space, flexible-space
-    // ---------------------------
-
-    .nami-menu__divider {
-        display: flex;
-        align-items: center;
-
-        > .nami-menu__divider__inner {
-            height: calc(100% - var(--nami-menu-item-header-padding-vertical) * 2);
-            border-left: 1px solid var(--line-color);
-        }
-    }
-
-    .nami-menu__space {
-        flex: 0 0 var(--distance-horizontal);
-    }
-
-    .nami-menu__flexible-space {
-        flex: 1 0 var(--distance-horizontal);
-    }
-
-    // submenu
-    // ---------------------------
-
-    .nami-menu--submenu {
-        $br: var(--nami-menu-submenu-popup-border-radius);
-
-        position: absolute;
-        left: calc(100% + 4px);
-        top: 0;
-
-        background: var(--background-color);
-        box-shadow: 0 0 0 1px var(--line-color);
-        border-radius: $br;
-
-        display: none;
-
-        // 确保圆角不被子元素遮盖
-        > .nami-menu__item:first-child > .nami-menu__item__header {
-            border-radius: $br $br 0 0;
-        }
-
-        > .nami-menu__item:last-child > .nami-menu__item__header,
-        > .nami-menu__item-group:last-child
-            > .nami-menu__item:last-child
-            > .nami-menu__item__header {
-            border-radius: 0 0 $br $br;
-        }
-
-        // 给处于激活状态的菜单项头部添加一些背景色，使其更加突显
-        .nami-menu__item--active {
-            > .nami-menu__item__header {
-                background-color: var(--background-color-loud);
-            }
-        }
-
-        > .nami-menu__item-group {
-            flex-direction: column;
-
-            &:not(:first-child) {
-                > .nami-menu__item-group__header {
-                    padding-top: calc(
-                        var(--nami-menu-item-group-header-padding-vertical) +
-                            var(--distance-vertical) * 0.5
-                    );
-                }
-            }
-        }
-
-        .nami-menu__divider {
-            border-top: 1px solid var(--line-color);
-
-            > .nami-menu__divider__inner {
-                display: none;
-            }
-        }
-    }
-
-    .nami-menu__item--open > .nami-menu--submenu {
-        display: flex;
-    }
-
-    // 水平布局菜单中，一级菜单项中的子菜单在菜单项的下方弹出，
-    // 且其宽度不得小于其所在菜单项的宽度，否则不好看。
-    > .nami-menu__item > .nami-menu--submenu,
-    > .nami-menu__item-group > .nami-menu__item > .nami-menu--submenu {
-        min-width: 100%;
-        top: calc(100% + 6px);
-        left: 0;
-    }
-}
-
-// horizontal mode
-// -----------------------------------------------------------------------------
-
-.nami-menu--vertical {
-    flex-direction: column;
-
-    // item group
-    // ---------------------------
-
+%nami-menu--vertical--common {
     .nami-menu__item-group {
         flex-direction: column;
 
         &:not(:first-child) {
-            .nami-menu__item-group__header {
-                padding-top: calc(
-                    var(--nami-menu-item-group-header-padding-vertical) + var(--distance-vertical) *
-                        0.5
-                );
+            padding-top: calc(var(--distance-vertical) * 0.5);
+        }
+    }
+}
+
+.nami-menu--vertical {
+    @extend %nami-menu--vertical--common;
+
+    .nami-menu__item,
+    .nami-menu__item-group {
+        @include nami-menu__item--indent();
+    }
+}
+
+.nami-menu--popover {
+    @extend %nami-menu--vertical--common;
+
+    .nami-menu__item--open {
+        > .nami-menu__item__header {
+            .nami-menu__item__header__arrows {
+                transform: rotateY(180deg);
             }
         }
+    }
 
-        > :not(.nami-menu__item-group__header) {
-            margin-left: var(--nami-menu-item-group-indent);
+    .nami-menu__item--active {
+        > .nami-menu__item__header {
+            background: var(--background-color-loud);
         }
-    }
-
-    // divider, space, flexible-space
-    // ---------------------------
-
-    .nami-menu__divider {
-        border-top: 1px solid var(--line-color);
-    }
-
-    .nami-menu__space {
-        flex: 0 0 var(--distance-vertical);
-    }
-
-    .nami-menu__flexible-space {
-        flex: 1 0 var(--distance-vertical);
-    }
-
-    // submenu
-    // ---------------------------
-
-    .nami-menu--submenu {
-        display: none;
-        margin-left: var(--distance-horizontal);
-    }
-
-    .nami-menu__item--open > .nami-menu--submenu {
-        display: flex;
     }
 }

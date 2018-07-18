@@ -1,5 +1,6 @@
-import { ReactNode } from 'react'
+import { ReactNode, Children, isValidElement, cloneElement } from 'react'
 import { getIterator } from 'iterall'
+import isReactFragment from './is-react-fragment'
 
 /**
  * 返回第一个子元素及其余子元素结点
@@ -30,6 +31,27 @@ function cons<T extends ReactNode, P extends ReactNode>(children: ReactNode): [T
     return [car, cdr]
 }
 
+/**
+ * 制做一份 children 的浅拷贝。
+ * 支持 React.Fragment，当遍历到 React.Fragment 时，会将其中的子元素提取出来。
+ * 通过 React.Children.map 方法结合 React.cloneElement 实现。
+ */
+function cloneChildren<T extends ReactNode>(children: ReactNode, props?: object): T[] {
+    return Children.map(
+        children,
+        (child): T => {
+            if (isReactFragment(child)) {
+                return cloneChildren(child.props.children, props) as T
+            } else if (isValidElement(child)) {
+                return cloneElement<any>(child, props) as T
+            } else {
+                return child as T
+            }
+        }
+    )
+}
+
 export default {
     cons,
+    cloneChildren,
 }

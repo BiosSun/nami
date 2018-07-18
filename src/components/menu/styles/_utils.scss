@@ -1,7 +1,17 @@
 @charset "utf-8";
 
-%menu__header {
+$nami-menu__item--max-indent: 7; // 最多支持 7 级缩进
+$nami-menu__item--box-size-parsed: nami-box-size__parser(
+    $is-single: true,
+    $is-limit-min-width: true,
+    $border-width: 0,
+);
+
+%nami-menu__item {
+    @include nami-box-size__output($nami-menu__item--box-size-parsed);
+
     display: flex;
+    justify-content: space-between;
     align-items: center;
 
     text-decoration: none;
@@ -12,10 +22,37 @@
     > a {
         display: flex;
         align-items: center;
-    }
 
-    // TODO: 处理通配符
-    > * > .nami-icon:first-child {
-        margin-right: 0.4em;
+        color: inherit;
+
+        &:after {
+            content: '';
+            @include position(absolute, 0, 1);
+        }
+
+        &:hover,
+        &:focus,
+        &:visited {
+            color: inherit;
+            text-decoration: none;
+        }
+    }
+}
+
+@for $level from 1 through $nami-menu__item--max-indent {
+    %nami-menu__item--indent-#{$level} {
+        padding-left: calc(
+            #{map-deep-get($nami-menu__item--box-size-parsed, padding left)} +
+                var(--distance-horizontal) *
+                #{$level}
+        );
+    }
+}
+
+@mixin nami-menu__item--indent {
+    @for $level from 1 through $nami-menu__item--max-indent {
+        &__header--indent-#{$level} {
+            @extend %nami-menu__item--indent-#{$level};
+        }
     }
 }

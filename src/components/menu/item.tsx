@@ -1,16 +1,13 @@
-import React, {
-    Component,
-    ReactNode,
-    ReactElement,
-    ReactChild,
-    cloneElement,
-    HTMLAttributes,
-} from 'react'
+import React, { Component, ReactNode, ReactElement, HTMLAttributes, isValidElement } from 'react'
 import classnames from 'classnames'
-import childrenUtils from '@utils/children'
-
-import { MenuProps } from './menu'
+import omit from 'object.omit'
 import Icon from '@components/icon'
+import Linear from '@components/linear'
+import { MenuMode, SubMenuModeEnum } from './utils'
+import { MenuProps } from './menu'
+
+type HeaderElement = ReactElement<HTMLAttributes<HTMLDivElement>>
+type SubMenuElement = ReactElement<MenuProps>
 
 interface BaseItemProps {
     /**
@@ -30,6 +27,24 @@ interface BaseItemProps {
      * *第一个子元素将做为菜单项的头部内容，而第二个子元素将做为子菜单，其余的子元素被忽略*
      */
     children?: ReactNode
+
+    /**
+     * @private
+     * 该菜单项所属菜单的深度
+     */
+    menuDepth?: number
+
+    /**
+     * @private
+     * 该菜单项的深度
+     */
+    itemDepth?: number
+
+    /**
+     * @private
+     * 该菜单项所属菜单的展示模式
+     */
+    menuMode?: MenuMode
 }
 
 export type ItemProps = BaseItemProps & HTMLAttributes<HTMLDivElement>
@@ -48,12 +63,12 @@ interface ItemState {
     /**
      * 该菜单项中包含的头部内容
      */
-    headerContent: ReactChild
+    headerContent: ReactNode
 
     /**
      * 该菜单项中包含的所有子菜单元素
      */
-    subMenu: ReactElement<MenuProps>
+    subMenu: SubMenuElement
 }
 
 /**
@@ -63,86 +78,145 @@ interface ItemState {
  * @parent Menu
  */
 export default class Item extends Component<ItemProps, ItemState> {
+    static displayName = 'Menu.Item'
+
+    static propKeys = ['active', 'defaultOpen', 'menuDepth', 'itemDepth', 'menuMode', 'children']
+
     readonly state: Readonly<ItemState> = {
         hover: false,
-        open: !!this.props.defaultOpen,
+        open: this.props.defaultOpen,
         subMenu: undefined,
         headerContent: undefined,
     }
 
-    handleHeaderMouseEnter = () => {
-        this.setState({ hover: true })
-    }
-
-    handleHeaderMouseLeave = () => {
-        this.setState({ hover: false })
-    }
-
-    handleHeaderClick = () => {
-        const hasSubMenu = !!this.state.subMenu
-
-        if (hasSubMenu) {
-            this.setState({ open: !this.state.open })
-        }
-    }
-
     static getDerivedStateFromProps(nextProps: ItemProps, prevState: ItemState): ItemState {
-        const { children } = nextProps
-        const [headerContent, [subMenu]] = childrenUtils.cons<ReactChild, ReactElement<MenuProps>>(
-            children
-        )
-
         return {
             ...prevState,
-            subMenu,
-            headerContent,
+            ...Item.takeHeaderContentAndSubMenu(nextProps.children),
         }
     }
 
     render() {
-        const { active, className, defaultOpen, ...otherProps } = this.props
-        const { hover, open, headerContent, subMenu } = this.state
+        const { active, className } = this.props
+        const { hover, open } = this.state
+
+        const header = this.renderHeader()
+        const subMenu = this.renderSubMenu(header)
 
         const classes = {
             root: classnames(
                 'nami-menu__item',
                 {
-                    'nami-menu__item--active': active || hover || open,
-                    'nami-menu__item--open': open,
+                    [`nami-menu__item--active`]: active || hover || open,
+                    [`nami-menu__item--open`]: open,
                 },
                 className
             ),
-            header: 'nami-menu__item__header',
-            headerArrows: 'nami-menu__item__header__arrows',
         }
 
-        const header = (
+        return (
+            <Linear.Item
+                {...omit(this.props, Item.propKeys)}
+                className={classes.root}
+                component="li"
+            >
+                {// subMenu 会负责去渲染 header，因此在有 subMenu 时无须渲染它
+                subMenu ? subMenu : header}
+            </Linear.Item>
+        )
+    }
+
+    private renderHeader(): HeaderElement {
+        const { itemDepth, menuDepth, menuMode } = this.props
+        const { headerContent, subMenu } = this.state
+
+        const classes = {
+            root: classnames('nami-menu__item__header', {
+                [`nami-menu__item__header--indent-${itemDepth}`]: !!itemDepth,
+            }),
+            arrows: 'nami-menu__item__header__arrows',
+        }
+
+        const arrowsIconName = menuMode === 'popover' && menuDepth >= 1 ? 'right' : 'down'
+        const arrows = subMenu ? (
+            <Icon name={arrowsIconName} className={classes.arrows} />
+        ) : (
+            undefined
+        )
+
+        return (
             <div
-                className={classes.header}
+                className={classes.root}
                 onMouseEnter={this.handleHeaderMouseEnter}
                 onMouseLeave={this.handleHeaderMouseLeave}
                 onClick={this.handleHeaderClick}
             >
                 {headerContent}
-                {subMenu ? (
-                    <Icon name={open ? 'up' : 'down'} className={classes.headerArrows} />
-                ) : (
-                    undefined
-                )}
+                {arrows}
             </div>
         )
+    }
 
-        const subMenuContainer = subMenu
-            ? cloneElement(subMenu, {
-                  subMenu: true,
-              })
-            : undefined
+    private renderSubMenu(header: HeaderElement): SubMenuElement {
+        const { menuDepth, itemDepth, menuMode } = this.props
+        const { open, subMenu } = this.state
 
-        return (
-            <div {...otherProps} className={classes.root}>
-                {header}
-                {subMenuContainer}
-            </div>
-        )
+        if (!subMenu) {
+            return null
+        } else {
+            return (
+                <subMenu.type
+                    {...subMenu.props}
+                    mode={SubMenuModeEnum[menuMode]}
+                    subMenuOf={header}
+                    subMenuOpen={open}
+                    onSubMenuClose={this.handleSubMenuClose}
+                    menuDepth={menuDepth + 1}
+                    itemDepth={itemDepth}
+                />
+            )
+        }
+    }
+
+    private handleHeaderMouseEnter = () => {
+        this.setState({ hover: true })
+    }
+
+    private handleHeaderMouseLeave = () => {
+        this.setState({ hover: false })
+    }
+
+    private handleHeaderClick = () => {
+        if (this.state.subMenu) {
+            this.setState({ open: !this.state.open })
+        }
+    }
+
+    private handleSubMenuClose = () => {
+        this.setState({ open: false })
+    }
+
+    /**
+     * 从子元素中拿取头部内容及子菜单
+     */
+    private static takeHeaderContentAndSubMenu(
+        children: ReactNode
+    ): { headerContent: ReactNode; subMenu: SubMenuElement } {
+        let headerContent: ReactNode
+        let subMenu: SubMenuElement
+
+        if (Array.isArray(children)) {
+            const [first, second] = children
+
+            headerContent = first
+
+            if (isValidElement<MenuProps>(second)) {
+                subMenu = second
+            }
+        } else {
+            headerContent = children
+        }
+
+        return { headerContent, subMenu }
     }
 }

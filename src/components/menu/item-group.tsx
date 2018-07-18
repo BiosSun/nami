@@ -1,7 +1,10 @@
 import React, { Component, ReactNode, ReactElement, ReactChild, HTMLAttributes } from 'react'
 import classnames from 'classnames'
+import omit from 'object.omit'
 import childrenUtils from '@utils/children'
+import Linear from '@components/linear'
 import { ItemProps } from './item'
+import { MenuMode, DirectionEnum } from './utils'
 
 interface BaseItemGroupProps {
     /**
@@ -9,6 +12,24 @@ interface BaseItemGroupProps {
      * *第一个子元素将做为分组的头部内容，其余子元素为该分组中所包含的菜单项*
      */
     children?: ReactNode
+
+    /**
+     * @private
+     * 该分组所属菜单的深度
+     */
+    menuDepth?: number
+
+    /**
+     * @private
+     * 该分组的深度
+     */
+    itemDepth?: number
+
+    /**
+     * @private
+     * 该分组所属菜单的展示模式
+     */
+    menuMode?: MenuMode
 }
 
 export type ItemGroupProps = BaseItemGroupProps & HTMLAttributes<HTMLDivElement>
@@ -32,34 +53,55 @@ interface ItemGroupState {
  * @parent Menu
  */
 export default class ItemGroup extends Component<ItemGroupProps, ItemGroupState> {
+    static displayName = 'Menu.ItemGroup'
+
+    static propKeys = ['children', 'menuDepth', 'itemDepth', 'menuMode']
+
     readonly state: Readonly<ItemGroupState> = {
         items: undefined,
         headerContent: undefined,
     }
 
     static getDerivedStateFromProps(nextProps: ItemGroupProps): ItemGroupState {
-        const { children } = nextProps
-        const [headerContent, items] = childrenUtils.cons<ReactChild, ReactElement<ItemProps>>(
-            children
-        )
+        const [headerContent, items] = childrenUtils.cons(nextProps.children)
 
-        return { items, headerContent }
+        return {
+            headerContent,
+            items: childrenUtils.cloneChildren(items, {
+                menuMode: nextProps.menuMode,
+                menuDepth: nextProps.menuDepth,
+                itemDepth: nextProps.itemDepth + 1,
+            }),
+        }
     }
 
     render(): ReactNode {
-        const { className, children, ...otherProps } = this.props
+        const { className, itemDepth, menuMode } = this.props
         const { headerContent, items } = this.state
 
         const classes = {
             root: classnames('nami-menu__item-group', className),
-            header: 'nami-menu__item-group__header',
+            header: classnames('nami-menu__item-group__header', {
+                [`nami-menu__item-group__header--indent-${itemDepth}`]: !!itemDepth,
+            }),
+            items: 'nami-menu__item-group__items',
         }
 
         return (
-            <div {...otherProps} className={classes.root}>
+            <Linear.Item
+                {...omit(this.props, ItemGroup.propKeys)}
+                className={classes.root}
+                component="li"
+            >
                 <div className={classes.header}>{headerContent}</div>
-                {items}
-            </div>
+                <Linear
+                    className={classes.items}
+                    direction={DirectionEnum[menuMode]}
+                    component="ul"
+                >
+                    {items}
+                </Linear>
+            </Linear.Item>
         )
     }
 }

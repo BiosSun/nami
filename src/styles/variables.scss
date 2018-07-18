@@ -169,40 +169,6 @@
     /// 栅格列数
     --nami-grid-column-number: 24;
 
-    /// Menu
-    /// ---------------------------
-
-    /// 菜单项头部垂直内边距
-    --nami-menu-item-header-padding-vertical: 8px;
-    /// 菜单项头部水平内边距
-    --nami-menu-item-header-padding-horizontal: calc(var(--distance-horizontal) * 0.75);
-    /// 菜单项头部文字大小
-    --nami-menu-item-header-font-size: var(--font-size-base);
-    /// 菜单项头部文字行高
-    --nami-menu-item-header-line-height: var(--line-height-base);
-    /// 菜单项头部文本颜色
-    --nami-menu-item-header-color: var(--text-color-quiet);
-    /// 菜单项头部中的箭头图标的尺寸
-    --nami-menu-item-header-arrows-size: var(--font-size-small);
-    /// 菜单项激活时的头部文本颜色
-    --nami-menu-item-header-active-color: var(--text-color);
-
-    /// 菜单项头部垂直内边距
-    --nami-menu-item-group-header-padding-vertical: 8px;
-    /// 菜单项头部水平内边距
-    --nami-menu-item-group-header-padding-horizontal: calc(var(--distance-horizontal) * 0.75);
-    /// 菜单分组头部文字大小
-    --nami-menu-item-group-header-font-size: var(--font-size-small);
-    /// 菜单分组头部文字行高
-    --nami-menu-item-group-header-line-height: var(--menu-item-header-line-height);
-    /// 菜单分组头部文本颜色
-    --nami-menu-item-group-header-color: var(--text-color-quiet);
-    /// 菜单分组中的菜单项的缩进量
-    --nami-menu-item-group-indent: calc(var(--distance-horizontal) * 0.75);
-
-    /// 弹出式子菜单圆角
-    --nami-menu-submenu-popup-border-radius: 6px;
-
     /// CheckBox
     /// ---------------------------
 
