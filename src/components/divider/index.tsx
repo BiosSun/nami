@@ -33,16 +33,12 @@ export default class Divider extends PureComponent<DividerProps> {
     }
 
     render() {
-        const { direction, className, ...otherProps } = this.props
+        const { direction, className } = this.props
 
         const classes = {
             root: classnames('nami-divider', `nami-divider--${direction}`, className),
         }
 
-        return (
-            <div {...otherProps} className={classes.root}>
-                &nbsp;
-            </div>
-        )
+        return <div className={classes.root}>&nbsp;</div>
     }
 }

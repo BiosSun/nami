@@ -35,12 +35,12 @@ export default class Space extends PureComponent<SpaceProps> {
     }
 
     render() {
-        const { direction, className, ...otherProps } = this.props
+        const { direction, className } = this.props
 
         const classes = {
             root: classnames('nami-space', `nami-space--${direction}`, className),
         }
 
-        return <div {...otherProps} className={classes.root} />
+        return <div className={classes.root} />
     }
 }

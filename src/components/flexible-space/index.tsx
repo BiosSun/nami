@@ -35,16 +35,12 @@ export default class FlexibleSpace extends PureComponent<FlexibleSpaceProps> {
     }
 
     render() {
-        const { direction, className, ...otherProps } = this.props
+        const { direction, className } = this.props
 
         const classes = {
             root: classnames('nami-flexible-space', `nami-flexible-space--${direction}`, className),
         }
 
-        return (
-            <div {...otherProps} className={classes.root}>
-                &nbsp;
-            </div>
-        )
+        return <div className={classes.root} />
     }
 }
