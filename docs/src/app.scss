@@ -18,11 +18,8 @@
 }
 
 .app-sidebar {
-    flex: 0 0 220px;
-    margin-right: var(--distance-horizontal);
+    flex: 0 0 270px;
     padding: calc(var(--distance-vertical) * 2) var(--distance-horizontal);
-
-    border-right: 1px solid var(--line-color);
 }
 
 .app-content {
