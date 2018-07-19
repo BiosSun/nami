@@ -15,7 +15,7 @@ import isReactFragment from '@utils/is-react-fragment'
 import Icon from '@components/icon'
 import Popover from '@components/popover'
 
-import './styles'
+import './index.scss'
 
 import { SelectValue, SelectEvent, selectEventFactory } from './utils'
 import Option, { OptionProps } from './option'

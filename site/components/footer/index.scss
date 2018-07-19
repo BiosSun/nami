@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+.app-footer {
+    width: 100%;
+    padding: calc(var(--distance-vertical) * 1.5) calc(var(--distance-horizontal) * 2.5);
+
+    background: var(--background-color-quiet);
+
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-small);
+    color: var(--text-color-quiet);
+
+    text-align: center;
+
+    a {
+        color: var(--text-color);
+        font-weight: 500;
+
+        &:hover {
+            color: var(--link-color);
+        }
+    }
+
+    p {
+        margin: 0;
+    }
+}

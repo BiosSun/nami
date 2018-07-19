@@ -10,12 +10,6 @@ interface BaseBrandProps {
 
 export type BrandProps = BaseBrandProps & HTMLAttributes<HTMLDivElement>
 
-/**
- * @component
- *
- * @displayname 导航栏标识
- * @parent Navbar
- */
 export default class Brand extends Component<BrandProps> {
     render() {
         const { children, className, ...otherProps } = this.props

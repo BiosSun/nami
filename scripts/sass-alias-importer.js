@@ -14,7 +14,7 @@ const appRoot = require('app-root-path')
  *   }
  */
 module.exports = function sassAliasImporterGenerator(aliases) {
-    return function sassAliasImporter(url, prev, done) {
+    return function sassAliasImporter(url, prev) {
         let file = undefined
 
         for (let alias in aliases) {
@@ -48,7 +48,7 @@ module.exports = function sassAliasImporterGenerator(aliases) {
                 file = sassFile
             } else {
                 throw new Error(
-                    `[sass-alias-importer] Can\'t handle import url "${url}" in file "${prev}"`
+                    `[sass-alias-importer] Can't handle import url "${url}" in file "${prev}"`
                 )
             }
         }

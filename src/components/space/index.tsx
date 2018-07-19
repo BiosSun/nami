@@ -1,7 +1,7 @@
 import React, { PureComponent, HTMLAttributes } from 'react'
 import classnames from 'classnames'
 
-import './styles'
+import './index.scss'
 
 interface BaseSpaceProps {
     /**
@@ -14,21 +14,6 @@ interface BaseSpaceProps {
 
 export type SpaceProps = BaseSpaceProps & HTMLAttributes<HTMLDivElement>
 
-/**
- * @component
- *
- * @displayname 空隔
- * @group layout
- *
- * @description
- *
- *   用于在两个布局元素之间插入一段固定宽度（或高度）的空白间隔；
- *
- *   *\* 注：以下 Demo 中 Space 的背景色仅是为了演示效果而添加的，实际都是透明的。*
- *
- *   {@demo "./demos/horizontal.jsx"}
- *   {@demo "./demos/vertical.jsx"}
- */
 export default class Space extends PureComponent<SpaceProps> {
     static defaultProps: SpaceProps = {
         direction: 'horizontal',

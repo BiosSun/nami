@@ -33,12 +33,6 @@ interface BaseItemProps {
 
 export type ItemProps = BaseItemProps & HTMLAttributes<HTMLDivElement>
 
-/**
- * @component
- *
- * @displayname 栅格列
- * @parent Linear
- */
 export default class Item extends Component<ItemProps> {
     static displayName = 'Linear.Item'
 

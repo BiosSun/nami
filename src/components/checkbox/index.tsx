@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 import Icon from '@components/icon'
 
-import './styles'
+import './index.scss'
 
 interface BaseCheckBoxProps {
     /**
@@ -62,34 +62,6 @@ interface CheckBoxState {
     checked: boolean
 }
 
-/**
- * @component
- *
- * @displayname 复选框
- * @group form
- *
- * @description
- *
- *     传统「CheckBox」风格的切换选择组件；
- *
- *     {@demo "./demos/default.jsx"}
- *
- * @example 状态
- *
- *     通过 `state` 参数定义组件状态：
- *
- *     {@demo "./demos/state.jsx"}
- *
- * @example 禁用
- *
- *     通过 `disabled` 参数，可以禁用组件：
- *
- *     {@demo "./demos/disabled.jsx"}
- *
- *     **注意：**禁用或只读输入框没有状态样式：
- *
- *     {@demo "./demos/disabled-has-state.jsx"}
- */
 export default class CheckBox extends PureComponent<CheckBoxProps, CheckBoxState> {
     // 该组件实例是否处于受控状态
     controlled: boolean = 'checked' in this.props

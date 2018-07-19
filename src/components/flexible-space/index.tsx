@@ -1,7 +1,7 @@
 import React, { PureComponent, HTMLAttributes } from 'react'
 import classnames from 'classnames'
 
-import './styles'
+import './index.scss'
 
 interface BaseFlexibleSpaceProps {
     /**
@@ -14,21 +14,6 @@ interface BaseFlexibleSpaceProps {
 
 export type FlexibleSpaceProps = BaseFlexibleSpaceProps & HTMLAttributes<HTMLDivElement>
 
-/**
- * @component
- *
- * @displayname 弹性空隔
- * @group layout
- *
- * @description
- *
- *   用于在两个布局元素之间插入一段自动填充剩余空间的空白间隔：
- *
- *   *\* 注：以下 Demo 中 FlexibleSpace 的背景色仅是为了演示效果而添加的，实际都是透明的。*
- *
- *   {@demo "./demos/horizontal.jsx"}
- *   {@demo "./demos/vertical.jsx"}
- */
 export default class FlexibleSpace extends PureComponent<FlexibleSpaceProps> {
     static defaultProps: FlexibleSpaceProps = {
         direction: 'horizontal',

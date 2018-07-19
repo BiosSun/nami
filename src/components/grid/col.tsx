@@ -25,12 +25,6 @@ interface BaseColProps {
 
 export type ColProps = BaseColProps & HTMLAttributes<HTMLDivElement>
 
-/**
- * @component
- *
- * @displayname 栅格列
- * @parent Grid
- */
 export default class Col extends Component<ColProps> {
     render() {
         const { span, offset, align, children, className, ...otherProps } = this.props

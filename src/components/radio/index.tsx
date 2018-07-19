@@ -1,7 +1,7 @@
 import React, { PureComponent, InputHTMLAttributes, ChangeEvent, LabelHTMLAttributes } from 'react'
 import classnames from 'classnames'
 
-import './styles'
+import './index.scss'
 
 interface BaseRadioProps {
     /**
@@ -48,34 +48,6 @@ interface BaseRadioProps {
 type InputRadioProps = BaseRadioProps & InputHTMLAttributes<HTMLInputElement>
 export type RadioProps = InputRadioProps & LabelHTMLAttributes<HTMLLabelElement>
 
-/**
- * @component
- *
- * @displayname 单选框
- * @group form
- *
- * @description
- *
- *     传统风格的单选框组件；
- *
- *     {@demo "./demos/default.jsx"}
- *
- * @example 状态
- *
- *     通过 `state` 参数定义组件状态：
- *
- *     {@demo "./demos/state.jsx"}
- *
- * @example 禁用
- *
- *     通过 `disabled` 参数，可以禁用组件：
- *
- *     {@demo "./demos/disabled.jsx"}
- *
- *     **注意：**禁用或只读输入框没有状态样式：
- *
- *     {@demo "./demos/disabled-has-state.jsx"}
- */
 export default class Radio extends PureComponent<RadioProps> {
     render() {
         const {

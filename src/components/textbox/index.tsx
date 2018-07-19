@@ -1,7 +1,7 @@
 import React, { Component, InputHTMLAttributes, ChangeEvent } from 'react'
 import classnames from 'classnames'
 
-import './styles'
+import './index.scss'
 
 interface BaseTextBoxProps {
     /**
@@ -16,7 +16,6 @@ interface BaseTextBoxProps {
 
     /**
      * 内容类型
-     * @default 'text'
      */
     type?: string
 
@@ -27,7 +26,6 @@ interface BaseTextBoxProps {
 
     /**
      * 是否禁用
-     * @default false
      */
     disabled?: boolean
 
@@ -39,34 +37,6 @@ interface BaseTextBoxProps {
 
 export type TextBoxProps = BaseTextBoxProps & InputHTMLAttributes<HTMLInputElement>
 
-/**
- * @component
- *
- * @displayname 文本框
- * @group form
- *
- * @description
- *
- *     用于输入一些简短的文本内容；
- *
- *     {@demo "./demos/default.jsx"}
- *
- * @example 状态
- *
- *     通过 `state` 参数定义文本框状态：
- *
- *     {@demo "./demos/state.jsx"}
- *
- * @example 禁用、只读
- *
- *     通过 `disabled` 或 `readOnly` 参数，可以设置文本框为禁用或只读状态：
- *
- *     {@demo "./demos/disabled.jsx"}
- *
- *     **注意：**禁用输入框没有状态样式：
- *
- *     {@demo "./demos/disabled-has-state.jsx"}
- */
 export default class TextBox extends Component<TextBoxProps> {
     static defaultProps: TextBoxProps = {
         type: 'text',

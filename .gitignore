@@ -104,7 +104,5 @@ Temporary Items
 .vscode
 yarn.lock
 lib
-src/**/*.d.ts
-docs/**/*.d.ts
-docs/datas/
-docs/demos/
+site/_docs/
+site/_demos/

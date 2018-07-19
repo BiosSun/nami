@@ -1,12 +1,11 @@
 import React, { Component, ReactNode, MouseEvent, ButtonHTMLAttributes } from 'react'
 import classnames from 'classnames'
 
-import './styles'
+import './index.scss'
 
 interface BaseButtonProps {
     /**
      * 按钮类型
-     * @default 'type'
      */
     type: 'primary' | 'info' | 'success' | 'warning' | 'danger'
 
@@ -32,7 +31,6 @@ interface BaseButtonProps {
 
     /**
      * 是否已禁用
-     * @default false
      */
     disabled?: boolean
 
@@ -49,35 +47,7 @@ interface BaseButtonProps {
 
 export type ButtonProps = BaseButtonProps & ButtonHTMLAttributes<HTMLButtonElement>
 
-/**
- * @component
- *
- * @displayname 按钮
- * @group general
- *
- * @description
- *
- *     用于触发某个操作，并体现当前的操作状态：可触发、进行中、已禁用……
- *
- *     {@demo "./demos/default.jsx"}
- *
- * @example 样式
- *
- *     通过 `type` 参数定义按钮配色类型，并通过 `outline`、`round`、`circle`、`shadow` 来定义按钮外形：
- *
- *     {@demo "./demos/mode-type.jsx"}
- *
- * @example 禁用
- *
- *     通过 `disabled` 参数，可以设置按钮为禁用状态：
- *
- *     {@demo "./demos/disabled.jsx"}
- */
 export default class Button extends Component<ButtonProps> {
-    static defaultProps = {
-        mode: 'plain',
-    }
-
     render() {
         const {
             type,

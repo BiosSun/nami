@@ -1,4 +1,4 @@
 package.json
 node_modules/
-docs/datas/
-docs/demos/
+site/_docs/
+site/_demos/

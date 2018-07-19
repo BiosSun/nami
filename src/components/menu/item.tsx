@@ -71,12 +71,6 @@ interface ItemState {
     subMenu: SubMenuElement
 }
 
-/**
- * @component
- *
- * @displayname 菜单项
- * @parent Menu
- */
 export default class Item extends Component<ItemProps, ItemState> {
     static displayName = 'Menu.Item'
 

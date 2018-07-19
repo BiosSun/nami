@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import Brand from './brand'
 export { default as NavbarBrand, BrandProps as NavbarBrandProps } from './brand'
 
-import './styles'
+import './index.scss'
 
 interface BaseNavbarProps {
     /**
@@ -15,18 +15,6 @@ interface BaseNavbarProps {
 
 export type NavbarProps = BaseNavbarProps & HTMLAttributes<HTMLDivElement>
 
-/**
- * @component
- *
- * @displayname 导航栏
- * @group navigation
- *
- * @description
- *
- *     提供一个页面级的水平布局导航栏组件。
- *
- *     {@demo "./demos/common.jsx"}
- */
 export default class Navbar extends Component<NavbarProps> {
     static Brand = Brand
 

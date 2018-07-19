@@ -1,0 +1,12 @@
+{
+    "documents": {
+        "lang": "./docs/lang.yaml",
+        "sort": "./docs/sort.yaml", 
+        "articles": "./docs/*.md",
+        "components": "./src/components/*/index.md"
+    },
+    "outputs": {
+        "documents": "./site/_docs",
+        "demos": "./site/_demos"
+    }
+}

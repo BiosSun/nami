@@ -1,7 +1,7 @@
 import React, { PureComponent, HTMLAttributes } from 'react'
 import classnames from 'classnames'
 
-import './styles'
+import './index.scss'
 
 interface BaseDividerProps {
     /**
@@ -14,19 +14,6 @@ interface BaseDividerProps {
 
 export type DividerProps = BaseDividerProps & HTMLAttributes<HTMLDivElement>
 
-/**
- * @component
- *
- * @displayname 分隔线
- * @group layout
- *
- * @description
- *
- *   用于在两个布局元素之间插入一条分隔线：
- *
- *   {@demo "./demos/horizontal.jsx"}
- *   {@demo "./demos/vertical.jsx"}
- */
 export default class Divider extends PureComponent<DividerProps> {
     static defaultProps: DividerProps = {
         direction: 'horizontal',

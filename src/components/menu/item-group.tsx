@@ -46,12 +46,6 @@ interface ItemGroupState {
     items: ReactElement<ItemProps>[]
 }
 
-/**
- * @component
- *
- * @displayname 菜单分组
- * @parent Menu
- */
 export default class ItemGroup extends Component<ItemGroupProps, ItemGroupState> {
     static displayName = 'Menu.ItemGroup'
 

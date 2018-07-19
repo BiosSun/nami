@@ -1,0 +1,427 @@
+@charset "utf-8";
+
+$app-demo-border-radius: 6px;
+
+.app-demo {
+    border: 1px solid var(--line-color);
+    border-radius: $app-demo-border-radius;
+
+    &__stage {
+        padding: 20px;
+
+        hr {
+            margin-left: -20px;
+            margin-right: -20px;
+        }
+    }
+
+    &__code {
+        > pre {
+            margin: 0;
+            padding: 0;
+            border-radius: 0 0 $app-demo-border-radius $app-demo-border-radius;
+            border-top: 1px solid var(--line-color);
+
+            > code {
+                margin: 0;
+                padding: 16px 20px;
+                border-radius: inherit;
+            }
+        }
+
+        &__handle-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 100%;
+            height: 30px;
+            padding: 0;
+
+            border: 0;
+            border-top: 1px solid var(--line-color);
+            border-radius: 0 0 $app-demo-border-radius $app-demo-border-radius;
+
+            font-size: var(--font-size-small);
+            line-height: 30px;
+            color: var(--text-color-quiet);
+
+            cursor: pointer;
+
+            > .icon {
+                width: var(--font-size-small);
+                margin-right: 0.6em;
+            }
+
+            &:hover {
+                color: var(--text-color);
+            }
+
+            &:focus {
+                outline: 0;
+            }
+        }
+    }
+}
+
+.app-demo__stage {
+    border-radius: $app-demo-border-radius $app-demo-border-radius 0 0;
+
+    &:before,
+    &:after {
+        content: '.';
+
+        display: block;
+        height: 0;
+
+        font: 0/0 a;
+        color: transparent;
+        text-shadow: none;
+    }
+
+    .box {
+        min-height: 40px;
+        line-height: 40px;
+
+        background-color: var(--line-color);
+        text-align: center;
+    }
+
+    .box-h-large {
+        min-height: 100px;
+        padding: 50px 0 20px;
+        line-height: 30px;
+    }
+
+    .box-h-middle {
+        min-height: 60px;
+        padding: 10px 0 20px;
+        line-height: 30px;
+    }
+
+    .box-h-small {
+        min-height: 30px;
+        line-height: 30px;
+    }
+}
+
+// menu, navbar
+// -----------------------------------------------------------------------------
+
+.demo-menu,
+.demo-navbar {
+    ul,
+    li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.demo-menu {
+    > .nami-menu--vertical {
+        width: 160px;
+    }
+
+    .nami-space,
+    .nami-flexible-space {
+        background: var(--background-color-loud);
+    }
+}
+
+.demo-menu-flexible-space-vertical {
+    .nami-menu--vertical {
+        height: 200px;
+    }
+}
+
+// linear
+// -----------------------------------------------------------------------------
+
+.demo-linear {
+    .box {
+        min-width: 100px;
+    }
+
+    .nami-linear {
+        margin-top: calc(var(--distance-vertical) / 2);
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    .nami-linear--horizontal {
+        > .nami-linear__item {
+            > .box {
+                margin-left: 1px;
+            }
+
+            &:first-child {
+                > .box {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+
+    .nami-linear--vertical {
+        > .nami-linear__item {
+            > .box {
+                margin-top: 1px;
+            }
+
+            &:first-child {
+                > .box {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}
+
+.demo-linear-spacing-horizontal,
+.demo-linear-spacing-vertical {
+    .nami-linear {
+        > .nami-linear__item {
+            > .box {
+                margin: 0;
+            }
+        }
+    }
+}
+
+.demo-linear-spacing-vertical {
+    > div {
+        display: flex;
+    }
+
+    .nami-linear {
+        flex: 1 1 auto;
+
+        margin-top: 0;
+        margin-left: var(--distance-vertical);
+
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+}
+
+.demo-linear-justify,
+.demo-linear-align {
+    .nami-linear {
+        background: var(--background-color-quiet);
+    }
+}
+
+.demo-linear-align {
+    .nami-linear {
+        height: 120px;
+    }
+}
+
+// grid
+// -----------------------------------------------------------------------------
+
+.demo-grid {
+    .nami-grid {
+        margin-top: calc(var(--distance-vertical) / 2);
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    .nami-grid__col {
+        > .box {
+            margin-left: 1px;
+        }
+
+        &:first-child {
+            > .box {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+.demo-grid-spacing {
+    .nami-grid__col {
+        > .box {
+            margin-left: 0;
+        }
+    }
+}
+
+%demo-grid-bg {
+    .nami-grid {
+        background: var(--background-color-quiet);
+    }
+}
+
+%demo-grid-height {
+    .nami-grid {
+        height: 120px;
+    }
+}
+
+%demo-grid-col-primary {
+    .nami-grid__col {
+        > .box {
+            background: var(--primary-color);
+        }
+    }
+}
+
+.demo-grid-justify {
+    @extend %demo-grid-bg;
+}
+
+.demo-grid-align {
+    @extend %demo-grid-bg;
+    @extend %demo-grid-height;
+}
+
+.demo-grid-col-align {
+    @extend %demo-grid-bg;
+    @extend %demo-grid-height;
+    @extend %demo-grid-col-primary;
+}
+
+// divider, space, flexible-space
+// -----------------------------------------------------------------------------
+
+.demo-divider,
+.demo-space,
+.demo-flexible-space {
+    .nami-linear__item {
+        padding: calc(var(--distance-vertical) / 2) var(--distance-horizontal);
+    }
+
+    .nami-space,
+    .nami-flexible-space {
+        background: var(--background-color-loud);
+    }
+}
+
+.demo-flexible-space {
+    .nami-linear--vertical {
+        height: 270px;
+    }
+}
+
+// icons
+// -----------------------------------------------------------------------------
+
+.demo-icon {
+    .icon-box-list {
+        display: flex;
+
+        margin: 0;
+        padding: 1px 0 0 1px;
+
+        list-style: none;
+    }
+
+    .icon-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        width: 16.66%;
+        height: 100px;
+
+        margin: -1px 0 0 -1px;
+        padding: 0;
+
+        color: #666;
+
+        border: 1px solid transparent;
+        border-radius: 5px;
+
+        > .nami-icon {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 18px;
+        }
+
+        > .icon-box__name {
+            font-size: var(--font-size-small);
+        }
+
+        &:hover {
+            border-color: var(--line-color);
+        }
+    }
+}
+
+// button
+// -----------------------------------------------------------------------------
+
+.demo-button {
+    .nami-button + .nami-button {
+        margin-left: var(--distance-horizontal);
+    }
+}
+
+// popover
+// -----------------------------------------------------------------------------
+
+.demo-popover {
+    padding: 0;
+
+    background: var(--background-color-loud);
+
+    > .demo-popover__controller {
+        width: 100%;
+        padding: var(--distance-vertical) var(--distance-horizontal);
+
+        background: var(--background-color);
+        border-bottom: 1px solid var(--line-color);
+        border-radius: $app-demo-border-radius $app-demo-border-radius 0 0;
+    }
+
+    > .nami-button {
+        display: block;
+        width: 160px;
+        margin: calc(var(--distance-vertical) * 3) auto;
+    }
+}
+
+// textbox
+// -----------------------------------------------------------------------------
+
+.demo-textbox {
+    .nami-textbox:not(:last-child) {
+        margin-bottom: var(--distance-vertical);
+    }
+}
+
+// select
+// -----------------------------------------------------------------------------
+
+.demo-select {
+    .nami-select:not(:last-child) {
+        margin-bottom: var(--distance-vertical);
+    }
+}
+
+// checkbox
+// -----------------------------------------------------------------------------
+
+.demo-checkbox {
+    .nami-checkbox:not(:last-child) {
+        margin-right: var(--distance-vertical);
+    }
+}
+
+// radio
+// -----------------------------------------------------------------------------
+
+.demo-radio {
+    .nami-radio:not(:last-child) {
+        margin-right: var(--distance-vertical);
+    }
+}
