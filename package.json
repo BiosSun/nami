@@ -11,10 +11,11 @@
         "README.md"
     ],
     "scripts": {
-        "start": "concurrently 'yarn docs-parser' 'webpack-serve'",
+        "start": "concurrently 'yarn docs-parser --watch' 'webpack-serve'",
         "format": "prettier --write './{src,docs,site,scripts}/**/*.{js,jsx,ts,tsx,json,scss,md}' './*.{js,json,md}'",
         "docs-parser": "node ./scripts/docs-parser",
-        "precommit": "pretty-quick --staged"
+        "precommit": "pretty-quick --staged",
+        "build": "yarn docs-parser && webpack"
     },
     "dependencies": {
         "classnames": "^2.2.5",

@@ -21,6 +21,8 @@ module.exports = function loadConfig() {
 
         del.sync([config.outputs.documents, config.outputs.demos])
 
+        config.watch = process.argv.indexOf('--watch') !== -1
+
         return config
     }
 }

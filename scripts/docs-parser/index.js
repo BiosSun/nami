@@ -37,7 +37,7 @@ function parse(config) {
     }
 
     function watchFragment(pattern, name) {
-        if (fragmentWatchers[name]) {
+        if (!config.watch || fragmentWatchers[name]) {
             return
         }
 
@@ -55,6 +55,10 @@ function parse(config) {
     }
 
     function watchDemos(docs, fragmentName) {
+        if (!config.watch) {
+            return
+        }
+
         if (Array.isArray(docs)) {
             docs.forEach(doc => {
                 _.forEach(doc.demos, demo => {
@@ -69,7 +73,7 @@ function parse(config) {
     function watchDemo(demo, doc, fragmentName) {
         const watcherId = `${fragmentName}.${doc.name}.${demo.name}`
 
-        if (demoWatchers[watcherId]) {
+        if (!config.watch || demoWatchers[watcherId]) {
             return
         }
 
