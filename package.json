@@ -1,7 +1,7 @@
 {
     "name": "nami",
     "version": "0.0.3",
-    "description": "a ui design language and library.",
+    "description": "UI Components.",
     "author": "Bios Sun",
     "license": "MIT",
     "main": "lib/index.js",
