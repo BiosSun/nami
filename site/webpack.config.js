@@ -1,4 +1,5 @@
 const path = require('path')
+const appRoot = require('app-root-path').toString()
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -7,7 +8,12 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 const sassAliasImporter = require('../scripts/sass-alias-importer')
 
-module.exports = (env, argv) => {
+const ENV_DEFAULT = {
+    production: false,
+    analyzer: false,
+}
+
+module.exports = (env = ENV_DEFAULT) => {
     const config = {
         mode: env.production ? 'production' : 'development',
         target: 'web',
@@ -21,7 +27,7 @@ module.exports = (env, argv) => {
         },
 
         output: {
-            path: path.resolve(__dirname, '..', '_site'),
+            path: path.join(appRoot, '_site'),
             filename: '[name].js',
         },
 
@@ -29,16 +35,18 @@ module.exports = (env, argv) => {
             extensions: ['.json', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss'],
             alias: {
                 // nami
-                '@utils': path.resolve(__dirname, '..', 'src', 'utils'),
-                '@components': path.resolve(__dirname, '..', 'src', 'components'),
+                '@utils': path.join(appRoot, 'src', 'utils'),
+                '@components': path.join(appRoot, 'src', 'components'),
 
-                // docs
-                nami: path.resolve(__dirname, '..', 'src'),
-                '@site/components': path.resolve(__dirname, 'components'),
-                '@site/views': path.resolve(__dirname, 'views'),
-                '@site/utils': path.resolve(__dirname, 'utils'),
-                '@site/docs': path.resolve(__dirname, '_docs'),
-                '@site/demos': path.resolve(__dirname, '_demos'),
+                // site
+                nami: path.join(appRoot, 'src'),
+                '@site/components': path.join(appRoot, 'site', 'components'),
+                '@site/views': path.join(appRoot, 'site', 'views'),
+                '@site/utils': path.join(appRoot, 'site', 'utils'),
+                '@site/docs': path.join(appRoot, 'site', '_docs'),
+                '@site/demos': path.join(appRoot, 'site', '_demos'),
+            },
+        },
 
         optimization: {
             splitChunks: {
@@ -129,13 +137,15 @@ module.exports = (env, argv) => {
             }),
 
             new HtmlWebpackPlugin({
-                template: path.resolve(__dirname, 'index.html'),
+                template: 'site/index.html',
             }),
 
             new CopyWebpackPlugin(['site/404.html']),
         ],
+    }
 
-        devtool: 'eval-source-map',
+    if (!env.production) {
+        config.devtool = 'eval-source-map'
     }
 
     if (env.analyzer) {
