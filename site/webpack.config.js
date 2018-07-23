@@ -14,6 +14,8 @@ const ENV_DEFAULT = {
 }
 
 module.exports = (env = ENV_DEFAULT) => {
+    const PUBLIC_URL = env.production ? '/nami/' : '/'
+
     const config = {
         mode: env.production ? 'production' : 'development',
         target: 'web',
@@ -129,7 +131,7 @@ module.exports = (env = ENV_DEFAULT) => {
 
         plugins: [
             new webpack.DefinePlugin({
-                'process.env.PUBLIC_URL': env.production ? '"/nami"' : '"/"',
+                'process.env.PUBLIC_URL': JSON.stringify(PUBLIC_URL),
             }),
 
             new MiniCssExtractPlugin({
@@ -138,6 +140,7 @@ module.exports = (env = ENV_DEFAULT) => {
 
             new HtmlWebpackPlugin({
                 template: 'site/index.html',
+                PUBLIC_URL: PUBLIC_URL,
             }),
 
             new CopyWebpackPlugin(['site/404.html']),
