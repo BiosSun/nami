@@ -7,7 +7,7 @@ import './index.scss'
 import App from './app'
 
 ReactDOM.render(
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
         <App />
     </Router>,
     document.getElementById('app')

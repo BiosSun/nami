@@ -91,6 +91,10 @@ module.exports = (env, argv) => {
         },
 
         plugins: [
+            new webpack.DefinePlugin({
+                'process.env.PUBLIC_URL': env.production ? '"/nami"' : '"/"',
+            }),
+
             new MiniCssExtractPlugin({
                 filename: 'index.css',
             }),
