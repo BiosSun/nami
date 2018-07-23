@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const sassAliasImporter = require('../scripts/sass-alias-importer')
 
 module.exports = (env, argv) => {
@@ -97,6 +98,8 @@ module.exports = (env, argv) => {
             new HtmlWebpackPlugin({
                 template: path.resolve(__dirname, 'index.html'),
             }),
+
+            new CopyWebpackPlugin(['site/404.html']),
         ],
 
         devtool: 'eval-source-map',

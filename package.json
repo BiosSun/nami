@@ -55,6 +55,7 @@
         "chokidar": "^2.0.4",
         "concurrently": "^3.5.1",
         "connect-history-api-fallback": "^1.5.0",
+        "copy-webpack-plugin": "^4.5.2",
         "css-loader": "^0.28.11",
         "del": "^3.0.0",
         "del-cli": "^1.1.0",
