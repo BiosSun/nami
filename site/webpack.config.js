@@ -12,15 +12,17 @@ module.exports = (env, argv) => {
         mode: env.production ? 'production' : 'development',
         target: 'web',
 
-        entry: [
-            // 一般开发时使用的浏览器都比较新，因此大多都不需要引入 core-js
-            env.production ? 'babel-polyfill' : 'regenerator-runtime/runtime',
-            './site/index.tsx',
-        ],
+        entry: {
+            index: [
+                // 一般开发时使用的浏览器都比较新，因此大多都不需要引入 core-js
+                env.production ? 'babel-polyfill' : 'regenerator-runtime/runtime',
+                './site/index.tsx',
+            ],
+        },
 
         output: {
             path: path.resolve(__dirname, '..', '_site'),
-            filename: 'index.js',
+            filename: '[name].js',
         },
 
         resolve: {
@@ -37,6 +39,31 @@ module.exports = (env, argv) => {
                 '@site/utils': path.resolve(__dirname, 'utils'),
                 '@site/docs': path.resolve(__dirname, '_docs'),
                 '@site/demos': path.resolve(__dirname, '_demos'),
+
+        optimization: {
+            splitChunks: {
+                chunks: 'all',
+                maxInitialRequests: 5,
+                cacheGroups: {
+                    nami: {
+                        name: 'nami',
+                        test: /[\\/]src[\\/]/,
+                    },
+                    vendors: {
+                        name: 'vendors',
+                        test: /[\\/]node_modules[\\/]/,
+                    },
+                    polyfill: {
+                        name: 'polyfill',
+                        test: /[\\/](babel-polyfill|core-js)[\\/]/,
+                        priority: 1,
+                    },
+                    react: {
+                        name: 'react',
+                        test: /[\\/]react(-dom)?[\\/]/,
+                        priority: 1,
+                    },
+                },
             },
         },
 
@@ -98,7 +125,7 @@ module.exports = (env, argv) => {
             }),
 
             new MiniCssExtractPlugin({
-                filename: 'index.css',
+                filename: '[name].css',
             }),
 
             new HtmlWebpackPlugin({
