@@ -1,39 +1,80 @@
 const path = require('path')
+const appRoot = require('app-root-path').toString()
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+
 const sassAliasImporter = require('../scripts/sass-alias-importer')
 
-module.exports = (env, argv) => {
+const ENV_DEFAULT = {
+    production: false,
+    analyzer: false,
+}
+
+module.exports = (env = ENV_DEFAULT) => {
+    const PUBLIC_URL = env.production ? '/nami/' : '/'
+
     const config = {
         mode: env.production ? 'production' : 'development',
         target: 'web',
 
-        entry: [
-            // 一般开发时使用的浏览器都比较新，因此大多都不需要引入 core-js
-            env.production ? 'babel-polyfill' : 'regenerator-runtime/runtime',
-            './site/index.tsx',
-        ],
+        entry: {
+            index: [
+                // 一般开发时使用的浏览器都比较新，因此大多都不需要引入 core-js
+                env.production ? 'babel-polyfill' : 'regenerator-runtime/runtime',
+                './site/index.tsx',
+            ],
+        },
 
         output: {
-            path: path.resolve(__dirname, '..', '_site'),
-            filename: 'index.js',
+            path: path.join(appRoot, '_site'),
+            filename: env.production ? '[name].[chunkhash].js' : '[name].js',
+            hashDigestLength: 8,
         },
 
         resolve: {
             extensions: ['.json', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss'],
             alias: {
                 // nami
-                '@utils': path.resolve(__dirname, '..', 'src', 'utils'),
-                '@components': path.resolve(__dirname, '..', 'src', 'components'),
+                '@utils': path.join(appRoot, 'src', 'utils'),
+                '@components': path.join(appRoot, 'src', 'components'),
 
-                // docs
-                nami: path.resolve(__dirname, '..', 'src'),
-                '@site/components': path.resolve(__dirname, 'components'),
-                '@site/views': path.resolve(__dirname, 'views'),
-                '@site/utils': path.resolve(__dirname, 'utils'),
-                '@site/docs': path.resolve(__dirname, '_docs'),
-                '@site/demos': path.resolve(__dirname, '_demos'),
+                // site
+                nami: path.join(appRoot, 'src'),
+                '@site/components': path.join(appRoot, 'site', 'components'),
+                '@site/views': path.join(appRoot, 'site', 'views'),
+                '@site/utils': path.join(appRoot, 'site', 'utils'),
+                '@site/docs': path.join(appRoot, 'site', '_docs'),
+                '@site/demos': path.join(appRoot, 'site', '_demos'),
+            },
+        },
+
+        optimization: {
+            splitChunks: {
+                chunks: 'all',
+                maxInitialRequests: 5,
+                cacheGroups: {
+                    nami: {
+                        name: 'nami',
+                        test: /[\\/]src[\\/]/,
+                    },
+                    vendors: {
+                        name: 'vendors',
+                        test: /[\\/]node_modules[\\/]/,
+                    },
+                    polyfill: {
+                        name: 'polyfill',
+                        test: /[\\/](babel-polyfill|core-js)[\\/]/,
+                        priority: 1,
+                    },
+                    react: {
+                        name: 'react',
+                        test: /[\\/]react(-dom)?[\\/]/,
+                        priority: 1,
+                    },
+                },
             },
         },
 
@@ -90,16 +131,29 @@ module.exports = (env, argv) => {
         },
 
         plugins: [
+            new webpack.DefinePlugin({
+                'process.env.PUBLIC_URL': JSON.stringify(PUBLIC_URL),
+            }),
+
             new MiniCssExtractPlugin({
-                filename: 'index.css',
+                filename: env.production ? '[name].[chunkhash].css' : '[name].css',
             }),
 
             new HtmlWebpackPlugin({
-                template: path.resolve(__dirname, 'index.html'),
+                template: 'site/index.html',
+                PUBLIC_URL: PUBLIC_URL,
             }),
-        ],
 
-        devtool: 'eval-source-map',
+            new CopyWebpackPlugin(['site/404.html']),
+        ],
+    }
+
+    if (!env.production) {
+        config.devtool = 'eval-source-map'
+    }
+
+    if (env.analyzer) {
+        config.plugins.unshift(new BundleAnalyzerPlugin())
     }
 
     return config
