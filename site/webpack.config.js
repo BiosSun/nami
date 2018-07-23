@@ -3,6 +3,8 @@ const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+
 const sassAliasImporter = require('../scripts/sass-alias-importer')
 
 module.exports = (env, argv) => {
@@ -107,6 +109,10 @@ module.exports = (env, argv) => {
         ],
 
         devtool: 'eval-source-map',
+    }
+
+    if (env.analyzer) {
+        config.plugins.unshift(new BundleAnalyzerPlugin())
     }
 
     return config
