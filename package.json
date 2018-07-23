@@ -15,7 +15,7 @@
         "format": "prettier --write './{src,docs,site,scripts}/**/*.{js,jsx,ts,tsx,json,scss,md}' './*.{js,json,md}'",
         "docs-parser": "node ./scripts/docs-parser",
         "precommit": "pretty-quick --staged",
-        "build:site": "del '_site' && yarn docs-parser && webpack --env.production --config site/webpack.config.js && gh-pages -d '_site' --no-push"
+        "build:site": "del '_site' && yarn docs-parser && webpack --env.production --config site/webpack.config.js && gh-pages -d '_site'"
     },
     "dependencies": {
         "classnames": "^2.2.5",
