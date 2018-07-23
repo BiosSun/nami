@@ -3,12 +3,7 @@ import classnames from 'classnames'
 import Loadable from 'react-loadable'
 import { Icon } from 'nami'
 
-import SyntaxHighlighter from 'react-syntax-highlighter/prism'
-import syntaxHighlighterStyle from 'react-syntax-highlighter/styles/prism/hopscotch'
-
-delete syntaxHighlighterStyle['code[class*="language-"]']
-delete syntaxHighlighterStyle['pre[class*="language-"]']
-
+import SyntaxHighlighter from '@site/components/syntax-highlighter'
 import { DocInfo } from '@site/utils/doc-info.interface'
 
 import './index.scss'
@@ -148,11 +143,7 @@ export default class Demo extends Component<DemoProps, DemoState> {
     }
 
     renderCode(code: string, language: string): React.ReactNode {
-        return (
-            <SyntaxHighlighter language={language} style={syntaxHighlighterStyle}>
-                {code}
-            </SyntaxHighlighter>
-        )
+        return <SyntaxHighlighter language={language}>{code}</SyntaxHighlighter>
     }
 
     renderDemoComponent(): React.ReactNode {
