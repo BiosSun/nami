@@ -30,7 +30,8 @@ module.exports = (env = ENV_DEFAULT) => {
 
         output: {
             path: path.join(appRoot, '_site'),
-            filename: '[name].js',
+            filename: env.production ? '[name].[chunkhash].js' : '[name].js',
+            hashDigestLength: 8,
         },
 
         resolve: {
@@ -135,7 +136,7 @@ module.exports = (env = ENV_DEFAULT) => {
             }),
 
             new MiniCssExtractPlugin({
-                filename: '[name].css',
+                filename: env.production ? '[name].[chunkhash].css' : '[name].css',
             }),
 
             new HtmlWebpackPlugin({
