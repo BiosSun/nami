@@ -29,8 +29,7 @@
         "format": "prettier --write './{src,docs,site,scripts}/**/*.{js,jsx,ts,tsx,json,scss,md}' './*.{js,json,md}'",
         "docs-parser": "node ./scripts/docs-parser",
         "precommit": "pretty-quick --staged",
-        "build": "gulp build",
-        "publish": "gulp publish"
+        "prepublishOnly": "gulp publish"
     },
     "dependencies": {
         "classnames": "^2.2.5",

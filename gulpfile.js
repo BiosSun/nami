@@ -19,18 +19,18 @@ var paths = {
     },
 }
 
-gulp.task('clean', function clean() {
+gulp.task('clean', function() {
     return del(['_site', 'dist', 'es'])
 })
 
-gulp.task('nami:dist', function namiDist() {
+gulp.task('nami:dist', function() {
     return gulp
         .src(paths.nami.entry)
         .pipe(webpack(require('./webpack.config.js')()))
         .pipe(gulp.dest('dist/'))
 })
 
-gulp.task('site:datas', function siteDatas(done) {
+gulp.task('site:docs-parser', function(done) {
     shell.cd(appRoot)
 
     if (shell.exec('npm run docs-parser').code !== 0) {
@@ -40,23 +40,20 @@ gulp.task('site:datas', function siteDatas(done) {
     done()
 })
 
-gulp.task('site:build', function siteBuild() {
+gulp.task('site:webpack', function() {
     return gulp
         .src(paths.site.entry)
         .pipe(webpack(require('./site/webpack.config.js')({ production: true })))
         .pipe(gulp.dest('_site/'))
 })
 
-gulp.task('site:publish', function sitePublish(done) {
+gulp.task('site:gh-pages', function(done) {
     ghpages.publish('_site', done)
 })
 
-gulp.task(
-    'build',
-    gulp.series(
-        'clean',
-        gulp.parallel(gulp.series('nami:dist'), gulp.series('site:datas', 'site:build'))
-    )
-)
+gulp.task('nami:build', gulp.series('nami:dist'))
+gulp.task('site:build', gulp.series('site:docs-parser', 'site:webpack'))
+gulp.task('site:publish', gulp.series('site:build', 'site:gh-pages'))
 
-gulp.task('publish', gulp.series('build', 'site:publish'))
+gulp.task('build', gulp.series('clean', gulp.parallel('nami:build', 'site:build')))
+gulp.task('publish', gulp.series('clean', gulp.parallel('nami:build', 'site:publish')))
