@@ -10,7 +10,7 @@ import Item from './item'
 import ItemGroup from './item-group'
 import { RootMenuMode, MenuMode, DirectionEnum } from './utils'
 
-interface BaseMenuProps {
+export interface BaseMenuProps {
     /**
      * 菜单展示模式
      * @default 'horizontal'

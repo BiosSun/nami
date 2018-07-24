@@ -1,5 +1,5 @@
 import React, { Component, ReactElement, ReactNode } from 'react'
-import { Menu, MenuItemGroupProps } from 'nami'
+import { Menu } from 'nami'
 
 import MenuItemLink from '@site/components/menu-item-link'
 import DisplayName from '@site/components/display-name'
@@ -52,7 +52,7 @@ export default class DocumentsNav extends Component {
             return undefined
         }
 
-        const groupElements: Array<ReactElement<MenuItemGroupProps>> = []
+        const groupElements: Array<ReactElement<any>> = []
         const groupNames = Object.keys(groups)
 
         if (sort) {

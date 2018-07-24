@@ -1,4 +1,6 @@
 package.json
+dist/
+es/
 node_modules/
 site/_docs/
 site/_demos/

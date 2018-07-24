@@ -1,7 +1,7 @@
 import React, { Component, ComponentClass, HTMLAttributes } from 'react'
 import classnames from 'classnames'
 
-interface BaseItemProps {
+export interface BaseItemProps {
     /**
      * 该元素是否填充容器内剩余空间
      * @default false

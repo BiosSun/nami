@@ -21,7 +21,7 @@ import globalController from './global-controller'
 
 import './index.scss'
 
-interface BasePopoverProps {
+export interface BasePopoverProps {
     /**
      * 该弹出层所绑定的目标元素，弹出层将相对该元素对齐
      */
@@ -102,7 +102,7 @@ interface BasePopoverProps {
 
 export type PopoverProps = BasePopoverProps & HTMLAttributes<HTMLDivElement>
 
-interface PopoverState {
+export interface PopoverState {
     /**
      * 是否为受控状态，this.controlled 属性的镜像，用于在 getDerivedStateFromProps 中访问
      */

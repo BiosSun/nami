@@ -6,7 +6,7 @@ export { default as GridCol, ColProps as GridColProps } from './col'
 
 import './index.scss'
 
-interface BaseGridProps {
+export interface BaseGridProps {
     /**
      * 所有列的水平对齐方式
      */

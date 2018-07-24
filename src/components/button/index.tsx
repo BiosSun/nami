@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 import './index.scss'
 
-interface BaseButtonProps {
+export interface BaseButtonProps {
     /**
      * 按钮类型
      */

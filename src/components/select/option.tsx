@@ -5,7 +5,7 @@ import { SelectValue, SelectEvent, selectEventFactory } from './utils'
 import shallowequal from 'shallowequal'
 import noop from '@utils/noop'
 
-interface BaseOptionProps {
+export interface BaseOptionProps {
     /**
      * 该选项的值
      */

@@ -1,7 +1,7 @@
 import React, { Component, HTMLAttributes } from 'react'
 import classnames from 'classnames'
 
-interface BaseBrandProps {
+export interface BaseBrandProps {
     /**
      * 自定义标识内容
      */

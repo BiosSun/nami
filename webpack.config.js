@@ -1,27 +1,62 @@
 const path = require('path')
+const appRoot = require('app-root-path').toString()
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const nodeExternals = require('webpack-node-externals')
-const sassAliasImporter = require('../scripts/sass-alias-importer')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const sassAliasImporter = require('./scripts/sass-alias-importer')
 
-module.exports = (env, argv) => {
+const ENV_DEFAULT = {
+    analyzer: false,
+}
+
+module.exports = (env = ENV_DEFAULT) => {
     const config = {
-        mode: env.production ? 'production' : 'none',
+        // 因为希望把压缩代码放在 gulp 中来做，因此虽然是发布构建，但不能设置为 `production`
+        mode: 'none',
 
-        entry: './src/index.ts',
+        // entry 在 gulp 中指定
 
         output: {
-            path: path.resolve(__dirname, 'lib'),
+            path: path.join(appRoot, 'lib'),
             filename: 'index.js',
             library: 'nami',
-            libraryTarget: 'commonjs2',
+            libraryTarget: 'umd',
         },
 
         resolve: {
-            extensions: ['.json', '.js', '.jsx', '.ts', '.tsx', '.css', '.sass', '.scss'],
+            extensions: ['.json', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss'],
+            alias: {
+                '@utils': path.join(appRoot, 'src', 'utils'),
+                '@components': path.join(appRoot, 'src', 'components'),
+            },
         },
 
-        externals: [nodeExternals()],
+        externals: {
+            react: {
+                commonjs: 'react',
+                commonjs2: 'react',
+                amd: 'react',
+                root: 'React',
+            },
+            'react-dom': {
+                commonjs: 'react-dom',
+                commonjs2: 'react-dom',
+                amd: 'react-dom',
+                root: 'ReactDOM',
+            },
+            'popper.js': {
+                commonjs: 'popper.js',
+                commonjs2: 'popper.js',
+                amd: 'popper.js',
+                root: 'Popper',
+            },
+            'prop-types': {
+                commonjs: 'prop-types',
+                commonjs2: 'prop-types',
+                amd: 'prop-types',
+                root: 'PropTypes',
+            },
+        },
 
         module: {
             rules: [
@@ -31,23 +66,30 @@ module.exports = (env, argv) => {
                     use: [
                         {
                             loader: 'babel-loader',
+                            options: {
+                                plugins: [
+                                    [
+                                        'transform-runtime',
+                                        {
+                                            polyfill: false,
+                                        },
+                                    ],
+                                ],
+                            },
                         },
                         {
                             loader: 'ts-loader',
                             options: {
                                 onlyCompileBundledFiles: true,
-                                compilerOptions: {
-                                    declaration: true,
-                                },
                             },
                         },
                     ],
                 },
                 {
-                    test: /\.s[ac]ss$/,
+                    test: /\.scss$/,
                     include: path.join(__dirname, 'src'),
                     use: [
-                        env.production ? MiniCssExtractPlugin.loader : 'style-loader',
+                        MiniCssExtractPlugin.loader,
                         {
                             loader: 'css-loader',
                         },
@@ -56,8 +98,8 @@ module.exports = (env, argv) => {
                             options: {
                                 outputStyle: 'expanded',
                                 importer: sassAliasImporter({
-                                    '@nami//': './src/components',
-                                    '@docs//': './docs/src',
+                                    '@nami//': './src',
+                                    '@node//': './node_modules',
                                 }),
                             },
                         },
@@ -70,14 +112,15 @@ module.exports = (env, argv) => {
             new MiniCssExtractPlugin({
                 filename: 'index.css',
             }),
+
+            new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify('production') }),
+            new webpack.optimize.ModuleConcatenationPlugin(),
+            new webpack.NoEmitOnErrorsPlugin(),
         ],
     }
 
-    if (!env.production) {
-        config.plugins.push(
-            new webpack.NamedModulesPlugin(),
-            new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify('development') })
-        )
+    if (env.analyzer) {
+        config.plugins.unshift(new BundleAnalyzerPlugin())
     }
 
     return config

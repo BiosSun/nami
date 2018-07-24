@@ -6,7 +6,7 @@ import Linear from '@components/linear'
 import { ItemProps } from './item'
 import { MenuMode, DirectionEnum } from './utils'
 
-interface BaseItemGroupProps {
+export interface BaseItemGroupProps {
     /**
      * 该分组的头部内容及其所包含的菜单项<br/>
      * *第一个子元素将做为分组的头部内容，其余子元素为该分组中所包含的菜单项*
@@ -34,7 +34,7 @@ interface BaseItemGroupProps {
 
 export type ItemGroupProps = BaseItemGroupProps & HTMLAttributes<HTMLDivElement>
 
-interface ItemGroupState {
+export interface ItemGroupState {
     /**
      * 组件头部内容
      */

@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 import './index.scss'
 
-interface BaseRadioProps {
+export interface BaseRadioProps {
     /**
      * 该单选框所属分组的名字
      */
@@ -45,7 +45,7 @@ interface BaseRadioProps {
     onChange?: (e: ChangeEvent<HTMLElement>) => void
 }
 
-type InputRadioProps = BaseRadioProps & InputHTMLAttributes<HTMLInputElement>
+export type InputRadioProps = BaseRadioProps & InputHTMLAttributes<HTMLInputElement>
 export type RadioProps = InputRadioProps & LabelHTMLAttributes<HTMLLabelElement>
 
 export default class Radio extends PureComponent<RadioProps> {
