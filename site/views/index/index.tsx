@@ -13,6 +13,7 @@ export default class IndexView extends PureComponent<{}> {
                         <div className="app-masthead">
                             <Logo className="app-masthead__logo" />
                             <h1 className="app-masthead__slogen">{lang.slogan}</h1>
+                            <p className="app-masthead__version">v{process.env.VERSION}</p>
                         </div>
                     </div>
                 )}

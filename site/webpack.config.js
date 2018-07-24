@@ -13,6 +13,8 @@ const ENV_DEFAULT = {
     analyzer: false,
 }
 
+const p = require('../package.json')
+
 module.exports = (env = ENV_DEFAULT) => {
     const PUBLIC_URL = env.production ? '/nami/' : '/'
 
@@ -133,6 +135,7 @@ module.exports = (env = ENV_DEFAULT) => {
         plugins: [
             new webpack.DefinePlugin({
                 'process.env.PUBLIC_URL': JSON.stringify(PUBLIC_URL),
+                'process.env.VERSION': JSON.stringify(p.version),
             }),
 
             new MiniCssExtractPlugin({
