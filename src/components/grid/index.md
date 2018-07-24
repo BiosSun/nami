@@ -1,6 +1,6 @@
 ---
 name: grid
-displayName: Grid *栅格*
+displayName: Grid *栅格布局*
 group: layout
 ---
 
