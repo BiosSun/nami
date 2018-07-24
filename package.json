@@ -4,10 +4,11 @@
     "description": "UI Components.",
     "author": "Bios Sun",
     "license": "MIT",
-    "main": "lib/index.js",
-    "types": "lib/index.d.ts",
+    "main": "dist/index.js",
+    "types": "src/index.ts",
     "files": [
-        "lib",
+        "dist",
+        "src",
         "README.md"
     ],
     "scripts": {
@@ -15,7 +16,8 @@
         "format": "prettier --write './{src,docs,site,scripts}/**/*.{js,jsx,ts,tsx,json,scss,md}' './*.{js,json,md}'",
         "docs-parser": "node ./scripts/docs-parser",
         "precommit": "pretty-quick --staged",
-        "build:site": "del '_site' && yarn docs-parser && webpack --env.production --config site/webpack.config.js && gh-pages -d '_site'"
+        "build": "gulp build",
+        "publish": "gulp publish"
     },
     "dependencies": {
         "classnames": "^2.2.5",
@@ -48,8 +50,10 @@
         "babel-plugin-transform-class-properties": "^6.24.1",
         "babel-plugin-transform-object-rest-spread": "^6.26.0",
         "babel-plugin-transform-react-jsx": "^6.24.1",
+        "babel-plugin-transform-runtime": "^6.23.0",
         "babel-polyfill": "^6.26.0",
         "babel-preset-env": "^1.6.1",
+        "babel-runtime": "^6.26.0",
         "babel-template": "^6.26.0",
         "browser-sync": "^2.23.7",
         "chokidar": "^2.0.4",

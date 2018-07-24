@@ -103,6 +103,7 @@ Temporary Items
 
 .vscode
 yarn.lock
-lib
+dist/
+es/
 site/_docs/
 site/_demos/
