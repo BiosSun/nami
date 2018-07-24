@@ -19,3 +19,24 @@ Nami 是一个基于 React 开发的桌面端组件库；源于作者对前端�
 -   `Opera` 36+
 -   `Edge` 16+
 -   `IE` _no support_
+
+## 安装
+
+目前 Nami 只提供了一份 UMD 格式的打包文件：
+
+```bash
+$ yarn add @biossun/nami
+```
+
+```jsx
+// import nami styles
+import '@biossun/nami/dist/index.css'
+
+// import components
+import { Button } from '@biossun/nami'
+
+// use it!
+render(<Button>text</Button>)
+```
+
+_支持树抖动且加载方式更加友好的 ES6 Modules 格式的发布构建将按计划在 0.4.0 版本发布。_

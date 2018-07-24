@@ -13,3 +13,8 @@ declare module 'react-syntax-highlighter/languages/prism/jsx' {
     const jsx: any
     export default jsx
 }
+
+declare module 'react-syntax-highlighter/languages/prism/bash' {
+    const bash: any
+    export default bash
+}
