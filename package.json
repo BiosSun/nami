@@ -2,14 +2,27 @@
     "name": "@biossun/nami",
     "version": "0.0.3",
     "description": "UI Components.",
-    "author": "Bios Sun",
+    "keywords": [
+        "nami",
+        "react",
+        "component",
+        "components",
+        "ui"
+    ],
+    "homepage": "http://biossun.org/nami",
+    "bugs": "https://github.com/biossun/nami/issues",
+    "repository": "github:biossun/nami",
     "license": "MIT",
+    "author": {
+        "name": "Bios Sun",
+        "email": "biossun@gmail.com",
+        "url": "http://biossun.org"
+    },
     "main": "dist/index.js",
     "types": "src/index.ts",
     "files": [
         "dist",
-        "src",
-        "README.md"
+        "src"
     ],
     "scripts": {
         "start": "concurrently 'yarn docs-parser --watch' 'webpack-serve --config site/webpack.config.js'",
