@@ -5,7 +5,7 @@ import Icon from '@components/icon'
 
 import './index.scss'
 
-interface BaseCheckBoxProps {
+export interface BaseCheckBoxProps {
     /**
      * 该复选框所属分组的名字
      */
@@ -50,7 +50,7 @@ interface BaseCheckBoxProps {
 export type InputCheckBoxProps = BaseCheckBoxProps & InputHTMLAttributes<HTMLInputElement>
 export type CheckBoxProps = InputCheckBoxProps & LabelHTMLAttributes<HTMLLabelElement>
 
-interface CheckBoxState {
+export interface CheckBoxState {
     /**
      * 是否为受控状态，this.controlled 属性的镜像，用于在 getDerivedStateFromProps 中访问
      */

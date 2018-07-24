@@ -13,7 +13,7 @@ export { default as LinearItem, ItemProps as LinearItemProps } from './item'
 
 import './index.scss'
 
-interface BaseLinearProps {
+export interface BaseLinearProps {
     /**
      * 布局方向
      * @default "horizontal"

@@ -6,7 +6,7 @@ export { default as NavbarBrand, BrandProps as NavbarBrandProps } from './brand'
 
 import './index.scss'
 
-interface BaseNavbarProps {
+export interface BaseNavbarProps {
     /**
      * 导航栏内容项
      */

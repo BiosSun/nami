@@ -1,8 +1,9 @@
-import { PureComponent } from 'react'
+import { PureComponent, ReactElement, ReactNode } from 'react'
 import { findDOMNode } from 'react-dom'
 
 export interface ReferenceProps {
     innerElement(referenceElement: Element | null | Text): void
+    children: ReactElement<any>
 }
 
 export default class Reference extends PureComponent<ReferenceProps> {
@@ -10,7 +11,7 @@ export default class Reference extends PureComponent<ReferenceProps> {
         this.props.innerElement(findDOMNode(this))
     }
 
-    render() {
+    render(): ReactNode {
         return this.props.children
     }
 }

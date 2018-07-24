@@ -1,6 +1,6 @@
 import React from 'react'
 
-interface Component extends React.Component {
+export interface Component extends React.Component {
     didWarnControlledToUncontrolled?: boolean
     didWarnUncontrolledToControlled?: boolean
 }

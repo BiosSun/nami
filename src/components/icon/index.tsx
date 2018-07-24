@@ -5,7 +5,7 @@ import icons from './icons'
 
 import './index.scss'
 
-interface BaseIconProps {
+export interface BaseIconProps {
     /**
      * 图标名称；
      */

@@ -6,10 +6,10 @@ import Linear from '@components/linear'
 import { MenuMode, SubMenuModeEnum } from './utils'
 import { MenuProps } from './menu'
 
-type HeaderElement = ReactElement<HTMLAttributes<HTMLDivElement>>
-type SubMenuElement = ReactElement<MenuProps>
+export type HeaderElement = ReactElement<HTMLAttributes<HTMLDivElement>>
+export type SubMenuElement = ReactElement<MenuProps>
 
-interface BaseItemProps {
+export interface BaseItemProps {
     /**
      * 该菜单项当前是否处于激活状态
      * @default false
@@ -49,7 +49,7 @@ interface BaseItemProps {
 
 export type ItemProps = BaseItemProps & HTMLAttributes<HTMLDivElement>
 
-interface ItemState {
+export interface ItemState {
     /**
      * 该菜单项当前是否处于鼠标悬停状态
      */

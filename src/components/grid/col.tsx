@@ -1,7 +1,7 @@
 import React, { Component, HTMLAttributes } from 'react'
 import classnames from 'classnames'
 
-interface BaseColProps {
+export interface BaseColProps {
     /**
      * 栅格列宽
      */

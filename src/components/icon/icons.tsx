@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 
-interface Icons {
+export interface Icons {
     [name: string]: () => ReactNode
 }
 

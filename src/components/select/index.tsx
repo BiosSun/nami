@@ -22,7 +22,7 @@ import Option, { OptionProps } from './option'
 
 export { default as SelectOption, OptionProps as SelectOptionProps } from './option'
 
-interface BaseSelectProps {
+export interface BaseSelectProps {
     /**
      * 选中值
      */
@@ -57,7 +57,7 @@ interface BaseSelectProps {
 
 export type SelectProps = BaseSelectProps & HTMLAttributes<HTMLDivElement>
 
-interface SelectState {
+export interface SelectState {
     /**
      * 是否为受控状态，this.controlled 属性的镜像，用于在 getDerivedStateFromProps 中访问
      */

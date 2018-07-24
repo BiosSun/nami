@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 import './index.scss'
 
-interface BaseTextBoxProps {
+export interface BaseTextBoxProps {
     /**
      * 默认内容
      */
