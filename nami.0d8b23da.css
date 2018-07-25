@@ -109,9 +109,6 @@
   border-radius: var(--box-base-border-radius);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   text-align: center;
   background: var(--button-background);
   border-color: var(--button-border-color);
@@ -627,9 +624,6 @@
   border-radius: var(--box-base-border-radius);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1107,9 +1101,6 @@
   border-radius: var(--box-base-border-radius);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   flex: 1 1 auto;
   color: var(--textbox-color);
   background: var(--textbox-background);
@@ -1191,9 +1182,6 @@
   border-radius: var(--box-base-border-radius);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   color: var(--select-color);
   background: var(--select-background);
   border-color: var(--select-border-color);
@@ -1226,10 +1214,14 @@
 }
 
 .nami-select__label {
-  flex: 1 1 auto;
+  flex: 1 1 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .nami-select__arrows {
+  flex: 0 0 auto;
   transition: transform 0.2s;
   margin-left: calc(var(--distance-horizontal) / 2);
 }
@@ -1260,9 +1252,6 @@
   border-radius: var(--box-base-border-radius);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   border-color: transparent;
   cursor: pointer;
 }
@@ -1295,15 +1284,16 @@
 
 .nami-checkbox {
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   cursor: pointer;
 }
 
 .nami-checkbox__cell {
-  display: inline-block;
+  display: block;
   width: var(--nami-checkbox-size-base);
   height: var(--nami-checkbox-size-base);
   margin-right: calc(var(--distance-horizontal) * 0.4);
+  align-self: center;
   position: relative;
 }
 
@@ -1419,15 +1409,16 @@
 
 .nami-radio {
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   cursor: pointer;
 }
 
 .nami-radio__cell {
-  display: inline-block;
+  display: block;
   width: var(--nami-radio-size-base);
   height: var(--nami-radio-size-base);
   margin-right: calc(var(--distance-horizontal) * 0.4);
+  align-self: center;
   position: relative;
 }
 
