@@ -62,10 +62,12 @@
     }
 
     &__label {
-        flex: 1 1 auto;
+        flex: 1 1 0;
+        @include text-overflow-ellipsis();
     }
 
     &__arrows {
+        flex: 0 0 auto;
         transition: transform 0.2s;
         margin-left: calc(var(--distance-horizontal) / 2);
     }
