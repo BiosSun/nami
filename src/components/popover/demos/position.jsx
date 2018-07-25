@@ -31,7 +31,7 @@ class Demo extends Component {
         return (
             <div className="demo-popover__controller">
                 <Grid spacing>
-                    <Grid.Col span={4}>
+                    <Grid.Col span={6}>
                         <Select
                             value={this.state.at}
                             onChange={e => this.setState({ at: e.detail.value })}
@@ -53,7 +53,7 @@ class Demo extends Component {
                             <Select.Option value="left-end">left-end</Select.Option>
                         </Select>
                     </Grid.Col>
-                    <Grid.Col span={4}>
+                    <Grid.Col span={6}>
                         <TextBox
                             value={this.state.offset.toString()}
                             onChange={e => this.setState({ offset: e.target.value })}

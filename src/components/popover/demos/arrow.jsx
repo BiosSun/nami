@@ -26,7 +26,7 @@ class Demo extends Component {
         return (
             <div className="demo-popover__controller">
                 <Grid spacing>
-                    <Grid.Col span={4}>
+                    <Grid.Col span={6}>
                         <Select
                             value={this.state.at}
                             onChange={e => this.setState({ at: e.detail.value })}
