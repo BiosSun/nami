@@ -4,7 +4,7 @@
 
 .nami-radio {
     display: inline-flex;
-    align-items: center;
+    align-items: baseline;
     cursor: pointer;
 
     @at-root .nami-radio__cell {
@@ -12,6 +12,7 @@
         width: var(--nami-radio-size-base);
         height: var(--nami-radio-size-base);
         margin-right: calc(var(--distance-horizontal) * 0.4);
+        align-self: center;
 
         position: relative;
     }
