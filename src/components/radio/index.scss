@@ -8,8 +8,9 @@
     cursor: pointer;
 
     @at-root .nami-radio__cell {
-        display: inline-block;
-        @include size(var(--nami-radio-size-base));
+        display: block;
+        width: var(--nami-radio-size-base);
+        height: var(--nami-radio-size-base);
         margin-right: calc(var(--distance-horizontal) * 0.4);
 
         position: relative;

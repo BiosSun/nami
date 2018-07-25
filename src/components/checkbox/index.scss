@@ -8,8 +8,9 @@
     cursor: pointer;
 
     @at-root .nami-checkbox__cell {
-        display: inline-block;
-        @include size(var(--nami-checkbox-size-base));
+        display: block;
+        width: var(--nami-checkbox-size-base);
+        height: var(--nami-checkbox-size-base);
         margin-right: calc(var(--distance-horizontal) * 0.4);
 
         position: relative;
