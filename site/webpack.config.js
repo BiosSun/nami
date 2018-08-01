@@ -147,7 +147,7 @@ module.exports = (env = ENV_DEFAULT) => {
                 PUBLIC_URL: PUBLIC_URL,
             }),
 
-            new CopyWebpackPlugin(['site/404.html']),
+            new CopyWebpackPlugin(['site/404.html', 'site/CNAME']),
         ],
     }
 
