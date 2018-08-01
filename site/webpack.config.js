@@ -16,7 +16,7 @@ const ENV_DEFAULT = {
 const p = require('../package.json')
 
 module.exports = (env = ENV_DEFAULT) => {
-    const PUBLIC_URL = env.production ? '/nami/' : '/'
+    const PUBLIC_URL = '/'
 
     const config = {
         mode: env.production ? 'production' : 'development',

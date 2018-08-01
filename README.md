@@ -9,4 +9,4 @@
 
 Nami 是一个基于 React 开发的桌面端组件库；源于作者对前端技术和交互设计的学习与探索，以及个人使用上的需要。
 
--   官网：http://biossun.org/nami
+-   官网：http://nami.biossun.org
