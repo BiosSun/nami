@@ -36,7 +36,7 @@
         "iterall": "^1.2.2",
         "nojiko": "^1.0.0",
         "object.omit": "^3.0.0",
-        "popper.js": "^1.14.3",
+        "popper.js": "^1.14.4",
         "prop-types": "^15.6.2",
         "react": "^16.4.0",
         "react-dom": "^16.4.0",

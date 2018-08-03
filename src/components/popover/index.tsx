@@ -8,6 +8,7 @@ import React, {
     Fragment,
     HTMLProps,
     ReactElement,
+    CSSProperties,
 } from 'react'
 import { createPortal } from 'react-dom'
 import Popper from 'popper.js'
@@ -121,12 +122,12 @@ export interface PopoverState {
     /**
      * 要为弹出层设置的样式
      */
-    style: Object
+    style: CSSProperties
 
     /**
      * 要为箭头指针设置的样式
      */
-    arrowStyle: Object
+    arrowStyle: CSSProperties
 }
 
 export default class Popover extends Component<PopoverProps, PopoverState> {
@@ -538,12 +539,12 @@ export default class Popover extends Component<PopoverProps, PopoverState> {
      * 一个 Popper.js 的 ModifierFn，
      * 用于将最终的弹出层样式添加到 Popover 组件中。
      */
-    private applyReactStyleModifier = (
-        data: Popper.Data & { arrowStyles: CSSStyleDeclaration }
-    ): Popper.Data => {
+    private applyReactStyleModifier = (data: Popper.Data): Popper.Data => {
         this.setState(({ style, arrowStyle }) => ({
-            style: shallowequal(style, data.styles) ? style : data.styles,
-            arrowStyle: shallowequal(arrowStyle, data.arrowStyles) ? arrowStyle : data.arrowStyles,
+            style: shallowequal(style, data.styles) ? style : (data.styles as CSSProperties),
+            arrowStyle: shallowequal(arrowStyle, data.arrowStyles)
+                ? arrowStyle
+                : (data.arrowStyles as CSSProperties),
             at: data.placement,
         }))
 
