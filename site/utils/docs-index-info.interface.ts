@@ -12,7 +12,6 @@ export interface DocsIndexLangInfo {
 export type DocsIndexSortInfo = string[]
 
 export interface DocsIndexItemInfo {
-    id: string
     name: string
     displayName: string
 }

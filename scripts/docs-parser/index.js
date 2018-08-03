@@ -203,7 +203,9 @@ const writer = {
         fs.outputJsonSync(path.join(config.outputs.documents, 'index.json'), index, { spaces: 4 })
 
         function indexYaml(config) {
-            return _.cloneDeep(config)
+            const newConfig = _.cloneDeep(config)
+            delete newConfig.$isConfig
+            return newConfig
         }
 
         function indexDocs(docs) {
