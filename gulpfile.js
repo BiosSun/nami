@@ -55,5 +55,5 @@ gulp.task('nami:build', gulp.series('nami:dist'))
 gulp.task('site:build', gulp.series('site:docs-parser', 'site:webpack'))
 gulp.task('site:publish', gulp.series('site:build', 'site:gh-pages'))
 
-gulp.task('build', gulp.series('clean', gulp.parallel('nami:build', 'site:build')))
-gulp.task('publish', gulp.series('clean', gulp.parallel('nami:build', 'site:publish')))
+gulp.task('build', gulp.series('clean', gulp.series('nami:build', 'site:build')))
+gulp.task('publish', gulp.series('clean', gulp.series('nami:build', 'site:publish')))
