@@ -39,7 +39,8 @@
         "prop-types": "^15.6.2",
         "react": "^16.4.0",
         "react-dom": "^16.4.0",
-        "shallowequal": "^1.0.2"
+        "shallowequal": "^1.0.2",
+        "nojiko": "^1.0.0"
     },
     "devDependencies": {
         "@types/classnames": "^2.2.3",
@@ -93,7 +94,6 @@
         "lodash": "^4.17.10",
         "mini-css-extract-plugin": "^0.4.0",
         "node-sass": "^4.9.0",
-        "nojiko": "^1.0.0",
         "outdent": "^0.5.0",
         "plugin-error": "^1.0.1",
         "postcss-scss": "^2.0.0",
