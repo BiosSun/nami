@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[41],{229:function(e,n,t){"use strict";t.r(n),t.d(n,"default",function(){return c});var a=t(0),l=t.n(a),r=t(14);function c(){return l.a.createElement(r.h,{mode:"vertical"},l.a.createElement(r.h.Item,null,"首页"),l.a.createElement(r.h.Item,null,"文档"),l.a.createElement(r.h.Item,null,"关于"))}}}]);
