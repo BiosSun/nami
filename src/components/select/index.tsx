@@ -139,7 +139,7 @@ export default class Select extends Component<SelectProps, SelectState> {
             warning.conflictOfControl('select', 'value')
         }
 
-        if ('open' in this.props && typeof this.props.onChange !== 'function') {
+        if ('value' in this.props && typeof this.props.onChange !== 'function') {
             warning.disappearedListenerInControlled('select', 'value', 'onChange', 'modify')
         }
     }
