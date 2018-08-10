@@ -9,11 +9,11 @@ form: Form
 
 slogan: 一个简洁的 UI 组件库
 floor: |
-  该项目由 [Bios Sun][biossun] 设计、开发及维护，其设计灵感来自我无比钟爱的 [北海道的雪][snow]，而名字来自 [海贼王][onepiece] 漫画中的同名角色；<br>
-  项目代码遵循 [MIT 开源协议][mit] ，网站内容遵循 [知识共享协议 CC BY 3.0][cc]。
-  
-  [biossun]: http://biossun.org
-  [snow]: https://www.youtube.com/embed/j0xbX5ivgdA
-  [onepiece]: https://one-piece.com/
-  [mit]: https://github.com/biossun/nami/blob/master/LICENSE
-  [cc]: https://creativecommons.org/licenses/by/3.0/
+    该项目由 [Bios Sun][biossun] 设计、开发及维护，其设计灵感来自我无比钟爱的 [北海道的雪][snow]，而名字来自 [海贼王][onepiece] 漫画中的同名角色；<br>
+    项目代码遵循 [MIT 开源协议][mit] ，网站内容遵循 [知识共享协议 CC BY-NC-SA 4.0][cc]。
+
+    [biossun]: http://biossun.org
+    [snow]: https://www.youtube.com/embed/j0xbX5ivgdA
+    [onepiece]: https://one-piece.com/
+    [mit]: https://github.com/biossun/nami/blob/master/LICENSE
+    [cc]: https://creativecommons.org/licenses/by-nc-sa/4.0/
