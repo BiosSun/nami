@@ -1,6 +1,7 @@
 import React, { PureComponent, InputHTMLAttributes, ChangeEvent, LabelHTMLAttributes } from 'react'
 import classnames from 'classnames'
 
+import { warning } from '@utils/log'
 import Icon from '@components/icon'
 
 import './index.scss'
@@ -72,10 +73,37 @@ export default class CheckBox extends PureComponent<CheckBoxProps, CheckBoxState
         checked: !!(this.controlled ? this.props.checked : this.props.defaultChecked),
     }
 
+    constructor(props: CheckBoxProps, context?: any) {
+        super(props, context)
+
+        if ('checked' in this.props && 'defaultChecked' in this.props) {
+            warning.conflictOfControl('checkbox', 'checked')
+        }
+
+        if ('checked' in this.props && typeof this.props.onChange !== 'function') {
+            warning.disappearedListenerInControlled(
+                'checkbox',
+                'checked',
+                'onChange',
+                'change check state'
+            )
+        }
+    }
+
     static getDerivedStateFromProps(props: CheckBoxProps, state: CheckBoxState): CheckBoxState {
         return {
             ...state,
             checked: state.controlled ? !!props.checked : state.checked,
+        }
+    }
+
+    componentDidUpdate() {
+        if (this.controlled && 'defaultChecked' in this.props) {
+            warning.controlledToUncontrolled('checkbox', this)
+        }
+
+        if (!this.controlled && 'checked' in this.props) {
+            warning.uncontrolledToControlled('checkbox', this)
         }
     }
 
