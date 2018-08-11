@@ -16,7 +16,8 @@
 
 .nami-grid {
     > .nami-space {
-        // TODO: 需要一个通用的混入类来设置栅格列宽
-        width: calc(100% / var(--nami-grid-column-number));
+        @include grid-width(1);
     }
+
+    @include grid-childrens-spacing('.nami-space');
 }

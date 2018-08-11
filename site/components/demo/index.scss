@@ -297,7 +297,7 @@ $app-demo-border-radius: 6px;
 .demo-flexible-space {
     .nami-linear__item,
     .nami-grid__col {
-        padding: calc(var(--distance-vertical) / 2) var(--distance-horizontal);
+        margin: calc(var(--distance-vertical) / 2) var(--distance-horizontal);
     }
 
     .nami-space,

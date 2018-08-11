@@ -18,4 +18,6 @@
     > .nami-flexible-space {
         flex-basis: 0;
     }
+
+    @include grid-childrens-spacing('.nami-flexible-space');
 }
