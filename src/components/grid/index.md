@@ -43,6 +43,10 @@ group: layout
 
 {@demo "./demos/col-align.jsx"}
 
+## 分隔符
+
+与 `Linear` 组件一样，除了可以通过 `spacing` 设置列间距之外，也可以通过 `Divider`、`Space` 及 `FlexibleSpace\*\* 三个分隔符组件来隔开某两个列。
+
 ## 参数
 
 ### Grid

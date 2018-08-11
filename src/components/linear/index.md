@@ -25,10 +25,6 @@ group: layout
 {@demo "./demos/spacing-horizontal.jsx"}
 {@demo "./demos/spacing-vertical.jsx"}
 
-## 元素分隔
-
-除了通过 `spacing` 给所有元素添加间距外，还可以通过 `Divider`、`Space` 及 `FlexibleSpace` 三个分隔组件来隔开某两个元素。
-
 ## 对齐
 
 通过 `justify` 及 `align` 两个参数，我们可以控制该线性布局内元素在主轴及副轴上的对齐方式：
@@ -42,6 +38,10 @@ group: layout
 但通常在实现自适应布局时，我们往往会需要其中的一个或多个元素自动填充剩余空间，此时只需给这些元素添加 `fill` 参数即可：
 
 {@demo "./demos/fill.jsx"}
+
+## 分隔符
+
+额外地，除了可以通过 `spacing` 设置元素间距之外，还可以通过 `Divider`、`Space` 及 `FlexibleSpace` 三个分隔符组件来隔开某两个元素。
 
 ## 参数
 

@@ -26,6 +26,6 @@ export default class Divider extends PureComponent<DividerProps> {
             root: classnames('nami-divider', `nami-divider--${direction}`, className),
         }
 
-        return <div className={classes.root}>&nbsp;</div>
+        return <div className={classes.root} />
     }
 }

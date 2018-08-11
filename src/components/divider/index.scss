@@ -3,20 +3,29 @@
 @import '@nami//styles/basis';
 
 .nami-divider--horizontal {
-    width: 0;
-    max-width: 0;
-    min-width: 0;
+    --divider-length: calc(1em + 4px);
+    --divider-color: var(--line-color);
+}
 
-    border-left: 1px solid var(--line-color);
+.nami-divider--horizontal {
+    width: 1px;
+    height: var(--divider-length);
+    margin-right: -1px;
     align-self: center;
-    line-height: calc(1em + 4px);
+
+    background: var(--divider-color);
 }
 
 .nami-divider--vertical {
-    height: 0;
-    max-height: 0;
-    min-height: 0;
+    --divider-length: 100%;
+    --divider-color: var(--line-color);
+}
 
-    border-top: 1px solid var(--line-color);
-    align-self: stretch;
+.nami-divider--vertical {
+    width: var(--divider-length);
+    height: 1px;
+    margin-bottom: -1px;
+    align-self: center;
+
+    background: var(--divider-color);
 }

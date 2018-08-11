@@ -4,10 +4,20 @@ displayName: Divider *分隔线*
 group: layout
 ---
 
-用于在两个布局元素之间插入一条分隔线：
+用于在两个布局元素之间插入一条分隔线。
 
-{@demo "./demos/horizontal.jsx"}
-{@demo "./demos/vertical.jsx"}
+_注：该分隔线并不会占用 1 像素空间，而是会停靠在其下一个元素的最左边（或上边）。_
+
+## Linear
+
+{@demo "./demos/linear-horizontal.jsx"}
+{@demo "./demos/linear-vertical.jsx"}
+
+## Grid
+
+_注：在栅格中，只能使用水平方向分隔线。_
+
+{@demo "./demos/grid.jsx"}
 
 ## 参数
 
