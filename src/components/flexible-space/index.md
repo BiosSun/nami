@@ -4,12 +4,19 @@ displayName: FlexibleSpace *弹性空隔*
 group: layout
 ---
 
-用于在两个布局元素之间插入一段自动填充剩余空间的空白间隔：
+用于在两个布局元素之间插入一段自动填充剩余空间的空白间隔。
 
 _注：为突显演示效果，我们为以下 Demo 中的 FlexibleSpace 组件添加了一些背景色。_
 
-{@demo "./demos/horizontal.jsx"}
-{@demo "./demos/vertical.jsx"}
+## Linear
+
+{@demo "./demos/linear-horizontal.jsx"}
+{@demo "./demos/linear-vertical.jsx"}
+
+## Grid
+
+_注：在栅格中，只能使用水平方向弹性空隔符。_
+{@demo "./demos/grid.jsx"}
 
 ## 参数
 
