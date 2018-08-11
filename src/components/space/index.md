@@ -4,12 +4,19 @@ displayName: Space *空隔*
 group: layout
 ---
 
-用于在两个布局元素之间插入一段固定宽度（或高度）的空白间隔；
+用于在两个布局元素之间插入一段固定宽度（或高度）的空白间隔。
 
 _注：为突显演示效果，我们为以下 Demo 中的 FlexibleSpace 组件添加了一些背景色。_
 
-{@demo "./demos/horizontal.jsx"}
-{@demo "./demos/vertical.jsx"}
+## Linear
+
+{@demo "./demos/linear-horizontal.jsx"}
+{@demo "./demos/linear-vertical.jsx"}
+
+## Grid
+
+_注：在栅格中，只能使用水平方向空隔符，且其宽度会改为 1 个列宽。_
+{@demo "./demos/grid.jsx"}
 
 ## 参数
 
