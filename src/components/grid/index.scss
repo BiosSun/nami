@@ -2,73 +2,40 @@
 
 @import '@nami//styles/basis';
 
-$-grid-justify: (
-    (start, flex-start),
-    (end, flex-end),
-    (center),
-    (between, space-between),
-    (around, space-around)
-);
-
-$-grid-align: ((start, flex-start), (end, flex-end), (center));
-
-$-grid-spacing: (
-    ('', calc(var(--distance-horizontal) / 2)),
-    ('small', calc(var(--distance-horizontal) / 4)),
-    ('large', calc(var(--distance-horizontal)))
-);
-
 .nami-grid {
     display: flex;
     flex-wrap: wrap;
 
-    @each $name, $val in $-grid-justify {
+    @each $name, $val in $grid-justify {
         &--justify-#{$name} {
             justify-content: $val or $name;
         }
     }
 
-    @each $name, $val in $-grid-align {
+    @each $name, $val in $grid-align {
         &--align-#{$name} {
             align-items: $val or $name;
         }
     }
 
-    @each $name, $half-spacing-width in $-grid-spacing {
-        $suffix: if(str-length($name) == 0, '', '-#{$name}');
-
-        &--spacing#{$suffix} {
-            margin-left: calc(#{$half-spacing-width} * -1);
-            margin-right: calc(#{$half-spacing-width} * -1);
-
-            > .nami-grid__col {
-                padding-left: $half-spacing-width;
-                padding-right: $half-spacing-width;
-            }
-        }
-    }
+    @include grid-spacing();
+    @include grid-childrens-spacing('.nami-grid__col');
 }
 
 .nami-grid__col {
     flex: 1 1 0;
 
-    @at-root %col-fixed-width {
-        box-sizing: border-box;
-        flex: 0 0 auto;
-    }
-
     @for $i from 1 through 24 {
         &--#{$i} {
-            @extend %col-fixed-width;
-            width: calc(#{100% * $i} / var(--nami-grid-column-number));
+            @include grid-width($i);
         }
 
         &--offset-#{$i} {
-            margin-left: calc(#{100% * $i} / var(--nami-grid-column-number));
+            @include grid-offset($i);
         }
     }
 
-    @each $name, $val in $-grid-align {
+    @each $name, $val in $grid-align {
         &--align-#{$name} {
             align-self: $val or $name;
         }
