@@ -33,6 +33,25 @@
         }
     }
 
+    &--disabled {
+        cursor: not-allowed;
+
+        > .nami-menu__item__header {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        > .nami-menu--submenu {
+            cursor: auto;
+        }
+
+        &.nami-menu__item--active {
+            > .nami-menu__item__header {
+                color: var(--text-color-quiet);
+            }
+        }
+    }
+
     &__header {
         @extend %nami-menu__item;
         color: var(--text-color-quiet);

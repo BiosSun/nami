@@ -29,6 +29,11 @@ export interface BaseItemProps {
     children?: ReactNode
 
     /**
+     * 该菜单项是否禁用
+     */
+    disabled?: boolean
+
+    /**
      * @private
      * 该菜单项所属菜单的深度
      */
@@ -91,7 +96,7 @@ export default class Item extends Component<ItemProps, ItemState> {
     }
 
     render() {
-        const { active, className } = this.props
+        const { active, disabled, className } = this.props
         const { hover, open } = this.state
 
         const header = this.renderHeader()
@@ -103,6 +108,7 @@ export default class Item extends Component<ItemProps, ItemState> {
                 {
                     [`nami-menu__item--active`]: active || hover || open,
                     [`nami-menu__item--open`]: open,
+                    [`nami-menu__item--disabled`]: disabled,
                 },
                 className
             ),

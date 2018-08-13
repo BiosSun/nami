@@ -50,6 +50,18 @@ _\* 注：与 Item 类似，ItemGroup 中的第一个子元素将做为此分组
 
 {@demo "./demos/item-group-horizontal-submenu.jsx"}
 
+## 禁用菜单项
+
+通过为 `Menu.Item` 设置 `disabled` 属性，可以禁用某个菜单项：
+
+{@demo "./demos/item-disabled.jsx"}
+
+禁用状态只会影响被设置该状态的菜单项自身，而不会影响其子菜单。
+
+另外，在垂直布局模式中，若禁用了一个已打开子菜单的菜单项，则其子菜单将无法被关闭。
+
+{@demo "./demos/item-disabled-for-sub-menu.jsx"}
+
 ## 分隔菜单项
 
 Menu 支持 Nami 中所提供的三种分隔符组件：
@@ -90,6 +102,7 @@ _\* 注：以下 Demo 中 Space 及 FlexibleSpace 的背景色仅是为了体现
 | ------------- | ------------------------------------------------------------------------------------------------------ | --------------------------------------------- | ------- |
 | `active`      | 该菜单项是否处于激活状态                                                                               | `boolean`                                     | `false` |
 | `defaultOpen` | 默认是否打开该菜单项中的子菜单                                                                         | `boolean`                                     |         |
+| `disabled`    | 是否禁用                                                                                               | `boolean`                                     | `false` |
 | `children`    | 菜单项状况内容及子菜单<br>_第一个子元素将作为菜单项的头部内容，而第二个子元素为子菜单，其余子元素忽略_ | \[&nbsp;`React.ReactNode`,&nbsp;`Menu`&nbsp;] |         |
 
 ### Menu.ItemGroup
