@@ -135,12 +135,12 @@
     /// 次要背景色
     --background-color-quiet: #f6f6f7;
 
-    /// 边线颜色
-    --line-color: #d2d4d6;
-    /// 强调边框颜色
-    --line-color-loud: #959ca2;
-    /// 次要边框颜色
-    --line-color-quiet: #b5b8bb;
+    /// 边线颜色，一般用于分隔内容，比如布局、卡片或表格等
+    --line-color: rgba(32, 41, 51, 0.12);
+    /// 强调边框颜色，一般作为可触发元素的边框
+    --line-color-loud: rgba(32, 41, 51, 0.24);
+    /// 次要边框颜色，一般用于在强调背景内进行突显分隔使用
+    --line-color-quiet: #fff;
 
     /// 文本颜色
     --text-color: #333333;

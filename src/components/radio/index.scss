@@ -21,7 +21,7 @@
         display: block;
         @include size(100%);
 
-        border: 1px solid var(--line-color);
+        border: 1px solid var(--line-color-loud);
         border-radius: 50%;
         background-color: transparent;
 
@@ -106,19 +106,19 @@
         opacity: 0.5;
 
         .nami-radio__cell__frame {
-            border-color: var(--line-color);
+            border-color: var(--line-color-loud);
             background: var(--background-color-loud);
         }
 
         .nami-radio__cell__check {
-            background: var(--line-color);
+            background: var(--line-color-loud);
         }
     }
 
     &--disabled {
         .nami-radio__cell__input:checked {
             ~ .nami-radio__cell__frame {
-                border-color: var(--line-color);
+                border-color: var(--line-color-loud);
                 background: transparent;
             }
         }

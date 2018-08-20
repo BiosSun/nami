@@ -5,7 +5,7 @@
 .nami-textbox {
     --textbox-color: var(--text-color);
     --textbox-background: var(--background-color);
-    --textbox-border-color: var(--line-color);
+    --textbox-border-color: var(--line-color-loud);
 
     --textbox-focus-color: var(--text-color);
     --textbox-focus-background: var(--background-color);
@@ -14,7 +14,7 @@
 
     --textbox-disabled-color: var(--text-color-quiet);
     --textbox-disabled-background: var(--background-color-loud);
-    --textbox-disabled-border-color: var(--line-color);
+    --textbox-disabled-border-color: var(--line-color-loud);
 }
 
 .nami-textbox {

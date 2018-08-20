@@ -4,7 +4,7 @@
 
 .nami-button {
     --button-background: var(--background-color);
-    --button-border-color: var(--line-color);
+    --button-border-color: var(--line-color-loud);
     --button-color: var(--text-color);
 
     --button-hover-background: var(--primary-color-quiet);
@@ -96,7 +96,7 @@
 .nami-button--outline {
     --button-color: var(--text-color);
     --button-background: transparent;
-    --button-border-color: var(--line-color);
+    --button-border-color: var(--line-color-loud);
 
     --button-hover-color: var(--primary-color);
     --button-hover-background: transparent;

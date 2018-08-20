@@ -5,7 +5,7 @@
 .nami-select {
     --select-color: var(--text-color);
     --select-background: var(--background-color);
-    --select-border-color: var(--line-color);
+    --select-border-color: var(--line-color-loud);
 
     --select-focus-color: var(--text-color);
     --select-focus-background: var(--background-color);
@@ -14,7 +14,7 @@
 
     --select-disabled-color: var(--text-color-quiet);
     --select-disabled-background: var(--background-color-loud);
-    --select-disabled-border-color: var(--line-color);
+    --select-disabled-border-color: var(--line-color-loud);
 }
 
 .nami-select {
