@@ -2,6 +2,7 @@ import React, { PureComponent, InputHTMLAttributes, ChangeEvent, LabelHTMLAttrib
 import classnames from 'classnames'
 
 import { warning } from '@utils/log'
+import { State } from '@utils/types'
 import Icon from '@components/icon'
 
 import './index.scss'
@@ -35,7 +36,7 @@ export interface BaseCheckBoxProps {
     /**
      * 状态
      */
-    state?: 'success' | 'warning' | 'danger'
+    state?: State
 
     /**
      * 是否禁用

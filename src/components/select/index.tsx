@@ -12,6 +12,7 @@ import classnames from 'classnames'
 import { warning } from '@utils/log'
 import noop from '@utils/noop'
 import isReactFragment from '@utils/is-react-fragment'
+import { State } from '@utils/types'
 import Icon from '@components/icon'
 import Popover from '@components/popover'
 
@@ -36,7 +37,7 @@ export interface BaseSelectProps {
     /**
      * 状态
      */
-    state?: 'success' | 'warning' | 'danger'
+    state?: State
 
     /**
      * 是否禁用

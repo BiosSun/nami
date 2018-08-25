@@ -1,13 +1,15 @@
 import React, { Component, ReactNode, MouseEvent, ButtonHTMLAttributes } from 'react'
 import classnames from 'classnames'
 
+import { State } from '@utils/types'
+
 import './index.scss'
 
 export interface BaseButtonProps {
     /**
      * 按钮类型
      */
-    type: 'primary' | 'info' | 'success' | 'warning' | 'danger'
+    type: 'primary' | 'info' | State
 
     /**
      * 轮廓按钮

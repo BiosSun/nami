@@ -1,6 +1,8 @@
 import React, { Component, InputHTMLAttributes, ChangeEvent } from 'react'
 import classnames from 'classnames'
 
+import { State } from '@utils/types'
+
 import './index.scss'
 
 export interface BaseTextBoxProps {
@@ -22,7 +24,7 @@ export interface BaseTextBoxProps {
     /**
      * 状态
      */
-    state?: 'success' | 'warning' | 'danger'
+    state?: State
 
     /**
      * 是否禁用
