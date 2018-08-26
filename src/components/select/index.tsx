@@ -133,18 +133,6 @@ export default class Select extends Component<SelectProps, SelectState> {
         waitLableToTriggerOnChange: false,
     }
 
-    constructor(props: SelectProps, context?: any) {
-        super(props, context)
-
-        if ('value' in this.props && 'defaultValue' in this.props) {
-            warning.conflictOfControl('select', 'value')
-        }
-
-        if ('value' in this.props && typeof this.props.onChange !== 'function') {
-            warning.disappearedListenerInControlled('select', 'value', 'onChange', 'modify')
-        }
-    }
-
     static getDerivedStateFromProps(props: SelectProps, prevState: SelectState): SelectState {
         const state = { ...prevState }
 
@@ -164,16 +152,6 @@ export default class Select extends Component<SelectProps, SelectState> {
         }
 
         return state
-    }
-
-    componentDidUpdate() {
-        if (this.controlled && 'defaultValue' in this.props) {
-            warning.controlledToUncontrolled('select', this)
-        }
-
-        if (!this.controlled && 'value' in this.props) {
-            warning.uncontrolledToControlled('select', this)
-        }
     }
 
     render() {
