@@ -1,7 +1,7 @@
 import React, { Component, InputHTMLAttributes, ChangeEvent } from 'react'
 import classnames from 'classnames'
-
-import { State } from '@utils/types'
+import { Omit, State } from '@utils/types'
+import noop from '@utils/noop'
 
 import './index.scss'
 
@@ -34,18 +34,27 @@ export interface BaseTextBoxProps {
     /**
      * 内容修改处理函数
      */
-    onChange?: (e: ChangeEvent<HTMLElement>) => void
+    onChange?: (e: ChangeEvent<HTMLInputElement>, value: string) => void
 }
 
-export type TextBoxProps = BaseTextBoxProps & InputHTMLAttributes<HTMLInputElement>
+export type TextBoxProps = BaseTextBoxProps &
+    Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'>
 
 export default class TextBox extends Component<TextBoxProps> {
     static defaultProps: TextBoxProps = {
         type: 'text',
+        onChange: noop,
     }
 
     render() {
-        const { type, state, disabled, className, ...otherProps }: TextBoxProps = this.props // NOTE: 这里通过指定 TextBoxProps 类型以使 otherProps 变为可写的
+        const {
+            type,
+            state,
+            disabled,
+            className,
+            onChange,
+            ...otherProps
+        }: TextBoxProps = this.props // NOTE: 这里通过指定 TextBoxProps 类型以使 otherProps 变为可写的
 
         const classes = {
             root: classnames(
@@ -67,8 +76,18 @@ export default class TextBox extends Component<TextBoxProps> {
 
         return (
             <div className={classes.root}>
-                <input {...otherProps} className={classes.editor} type={type} disabled={disabled} />
+                <input
+                    {...otherProps}
+                    className={classes.editor}
+                    type={type}
+                    disabled={disabled}
+                    onChange={this.changeHandle}
+                />
             </div>
         )
+    }
+
+    changeHandle = (e: ChangeEvent<HTMLInputElement>) => {
+        this.props.onChange(e, e.target.value)
     }
 }

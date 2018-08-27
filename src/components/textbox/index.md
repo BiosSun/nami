@@ -35,4 +35,4 @@ group: form
 | `type`         | 内容类型         | `string`                                         | `text`  |
 | `state`        | 状态             | `'success'` &#124; `'warning'` &#124; `'danger'` |         |
 | `disabled`     | 是否禁用         | `boolean`                                        | `false` |
-| `onChange`     | 选中状态改变事件 | `(e: ChangeEvent) => void`                       |         |
+| `onChange`     | 选中状态改变事件 | `(event: ChangeEvent, value: string) => void`    |         |
