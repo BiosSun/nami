@@ -28,14 +28,14 @@ group: form
 
 ### Select
 
-| 参数           | 说明           | 类型                                             | 默认值  |
-| -------------- | -------------- | ------------------------------------------------ | ------- |
-| `value`        | 选中值         | `'string'` &#124; `'number'`                     |         |
-| `defaultValue` | 默认选中值     | `'string'` &#124; `'number'`                     |         |
-| `state`        | 状态           | `'success'` &#124; `'warning'` &#124; `'danger'` |         |
-| `disabled`     | 是否禁用       | `boolean`                                        | `false` |
-| `onChange`     | 所选项更改事件 | `(e: SelectEvent) => void`                       |         |
-| `children`     | 选项           | `Select.Option`                                  |         |
+| 参数           | 说明           | 类型                                                   | 默认值  |
+| -------------- | -------------- | ------------------------------------------------------ | ------- |
+| `value`        | 选中值         | `string` &#124; `number`                               |         |
+| `defaultValue` | 默认选中值     | `string` &#124; `number`                               |         |
+| `state`        | 状态           | `'success'` &#124; `'warning'` &#124; `'danger'`       |         |
+| `disabled`     | 是否禁用       | `boolean`                                              | `false` |
+| `onChange`     | 所选项更改事件 | `(event: SelectEvent, value: string | number) => void` |         |
+| `children`     | 选项           | `Select.Option`                                        |         |
 
 ### Select.Option
 

@@ -48,7 +48,7 @@ export interface BaseSelectProps {
     /**
      * 更改所选项处理函数
      */
-    onChange?: (e: SelectEvent) => void
+    onChange?: (e: SelectEvent, value: SelectValue) => void
 
     /**
      * 选项
@@ -227,7 +227,7 @@ export default class Select extends Component<SelectProps, SelectState> {
         const selected = e.detail
 
         if (this.state.value !== selected.value) {
-            this.props.onChange(e)
+            this.props.onChange(e, e.detail.value)
 
             if (!this.controlled && !e.defaultPrevented) {
                 this.setState({
@@ -247,7 +247,7 @@ export default class Select extends Component<SelectProps, SelectState> {
             this.setState({ label })
 
             if (state.waitLableToTriggerOnChange) {
-                this.props.onChange(selectEventFactory(value, label))
+                this.props.onChange(selectEventFactory(value, label), value)
                 this.setState({ waitLableToTriggerOnChange: false })
             }
         }
