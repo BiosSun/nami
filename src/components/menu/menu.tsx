@@ -2,7 +2,7 @@ import React, { Component, Fragment, ReactNode, HTMLAttributes, ReactElement } f
 import classnames from 'classnames'
 import omit from 'object.omit'
 
-import childrenUtils from '@utils/children'
+import { Children as ChildrenUtils } from '@utils'
 import Popover from '@components/popover'
 import Linear from '@components/linear'
 
@@ -97,7 +97,7 @@ export default class Menu extends Component<MenuProps> {
             className
         )
 
-        const children = childrenUtils.cloneChildren(this.props.children, {
+        const children = ChildrenUtils.cloneChildren(this.props.children, {
             menuMode: mode,
             menuDepth,
             itemDepth: itemDepth + 1,

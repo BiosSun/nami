@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { SelectValue, SelectEvent, selectEventFactory } from './utils'
 import shallowequal from 'shallowequal'
-import noop from '@utils/noop'
+import { noop } from '@utils'
 
 export interface BaseOptionProps {
     /**
