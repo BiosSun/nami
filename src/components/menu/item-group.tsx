@@ -1,7 +1,7 @@
 import React, { Component, ReactNode, ReactElement, ReactChild, HTMLAttributes } from 'react'
 import classnames from 'classnames'
 import omit from 'object.omit'
-import childrenUtils from '@utils/children'
+import { Children as ChildrenUtils } from '@utils'
 import Linear from '@components/linear'
 import { ItemProps } from './item'
 import { MenuMode, DirectionEnum } from './utils'
@@ -57,11 +57,11 @@ export default class ItemGroup extends Component<ItemGroupProps, ItemGroupState>
     }
 
     static getDerivedStateFromProps(nextProps: ItemGroupProps): ItemGroupState {
-        const [headerContent, items] = childrenUtils.cons(nextProps.children)
+        const [headerContent, items] = ChildrenUtils.cons(nextProps.children)
 
         return {
             headerContent,
-            items: childrenUtils.cloneChildren(items, {
+            items: ChildrenUtils.cloneChildren(items, {
                 menuMode: nextProps.menuMode,
                 menuDepth: nextProps.menuDepth,
                 itemDepth: nextProps.itemDepth + 1,

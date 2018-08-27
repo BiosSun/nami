@@ -9,10 +9,7 @@ import React, {
 } from 'react'
 import classnames from 'classnames'
 
-import { warning } from '@utils/log'
-import noop from '@utils/noop'
-import isReactFragment from '@utils/is-react-fragment'
-import { State } from '@utils/types'
+import { log, noop, isReactFragment, State } from '@utils'
 import Icon from '@components/icon'
 import Popover from '@components/popover'
 
@@ -146,7 +143,7 @@ export default class Select extends Component<SelectProps, SelectState> {
                     state.value = firstOption.props.value
                     state.waitLableToTriggerOnChange = true
                 } else {
-                    warning('Cannot find a valid option in Select component.')
+                    log.warning('Cannot find a valid option in Select component.')
                 }
             }
         }

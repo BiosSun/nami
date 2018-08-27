@@ -7,4 +7,4 @@ function warning(...str: string[]): void {
     }
 }
 
-export { warning }
+export default { warning }

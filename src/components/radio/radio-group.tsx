@@ -1,8 +1,7 @@
 import React, { PureComponent, ChangeEvent, HTMLAttributes, ReactNode, createContext } from 'react'
 import classnames from 'classnames'
 import omit from 'object.omit'
-import { State } from '@utils/types'
-import noop from '@utils/noop'
+import { State, noop } from '@utils'
 
 export interface RadioGroupContextData {
     /**

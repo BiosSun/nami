@@ -1,7 +1,6 @@
 import React, { Component, InputHTMLAttributes, ChangeEvent } from 'react'
 import classnames from 'classnames'
-import { Omit, State } from '@utils/types'
-import noop from '@utils/noop'
+import { Omit, State, noop } from '@utils'
 
 import './index.scss'
 

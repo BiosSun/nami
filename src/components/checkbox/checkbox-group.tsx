@@ -2,7 +2,7 @@ import React, { PureComponent, ChangeEvent, createContext, ReactNode, HTMLAttrib
 import classnames from 'classnames'
 import omit from 'object.omit'
 
-import { Omit, State } from '@utils/types'
+import { Omit, State } from '@utils'
 
 export interface CheckBoxGroupContextData {
     /**

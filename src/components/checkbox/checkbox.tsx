@@ -1,7 +1,7 @@
 import React, { PureComponent, InputHTMLAttributes, ChangeEvent, LabelHTMLAttributes } from 'react'
 import classnames from 'classnames'
 
-import { Omit, State } from '@utils/types'
+import { Omit, State } from '@utils'
 import Icon from '@components/icon'
 
 import { default as Group, CheckBoxGroupContext, CheckBoxGroupContextData } from './checkbox-group'
