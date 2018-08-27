@@ -2,7 +2,7 @@ import { Radio } from 'nami'
 
 render(
     <div>
-        <Radio name="default" label="Radio 1" />
-        <Radio name="default" label="Radio 2" />
+        <Radio name="default" label="JavaScript" />
+        <Radio name="default" label="TypeScript" />
     </div>
 )

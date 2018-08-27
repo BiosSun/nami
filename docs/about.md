@@ -40,4 +40,4 @@ import { Button } from '@biossun/nami'
 render(<Button>text</Button>)
 ```
 
-_支持树抖动且加载方式更加友好的 ES6 Modules 格式的发布构建将按计划在 0.4.0 版本发布。_
+_注：支持树抖动且加载方式更加友好的 ES6 Modules 格式的发布构建将按计划在 0.4.0 版本发布。_

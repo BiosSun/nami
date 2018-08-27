@@ -18,7 +18,7 @@ group: layout
 
 默认所有元素之间都是没有间距的，如果需要，可以通过参数 `spacing` 来设置，该参数提供三个间距宽度：
 
--   true 普通间距，使用样式配置变量 `--distance-horizontal` 的宽度值；
+-   `true` 普通间距，使用样式配置变量 `--distance-horizontal` 的宽度值；
 -   `"large"` 较大间距，是普通间距的两倍；
 -   `"small"` 较小间距，是普通间距的一半；
 

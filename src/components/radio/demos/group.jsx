@@ -2,7 +2,7 @@ import { Radio, TextBox } from 'nami'
 
 class App extends React.Component {
     state = {
-        value: '1',
+        value: 'js',
     }
 
     render() {
@@ -11,10 +11,10 @@ class App extends React.Component {
         return (
             <div>
                 <Radio.Group name="group" value={value} onChange={this.onChange}>
-                    <Radio value="1" label="Radio 1" />
-                    <Radio value="2" label="Radio 2" />
-                    <Radio value="3" label="Radio 3" />
-                    <Radio value="4" label="Radio 4" />
+                    <Radio value="js" label="JavaScript" />
+                    <Radio value="ts" label="TypeScript" />
+                    <Radio value="cs" label="CoffeeScript" />
+                    <Radio value="as" label="ActionScript" />
                 </Radio.Group>
 
                 <br />
