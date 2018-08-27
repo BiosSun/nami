@@ -15,8 +15,6 @@ import Popper from 'popper.js'
 import classnames from 'classnames'
 import omit from 'object.omit'
 import shallowequal from 'shallowequal'
-import { warning } from '@utils/log'
-
 import Reference from './reference'
 import globalController from './global-controller'
 
@@ -187,19 +185,6 @@ export default class Popover extends Component<PopoverProps, PopoverState> {
         at: null,
     }
 
-    constructor(props: PopoverProps, context?: any) {
-        super(props, context)
-
-        if ('open' in this.props && 'defaultOpen' in this.props) {
-            warning.conflictOfControl('popover', 'open')
-        }
-
-        if ('open' in this.props && typeof this.props.onClose !== 'function') {
-            const unableTo = `${this.props.open ? 'close' : 'open'} popover`
-            warning.disappearedListenerInControlled('popover', 'open', 'onClose', unableTo)
-        }
-    }
-
     static getDerivedStateFromProps(props: PopoverProps, state: PopoverState): PopoverState {
         return {
             ...state,
@@ -232,14 +217,6 @@ export default class Popover extends Component<PopoverProps, PopoverState> {
     }
 
     componentDidUpdate() {
-        if (this.controlled && 'defaultOpen' in this.props) {
-            warning.controlledToUncontrolled('popover', this)
-        }
-
-        if (!this.controlled && 'open' in this.props) {
-            warning.uncontrolledToControlled('popover', this)
-        }
-
         if (this.state.open) {
             this.open()
         } else {
