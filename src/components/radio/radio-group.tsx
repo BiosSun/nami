@@ -1,8 +1,8 @@
 import React, { PureComponent, ChangeEvent, HTMLAttributes, ReactNode, createContext } from 'react'
 import classnames from 'classnames'
 import omit from 'object.omit'
-
 import { State } from '@utils/types'
+import noop from '@utils/noop'
 
 export interface RadioGroupContextData {
     /**
@@ -18,7 +18,7 @@ export interface RadioGroupContextData {
     /**
      * 选中项改变处理函数
      */
-    onChange: (e: ChangeEvent<HTMLInputElement>) => void
+    onChange: (e: ChangeEvent<HTMLInputElement>, value: string) => void
 
     /**
      * 状态
@@ -62,12 +62,12 @@ export interface BaseRadioGroupProps {
     /**
      * 选中项改变处理函数
      */
-    onChange?: (e: ChangeEvent<HTMLElement>) => void
+    onChange?: (e: ChangeEvent<HTMLElement>, value: string) => void
 
     /**
      * 该分组中所包含的单选框组件
      */
-    children: ReactNode
+    children?: ReactNode
 }
 
 export type RadioGroupProps = BaseRadioGroupProps & HTMLAttributes<HTMLDivElement>
@@ -86,6 +86,10 @@ interface RadioGroupState {
 
 export default class RadioGroup extends PureComponent<RadioGroupProps, RadioGroupState> {
     static propKeys = ['name', 'value', 'defaultValue', 'state', 'disabled', 'onChange', 'children']
+
+    static defaultProps: RadioGroupProps = {
+        onChange: noop,
+    }
 
     // 该组件实例是否处于受控状态
     controlled: boolean = 'value' in this.props
@@ -126,14 +130,12 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, RadioGrou
         )
     }
 
-    handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    handleChange = (event: ChangeEvent<HTMLInputElement>, value: string) => {
         const { onChange } = this.props
-        onChange && onChange(e)
+        onChange && onChange(event, value)
 
-        if (!this.controlled && !e.defaultPrevented) {
-            this.setState({
-                value: e.target.value,
-            })
+        if (!this.controlled && !event.defaultPrevented) {
+            this.setState({ value })
         }
     }
 }

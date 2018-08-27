@@ -25,10 +25,8 @@ class App extends React.Component {
     }
 
     onChange = this.onChange.bind(this)
-    onChange(e) {
-        this.setState({
-            value: e.target.value,
-        })
+    onChange(event, value) {
+        this.setState({ value })
     }
 }
 

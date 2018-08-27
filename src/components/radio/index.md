@@ -45,7 +45,7 @@ _注：分组中的 `Radio` 组件将只支持 `label` 及 `value` 两个参数�
 | `defaultChecked` | 默认是否选中           | `boolean`                                        |         |
 | `state`          | 状态                   | `'success'` &#124; `'warning'` &#124; `'danger'` |         |
 | `disabled`       | 是否禁用               | `boolean`                                        | `false` |
-| `onChange`       | 选中状态改变事件       | `(e: ChangeEvent) => void`                       |         |
+| `onChange`       | 选中状态改变事件       | `(event: ChangeEvent, value: string) => void`    |         |
 
 ### Radio.Group
 
@@ -56,4 +56,4 @@ _注：分组中的 `Radio` 组件将只支持 `label` 及 `value` 两个参数�
 | `defaultValue` | 默认被选中项的值       | `string`                                         |         |
 | `state`        | 状态                   | `'success'` &#124; `'warning'` &#124; `'danger'` |         |
 | `disabled`     | 是否禁用               | `boolean`                                        | `false` |
-| `onChange`     | 选中状态改变事件       | `(e: ChangeEvent) => void`                       |         |
+| `onChange`     | 选中状态改变事件       | `(event: ChangeEvent, value: string) => void`    |         |

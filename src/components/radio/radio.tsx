@@ -1,9 +1,10 @@
 import React, { PureComponent, InputHTMLAttributes, ChangeEvent, LabelHTMLAttributes } from 'react'
 import classnames from 'classnames'
-
 import { Omit, State } from '@utils/types'
-
+import noop from '@utils/noop'
 import { default as Group, RadioGroupContext, RadioGroupContextData } from './radio-group'
+
+type OnChange = (e: ChangeEvent<HTMLInputElement>, value: string) => void
 
 export interface BaseRadioProps {
     /**
@@ -44,14 +45,19 @@ export interface BaseRadioProps {
     /**
      * 选中状态改变处理函数
      */
-    onChange?: (e: ChangeEvent<HTMLInputElement>) => void
+    onChange?: OnChange
 }
 
-export type InputRadioProps = BaseRadioProps & InputHTMLAttributes<HTMLInputElement>
-export type RadioProps = InputRadioProps & Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'>
+export type RadioProps = BaseRadioProps &
+    Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> &
+    Omit<LabelHTMLAttributes<HTMLLabelElement>, 'onChange'>
 
 export default class Radio extends PureComponent<RadioProps> {
     static Group = Group
+
+    static defaultProps: RadioProps = {
+        onChange: noop,
+    }
 
     render() {
         return (
@@ -104,7 +110,14 @@ export default class Radio extends PureComponent<RadioProps> {
             cellInput: `nami-radio__cell__input`,
         }
 
-        const inputProps: InputRadioProps = { name, value, disabled, onChange, onFocus, onBlur }
+        const inputProps: InputHTMLAttributes<HTMLInputElement> = {
+            name,
+            value,
+            disabled,
+            onChange: this.changeHandleFactory(onChange),
+            onFocus,
+            onBlur,
+        }
 
         if (isInGroup) {
             inputProps.checked = checked
@@ -128,5 +141,11 @@ export default class Radio extends PureComponent<RadioProps> {
                 {label ? <span>{label}</span> : null}
             </label>
         )
+    }
+
+    changeHandleFactory(callback: OnChange): (e: ChangeEvent<HTMLInputElement>) => void {
+        return e => {
+            callback(e, e.target.value)
+        }
     }
 }
