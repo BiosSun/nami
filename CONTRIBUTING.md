@@ -1,5 +1,13 @@
 # 开发手册
 
+## NPM Scripts
+
+Nami 中提供如下几个 NPM 的 scripts 命令：
+
+-   `start` 启动开发环境；
+-   `format` 格式化整个项目中的所有文件；
+-   `publish-site` 发布网站；
+
 ## 提交信息格式
 
 ```
