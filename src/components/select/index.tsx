@@ -20,7 +20,7 @@ import Option, { OptionProps } from './option'
 
 export { default as SelectOption, OptionProps as SelectOptionProps } from './option'
 
-export interface BaseSelectProps {
+interface BaseSelectProps {
     /**
      * 选中值
      */
