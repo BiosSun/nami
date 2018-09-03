@@ -48,3 +48,17 @@ group: form
 | `state`        | 状态           | `'success'` &#124; `'warning'` &#124; `'danger'` |         |
 | `disabled`     | 是否禁用       | `boolean`                                        | `false` |
 | `onChange`     | 所选值改变事件 | `(event: ChangeEvent, value: number) => void`    |         |
+
+## CSS 变量
+
+| 变量                        | 说明                                 | 默认值                      |
+| --------------------------- | ------------------------------------ | --------------------------- |
+| `--slider-bar-breadth`      | 滑动条宽度                           | `6px`                       |
+| `--slider-knob-length`      | 滑块长度                             | `18px`                      |
+| `--slider-knob-breadth`     | 滑块宽度                             | `18px`                      |
+| `--slider-bar-color`        | 滑动条颜色                           | `var(--line-color)`         |
+| `--slider-fill-color`       | 滑动条填充区颜色                     | `var(--primary-color)`      |
+| `--slider-knob-color`       | 滑块颜色（边框色）                   | `var(--primary-color)`      |
+| `--slider-hover-bar-color`  | 指针悬停在组件上时滑动条的颜色       | `var(--line-color-loud)`    |
+| `--slider-hover-fill-color` | 指针悬停在组件上时滑动条填充区的颜色 | `var(--primary-color-loud)` |
+| `--slider-hover-knob-color` | 指针悬停在滑块上时滑块的颜色         | `var(--primary-color-loud)` |
