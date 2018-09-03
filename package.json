@@ -41,6 +41,7 @@
         "prop-types": "^15.6.2",
         "react": "^16.4.0",
         "react-dom": "^16.4.0",
+        "react-event-listener": "^0.6.3",
         "shallowequal": "^1.0.2"
     },
     "devDependencies": {
@@ -48,6 +49,7 @@
         "@types/prop-types": "^15.5.4",
         "@types/react": "^16.4.7",
         "@types/react-dom": "^16.0.6",
+        "@types/react-event-listener": "^0.4.7",
         "@types/react-loadable": "^5.4.0",
         "@types/react-router": "^4.0.25",
         "@types/react-router-dom": "^4.2.6",
