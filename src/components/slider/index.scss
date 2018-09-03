@@ -14,7 +14,6 @@
     --slider-hover-bar-color: var(--line-color-loud);
     --slider-hover-fill-color: var(--primary-color-loud);
     --slider-hover-knob-color: var(--primary-color-loud);
-    --slider-hover-other-knob-color: var(--primary-color);
 
     &__fill {
         --slider-fill-start: 0;
@@ -37,16 +36,6 @@
 
         .nami-slider__fill {
             background: var(--slider-hover-fill-color);
-        }
-
-        .nami-slider__knob {
-            border-color: var(--slider-hover-other-knob-color);
-
-            &:hover,
-            &--active {
-                border-color: var(--slider-hover-knob-color);
-                transform: scale(1.2);
-            }
         }
     }
 
@@ -95,6 +84,12 @@
         transition: border-color 0.2s, transform 0.2s;
 
         @include expand-scope(-10px, $position: absolute);
+
+        &:hover,
+        &--active {
+            border-color: var(--slider-hover-knob-color);
+            transform: scale(1.2);
+        }
     }
 
     &__knob-tip {
@@ -120,7 +115,6 @@
 
         --slider-hover-fill-color: var(--#{$name}-color-loud);
         --slider-hover-knob-color: var(--#{$name}-color-loud);
-        --slider-hover-other-knob-color: var(--#{$name}-color);
     }
 }
 
