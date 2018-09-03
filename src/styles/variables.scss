@@ -178,25 +178,4 @@
     /// ---------------------------
 
     --nami-radio-size-base: 18px;
-
-    /// Popover
-    /// ---------------------------
-
-    /// 弹出层圆角
-    --nami-popover-radius: 4px;
-    /// 弹出层阴影
-    --nami-popover-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.35);
-    /// 弹出层层级
-    --nami-popover-z-index: 3;
-    /// 弹出层箭头尺寸
-    --nami-popover-arrow-size: 14px;
-    /// 弹出层箭头圆角
-    --nami-popover-arrow-radius: 2px;
-    /// 弹出层箭头距离边角的最小距离
-    --nami-popover-arrow-margin: calc(var(--popover-radius) + 10px);
-    /// 弹出层箭头阴影
-    --nami-popover-arrow-top-shadow: 1px 1px 1px -1px rgba(0, 0, 0, 0.84);
-    --nami-popover-arrow-right-shadow: -1px 1px 1px -1px rgba(0, 0, 0, 0.74);
-    --nami-popover-arrow-bottom-shadow: -1px -1px 1px -1px rgba(0, 0, 0, 0.54);
-    --nami-popover-arrow-left-shadow: 1px -1px 1px -1px rgba(0, 0, 0, 0.74);
 }
