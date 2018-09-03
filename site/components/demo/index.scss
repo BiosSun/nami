@@ -426,3 +426,17 @@ $app-demo-border-radius: 6px;
         margin-right: var(--distance-vertical);
     }
 }
+
+// slider
+// -----------------------------------------------------------------------------
+
+.demo-slider {
+    .nami-slider {
+        max-width: 300px;
+        margin: 0 auto;
+
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
+}

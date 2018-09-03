@@ -26,6 +26,7 @@ module.exports = (env = ENV_DEFAULT) => {
             index: [
                 // 一般开发时使用的浏览器都比较新，因此大多都不需要引入 core-js
                 env.production ? 'babel-polyfill' : 'regenerator-runtime/runtime',
+                'pepjs',
                 './site/index.tsx',
             ],
         },
@@ -68,7 +69,7 @@ module.exports = (env = ENV_DEFAULT) => {
                     },
                     polyfill: {
                         name: 'polyfill',
-                        test: /[\\/](babel-polyfill|core-js)[\\/]/,
+                        test: /[\\/](babel-polyfill|core-js|pepjs)[\\/]/,
                         priority: 1,
                     },
                     react: {
