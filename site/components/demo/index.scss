@@ -41,6 +41,7 @@ $app-demo-border-radius: 6px;
             border: 0;
             border-top: 1px solid var(--line-color);
             border-radius: 0 0 $app-demo-border-radius $app-demo-border-radius;
+            background: transparent;
 
             font-size: var(--font-size-small);
             line-height: 30px;
