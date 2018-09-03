@@ -14,6 +14,7 @@
     --slider-hover-bar-color: var(--line-color-loud);
     --slider-hover-fill-color: var(--primary-color-loud);
     --slider-hover-knob-color: var(--primary-color-loud);
+    --slider-hover-knob-scale: 1.2;
 
     &__fill {
         --slider-fill-start: 0;
@@ -88,7 +89,7 @@
         &:hover,
         &--active {
             border-color: var(--slider-hover-knob-color);
-            transform: scale(1.2);
+            transform: scale(var(--slider-hover-knob-scale));
         }
     }
 

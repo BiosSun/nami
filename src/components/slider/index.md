@@ -62,3 +62,4 @@ group: form
 | `--slider-hover-bar-color`  | 指针悬停在组件上时滑动条的颜色       | `var(--line-color-loud)`    |
 | `--slider-hover-fill-color` | 指针悬停在组件上时滑动条填充区的颜色 | `var(--primary-color-loud)` |
 | `--slider-hover-knob-color` | 指针悬停在滑块上时滑块的颜色         | `var(--primary-color-loud)` |
+| `--slider-hover-knob-scale` | 指针悬停在滑块上时滑块的放大比例     | `1.2`                       |
