@@ -34,6 +34,8 @@
     },
     "dependencies": {
         "classnames": "^2.2.5",
+        "color-convert": "^1.9.3",
+        "color-string": "^1.5.3",
         "iterall": "^1.2.2",
         "nojiko": "^1.0.0",
         "object.omit": "^3.0.0",
@@ -46,6 +48,8 @@
     },
     "devDependencies": {
         "@types/classnames": "^2.2.3",
+        "@types/color-convert": "^1.9.0",
+        "@types/color-string": "^1.5.0",
         "@types/prop-types": "^15.5.4",
         "@types/react": "^16.4.7",
         "@types/react-dom": "^16.0.6",
