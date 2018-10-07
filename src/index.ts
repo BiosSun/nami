@@ -6,6 +6,7 @@ import './styles'
 export { default as Button } from './components/button'
 export { default as Icon } from './components/icon'
 export { default as Popover } from './components/popover'
+export { default as Card } from './components/card'
 
 // navigation
 // -----------------------------------------------------------------------------
