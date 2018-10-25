@@ -441,3 +441,15 @@ $app-demo-border-radius: 6px;
         }
     }
 }
+
+// color picker
+// -----------------------------------------------------------------------------
+
+.demo-color-picker {
+    .nami-color-picker {
+        --color-picker-radius: 6px;
+        --color-picker-border-width: 1px;
+
+        width: 300px;
+    }
+}

@@ -1,0 +1,81 @@
+@charset "utf-8";
+
+@import '@nami//styles/basis';
+
+.nami-color-picker {
+    --color-picker-radius: 0;
+    --color-picker-border-width: 0;
+    --color-picker-border-color: var(--line-color-loud);
+
+    // palette
+    // ---------------------------
+
+    --color-picker-palette-color: #00f;
+    --color-picker-palette-hue: 0;
+    --color-picker-palette-saturation: 100%;
+    --color-picker-palette-value: 100%;
+    --color-picker-palette-height: 74.4%;
+    --color-picker-palette-thumb-color: #fff;
+}
+
+.nami-color-picker {
+    border-radius: var(--color-picker-radius);
+    border: var(--color-picker-border-width) solid var(--color-picker-border-color);
+
+    &__palette {
+        position: relative;
+        overflow: hidden;
+        cursor: crosshair;
+        margin-left: calc(var(--color-picker-border-width) * -1);
+        margin-right: calc(var(--color-picker-border-width) * -1);
+
+        &:first-child {
+            border-top-left-radius: var(--color-picker-radius);
+            border-top-right-radius: var(--color-picker-radius);
+            margin-top: calc(var(--color-picker-border-width) * -1);
+        }
+
+        &:last-child {
+            border-bottom-left-radius: var(--color-picker-radius);
+            border-bottom-right-radius: var(--color-picker-radius);
+            margin-bottom: calc(var(--color-picker-border-width) * -1);
+        }
+
+        &__hue {
+            padding-top: var(--color-picker-palette-height);
+            background-color: hsl(var(--color-picker-palette-hue), 100%, 50%);
+        }
+
+        &__saturation,
+        &__value,
+        &__cover {
+            @include position(absolute, 0);
+        }
+
+        &__saturation {
+            background-image: linear-gradient(to right, #fff 0%, transparent 100%);
+            z-index: 1;
+        }
+
+        &__value {
+            background-image: linear-gradient(to bottom, transparent 0%, #000 100%);
+            z-index: 2;
+        }
+
+        &__thumb {
+            @include position(absolute, 0 null null 0, 3);
+            @include size(20px);
+            @include margin(-10px null null -10px);
+
+            border-radius: 20px;
+            border: 2px solid var(--color-picker-palette-thumb-color);
+
+            background: var(--color-picker-palette-color);
+        }
+
+        &__cover {
+            z-index: 4;
+            pointer-events: none;
+        }
+    }
+}
