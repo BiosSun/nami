@@ -1,6 +1,7 @@
 import colorString from 'color-string'
 import colorConvert from 'color-convert'
 import clamp from './clamp'
+import log from './log'
 
 /**
  * 用于存储单个颜色值的不可变对象。
@@ -85,7 +86,10 @@ export default class Color {
      * 修改内部 HSV 值中的某个单值
      */
     private setHsvValue(index: number, newValue: number): Color {
-        if (this.hsv[index] === newValue) {
+        if (!this.valid) {
+            log.warning('Cannot set property of invalid color.')
+            return this
+        } else if (this.hsv[index] === newValue) {
             return this
         } else {
             const newColor = new Color(this)
