@@ -117,15 +117,17 @@ const parser = {
         let model: ColorModel = undefined
         let value: ColorValue = undefined
 
-        let info = colorString.get(str) || this._getHsv(str)
+        if (str) {
+            let info = colorString.get(str) || this._getHsv(str)
 
-        if (info && info.model !== 'hwb') {
-            isValid = true
-            model = info.model
-            value = info.value
+            if (info && info.model !== 'hwb') {
+                isValid = true
+                model = info.model
+                value = info.value
 
-            if (model === 'rgb' && str[0] === '#') {
-                model = 'hex'
+                if (model === 'rgb' && str[0] === '#') {
+                    model = 'hex'
+                }
             }
         }
 
