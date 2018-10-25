@@ -63,9 +63,16 @@
         }
 
         &__thumb {
-            @include position(absolute, 0 null null 0, 3);
-            @include size(20px);
-            @include margin(-10px null null -10px);
+            position: absolute;
+            top: calc(100% - var(--color-picker-palette-value));
+            left: var(--color-picker-palette-saturation);
+            z-index: 3;
+
+            width: 20px;
+            height: 20px;
+            margin-top: -10px;
+            margin-left: -10px;
+            padding: 0;
 
             border-radius: 20px;
             border: 2px solid var(--color-picker-palette-thumb-color);
