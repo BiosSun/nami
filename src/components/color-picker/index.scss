@@ -7,13 +7,17 @@
     --color-picker-border-width: 0;
     --color-picker-border-color: var(--line-color-loud);
 
+    // color value
+    // ---------------------------
+
+    --color-picker-color: #f00;
+    --color-picker-hue: 0;
+    --color-picker-saturation: 100%;
+    --color-picker-value: 100%;
+
     // palette
     // ---------------------------
 
-    --color-picker-palette-color: #00f;
-    --color-picker-palette-hue: 0;
-    --color-picker-palette-saturation: 100%;
-    --color-picker-palette-value: 100%;
     --color-picker-palette-height: 74.4%;
     --color-picker-palette-thumb-color: #fff;
 }
@@ -43,7 +47,7 @@
 
         &__hue {
             padding-top: var(--color-picker-palette-height);
-            background-color: hsl(var(--color-picker-palette-hue), 100%, 50%);
+            background-color: hsl(var(--color-picker-hue), 100%, 50%);
         }
 
         &__saturation,
@@ -64,8 +68,8 @@
 
         &__thumb {
             position: absolute;
-            top: calc(100% - var(--color-picker-palette-value));
-            left: var(--color-picker-palette-saturation);
+            top: calc(100% - var(--color-picker-value));
+            left: var(--color-picker-saturation);
             z-index: 3;
 
             width: 20px;
@@ -77,7 +81,7 @@
             border-radius: 20px;
             border: 2px solid var(--color-picker-palette-thumb-color);
 
-            background: var(--color-picker-palette-color);
+            background: var(--color-picker-color);
         }
 
         &__cover {

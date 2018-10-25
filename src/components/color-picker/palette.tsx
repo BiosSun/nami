@@ -1,4 +1,4 @@
-import React, { PureComponent, HTMLAttributes, CSSProperties } from 'react'
+import React, { PureComponent, HTMLAttributes } from 'react'
 import classnames from 'classnames'
 import EventListener from 'react-event-listener'
 import { Omit, noop } from '@utils'
@@ -48,16 +48,7 @@ export default class ColorPickerPalette extends PureComponent<Props> {
     }
 
     render() {
-        const {
-            hue,
-            saturation,
-            value,
-            color,
-            onChange,
-            className,
-            style,
-            ...otherProps
-        } = this.props
+        const { hue, saturation, value, color, onChange, className, ...otherProps } = this.props
 
         const classes = {
             root: classnames('nami-color-picker__palette', className),
@@ -68,21 +59,8 @@ export default class ColorPickerPalette extends PureComponent<Props> {
             cover: 'nami-color-picker__palette__cover',
         }
 
-        const styles = {
-            ...style,
-            '--color-picker-palette-color': color,
-            '--color-picker-palette-hue': hue,
-            '--color-picker-palette-saturation': saturation + '%',
-            '--color-picker-palette-value': value + '%',
-        } as CSSProperties
-
         return (
-            <div
-                {...otherProps}
-                className={classes.root}
-                style={styles}
-                onPointerDown={this.handlePointerDown}
-            >
+            <div {...otherProps} className={classes.root} onPointerDown={this.handlePointerDown}>
                 <div className={classes.hue} />
                 <div className={classes.saturation} />
                 <div className={classes.value} />

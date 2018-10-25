@@ -1,4 +1,4 @@
-import React, { PureComponent, HTMLAttributes } from 'react'
+import React, { PureComponent, HTMLAttributes, CSSProperties } from 'react'
 import classnames from 'classnames'
 import { Omit, noop, Color } from '@utils'
 
@@ -6,7 +6,7 @@ import Palette from './palette'
 
 import './index.scss'
 
-interface BaseColorPickerProps {
+interface BaseProps {
     /**
      * 色值
      */
@@ -39,10 +39,9 @@ interface BaseColorPickerProps {
     onChange?: (event: Event, value: string) => void
 }
 
-export type ColorPickerProps = BaseColorPickerProps &
-    Omit<HTMLAttributes<HTMLDivElement>, 'onChange'>
+export type Props = BaseProps & Omit<HTMLAttributes<HTMLDivElement>, 'onChange'>
 
-interface ColorPickerState {
+interface State {
     /**
      * 是否为受控状态，this.controlled 属性的镜像，用于在 getDerivedStateFromProps 中访问
      */
@@ -51,11 +50,14 @@ interface ColorPickerState {
     /**
      * 色值
      */
-    value: string
+    color: Color
 }
 
-export default class ColorPicker extends PureComponent<ColorPickerProps, ColorPickerState> {
-    static readonly defaultProps: BaseColorPickerProps = {
+export default class ColorPicker extends PureComponent<Props, State> {
+    // 默认色值，当组件初始时 props 中所传入的色值无效时，使用该色值。
+    static DEFAULT_COLOR = new Color('#F00')
+
+    static readonly defaultProps: BaseProps = {
         format: 'auto',
         abbreviatedFormat: false,
         alpha: false,
@@ -64,40 +66,51 @@ export default class ColorPicker extends PureComponent<ColorPickerProps, ColorPi
 
     readonly controlled: boolean = 'value' in this.props
 
-    readonly state: ColorPickerState = {
-        controlled: this.controlled,
-        value: this.controlled
-            ? ColorPicker.parseColorString(this.props.value)
-            : ColorPicker.parseColorString(this.props.defaultValue),
-    }
+    readonly state: State = (() => {
+        const state = {
+            controlled: this.controlled,
+            color: this.controlled
+                ? new Color(this.props.value)
+                : new Color(this.props.defaultValue),
+        }
 
-    static getDerivedStateFromProps(
-        props: ColorPickerProps,
-        prevState: ColorPickerState
-    ): ColorPickerState {
+        if (!state.color.valid) {
+            state.color = ColorPicker.DEFAULT_COLOR
+        }
+
+        return state
+    })()
+
+    static getDerivedStateFromProps(props: Props, prevState: State): State {
         const state = {
             ...prevState,
-            value: prevState.controlled
-                ? ColorPicker.parseColorString(props.value)
-                : prevState.value,
+            value: prevState.controlled ? new Color(props.value) : prevState.color,
         }
 
         return state
     }
 
     render() {
-        const { className } = this.props
+        const { className, style } = this.props
+        const { color } = this.state
         const classes = classnames('nami-color-picker', className)
 
+        console.info(color)
+
+        const styles = {
+            ...style,
+            '--color-picker-color': color.toString('hsl'),
+            '--color-picker-hue': color.getHue(),
+            '--color-picker-saturation': color.getSaturation() + '%',
+            '--color-picker-value': color.getValue() + '%',
+        } as CSSProperties
+
         return (
-            <div className={classes}>
+            <div className={classes} style={styles}>
                 <Palette onChange={this.handlePaletteChange} />
             </div>
         )
     }
 
-    static parseColorString(str: string) {
-        // TODO
-        return str
-    }
+    handlePaletteChange = () => {}
 }
