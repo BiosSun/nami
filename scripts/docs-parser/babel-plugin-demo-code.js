@@ -1,5 +1,5 @@
 const outdent = require('outdent')
-const template = require('babel-template')
+const template = require('@babel/template').default
 
 /**
  * 该 babel 插件用于将如下一段 jsx 格式的 react 示例代码：
@@ -9,7 +9,7 @@ const template = require('babel-template')
  *
  * 转换为如下形式：
  *
- *     import React { Component } from 'react'
+ *     import React, { Component } from 'react'
  *     import { Button } from 'nami'
  *
  *     export default function render() {
@@ -25,7 +25,7 @@ const templateOptions = {
 const buildFunctionComponent = template(
     outdent`
     export default function render() {
-        return RENDER_CONTENT
+        return %%renderContent%%
     }
 `,
     templateOptions
@@ -55,6 +55,7 @@ module.exports = function({ types: t }) {
         CallExpression(path) {
             const callee = path.get('callee')
             const firstArgument = path.get('arguments.0')
+            const renderContent = firstArgument ? firstArgument.node : t.identifier('null')
             const isInGlobal = !path.scope.parent
             const binding = path.scope.getBinding(funIdent)
 
@@ -79,11 +80,7 @@ module.exports = function({ types: t }) {
                 return
             }
 
-            callee.getStatementParent().replaceWith(
-                buildFunctionComponent({
-                    RENDER_CONTENT: firstArgument || t.identifier('undefined'),
-                })
-            )
+            callee.getStatementParent().replaceWith(buildFunctionComponent({ renderContent }))
         },
     }
 

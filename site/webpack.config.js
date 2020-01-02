@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const { WebpackPluginServe: Serve } = require('webpack-plugin-serve')
 
 const sassAliasImporter = require('../scripts/sass-alias-importer')
 
@@ -21,11 +22,12 @@ module.exports = (env = ENV_DEFAULT) => {
     const config = {
         mode: env.production ? 'production' : 'development',
         target: 'web',
+        watch: true,
 
         entry: {
             index: [
                 // 一般开发时使用的浏览器都比较新，因此大多都不需要引入 core-js
-                env.production ? 'babel-polyfill' : 'regenerator-runtime/runtime',
+                env.production ? '@babel/polyfill' : 'regenerator-runtime/runtime',
                 'pepjs',
                 './site/index.tsx',
             ],
@@ -69,7 +71,7 @@ module.exports = (env = ENV_DEFAULT) => {
                     },
                     polyfill: {
                         name: 'polyfill',
-                        test: /[\\/](babel-polyfill|core-js|pepjs)[\\/]/,
+                        test: /[\\/](@babel\/polyfill|core-js|pepjs)[\\/]/,
                         priority: 1,
                     },
                     react: {
@@ -120,12 +122,14 @@ module.exports = (env = ENV_DEFAULT) => {
                         {
                             loader: 'sass-loader',
                             options: {
-                                outputStyle: 'expanded',
-                                importer: sassAliasImporter({
-                                    '@nami//': './src',
-                                    '@site//': './site',
-                                    '@node//': './node_modules',
-                                }),
+                                sassOptions: {
+                                    outputStyle: 'expanded',
+                                    importer: sassAliasImporter({
+                                        '@nami//': './src',
+                                        '@site//': './site',
+                                        '@node//': './node_modules',
+                                    }),
+                                },
                             },
                         },
                     ],
@@ -149,6 +153,13 @@ module.exports = (env = ENV_DEFAULT) => {
             }),
 
             new CopyWebpackPlugin(['site/404.html', 'site/CNAME']),
+
+            new Serve({
+                port: 8080,
+                open: true,
+                historyFallback: true,
+                static: path.join(appRoot, '_site'),
+            }),
         ],
     }
 

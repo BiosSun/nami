@@ -1,6 +1,6 @@
 const fs = require('fs-extra')
 const path = require('path')
-const appRoot = require('app-root-path')
+const appRoot = require('app-root-path').toString()
 
 /**
  * @example
@@ -22,7 +22,7 @@ module.exports = function sassAliasImporterGenerator(aliases) {
 
             if (url.indexOf(alias) === 0) {
                 file = path.join(
-                    appRoot.toString(),
+                    appRoot,
                     ...mappingPath.split('/'),
                     ...url.substring(alias.length).split('/')
                 )

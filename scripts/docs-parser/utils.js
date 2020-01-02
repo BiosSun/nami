@@ -1,5 +1,5 @@
 const path = require('path')
-const appRoot = require('app-root-path')
+const appRoot = require('app-root-path').toString()
 const crypto = require('crypto')
 
 module.exports = {
@@ -7,14 +7,14 @@ module.exports = {
      * 获取一个绝对路径相对于 appRoot 的相对路径
      */
     relativePath: function(file) {
-        return '.' + path.sep + path.relative(appRoot.toString(), file)
+        return '.' + path.sep + path.relative(appRoot, file)
     },
 
     /**
      * 将一个目录的相对路径（固定使用 / 作为分隔符）转换为绝对路径
      */
     absoluteDir: function(dir) {
-        return path.join(appRoot.toString(), dir.split('/').join(path.sep))
+        return path.join(appRoot, dir.split('/').join(path.sep))
     },
 
     /**

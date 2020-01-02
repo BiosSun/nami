@@ -4,11 +4,11 @@ const del = require('del')
 const path = require('path')
 const weblog = require('webpack-log')
 const colors = require('ansi-colors')
-const appRoot = require('app-root-path')
+const appRoot = require('app-root-path').toString()
 const utils = require('./utils')
 
 const log = weblog({ name: 'doc-parser/load-config' })
-const configFile = path.join(appRoot.toString(), '.docsparserrc')
+const configFile = path.join(appRoot, '.docsparserrc')
 
 module.exports = function loadConfig() {
     const config = fs.readJsonSync(configFile, { throws: false })

@@ -67,14 +67,7 @@ module.exports = (env = ENV_DEFAULT) => {
                         {
                             loader: 'babel-loader',
                             options: {
-                                plugins: [
-                                    [
-                                        'transform-runtime',
-                                        {
-                                            polyfill: false,
-                                        },
-                                    ],
-                                ],
+                                plugins: [['transform-runtime']],
                             },
                         },
                         {
@@ -96,11 +89,13 @@ module.exports = (env = ENV_DEFAULT) => {
                         {
                             loader: 'sass-loader',
                             options: {
-                                outputStyle: 'expanded',
-                                importer: sassAliasImporter({
-                                    '@nami//': './src',
-                                    '@node//': './node_modules',
-                                }),
+                                sassOptions: {
+                                    outputStyle: 'expanded',
+                                    importer: sassAliasImporter({
+                                        '@nami//': './src',
+                                        '@node//': './node_modules',
+                                    }),
+                                },
                             },
                         },
                     ],

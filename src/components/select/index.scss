@@ -83,7 +83,9 @@
 
 .nami-select-panel {
     &__option {
-        @include nami-box-size($size: 'base', $is-single: true) border-color: transparent;
+        @include nami-box-size($size: 'base', $is-single: true);
+
+        border-color: transparent;
 
         &:not(:first-child) {
             border-top-left-radius: 0;

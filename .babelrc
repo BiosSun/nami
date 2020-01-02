@@ -1,5 +1,5 @@
 {
-    "presets": [["env", {
+    "presets": [["@babel/preset-env", {
         "modules": false,
         "targets": {
             "browsers": [
@@ -18,9 +18,9 @@
         }
     }]],
     "plugins": [
-        "transform-react-jsx",
-        "transform-object-rest-spread",
-        "syntax-dynamic-import",
-        "transform-class-properties"
+        "@babel/plugin-transform-react-jsx",
+        "@babel/plugin-proposal-object-rest-spread",
+        "@babel/plugin-syntax-dynamic-import",
+        "@babel/plugin-proposal-class-properties"
     ]
 }
