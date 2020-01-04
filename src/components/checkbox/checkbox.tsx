@@ -55,9 +55,9 @@ export type CheckBoxProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChang
         onChange?: OnChange
     }
 
-export type CheckBoxComponent = FunctionComponent<CheckBoxProps>
+export type CheckBoxType = FunctionComponent<CheckBoxProps>
 
-export const CheckBox: CheckBoxComponent = ({
+export const CheckBox: CheckBoxType = ({
     name,
     label,
     checked,

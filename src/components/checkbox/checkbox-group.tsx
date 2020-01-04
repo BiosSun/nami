@@ -40,9 +40,9 @@ export type CheckBoxGroupProps = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'
     children: ReactNode
 }
 
-export type CheckBoxGroupComponent = FunctionComponent<CheckBoxGroupProps>
+export type CheckBoxGroupType = FunctionComponent<CheckBoxGroupProps>
 
-export const CheckBoxGroup: CheckBoxGroupComponent = ({
+export const CheckBoxGroup: CheckBoxGroupType = ({
     name,
     value,
     defaultValue,
