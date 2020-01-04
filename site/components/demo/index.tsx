@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import Loadable from 'react-loadable'
 import { Icon } from 'nami'
 
-import SyntaxHighlighter from '@site/components/syntax-highlighter'
+import { SyntaxHighlighter } from '@site/components/syntax-highlighter'
 import { DocInfo } from '@site/utils/doc-info.interface'
 
 import './index.scss'
