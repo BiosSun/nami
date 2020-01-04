@@ -1,11 +1,11 @@
-import React, { Component, ReactNode, MouseEvent, ButtonHTMLAttributes } from 'react'
+import React, { ReactNode, MouseEvent, ButtonHTMLAttributes } from 'react'
 import classnames from 'classnames'
 
 import { State } from '@utils'
 
 import './index.scss'
 
-export interface BaseButtonProps {
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
     /**
      * 按钮类型
      */
@@ -47,43 +47,37 @@ export interface BaseButtonProps {
     children: ReactNode
 }
 
-export type ButtonProps = BaseButtonProps & ButtonHTMLAttributes<HTMLButtonElement>
+export default function Button({
+    type,
+    outline,
+    flat,
+    round,
+    circle,
+    disabled,
+    onClick,
+    children,
+    className,
+    ...otherProps
+}: ButtonProps) {
+    const classNames = {
+        root: classnames(
+            'nami-button',
+            {
+                [`nami-button--${type}`]: !!type,
+                [`nami-button--outline`]: outline,
+                [`nami-button--flat`]: flat,
+                [`nami-button--round`]: round,
+                [`nami-button--circle`]: circle,
+            },
+            className
+        ),
 
-export default class Button extends Component<ButtonProps> {
-    render() {
-        const {
-            type,
-            outline,
-            flat,
-            round,
-            circle,
-            disabled,
-            onClick,
-            children,
-            className,
-            ...otherProps
-        } = this.props
-
-        const classes = {
-            root: classnames(
-                'nami-button',
-                {
-                    [`nami-button--${type}`]: !!type,
-                    [`nami-button--outline`]: outline,
-                    [`nami-button--flat`]: flat,
-                    [`nami-button--round`]: round,
-                    [`nami-button--circle`]: circle,
-                },
-                className
-            ),
-
-            text: 'nami-button__text',
-        }
-
-        return (
-            <button {...otherProps} className={classes.root} disabled={disabled} onClick={onClick}>
-                <span className={classes.text}>{children}</span>
-            </button>
-        )
+        text: 'nami-button__text',
     }
+
+    return (
+        <button {...otherProps} className={classNames.root} disabled={disabled} onClick={onClick}>
+            <span className={classNames.text}>{children}</span>
+        </button>
+    )
 }
