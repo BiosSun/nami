@@ -42,6 +42,21 @@ module.exports = function({ types: t }) {
                     [
                         t.importDefaultSpecifier(t.identifier('React')),
                         t.importSpecifier(t.identifier('Component'), t.identifier('Component')),
+                        t.importSpecifier(t.identifier('useState'), t.identifier('useState')),
+                        t.importSpecifier(t.identifier('useEffect'), t.identifier('useEffect')),
+                        t.importSpecifier(t.identifier('useContext'), t.identifier('useContext')),
+                        t.importSpecifier(t.identifier('useReducer'), t.identifier('useReducer')),
+                        t.importSpecifier(t.identifier('useCallback'), t.identifier('useCallback')),
+                        t.importSpecifier(t.identifier('useMemo'), t.identifier('useMemo')),
+                        t.importSpecifier(t.identifier('useRef'), t.identifier('useRef')),
+                        t.importSpecifier(
+                            t.identifier('useImperativeHandle'),
+                            t.identifier('useImperativeHandle')
+                        ),
+                        t.importSpecifier(
+                            t.identifier('useLayoutEffect'),
+                            t.identifier('useLayoutEffect')
+                        ),
                     ],
                     t.stringLiteral('react')
                 )
