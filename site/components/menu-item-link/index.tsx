@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import { Link, Route } from 'react-router-dom'
+import { Link, Route, RouteChildrenProps } from 'react-router-dom'
 import { Menu } from 'nami'
 
 export default function MenuItemLink({
@@ -16,7 +16,7 @@ export default function MenuItemLink({
         <Route
             path={to}
             exact={exact}
-            children={({ match }) => (
+            children={({ match }: RouteChildrenProps) => (
                 <Menu.Item active={!!match} {...otherProps}>
                     <Link to={to}>{children}</Link>
                 </Menu.Item>
