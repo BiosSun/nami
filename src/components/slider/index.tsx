@@ -1,7 +1,7 @@
 import React, { PureComponent, HTMLAttributes, CSSProperties, createRef } from 'react'
 import classnames from 'classnames'
 import omit from 'object.omit'
-import { noop, State, Omit } from '@utils'
+import { noop, State } from '@utils'
 import EventListener from 'react-event-listener'
 import Popover from '@components/popover'
 

@@ -1,6 +1,6 @@
 import React, { PureComponent, InputHTMLAttributes, ChangeEvent, LabelHTMLAttributes } from 'react'
 import classnames from 'classnames'
-import { Omit, State, noop } from '@utils'
+import { State, noop } from '@utils'
 import { default as Group, RadioGroupContext, RadioGroupContextData } from './radio-group'
 
 type OnChange = (e: ChangeEvent<HTMLInputElement>, value: string) => void
