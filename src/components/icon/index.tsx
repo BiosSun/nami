@@ -1,28 +1,23 @@
-import React, { PureComponent, SVGAttributes } from 'react'
+import React, { SVGAttributes } from 'react'
 import classnames from 'classnames'
 
 import icons from './icons'
 
 import './index.scss'
 
-export interface BaseIconProps {
+export type IconProps = SVGAttributes<SVGElement> & {
     /**
      * 图标名称；
      */
     name?: string
 }
 
-export type IconProps = BaseIconProps & SVGAttributes<SVGElement>
+export default function Icon({ name, className, ...otherProps }: IconProps) {
+    className = classnames('nami-icon', className)
 
-export default class Icon extends PureComponent<IconProps> {
-    render() {
-        const { name, className, ...otherProps } = this.props
-        const classes = classnames('nami-icon', className)
-
-        return (
-            <svg {...otherProps} className={classes} width="16" height="16" viewBox="0 0 1024 1024">
-                {icons[name]()}
-            </svg>
-        )
-    }
+    return (
+        <svg {...otherProps} className={className} width="16" height="16" viewBox="0 0 1024 1024">
+            {icons[name]()}
+        </svg>
+    )
 }
