@@ -1,8 +1,13 @@
-import CheckBox from './checkbox'
+import { CheckBox, CheckBoxComponent as InnerCheckBoxComponent } from './checkbox'
+import { CheckBoxGroup, CheckBoxGroupComponent } from './checkbox-group'
 
 import './index.scss'
 
-export { CheckBoxProps } from './checkbox'
-export { CheckBoxGroupProps } from './checkbox-group'
+type CheckBoxComponent = InnerCheckBoxComponent & {
+    Group: CheckBoxGroupComponent
+}
 
-export default CheckBox
+const ExportCheckBox = CheckBox as CheckBoxComponent
+ExportCheckBox.Group = CheckBoxGroup
+
+export { ExportCheckBox as CheckBox }

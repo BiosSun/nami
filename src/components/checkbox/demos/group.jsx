@@ -1,40 +1,35 @@
+import _ from 'lodash'
 import { CheckBox, TextBox } from 'nami'
 
-class App extends React.Component {
-    state = {
-        value: 'ts, as',
-    }
+function App() {
+    const [value, setValue] = useState('ts, as')
 
-    render() {
-        const { value } = this.state
+    const checkedItemValues = useMemo(() => {
+        return _.chain(value)
+            .split(',')
+            .map(_.trim)
+            .compact()
+            .value()
+    }, [value])
 
-        return (
-            <div>
-                <CheckBox.Group
-                    name="group"
-                    value={value.split(',').map(v => v.trim())}
-                    onChange={this.onChange}
-                >
-                    <CheckBox value="js" label="JavaScript" />
-                    <CheckBox value="ts" label="TypeScript" />
-                    <CheckBox value="cs" label="CoffeeScript" />
-                    <CheckBox value="as" label="ActionScript" />
-                </CheckBox.Group>
+    return (
+        <div>
+            <CheckBox.Group
+                name="group"
+                value={checkedItemValues}
+                onChange={(_event, value) => setValue(value.join(', '))}
+            >
+                <CheckBox value="js" label="JavaScript(js)" />
+                <CheckBox value="ts" label="TypeScript(ts)" />
+                <CheckBox value="cs" label="CoffeeScript(cs)" />
+                <CheckBox value="as" label="ActionScript(as)" />
+            </CheckBox.Group>
 
-                <br />
+            <br />
 
-                <TextBox type="text" value={value} onChange={this.onChange} />
-            </div>
-        )
-    }
-
-    onChange = (e, value) => {
-        if (Array.isArray(value)) {
-            value = value.join(', ')
-        }
-
-        this.setState({ value })
-    }
+            <TextBox type="text" value={value} onChange={(_event, value) => setValue(value)} />
+        </div>
+    )
 }
 
 render(<App />)
