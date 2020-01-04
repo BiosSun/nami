@@ -141,6 +141,7 @@ module.exports = (env = ENV_DEFAULT) => {
             new webpack.DefinePlugin({
                 'process.env.PUBLIC_URL': JSON.stringify(PUBLIC_URL),
                 'process.env.VERSION': JSON.stringify(p.version),
+                __DEV__: true,
             }),
 
             new MiniCssExtractPlugin({
