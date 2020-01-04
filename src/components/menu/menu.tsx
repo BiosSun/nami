@@ -4,7 +4,7 @@ import omit from 'object.omit'
 
 import { Children as ChildrenUtils } from '@utils'
 import Popover from '@components/popover'
-import Linear from '@components/linear'
+import { Linear } from '@components/linear'
 
 import Item from './item'
 import ItemGroup from './item-group'

@@ -2,7 +2,7 @@ import React, { Component, ReactNode, ReactElement, HTMLAttributes, isValidEleme
 import classnames from 'classnames'
 import omit from 'object.omit'
 import Icon from '@components/icon'
-import Linear from '@components/linear'
+import { Linear } from '@components/linear'
 import { MenuMode, SubMenuModeEnum } from './utils'
 import { MenuProps } from './menu'
 
