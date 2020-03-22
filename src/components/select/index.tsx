@@ -9,9 +9,9 @@ import React, {
 } from 'react'
 import classnames from 'classnames'
 
-import { log, noop, isReactFragment, State } from '@utils'
-import Icon from '@components/icon'
-import Popover from '@components/popover'
+import { log, noop, isReactFragment, State } from '../../utils'
+import Icon from '../icon'
+import Popover from '../popover'
 
 import './index.scss'
 

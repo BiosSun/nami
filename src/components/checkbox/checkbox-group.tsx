@@ -1,6 +1,6 @@
 import React, { FunctionComponent, HTMLAttributes, ChangeEvent, ReactNode } from 'react'
 import classnames from 'classnames'
-import { State, useValue } from '@utils'
+import { State, useValue } from '../../utils'
 import { CheckBoxGroupContext } from './checkbox-group-context'
 
 export type CheckBoxGroupProps = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> & {

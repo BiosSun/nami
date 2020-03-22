@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { SelectValue, SelectEvent, selectEventFactory } from './utils'
 import shallowequal from 'shallowequal'
-import { noop } from '@utils'
+import { noop } from '../../utils'
 
 export interface BaseOptionProps {
     /**
@@ -77,11 +77,8 @@ export default class Option extends Component<OptionProps> {
         const { props } = this
 
         const selectChanged = this.isSelected(props) !== this.isSelected(nextProps)
-        const ownPropsEquals = shallowequal(
-            props,
-            nextProps,
-            (_p, _n, propName) =>
-                propName === 'selectedValue' || propName === 'selectedLabel' ? true : undefined
+        const ownPropsEquals = shallowequal(props, nextProps, (_p, _n, propName) =>
+            propName === 'selectedValue' || propName === 'selectedLabel' ? true : undefined
         )
 
         return selectChanged || !ownPropsEquals

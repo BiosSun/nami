@@ -2,9 +2,9 @@ import React, { Component, Fragment, ReactNode, HTMLAttributes, ReactElement } f
 import classnames from 'classnames'
 import omit from 'object.omit'
 
-import { Children as ChildrenUtils } from '@utils'
-import Popover from '@components/popover'
-import { Linear } from '@components/linear'
+import { Children as ChildrenUtils } from '../../utils'
+import Popover from '../popover'
+import { Linear } from '../linear'
 
 import Item from './item'
 import ItemGroup from './item-group'

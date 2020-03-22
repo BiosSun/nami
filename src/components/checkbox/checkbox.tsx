@@ -6,8 +6,8 @@ import React, {
     useContext,
 } from 'react'
 import classnames from 'classnames'
-import { State, useValue } from '@utils'
-import Icon from '@components/icon'
+import { State, useValue } from '../../utils'
+import Icon from '../icon'
 import { CheckBoxGroupContext } from './checkbox-group-context'
 
 type OnChange = (event: ChangeEvent<HTMLInputElement>, value: string, checked: boolean) => void

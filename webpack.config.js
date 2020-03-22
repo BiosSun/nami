@@ -24,10 +24,6 @@ module.exports = (env = ENV_DEFAULT) => {
 
         resolve: {
             extensions: ['.json', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss'],
-            alias: {
-                '@utils': path.join(appRoot, 'src', 'utils'),
-                '@components': path.join(appRoot, 'src', 'components'),
-            },
         },
 
         externals: [nodeExternals()],

@@ -1,8 +1,8 @@
 import React, { Component, ReactNode, ReactElement, ReactChild, HTMLAttributes } from 'react'
 import classnames from 'classnames'
 import omit from 'object.omit'
-import { Children as ChildrenUtils } from '@utils'
-import { Linear } from '@components/linear'
+import { Children as ChildrenUtils } from '../../utils'
+import { Linear } from '../linear'
 import { ItemProps } from './item'
 import { MenuMode, DirectionEnum } from './utils'
 

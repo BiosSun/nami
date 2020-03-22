@@ -1,7 +1,7 @@
 import React, { ReactNode, MouseEvent, ButtonHTMLAttributes } from 'react'
 import classnames from 'classnames'
 
-import { State } from '@utils'
+import { State } from '../../utils'
 
 import './index.scss'
 

@@ -40,11 +40,6 @@ module.exports = (env = ENV_DEFAULT) => {
         resolve: {
             extensions: ['.json', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss'],
             alias: {
-                // nami
-                '@utils': path.join(appRoot, 'src', 'utils'),
-                '@components': path.join(appRoot, 'src', 'components'),
-
-                // site
                 nami: path.join(appRoot, 'src'),
                 '@site/components': path.join(appRoot, 'site', 'components'),
                 '@site/views': path.join(appRoot, 'site', 'views'),
