@@ -1,6 +1,7 @@
 @charset "utf-8";
 
-@import '../../styles/basis';
+@use '~nojiko/sass/nojiko';
+@use '../../styles/nami';
 
 .nami-select {
     --select-color: var(--text-color);
@@ -22,7 +23,7 @@
     align-items: center;
     width: 100%;
 
-    @include nami-box-size($size: 'base', $is-single: true, $is-limit-min-width: true);
+    @include nami.box-size($size: 'base', $is-single: true, $is-limit-min-width: true);
 
     color: var(--select-color);
     background: var(--select-background);
@@ -63,7 +64,7 @@
 
     &__label {
         flex: 1 1 0;
-        @include text-overflow-ellipsis();
+        @include nojiko.text-overflow-ellipsis();
     }
 
     &__arrows {
@@ -83,7 +84,7 @@
 
 .nami-select-panel {
     &__option {
-        @include nami-box-size($size: 'base', $is-single: true);
+        @include nami.box-size($size: 'base', $is-single: true);
 
         border-color: transparent;
 

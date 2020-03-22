@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-@import '../../styles/basis';
+@use '../../styles/nami';
 
 .nami-flexible-space {
     align-self: stretch;
@@ -19,5 +19,5 @@
         flex-basis: 0;
     }
 
-    @include grid-childrens-spacing('.nami-flexible-space');
+    @include nami.grid-childrens-spacing('.nami-flexible-space');
 }

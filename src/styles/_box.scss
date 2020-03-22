@@ -1,5 +1,8 @@
 @charset "utf-8";
 
+@use '~nojiko/sass/nojiko';
+@use 'functions' as functions;
+
 // box size
 // -----------------------------------------------------------------------------
 
@@ -15,7 +18,7 @@
 /// @param {length} $padding-horizontal - 自定义水平内边距，因为一些组件中可能需要更多的水平内边距，如 "Button" 组件
 /// @param {length} $border-width - 边框大小
 /// @param {string} $border-style - 边框样式
-@mixin nami-box-size(
+@mixin size(
     $size: 'base',
     $is-single: false,
     $is-limit-min-width: false,
@@ -23,7 +26,7 @@
     $border-width: var(--box-#{$size}-border-width),
     $border-style: solid
 ) {
-    $parsed: nami-box-size__parser(
+    $parsed: size-parser(
         $size,
         $is-single,
         $is-limit-min-width,
@@ -32,37 +35,37 @@
         $border-style
     );
 
-    @include nami-box-size__output($parsed);
+    @include size-output($parsed);
 }
 
 ///
 /// 根据所解析的数据输出一份完整的盒模型尺寸相关样式
 ///
-@mixin nami-box-size__output($parsed) {
-    @if map-deep-get($parsed, is-single) {
-        height: map-deep-get($parsed, min-height);
+@mixin size-output($parsed) {
+    @if nojiko.map-deep-get($parsed, is-single) {
+        height: nojiko.map-deep-get($parsed, min-height);
     } @else {
-        min-height: map-deep-get($parsed, min-height);
+        min-height: nojiko.map-deep-get($parsed, min-height);
     }
 
-    @if map-deep-get($parsed, is-limit-min-width) {
-        min-width: map-deep-get($parsed, min-height);
+    @if nojiko.map-deep-get($parsed, is-limit-min-width) {
+        min-width: nojiko.map-deep-get($parsed, min-height);
     }
 
-    padding: map-deep-get($parsed, padding shorthand);
+    padding: nojiko.map-deep-get($parsed, 'padding' 'shorthand');
 
-    border-style: map-deep-get($parsed, border style);
-    border-width: map-deep-get($parsed, border width shorthand);
-    border-radius: map-deep-get($parsed, border radius shorthand);
+    border-style: nojiko.map-deep-get($parsed, border style);
+    border-width: nojiko.map-deep-get($parsed, border width shorthand);
+    border-radius: nojiko.map-deep-get($parsed, border radius shorthand);
 
-    font-size: map-deep-get($parsed, font-size);
-    line-height: map-deep-get($parsed, line-height);
+    font-size: nojiko.map-deep-get($parsed, font-size);
+    line-height: nojiko.map-deep-get($parsed, line-height);
 }
 
 ///
 /// 解析盒模型尺寸相关数据
 ///
-@function nami-box-size__parser(
+@function size-parser(
     $size: 'base',
     $is-single: false,
     $is-limit-min-width: false,
@@ -74,38 +77,22 @@
 
     // border
     $border-width-default: var(--box-#{$size}-border-width);
-    $border-width-top: nth(nami-expand($border-width), 1);
-    $border-width-right: nth(nami-expand($border-width), 2);
-    $border-width-bottom: nth(nami-expand($border-width), 3);
-    $border-width-left: nth(nami-expand($border-width), 4);
+    $border-width-top: nth(functions.expand($border-width), 1);
+    $border-width-right: nth(functions.expand($border-width), 2);
+    $border-width-bottom: nth(functions.expand($border-width), 3);
+    $border-width-left: nth(functions.expand($border-width), 4);
 
     $border-radius: var(--box-#{$size}-border-radius);
 
     // padding
     $padding-vertical: var(--box-#{$size}-padding-vertical);
 
-    $padding-top: nami-box-padding-side(
-        $padding-vertical,
-        $border-width-top,
-        $border-width-default
-    );
-    $padding-right: nami-box-padding-side(
-        $padding-horizontal,
-        $border-width-right,
-        $border-width-default
-    );
-    $padding-bottom: nami-box-padding-side(
-        $padding-vertical,
-        $border-width-bottom,
-        $border-width-default
-    );
-    $padding-left: nami-box-padding-side(
-        $padding-horizontal,
-        $border-width-left,
-        $border-width-default
-    );
+    $padding-top: padding-side($padding-vertical, $border-width-top, $border-width-default);
+    $padding-right: padding-side($padding-horizontal, $border-width-right, $border-width-default);
+    $padding-bottom: padding-side($padding-vertical, $border-width-bottom, $border-width-default);
+    $padding-left: padding-side($padding-horizontal, $border-width-left, $border-width-default);
 
-    $padding: nami-shorthand($padding-top $padding-right $padding-bottom $padding-left);
+    $padding: functions.shorthand($padding-top $padding-right $padding-bottom $padding-left);
 
     // font
     $font-size: var(--font-size-#{$size});
@@ -150,7 +137,7 @@
 /// 因为 nami 中允许为盒元素自定义边框长度，因此需要根据边框长度调整其同一方向上的内边距的长度，
 /// 以保证内容区域保持在盒元素的中心。
 ///
-@function nami-box-padding-side($padding, $border, $border-default) {
+@function padding-side($padding, $border, $border-default) {
     @if $border == $border-default {
         @return $padding;
     } @else if $border eq 0 {

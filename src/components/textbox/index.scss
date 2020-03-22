@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-@import '../../styles/basis';
+@use '../../styles/nami';
 
 .nami-textbox {
     --textbox-color: var(--text-color);
@@ -28,7 +28,7 @@
 }
 
 .nami-textbox__editor {
-    @include nami-box-size($size: 'base', $is-single: true, $is-limit-min-width: true);
+    @include nami.box-size($size: 'base', $is-single: true, $is-limit-min-width: true);
 
     flex: 1 1 auto;
 

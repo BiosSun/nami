@@ -1,6 +1,7 @@
 @charset "utf-8";
 
-@import '../../styles/basis';
+@use '~nojiko/sass/nojiko';
+@use '../../styles/nami';
 
 .nami-radio {
     display: inline-flex;
@@ -19,7 +20,7 @@
 
     @at-root .nami-radio__cell__frame {
         display: block;
-        @include size(100%);
+        @include nojiko.size(100%);
 
         border: 1px solid var(--line-color-loud);
         border-radius: 50%;
@@ -29,8 +30,8 @@
     }
 
     @at-root .nami-radio__cell__check {
-        @include position(absolute, 4px, 1);
-        @include size(calc(var(--nami-radio-size-base) - 8px));
+        @include nojiko.position(absolute, 4px, 1);
+        @include nojiko.size(calc(var(--nami-radio-size-base) - 8px));
 
         background: var(--primary-color);
         border-radius: 50%;
@@ -42,8 +43,8 @@
     }
 
     @at-root .nami-radio__cell__input {
-        @include position(absolute, 0px, 2);
-        @include size(100%);
+        @include nojiko.position(absolute, 0px, 2);
+        @include nojiko.size(100%);
         margin: 0;
         padding: 0;
         opacity: 0;

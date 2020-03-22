@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-@import '../../styles/basis';
+@use '../../styles/nami';
 
 .nami-button {
     --button-background: var(--background-color);
@@ -29,7 +29,7 @@
 }
 
 .nami-button {
-    @include nami-box-size(
+    @include nami.box-size(
         $size: 'base',
         $is-single: true,
         $is-limit-min-width: true,

@@ -25,11 +25,11 @@
 /// @param {list} $shorthand - 待展开的数据
 ///
 /// @example scss
-///     nami-expand(1px);             // 1px 1px 1px 1px
-///     nami-expand(1px 2px);         // 1px 2px 1px 2px
-///     nami-expand(1px 2px 3px);     // 1px 2px 3px 2px
-///     nami-expand(1px 2px 3px 4px); // 1px 2px 3px 4px
-@function nami-expand($shorthand) {
+///     expand(1px);             // 1px 1px 1px 1px
+///     expand(1px 2px);         // 1px 2px 1px 2px
+///     expand(1px 2px 3px);     // 1px 2px 3px 2px
+///     expand(1px 2px 3px 4px); // 1px 2px 3px 4px
+@function expand($shorthand) {
     @if length($shorthand) == 1 {
         @return nth($shorthand, 1) nth($shorthand, 1) nth($shorthand, 1) nth($shorthand, 1);
     } @else if length($shorthand) == 2 {
@@ -48,11 +48,11 @@
 /// @param {list} $expand - 包含待合并的四个值的列表
 ///
 /// @example scss
-///     nami-shorthand(1px 1px 1px 1px); // 1px
-///     nami-shorthand(1px 2px 1px 2px); // 1px 2px
-///     nami-shorthand(1px 2px 3px 2px); // 1px 2px 3px
-///     nami-shorthand(1px 2px 3px 4px); // 1px 2px 3px 4px
-@function nami-shorthand($expand) {
+///     shorthand(1px 1px 1px 1px); // 1px
+///     shorthand(1px 2px 1px 2px); // 1px 2px
+///     shorthand(1px 2px 3px 2px); // 1px 2px 3px
+///     shorthand(1px 2px 3px 4px); // 1px 2px 3px 4px
+@function shorthand($expand) {
     $t: nth($expand, 1);
     $r: nth($expand, 2);
     $b: nth($expand, 3);

@@ -1,7 +1,7 @@
 @charset "utf-8";
 
-@import '../../../styles/basis';
-@import './utils';
+@use '../../../styles/nami';
+@use 'utils' as *;
 
 // item
 // -----------------------------------------------------------------------------

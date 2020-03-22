@@ -1,8 +1,7 @@
 @charset "utf-8";
 
-@import '~nojiko/sass/nojiko';
-@import './functions';
-@import './box';
+@forward 'functions';
+@forward 'box' as box-*;
 
 /// -----------------------------------------------------------------------------
 /// sass utils

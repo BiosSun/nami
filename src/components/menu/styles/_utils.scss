@@ -1,14 +1,17 @@
 @charset "utf-8";
 
+@use '~nojiko/sass/nojiko';
+@use '../../../styles/nami';
+
 $nami-menu__item--max-indent: 7; // 最多支持 7 级缩进
-$nami-menu__item--box-size-parsed: nami-box-size__parser(
+$nami-menu__item--box-size-parsed: nami.box-size-parser(
     $is-single: true,
     $is-limit-min-width: true,
     $border-width: 0,
 );
 
 %nami-menu__item {
-    @include nami-box-size__output($nami-menu__item--box-size-parsed);
+    @include nami.box-size-output($nami-menu__item--box-size-parsed);
 
     display: flex;
     justify-content: space-between;
@@ -27,7 +30,7 @@ $nami-menu__item--box-size-parsed: nami-box-size__parser(
 
         &:after {
             content: '';
-            @include position(absolute, 0, 1);
+            @include nojiko.position(absolute, 0, 1);
         }
 
         &:hover,
@@ -42,7 +45,7 @@ $nami-menu__item--box-size-parsed: nami-box-size__parser(
 @for $level from 1 through $nami-menu__item--max-indent {
     %nami-menu__item--indent-#{$level} {
         padding-left: calc(
-            #{map-deep-get($nami-menu__item--box-size-parsed, padding left)} +
+            #{nojiko.map-deep-get($nami-menu__item--box-size-parsed, padding left)} +
                 var(--distance-horizontal) *
                 #{$level}
         );

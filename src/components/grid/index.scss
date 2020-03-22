@@ -1,25 +1,25 @@
 @charset "utf-8";
 
-@import '../../styles/basis';
+@use '../../styles/nami';
 
 .nami-grid {
     display: flex;
     flex-wrap: wrap;
 
-    @each $name, $val in $grid-justify {
+    @each $name, $val in nami.$grid-justify {
         &--justify-#{$name} {
             justify-content: $val or $name;
         }
     }
 
-    @each $name, $val in $grid-align {
+    @each $name, $val in nami.$grid-align {
         &--align-#{$name} {
             align-items: $val or $name;
         }
     }
 
-    @include grid-spacing();
-    @include grid-childrens-spacing('.nami-grid__col');
+    @include nami.grid-spacing();
+    @include nami.grid-childrens-spacing('.nami-grid__col');
 }
 
 .nami-grid__col {
@@ -27,15 +27,15 @@
 
     @for $i from 1 through 24 {
         &--#{$i} {
-            @include grid-width($i);
+            @include nami.grid-width($i);
         }
 
         &--offset-#{$i} {
-            @include grid-offset($i);
+            @include nami.grid-offset($i);
         }
     }
 
-    @each $name, $val in $grid-align {
+    @each $name, $val in nami.$grid-align {
         &--align-#{$name} {
             align-self: $val or $name;
         }

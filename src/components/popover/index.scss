@@ -1,6 +1,7 @@
 @charset "utf-8";
 
-@import '../../styles/basis';
+@use '~nojiko/sass/nojiko';
+@use '../../styles/nami';
 
 .nami-popover-portal {
     width: 0;
@@ -33,7 +34,7 @@
 }
 
 .nami-popover {
-    @include position(absolute, null, var(--popover-z-index));
+    @include nojiko.position(absolute, null, var(--popover-z-index));
     display: none;
 }
 
@@ -61,15 +62,15 @@
     $horizontal-height: $vertical-width;
     $horizontal-margin: var(--popover-arrow-margin) 0;
 
-    @include size(var(--popover-arrow-size));
-    @include position(absolute, null);
+    @include nojiko.size(var(--popover-arrow-size));
+    @include nojiko.position(absolute, null);
 
     clip-path: inset(0);
 
     &:after {
         content: '';
         display: block;
-        @include size(var(--popover-arrow-size));
+        @include nojiko.size(var(--popover-arrow-size));
         background: var(--popover-background);
         border-radius: var(--popover-arrow-radius);
     }

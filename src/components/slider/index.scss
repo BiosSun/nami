@@ -1,6 +1,7 @@
 @charset "utf-8";
 
-@import '../../styles/basis';
+@use '~nojiko/sass/nojiko';
+@use '../../styles/nami';
 
 .nami-slider {
     --slider-knob-length: 18px;
@@ -41,8 +42,10 @@
     }
 
     &__container {
-        @include margin(null calc(var(--slider-knob-length) / 2));
-        @include padding(calc((var(--slider-knob-breadth) - var(--slider-bar-breadth)) / 2) null);
+        @include nojiko.margin(null calc(var(--slider-knob-length) / 2));
+        @include nojiko.padding(
+            calc((var(--slider-knob-breadth) - var(--slider-bar-breadth)) / 2) null
+        );
         position: relative;
         flex: 1 1 auto;
     }
@@ -58,12 +61,12 @@
     }
 
     &__fill {
-        @include size(
+        @include nojiko.size(
             calc(var(--slider-fill-end) - var(--slider-fill-start)),
             var(--slider-bar-breadth)
         );
 
-        @include position(absolute, 0 null 0 var(--slider-fill-start), 1);
+        @include nojiko.position(absolute, 0 null 0 var(--slider-fill-start), 1);
 
         background: var(--slider-fill-color);
 
@@ -74,7 +77,7 @@
         width: var(--slider-knob-length);
         height: var(--slider-knob-breadth);
 
-        @include position(absolute, 0 null null var(--slider-knob-position), 1);
+        @include nojiko.position(absolute, 0 null null var(--slider-knob-position), 1);
 
         margin-left: calc(var(--slider-knob-length) / -2);
 
@@ -84,7 +87,7 @@
 
         transition: border-color 0.2s, transform 0.2s;
 
-        @include expand-scope(-10px, $position: absolute);
+        @include nojiko.expand-scope(-10px, $position: absolute);
 
         &:hover,
         &--active {
