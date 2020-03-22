@@ -117,6 +117,7 @@
         "webpack-bundle-analyzer": "^3.6.0",
         "webpack-log": "^3.0.1",
         "webpack-nano": "^0.8.1",
+        "webpack-node-externals": "^1.7.2",
         "webpack-plugin-serve": "^0.12.1",
         "webpack-stream": "^5.0.0"
     }

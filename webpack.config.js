@@ -3,6 +3,7 @@ const appRoot = require('app-root-path').toString()
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const nodeExternals = require('webpack-node-externals')
 
 const ENV_DEFAULT = {
     analyzer: false,
@@ -18,8 +19,7 @@ module.exports = (env = ENV_DEFAULT) => {
         output: {
             path: path.join(appRoot, 'lib'),
             filename: 'index.js',
-            library: 'nami',
-            libraryTarget: 'umd',
+            libraryTarget: 'commonjs2',
         },
 
         resolve: {
@@ -30,32 +30,7 @@ module.exports = (env = ENV_DEFAULT) => {
             },
         },
 
-        externals: {
-            react: {
-                commonjs: 'react',
-                commonjs2: 'react',
-                amd: 'react',
-                root: 'React',
-            },
-            'react-dom': {
-                commonjs: 'react-dom',
-                commonjs2: 'react-dom',
-                amd: 'react-dom',
-                root: 'ReactDOM',
-            },
-            'popper.js': {
-                commonjs: 'popper.js',
-                commonjs2: 'popper.js',
-                amd: 'popper.js',
-                root: 'Popper',
-            },
-            'prop-types': {
-                commonjs: 'prop-types',
-                commonjs2: 'prop-types',
-                amd: 'prop-types',
-                root: 'PropTypes',
-            },
-        },
+        externals: [nodeExternals()],
 
         module: {
             rules: [
