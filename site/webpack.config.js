@@ -20,7 +20,7 @@ module.exports = (env = ENV_DEFAULT) => {
     const config = {
         mode: env.production ? 'production' : 'development',
         target: 'web',
-        watch: true,
+        watch: !env.production,
 
         entry: {
             index: [
@@ -147,18 +147,19 @@ module.exports = (env = ENV_DEFAULT) => {
             }),
 
             new CopyWebpackPlugin(['site/404.html', 'site/CNAME']),
-
-            new Serve({
-                port: 8080,
-                open: true,
-                historyFallback: true,
-                static: path.join(appRoot, '_site'),
-            }),
         ],
     }
 
     if (!env.production) {
         config.devtool = 'eval-source-map'
+        config.plugins.push(
+            new Serve({
+                port: 8080,
+                open: true,
+                historyFallback: true,
+                static: path.join(appRoot, '_site'),
+            })
+        )
     }
 
     if (env.analyzer) {

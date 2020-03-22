@@ -65,9 +65,6 @@ module.exports = (env = ENV_DEFAULT) => {
                     use: [
                         {
                             loader: 'babel-loader',
-                            options: {
-                                plugins: [['transform-runtime']],
-                            },
                         },
                         {
                             loader: 'ts-loader',

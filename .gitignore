@@ -104,6 +104,6 @@ Temporary Items
 .vscode
 yarn.lock
 dist/
-es/
+dist-es/
 site/_docs/
 site/_demos/
