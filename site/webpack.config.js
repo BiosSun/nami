@@ -7,8 +7,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const { WebpackPluginServe: Serve } = require('webpack-plugin-serve')
 
-const sassAliasImporter = require('../scripts/sass-alias-importer')
-
 const ENV_DEFAULT = {
     production: false,
     analyzer: false,
@@ -124,11 +122,6 @@ module.exports = (env = ENV_DEFAULT) => {
                             options: {
                                 sassOptions: {
                                     outputStyle: 'expanded',
-                                    importer: sassAliasImporter({
-                                        '@nami//': './src',
-                                        '@site//': './site',
-                                        '@node//': './node_modules',
-                                    }),
                                 },
                             },
                         },

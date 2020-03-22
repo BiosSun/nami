@@ -18,11 +18,11 @@ $rio-code-bg: var(--background-color-loud);
 $rio-code-family: var(--monospace-font-family);
 $rio-code-size: var(--font-size-small);
 $rio-code-block-line-height: 1.8;
-@import '@node//rio-typesetting/sass/rio';
+@import '~rio-typesetting/sass/rio';
 
-@import '@node//nojiko/sass/nojiko';
-@import '@node//nojiko/sass/variables';
-@import '@node//nojiko/sass/elements';
+@import '~nojiko/sass/nojiko';
+@import '~nojiko/sass/variables';
+@import '~nojiko/sass/elements';
 
 // 额外增加两个级别的内外边距
 @include el-margin(null, '-xs', 5px, 5px);

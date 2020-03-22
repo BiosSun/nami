@@ -3,7 +3,6 @@ const appRoot = require('app-root-path').toString()
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-const sassAliasImporter = require('./scripts/sass-alias-importer')
 
 const ENV_DEFAULT = {
     analyzer: false,
@@ -91,10 +90,6 @@ module.exports = (env = ENV_DEFAULT) => {
                             options: {
                                 sassOptions: {
                                     outputStyle: 'expanded',
-                                    importer: sassAliasImporter({
-                                        '@nami//': './src',
-                                        '@node//': './node_modules',
-                                    }),
                                 },
                             },
                         },
