@@ -149,7 +149,7 @@ module.exports = (env = ENV_DEFAULT) => {
         config.devtool = 'eval-source-map'
         config.plugins.push(
             new Serve({
-                port: 8080,
+                port: 8007,
                 open: true,
                 historyFallback: true,
                 static: path.join(appRoot, '_site'),
