@@ -16,7 +16,7 @@
     "author": {
         "name": "Bios Sun",
         "email": "biossun@gmail.com",
-        "url": "http://biossun.org"
+        "url": "https://biossun.org"
     },
     "main": "dist/index.js",
     "module": "dist-es/index.js",
