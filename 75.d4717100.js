@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[75],{274:function(e,n,t){"use strict";t.r(n),t.d(n,"default",(function(){return c}));var o=t(0),r=t.n(o),a=t(21);function c(){return r.a.createElement(a.o,{placeholder:"Please enter some text ..."})}}}]);

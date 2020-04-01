@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{201:function(n,t,e){"use strict";e.r(t),e.d(t,"default",(function(){return r}));var u=e(0),a=e.n(u),o=e(21);function r(){return a.a.createElement(o.a,{disabled:!0},"Button")}}}]);
