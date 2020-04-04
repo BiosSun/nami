@@ -2,80 +2,228 @@
 
 @use '../../styles/nami';
 
-$-linear-justify: (
-    (start, flex-start),
-    (end, flex-end),
-    (center),
-    (between, space-between),
-    (around, space-around)
-);
-
-$-linear-align: ((start, flex-start), (end, flex-end), (center));
-
-$-linear-spacing: (
-    ('', calc(var(--distance-horizontal) / 2)),
-    ('small', calc(var(--distance-horizontal) / 4)),
-    ('large', calc(var(--distance-horizontal)))
-);
-
 .nami-linear {
-    display: flex;
+    // direction
+    // ---------------------------
+    --nami-linear--direction: row;
 
-    &--horizontal {
-        flex-direction: row;
+    @each $name,
+        $val
+            in (
+                horizontal: row,
+                horizontal-reverse: row-reverse,
+                vertical: column,
+                vertical-reverse: column-reverse
+            )
+    {
+        &--#{$name} {
+            --nami-linear--direction: #{$val};
+        }
     }
 
-    &--vertical {
-        flex-direction: column;
-    }
+    // justify
+    // ---------------------------
 
-    @each $name, $val in $-linear-justify {
+    --nami-linear--justify: flex-start;
+
+    @each $name,
+        $val
+            in (
+                start: flex-start,
+                end: flex-end,
+                center: center,
+                between: space-between,
+                around: space-around
+            )
+    {
         &--justify-#{$name} {
-            justify-content: $val or $name;
+            --nami-linear--justify: #{$val};
         }
     }
 
-    @each $name, $val in $-linear-align {
+    // align
+    // ---------------------------
+
+    --nami-linear--align: strech;
+
+    @each $name, $val in (start: flex-start, end: flex-end, center: center, stretch: stretch) {
         &--align-#{$name} {
-            align-items: $val or $name;
+            --nami-linear--align: #{$val};
         }
     }
 
-    @each $name, $half-spacing-width in $-linear-spacing {
-        $suffix: if(str-length($name) == 0, '', '-#{$name}');
+    // padding
+    // ---------------------------
 
-        &--spacing#{$suffix}#{&}--horizontal {
-            > .nami-linear__item {
-                padding-left: $half-spacing-width;
-                padding-right: $half-spacing-width;
+    --nami-linear--padding: 0;
 
-                &:first-child {
-                    padding-left: 0;
-                }
-
-                &:last-child {
-                    padding-right: 0;
-                }
-            }
+    @each $name,
+        $val
+            in (
+                small: calc(var(--distance-horizontal) / 2),
+                common: var(--distance-horizontal),
+                large: calc(var(--distance-horizontal) * 2)
+            )
+    {
+        &--padding-#{$name} {
+            --nami-linear--padding: #{$val};
         }
+    }
 
-        &--spacing#{$suffix}#{&}--vertical {
+    // spacing
+    // ---------------------------
+
+    > .nami-linear__item {
+        --nami-linear--spacing: 0px;
+    }
+
+    @each $name,
+        $val
+            in (
+                small: calc(var(--distance-horizontal) / 2),
+                common: var(--distance-horizontal),
+                large: calc(var(--distance-horizontal) * 2)
+            )
+    {
+        &--spacing-#{$name} {
+            // NOTE 因为 spacing 是通过在 item 上添加外边距来实现的，因此 spacing 变量应该指定在 item 上，
+            //      否则 linear 嵌套时会有问题。
             > .nami-linear__item {
-                padding-top: $half-spacing-width;
-                padding-bottom: $half-spacing-width;
-
-                &:first-child {
-                    padding-top: 0;
-                }
-
-                &:last-child {
-                    padding-bottom: 0;
-                }
+                --nami-linear--spacing: #{$val};
             }
         }
     }
+
+    // styles
+    // ---------------------------
+
+    display: flex;
+    flex-direction: var(--nami-linear--direction);
+    justify-content: var(--nami-linear--justify);
+    align-items: var(--nami-linear--align);
+
+    padding: var(--nami-linear--padding);
 }
 
-.nami-linear__item--fill {
-    flex-grow: 1;
+.nami-linear__item {
+    flex: 0 0 auto;
+
+    // flex
+    // ---------------------------
+
+    &--flex {
+        flex: 1 1 auto;
+
+        .nami-linear--horizontal > &,
+        .nami-linear--horizontal-reverse > & {
+            min-width: 0;
+        }
+
+        .nami-linear--vertical > &,
+        .nami-linear--vertical-reverse > & {
+            min-height: 0;
+        }
+    }
+
+    @for $i from 1 through 10 {
+        &--flex-#{$i} {
+            flex: $i $i auto;
+        }
+    }
+
+    // col
+    // ---------------------------
+
+    &--col {
+        box-sizing: border-box;
+
+        flex-grow: 0;
+        flex-shrink: 0;
+
+        .nami-linear--horizontal > &,
+        .nami-linear--horizontal-reverse > & {
+            min-width: 0;
+        }
+
+        .nami-linear--vertical > &,
+        .nami-linear--vertical-reverse > & {
+            min-height: 0;
+        }
+    }
+
+    @for $i from 1 through 24 {
+        &--col-#{$i} {
+            flex-basis: calc(
+                (100% - var(--nami-linear--spacing) * 23) /
+                    #{24 /
+                    $i} +
+                    var(--nami-linear--spacing) *
+                    #{$i -
+                    1}
+            );
+        }
+    }
+
+    // align
+    // ---------------------------
+    @each $name, $val in (start: flex-start, end: flex-end, center: center, stretch: stretch) {
+        &--align-#{$name} {
+            align-self: #{$val};
+        }
+    }
+
+    // spacing
+    // ---------------------------
+
+    .nami-linear--horizontal > & {
+        margin-left: calc(var(--nami-linear--spacing) / 2);
+        margin-right: calc(var(--nami-linear--spacing) / 2);
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    .nami-linear--horizontal-reverse > & {
+        margin-left: calc(var(--nami-linear--spacing) / 2);
+        margin-right: calc(var(--nami-linear--spacing) / 2);
+
+        &:first-child {
+            margin-right: 0;
+        }
+
+        &:last-child {
+            margin-left: 0;
+        }
+    }
+
+    .nami-linear--vertical > & {
+        margin-top: calc(var(--nami-linear--spacing) / 2);
+        margin-bottom: calc(var(--nami-linear--spacing) / 2);
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .nami-linear--vertical-reverse > & {
+        margin-top: calc(var(--nami-linear--spacing) / 2);
+        margin-bottom: calc(var(--nami-linear--spacing) / 2);
+
+        &:first-child {
+            margin-bottom: 0;
+        }
+
+        &:last-child {
+            margin-top: 0;
+        }
+    }
 }

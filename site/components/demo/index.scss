@@ -81,8 +81,11 @@ $app-demo-border-radius: 6px;
     }
 
     .box {
-        min-height: 40px;
-        line-height: 40px;
+        min-height: 30px;
+        line-height: 30px;
+
+        font-size: 13px;
+        font-family: monospace;
 
         background-color: var(--line-color);
         text-align: center;
@@ -142,6 +145,7 @@ $app-demo-border-radius: 6px;
 .demo-linear {
     .box {
         min-width: 100px;
+        color: #999;
     }
 
     .nami-linear {
@@ -153,72 +157,48 @@ $app-demo-border-radius: 6px;
     }
 
     .nami-linear--horizontal {
-        > .nami-linear__item {
-            > .box {
-                margin-left: 1px;
-            }
+        > .box:not(:first-child) {
+            border-left: 1px solid #fff;
+        }
+    }
 
-            &:first-child {
-                > .box {
-                    margin-left: 0;
-                }
-            }
+    .nami-linear--horizontal-reverse {
+        > .box:not(:first-child) {
+            border-right: 1px solid #fff;
         }
     }
 
     .nami-linear--vertical {
-        > .nami-linear__item {
-            > .box {
-                margin-top: 1px;
-            }
-
-            &:first-child {
-                > .box {
-                    margin-top: 0;
-                }
-            }
+        > .box:not(:first-child) {
+            border-top: 1px solid #fff;
         }
     }
-}
 
-.demo-linear-spacing-horizontal,
-.demo-linear-spacing-vertical {
-    .nami-linear {
-        > .nami-linear__item {
-            > .box {
-                margin: 0;
-            }
-        }
-    }
-}
-
-.demo-linear-spacing-vertical {
-    > div {
-        display: flex;
-    }
-
-    .nami-linear {
-        flex: 1 1 auto;
-
-        margin-top: 0;
-        margin-left: var(--distance-vertical);
-
-        &:first-child {
-            margin-left: 0;
+    .nami-linear--vertical-reverse {
+        > .box:not(:first-child) {
+            border-bottom: 1px solid #fff;
         }
     }
 }
 
 .demo-linear-justify,
-.demo-linear-align {
+.demo-linear-align,
+.demo-linear-item-align {
     .nami-linear {
         background: var(--background-color-quiet);
     }
 }
 
-.demo-linear-align {
+.demo-linear-align,
+.demo-linear-item-align {
     .nami-linear {
         height: 120px;
+    }
+}
+
+.demo-linear-item-col {
+    .box {
+        min-width: 0;
     }
 }
 

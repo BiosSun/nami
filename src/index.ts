@@ -16,7 +16,7 @@ export { default as Menu } from './components/menu'
 // layout
 // -----------------------------------------------------------------------------
 
-export { Linear } from './components/linear'
+export * from './components/linear'
 export { default as Grid } from './components/grid'
 export { default as Divider } from './components/divider'
 export { default as Space } from './components/space'

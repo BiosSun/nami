@@ -1,4 +1,4 @@
-import React, { Component, ReactNode, ReactElement, ReactChild, HTMLAttributes } from 'react'
+import React, { Component, ReactNode, ReactElement, HTMLAttributes } from 'react'
 import classnames from 'classnames'
 import omit from 'object.omit'
 import { Children as ChildrenUtils } from '../../utils'
@@ -38,7 +38,7 @@ export interface ItemGroupState {
     /**
      * 组件头部内容
      */
-    headerContent: ReactChild
+    headerContent: ReactNode
 
     /**
      * 该分组内所包含的所有菜单项
@@ -82,11 +82,7 @@ export default class ItemGroup extends Component<ItemGroupProps, ItemGroupState>
         }
 
         return (
-            <Linear.Item
-                {...omit(this.props, ItemGroup.propKeys)}
-                className={classes.root}
-                component="li"
-            >
+            <li {...omit(this.props, ItemGroup.propKeys)} className={classes.root}>
                 <div className={classes.header}>{headerContent}</div>
                 <Linear
                     className={classes.items}
@@ -95,7 +91,7 @@ export default class ItemGroup extends Component<ItemGroupProps, ItemGroupState>
                 >
                     {items}
                 </Linear>
-            </Linear.Item>
+            </li>
         )
     }
 }

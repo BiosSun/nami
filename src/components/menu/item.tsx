@@ -2,7 +2,6 @@ import React, { Component, ReactNode, ReactElement, HTMLAttributes, isValidEleme
 import classnames from 'classnames'
 import omit from 'object.omit'
 import Icon from '../icon'
-import { Linear } from '../linear'
 import { MenuMode, SubMenuModeEnum } from './utils'
 import { MenuProps } from './menu'
 
@@ -115,14 +114,10 @@ export default class Item extends Component<ItemProps, ItemState> {
         }
 
         return (
-            <Linear.Item
-                {...omit(this.props, Item.propKeys)}
-                className={classes.root}
-                component="li"
-            >
+            <div {...omit(this.props, Item.propKeys)} className={classes.root} component="li">
                 {// subMenu 会负责去渲染 header，因此在有 subMenu 时无须渲染它
                 subMenu ? subMenu : header}
-            </Linear.Item>
+            </div>
         )
     }
 

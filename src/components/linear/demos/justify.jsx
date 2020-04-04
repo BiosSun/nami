@@ -2,18 +2,12 @@ import { Linear } from 'nami'
 
 render(
     <div>
-        <strong>start - 起始位置对齐</strong>
+        <strong>start - 起始位置对齐（默认）</strong>
 
         <Linear justify="start">
-            <Linear.Item>
-                <div className="box" />
-            </Linear.Item>
-            <Linear.Item>
-                <div className="box" />
-            </Linear.Item>
-            <Linear.Item>
-                <div className="box" />
-            </Linear.Item>
+            <div className="box" />
+            <div className="box" />
+            <div className="box" />
         </Linear>
 
         <hr />
@@ -21,15 +15,9 @@ render(
         <strong>end - 结束位置对齐</strong>
 
         <Linear justify="end">
-            <Linear.Item>
-                <div className="box" />
-            </Linear.Item>
-            <Linear.Item>
-                <div className="box" />
-            </Linear.Item>
-            <Linear.Item>
-                <div className="box" />
-            </Linear.Item>
+            <div className="box" />
+            <div className="box" />
+            <div className="box" />
         </Linear>
 
         <hr />
@@ -37,15 +25,9 @@ render(
         <strong>center - 居中对齐</strong>
 
         <Linear justify="center">
-            <Linear.Item>
-                <div className="box" />
-            </Linear.Item>
-            <Linear.Item>
-                <div className="box" />
-            </Linear.Item>
-            <Linear.Item>
-                <div className="box" />
-            </Linear.Item>
+            <div className="box" />
+            <div className="box" />
+            <div className="box" />
         </Linear>
 
         <hr />
@@ -53,15 +35,9 @@ render(
         <strong>between - 两端对齐</strong>
 
         <Linear justify="between">
-            <Linear.Item>
-                <div className="box" />
-            </Linear.Item>
-            <Linear.Item>
-                <div className="box" />
-            </Linear.Item>
-            <Linear.Item>
-                <div className="box" />
-            </Linear.Item>
+            <div className="box" />
+            <div className="box" />
+            <div className="box" />
         </Linear>
 
         <hr />
@@ -69,15 +45,9 @@ render(
         <strong>around - 分散对齐</strong>
 
         <Linear justify="around">
-            <Linear.Item>
-                <div className="box" />
-            </Linear.Item>
-            <Linear.Item>
-                <div className="box" />
-            </Linear.Item>
-            <Linear.Item>
-                <div className="box" />
-            </Linear.Item>
+            <div className="box" />
+            <div className="box" />
+            <div className="box" />
         </Linear>
     </div>
 )

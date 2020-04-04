@@ -2,13 +2,21 @@ import React, {
     Children,
     HTMLAttributes,
     ComponentClass,
-    cloneElement,
     isValidElement,
     FunctionComponent,
+    ReactNode,
 } from 'react'
 import classnames from 'classnames'
 
-import './index.scss'
+declare module 'react' {
+    interface CSSProperties {
+        '--nami-linear--direction': string
+        '--nami-linear--justify': string
+        '--nami-linear--align': string
+        '--nami-linear--padding': string
+        '--nami-linear--spacing': string
+    }
+}
 
 type LinearComponentProps = {
     className?: string
@@ -17,9 +25,9 @@ type LinearComponentProps = {
 export type LinearProps = HTMLAttributes<HTMLDivElement> & {
     /**
      * 布局方向
-     * @default "horizontal"
+     * @default 'horizontal'
      */
-    direction?: 'horizontal' | 'vertical'
+    direction: 'horizontal' | 'horizontal-reverse' | 'vertical' | 'vertical-reverse'
 
     /**
      * 所有元素在主轴上的对齐方式
@@ -29,7 +37,17 @@ export type LinearProps = HTMLAttributes<HTMLDivElement> & {
     /**
      * 所有元素在副轴上的对齐方式
      */
-    align?: 'start' | 'end' | 'center'
+    align?: 'start' | 'end' | 'center' | 'stretch'
+
+    /**
+     * 子项与容器之间的间距
+     */
+    padding?: boolean | 'common' | 'small' | 'large'
+
+    /**
+     * 子项之间的间距
+     */
+    spacing?: boolean | 'common' | 'small' | 'large'
 
     /**
      * 用于渲染 Linear 容器的组件
@@ -39,11 +57,6 @@ export type LinearProps = HTMLAttributes<HTMLDivElement> & {
         | FunctionComponent<LinearComponentProps>
         | ComponentClass<LinearComponentProps>
         | string
-
-    /**
-     * 元素之间是否有间距，及间距宽度配置
-     */
-    spacing?: boolean | 'small' | 'large'
 }
 
 export type LinearType = FunctionComponent<LinearProps>
@@ -51,38 +64,71 @@ export type LinearType = FunctionComponent<LinearProps>
 export const Linear: LinearType = ({
     component: Component = 'div',
     direction = 'horizontal',
-    spacing,
     justify,
     align,
+    padding = false,
+    spacing = false,
     className,
     children,
     ...otherProps
 }) => {
+    if (padding === true) {
+        padding = 'common'
+    }
+
+    if (spacing === true) {
+        spacing = 'common'
+    }
+
     className = classnames(
         'nami-linear',
         `nami-linear--${direction}`,
         {
-            [`nami-linear--align-${align}`]: !!align,
-            [`nami-linear--justify-${justify}`]: !!justify,
-            [`nami-linear--spacing${typeof spacing === 'string' ? '-' + spacing : ''}`]: !!spacing,
+            [`nami-linear--justify-${justify}`]: justify,
+            [`nami-linear--align-${align}`]: align,
+            [`nami-linear--padding-${padding}`]: padding,
+            [`nami-linear--spacing-${spacing}`]: spacing,
         },
         className
     )
 
-    // 向所有子元素中传入 direction 配置，虽然 LinearItem 不需要，
-    // 但其它元素（如 Divider）会需要它。
-    // TODO 使用 Context 向下传入 direction 配置。
-    const childs = Children.map(children, child => {
-        if (isValidElement(child)) {
-            return cloneElement<any>(child, { direction })
-        } else {
-            return child
-        }
-    })
+    const childs = Children.map(children, linearItem)
 
     return (
-        <Component {...otherProps} className={className}>
+        <Component className={className} {...otherProps}>
             {childs}
         </Component>
     )
+}
+
+function linearItem(child: ReactNode): ReactNode {
+    if (!isValidElement(child)) {
+        return child
+    }
+
+    const { className, $flex: flex, $col: col, $align: align, ...otherProps } = child.props
+
+    const flexSuffix = flex === true ? '' : `-${flex}`
+    const colSuffix = `-${col}`
+    const alignSuffix = `-${align}`
+
+    const closed = (
+        <child.type
+            key={child.key}
+            {...otherProps}
+            className={classnames(
+                'nami-linear__item',
+                {
+                    [`nami-linear__item--flex`]: flex,
+                    [`nami-linear__item--flex${flexSuffix}`]: flex,
+                    [`nami-linear__item--col`]: col,
+                    [`nami-linear__item--col${colSuffix}`]: col,
+                    [`nami-linear__item--align${alignSuffix}`]: align,
+                },
+                className
+            )}
+        />
+    )
+
+    return closed
 }
