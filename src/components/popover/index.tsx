@@ -518,10 +518,10 @@ export default class Popover extends Component<PopoverProps, PopoverState> {
      */
     private applyReactStyleModifier = (data: Popper.Data): Popper.Data => {
         this.setState(({ style, arrowStyle }) => ({
-            style: shallowequal(style, data.styles) ? style : (data.styles as CSSProperties),
-            arrowStyle: shallowequal(arrowStyle, data.arrowStyles)
+            style: (shallowequal(style, data.styles) ? style : data.styles) as CSSProperties,
+            arrowStyle: (shallowequal(arrowStyle, data.arrowStyles)
                 ? arrowStyle
-                : (data.arrowStyles as CSSProperties),
+                : data.arrowStyles) as CSSProperties,
             at: data.placement,
         }))
 
@@ -562,9 +562,9 @@ function fuseHandle(
     return !h2
         ? h1
         : !h1
-            ? h2
-            : (...args) => {
-                  h1(...args)
-                  return h2(...args)
-              }
+        ? h2
+        : (...args) => {
+              h1(...args)
+              return h2(...args)
+          }
 }

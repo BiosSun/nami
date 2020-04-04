@@ -7,6 +7,14 @@ import Popover from '../popover'
 
 import './index.scss'
 
+declare module 'react' {
+    interface CSSProperties {
+        '--slider-knob-position': string
+        '--slider-fill-start': string
+        '--slider-fill-end': string
+    }
+}
+
 interface BaseSliderProps {
     /**
      * 所选值
