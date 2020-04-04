@@ -7,5 +7,8 @@
     "env": {
         "node": true
     },
-    "extends": ["eslint:recommended", "plugin:react/recommended"]
+    "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "rules": {
+        "react/prop-types": ["warn", { "skipUndeclared": true }]
+    }
 }
