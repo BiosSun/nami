@@ -14,9 +14,7 @@ module.exports = {
         config.module.rules.push({
             test: /\.tsx?$/,
             use: [
-                {
-                    loader: 'babel-loader',
-                },
+                'babel-loader',
                 {
                     loader: 'ts-loader',
                     options: {
@@ -26,16 +24,57 @@ module.exports = {
             ],
         })
 
+        // 支持 CSS Module
+        // ---------------------------
+        config.module.rules.find(
+            rule => rule.test.toString() === '/\\.css$/'
+        ).exclude = /\.module\.css$/
+
+        config.module.rules.push({
+            test: /\.module\.css$/,
+            use: [
+                'style-loader',
+                {
+                    loader: 'css-loader',
+                    options: {
+                        modules: {
+                            localIdentName: 'demo_[local]__[hash:base64:7]',
+                        },
+                    },
+                },
+            ],
+        })
+
         // 支持 scss
         // ---------------------------
         config.module.rules.push({
             test: /\.scss$/,
+            exclude: /\.module\.scss$/,
             use: [
+                'style-loader',
+                'css-loader',
                 {
-                    loader: 'style-loader',
+                    loader: 'sass-loader',
+                    options: {
+                        sassOptions: {
+                            outputStyle: 'expanded',
+                        },
+                    },
                 },
+            ],
+        })
+
+        config.module.rules.push({
+            test: /\.module\.scss$/,
+            use: [
+                'style-loader',
                 {
                     loader: 'css-loader',
+                    options: {
+                        modules: {
+                            localIdentName: 'demo_[local]__[hash:base64:7]',
+                        },
+                    },
                 },
                 {
                     loader: 'sass-loader',
