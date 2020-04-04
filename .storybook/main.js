@@ -4,6 +4,10 @@ module.exports = {
     stories: ['../stories/**/*.stories.js', '../src/**/*.stories.js'],
     addons: ['@storybook/addon-actions', '@storybook/addon-links'],
     webpackFinal: async config => {
+        // 定义 storybook 工具组件的别名
+        // ---------------------------
+        config.resolve.alias['@biossun/nami/storybook-utils'] = path.join(__dirname, 'utils.js')
+
         // 定义 @biossun/nami 的别名
         // ---------------------------
         config.resolve.alias['@biossun/nami'] = path.join(__dirname, '..', 'src')
