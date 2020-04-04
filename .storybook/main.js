@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-    stories: ['../stories/**/*.stories.js'],
+    stories: ['../stories/**/*.stories.js', '../src/**/*.stories.js'],
     addons: ['@storybook/addon-actions', '@storybook/addon-links'],
     webpackFinal: async config => {
         // 定义 @biossun/nami 的别名
