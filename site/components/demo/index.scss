@@ -202,82 +202,13 @@ $app-demo-border-radius: 6px;
     }
 }
 
-// grid
-// -----------------------------------------------------------------------------
-
-.demo-grid {
-    .nami-grid {
-        margin-top: calc(var(--distance-vertical) / 2);
-
-        &:first-child {
-            margin-top: 0;
-        }
-    }
-
-    .nami-grid__col {
-        > .box {
-            margin-left: 1px;
-        }
-
-        &:first-child {
-            > .box {
-                margin-left: 0;
-            }
-        }
-    }
-}
-
-.demo-grid-spacing {
-    .nami-grid__col {
-        > .box {
-            margin-left: 0;
-        }
-    }
-}
-
-%demo-grid-bg {
-    .nami-grid {
-        background: var(--background-color-quiet);
-    }
-}
-
-%demo-grid-height {
-    .nami-grid {
-        height: 120px;
-    }
-}
-
-%demo-grid-col-primary {
-    .nami-grid__col {
-        > .box {
-            background: var(--primary-color);
-        }
-    }
-}
-
-.demo-grid-justify {
-    @extend %demo-grid-bg;
-}
-
-.demo-grid-align {
-    @extend %demo-grid-bg;
-    @extend %demo-grid-height;
-}
-
-.demo-grid-col-align {
-    @extend %demo-grid-bg;
-    @extend %demo-grid-height;
-    @extend %demo-grid-col-primary;
-}
-
 // divider, space, flexible-space
 // -----------------------------------------------------------------------------
 
 .demo-divider,
 .demo-space,
 .demo-flexible-space {
-    .nami-linear__item,
-    .nami-grid__col {
+    .nami-linear__item {
         margin: calc(var(--distance-vertical) / 2) var(--distance-horizontal);
     }
 

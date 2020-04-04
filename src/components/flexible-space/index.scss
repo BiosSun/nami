@@ -13,11 +13,3 @@
 .nami-flexible-space--vertical {
     flex: 1 0 var(--distance-vertical);
 }
-
-.nami-grid {
-    > .nami-flexible-space {
-        flex-basis: 0;
-    }
-
-    @include nami.grid-childrens-spacing('.nami-flexible-space');
-}

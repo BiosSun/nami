@@ -13,11 +13,3 @@
 .nami-space--vertical {
     height: var(--distance-vertical);
 }
-
-.nami-grid {
-    > .nami-space {
-        @include nami.grid-width(1);
-    }
-
-    @include nami.grid-childrens-spacing('.nami-space');
-}

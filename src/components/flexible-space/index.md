@@ -13,11 +13,6 @@ _注：为突显演示效果，我们为以下 Demo 中的 FlexibleSpace 组件�
 {@demo "./demos/linear-horizontal.jsx"}
 {@demo "./demos/linear-vertical.jsx"}
 
-## Grid
-
-_注：在栅格中，只能使用水平方向弹性空隔符。_
-{@demo "./demos/grid.jsx"}
-
 ## 参数
 
 ### Divider

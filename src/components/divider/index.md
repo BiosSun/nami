@@ -13,12 +13,6 @@ _注：该分隔线并不会占用 1 像素空间，而是会停靠在其下一�
 {@demo "./demos/linear-horizontal.jsx"}
 {@demo "./demos/linear-vertical.jsx"}
 
-## Grid
-
-_注：在栅格中，只能使用水平方向分隔线。_
-
-{@demo "./demos/grid.jsx"}
-
 ## 参数
 
 ### Divider
