@@ -2,21 +2,14 @@
 
 @use '../../styles/nami';
 
-.nami-divider {
-    --divider-length: calc(1em + 2px);
-    --divider-color: var(--line-color);
-}
-
 .nami-divider--vertical {
     width: 1px;
-    min-height: var(--divider-length);
-    background: var(--divider-color);
+    min-height: var(--nami-divider--length-vertical);
+    background: var(--nami-divider--color);
 }
 
 .nami-divider--horizontal {
-    --divider-length: 100%;
-
     height: 1px;
-    min-width: var(--divider-length);
-    background: var(--divider-color);
+    min-width: var(--nami-divider--length-horizontal);
+    background: var(--nami-divider--color);
 }

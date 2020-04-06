@@ -172,4 +172,11 @@
     /// ---------------------------
 
     --nami-radio-size-base: 18px;
+
+    /// Divider
+    /// ---------------------------
+
+    --nami-divider--color: var(--line-color);
+    --nami-divider--length-vertical: calc(1em + 2px);
+    --nami-divider--length-horizontal: 100%;
 }
