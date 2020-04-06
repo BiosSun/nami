@@ -6,8 +6,6 @@ group: layout
 
 用于在两个布局元素之间插入一段空白间隔。
 
-_注：为突显演示效果，我们为以下 Demo 中的 Space 组件添加了一些背景色。_
-
 {@demo "./demos/default.jsx"}
 
 ## 尺寸
