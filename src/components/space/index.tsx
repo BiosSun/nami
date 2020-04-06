@@ -1,12 +1,14 @@
 import React, { HTMLAttributes, FunctionComponent } from 'react'
 import classnames from 'classnames'
+import { LinearItemProps } from '../linear/linear'
 
 import './index.scss'
 
-export type SpaceProps = HTMLAttributes<HTMLDivElement> & {
-    // 空隔符大小
-    size: boolean | 'large' | 'small'
-}
+export type SpaceProps = HTMLAttributes<HTMLDivElement> &
+    LinearItemProps & {
+        // 空隔符大小
+        size?: boolean | 'large' | 'small'
+    }
 
 export type SpaceType = FunctionComponent<SpaceProps>
 

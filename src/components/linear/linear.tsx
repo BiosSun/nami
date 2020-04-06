@@ -115,6 +115,47 @@ export const Linear: LinearType = ({
     )
 }
 
+export interface LinearItemProps {
+    /**
+     * 是否为弹性子元素
+     */
+    $flex?: Boolean
+
+    /**
+     * 是否为栅格子元素
+     */
+    $col?:
+        | 1
+        | 2
+        | 3
+        | 4
+        | 5
+        | 6
+        | 7
+        | 8
+        | 9
+        | 10
+        | 11
+        | 12
+        | 13
+        | 14
+        | 15
+        | 16
+        | 17
+        | 18
+        | 19
+        | 20
+        | 21
+        | 22
+        | 23
+        | 24
+
+    /**
+     * 子元素在副轴上的对齐方式
+     */
+    $align?: 'start' | 'end' | 'center' | 'stretch'
+}
+
 function linearItem(child: ReactNode): ReactNode {
     if (!isValidElement(child)) {
         return child

@@ -1,10 +1,11 @@
 import React, { HTMLAttributes, FunctionComponent, useContext } from 'react'
 import classnames from 'classnames'
 import { LinearContext } from '../linear/context'
+import { LinearItemProps } from '../linear/linear'
 
 import './index.scss'
 
-export type DividerProps = HTMLAttributes<HTMLDivElement>
+export type DividerProps = HTMLAttributes<HTMLDivElement> & Pick<LinearItemProps, '$align'>
 
 export type DividerType = FunctionComponent<DividerProps>
 
