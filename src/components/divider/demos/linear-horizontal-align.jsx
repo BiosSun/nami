@@ -4,7 +4,7 @@ render(
     <HLinear spacing>
         <div>Item</div>
         <div>Item</div>
-        <Divider />
+        <Divider $align="center" />
         <div>Item</div>
     </HLinear>
 )

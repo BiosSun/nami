@@ -1,31 +1,21 @@
-import React, { PureComponent, HTMLAttributes } from 'react'
+import React, { HTMLAttributes, FunctionComponent, useContext } from 'react'
 import classnames from 'classnames'
+import { LinearContext } from '../linear/context'
 
 import './index.scss'
 
-export interface BaseDividerProps {
-    /**
-     * 分隔方向<br>
-     * *一般在布局组件中使用时无须设置该参数，布局组件会自动按其布局方向为其设置；*
-     * @default "horizontal"
-     */
-    direction?: 'horizontal' | 'vertical'
-}
+export type DividerProps = HTMLAttributes<HTMLDivElement>
 
-export type DividerProps = BaseDividerProps & HTMLAttributes<HTMLDivElement>
+export type DividerType = FunctionComponent<DividerProps>
 
-export default class Divider extends PureComponent<DividerProps> {
-    static defaultProps: DividerProps = {
-        direction: 'horizontal',
-    }
+export const Divider: DividerType = ({ className, ...otherProps }) => {
+    const linear = useContext(LinearContext)
 
-    render() {
-        const { direction, className } = this.props
+    className = classnames(
+        'nami-divider',
+        `nami-divider--${linear.direction === 'horizontal' ? 'vertical' : 'horizontal'}`,
+        className
+    )
 
-        const classes = {
-            root: classnames('nami-divider', `nami-divider--${direction}`, className),
-        }
-
-        return <div className={classes.root} />
-    }
+    return <div className={className} {...otherProps} />
 }

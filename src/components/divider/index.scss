@@ -2,30 +2,21 @@
 
 @use '../../styles/nami';
 
-.nami-divider--horizontal {
-    --divider-length: calc(1em + 4px);
+.nami-divider {
+    --divider-length: calc(1em + 2px);
     --divider-color: var(--line-color);
 }
 
-.nami-divider--horizontal {
+.nami-divider--vertical {
     width: 1px;
-    height: var(--divider-length);
-    margin-right: -1px;
-    align-self: center;
-
+    min-height: var(--divider-length);
     background: var(--divider-color);
 }
 
-.nami-divider--vertical {
+.nami-divider--horizontal {
     --divider-length: 100%;
-    --divider-color: var(--line-color);
-}
 
-.nami-divider--vertical {
-    width: var(--divider-length);
     height: 1px;
-    margin-bottom: -1px;
-    align-self: center;
-
+    min-width: var(--divider-length);
     background: var(--divider-color);
 }

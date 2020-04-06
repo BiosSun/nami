@@ -205,13 +205,13 @@ $app-demo-border-radius: 6px;
 // divider, space, flexible-space
 // -----------------------------------------------------------------------------
 
+.demo-divider {
+    line-height: 40px;
+}
+
 .demo-divider,
 .demo-space,
 .demo-flexible-space {
-    .nami-linear__item {
-        margin: calc(var(--distance-vertical) / 2) var(--distance-horizontal);
-    }
-
     .nami-space,
     .nami-flexible-space {
         background: var(--background-color-loud);
