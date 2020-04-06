@@ -106,7 +106,8 @@
 }
 
 .nami-linear__item {
-    flex: 0 0 auto;
+    flex-grow: 0;
+    flex-shrink: 0;
 
     @at-root %item {
         box-sizing: border-box;
