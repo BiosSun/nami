@@ -209,14 +209,14 @@ $app-demo-border-radius: 6px;
 }
 
 .demo-space {
-    .nami-space {
-        background: var(--background-color-loud);
+    .nami-linear:not(:first-child) {
+        margin-top: 10px;
     }
-}
 
-.demo-space-flexible {
-    .nami-linear--vertical {
-        height: 270px;
+    .nami-linear__item:not(.nami-space) {
+        text-align: center;
+        padding: 4px 20px;
+        background: var(--background-color-loud);
     }
 }
 

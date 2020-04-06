@@ -1,0 +1,45 @@
+.container {
+    :global(.nami-space) {
+        background: #ddd;
+    }
+
+    :global(.nami-linear--vertical) {
+        height: 300px;
+    }
+}
+
+.item {
+    padding: 10px;
+
+    font-weight: 700;
+    font-family: monospace;
+    color: #fff;
+
+    overflow: hidden;
+}
+
+.item1 {
+    background: #ed9b2b;
+}
+
+.item2 {
+    background: #5bb85c;
+}
+
+.item3 {
+    background: #d9544f;
+}
+
+.item4 {
+    background: #5ba6e6;
+}
+
+.linearHeight {
+    height: 300px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.linearHeightLarge {
+    height: 700px;
+    background: rgba(0, 0, 0, 0.1);
+}

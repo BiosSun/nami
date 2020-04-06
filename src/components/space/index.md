@@ -4,19 +4,38 @@ displayName: Space *空隔*
 group: layout
 ---
 
-用于在两个布局元素之间插入一段固定宽度（或高度）的空白间隔。
+用于在两个布局元素之间插入一段空白间隔。
 
 _注：为突显演示效果，我们为以下 Demo 中的 Space 组件添加了一些背景色。_
 
-## Linear
+{@demo "./demos/default.jsx"}
 
-{@demo "./demos/linear-horizontal.jsx"}
-{@demo "./demos/linear-vertical.jsx"}
+## 尺寸
+
+和 Linear 的间距一样，Space 也提供三种尺寸：
+
+-   `default` 普通间距，使用样式配置变量 `--distance-horizontal` 的宽度值；
+-   `"small"` 较小间距，是普通间距的一半；
+-   `"large"` 较大间距，是普通间距的两倍；
+
+{@demo "./demos/size.jsx"}
+
+## 弹性空隔
+
+结合 Linear 的 `$flex` 属性，Space 可以变为弹性空隔：
+
+{@demo "./demos/flex.jsx"}
+
+## 栅格空隔
+
+当然，Linear 的 `$col` 属性也可以应用在 Space 上，这可以实现如 bootstrap 中栅格组件的 [offset](https://getbootstrap.com/docs/4.4/layout/grid/#offsetting-columns) 的效果：
+
+{@demo "./demos/col.jsx"}
 
 ## 参数
 
-### Divider
+### Space
 
-| 参数        | 说明                                                                                     | 类型                                         | 默认值       |
-| ----------- | ---------------------------------------------------------------------------------------- | -------------------------------------------- | ------------ |
-| `direction` | 分隔方向<br>_一般在布局组件中使用时无须设置该参数，布局组件会自动按其布局方向为其设置；_ | `'horizontal'`&nbsp;&#124;&nbsp;`'vertical'` | `horizontal` |
+| 参数   | 说明     | 类型             | 默认值 |
+| ------ | -------- | ---------------- | ------ |
+| `size` | 空隔长度 | `small`, `large` |        |

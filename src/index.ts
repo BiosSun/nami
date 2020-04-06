@@ -1,5 +1,12 @@
 import './styles'
 
+// layout
+// -----------------------------------------------------------------------------
+
+export * from './components/divider'
+export * from './components/space'
+export * from './components/linear'
+
 // general
 // -----------------------------------------------------------------------------
 
@@ -12,13 +19,6 @@ export { default as Popover } from './components/popover'
 
 export { default as Navbar } from './components/navbar'
 export { default as Menu } from './components/menu'
-
-// layout
-// -----------------------------------------------------------------------------
-
-export * from './components/linear'
-export * from './components/divider'
-export { default as Space } from './components/space'
 
 // form
 // -----------------------------------------------------------------------------
