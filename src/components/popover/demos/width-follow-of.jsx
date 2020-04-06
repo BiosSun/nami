@@ -31,15 +31,14 @@ class Demo extends Component {
     renderController() {
         const { prop } = this.state
         const radios = ['widthFollowOf', 'minWidthFollowOf'].map(val => (
-            <Linear.Item key={val}>
-                <Radio
-                    name="popover:width-follow-of"
-                    label={val}
-                    value={val}
-                    checked={prop === val}
-                    onChange={e => this.setState({ prop: val })}
-                />
-            </Linear.Item>
+            <Radio
+                key={val}
+                name="popover:width-follow-of"
+                label={val}
+                value={val}
+                checked={prop === val}
+                onChange={e => this.setState({ prop: val })}
+            />
         ))
 
         return (

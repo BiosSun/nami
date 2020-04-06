@@ -1,4 +1,4 @@
-import { Popover, Linear, CheckBox, Button } from 'nami'
+import { Popover, HLinear, CheckBox, Button } from 'nami'
 
 class Demo extends Component {
     state = {
@@ -43,31 +43,23 @@ class Demo extends Component {
         } = this.state
 
         return (
-            <Linear className="demo-popover__controller" spacing>
-                <Linear.Item>
-                    <CheckBox
-                        label="disabledCloseOnOfClick"
-                        checked={disabledCloseOnOfClick}
-                        onChange={e => this.setState({ disabledCloseOnOfClick: e.target.checked })}
-                    />
-                </Linear.Item>
-                <Linear.Item>
-                    <CheckBox
-                        label="disabledCloseOnOtherClick"
-                        checked={disabledCloseOnOtherClick}
-                        onChange={e =>
-                            this.setState({ disabledCloseOnOtherClick: e.target.checked })
-                        }
-                    />
-                </Linear.Item>
-                <Linear.Item>
-                    <CheckBox
-                        label="disabledCloseOnEscape"
-                        checked={disabledCloseOnEscape}
-                        onChange={e => this.setState({ disabledCloseOnEscape: e.target.checked })}
-                    />
-                </Linear.Item>
-            </Linear>
+            <HLinear className="demo-popover__controller" spacing>
+                <CheckBox
+                    label="disabledCloseOnOfClick"
+                    checked={disabledCloseOnOfClick}
+                    onChange={e => this.setState({ disabledCloseOnOfClick: e.target.checked })}
+                />
+                <CheckBox
+                    label="disabledCloseOnOtherClick"
+                    checked={disabledCloseOnOtherClick}
+                    onChange={e => this.setState({ disabledCloseOnOtherClick: e.target.checked })}
+                />
+                <CheckBox
+                    label="disabledCloseOnEscape"
+                    checked={disabledCloseOnEscape}
+                    onChange={e => this.setState({ disabledCloseOnEscape: e.target.checked })}
+                />
+            </HLinear>
         )
     }
 }
