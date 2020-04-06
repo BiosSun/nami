@@ -179,4 +179,11 @@
     --nami-divider--color: var(--line-color);
     --nami-divider--length-vertical: calc(1em + 2px);
     --nami-divider--length-horizontal: 100%;
+
+    /// Space
+    /// ---------------------------
+
+    --nami-space--size: var(--distance-horizontal);
+    --nami-space--size-small: calc(var(--distance-horizontal) / 2);
+    --nami-space--size-large: calc(var(--distance-horizontal) * 2);
 }

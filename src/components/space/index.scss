@@ -3,19 +3,11 @@
 @use '../../styles/nami';
 
 .nami-space {
-    --nami-space--size: var(--distance-horizontal);
+    flex-basis: var(--nami-space--size);
 
-    @each $name,
-        $val
-            in (
-                small: calc(var(--distance-horizontal) / 2),
-                large: calc(var(--distance-horizontal) * 2)
-            )
-    {
+    @each $name in (small, large) {
         &--size-#{$name} {
-            --nami-space--size: #{$val};
+            --nami-space--size: var(--nami-space--size-#{$name});
         }
     }
-
-    flex-basis: var(--nami-space--size);
 }
