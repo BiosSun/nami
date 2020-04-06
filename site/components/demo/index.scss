@@ -266,15 +266,6 @@ $app-demo-border-radius: 6px;
     }
 }
 
-// button
-// -----------------------------------------------------------------------------
-
-.demo-button {
-    .nami-button + .nami-button {
-        margin-left: var(--distance-horizontal);
-    }
-}
-
 // popover
 // -----------------------------------------------------------------------------
 
