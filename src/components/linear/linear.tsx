@@ -5,8 +5,10 @@ import React, {
     isValidElement,
     FunctionComponent,
     ReactNode,
+    useMemo,
 } from 'react'
 import classnames from 'classnames'
+import { LinearContext, LinearContextType } from './context'
 
 declare module 'react' {
     interface CSSProperties {
@@ -80,6 +82,16 @@ export const Linear: LinearType = ({
         spacing = 'common'
     }
 
+    const context = useMemo<LinearContextType>(() => {
+        const isHorizontal = direction === 'horizontal' || direction === 'horizontal-reverse'
+        const isReverse = direction === 'horizontal-reverse' || direction === 'vertical-reverse'
+
+        return {
+            direction: isHorizontal ? 'horizontal' : 'vertical',
+            isReverse,
+        }
+    }, [direction])
+
     className = classnames(
         'nami-linear',
         `nami-linear--${direction}`,
@@ -95,9 +107,11 @@ export const Linear: LinearType = ({
     const childs = Children.map(children, linearItem)
 
     return (
-        <Component className={className} {...otherProps}>
-            {childs}
-        </Component>
+        <LinearContext.Provider value={context}>
+            <Component className={className} {...otherProps}>
+                {childs}
+            </Component>
+        </LinearContext.Provider>
     )
 }
 

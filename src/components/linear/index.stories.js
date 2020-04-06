@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-key */
-import React from 'react'
+import React, { useContext } from 'react'
 import classnames from 'classnames'
 import styles from './index.stories.module.scss'
 
-import { Linear, HLinear, VLinear, HrLinear, VrLinear } from '@biossun/nami'
+import { Linear, HLinear, VLinear, HrLinear, VrLinear, LinearContext } from '@biossun/nami'
 import { DemoStage } from '@biossun/nami/storybook-utils'
 
 export default {
@@ -11,7 +11,7 @@ export default {
     component: Linear,
 }
 
-function Item({ name, component: Component = 'div', height, className, ...otherProps }) {
+function Item({ name, component: Component = 'div', height, className, children, ...otherProps }) {
     return (
         <Component
             className={classnames(
@@ -22,7 +22,7 @@ function Item({ name, component: Component = 'div', height, className, ...otherP
             )}
             {...otherProps}
         >
-            Item {name}
+            Item {name} {children}
         </Component>
     )
 }
@@ -1042,6 +1042,60 @@ export const NestedLinear = () => [
                 <Linear>
                     <Item name="3" />
                     <Item name="4" />
+                </Linear>
+            </Linear>
+        </Linear>
+    </DemoStage.Area>,
+]
+
+function ContextItem({ name, ...otherProps }) {
+    const context = useContext(LinearContext)
+
+    return (
+        <Item name={name} {...otherProps}>
+            direction: {context.direction}, isReverse: {context.isReverse ? 'true' : 'false'}{' '}
+        </Item>
+    )
+}
+
+export const Context = () => [
+    <DemoStage.Area name="horizontal" border>
+        <Linear>
+            <ContextItem name="1" />
+            <ContextItem name="2" />
+        </Linear>
+    </DemoStage.Area>,
+
+    <DemoStage.Area name="horizontal-reverse" border>
+        <Linear direction="horizontal-reverse">
+            <ContextItem name="1" />
+            <ContextItem name="2" />
+        </Linear>
+    </DemoStage.Area>,
+
+    <DemoStage.Area name="vertical" border>
+        <Linear direction="vertical">
+            <ContextItem name="1" />
+            <ContextItem name="2" />
+        </Linear>
+    </DemoStage.Area>,
+
+    <DemoStage.Area name="vertical-reverse" border>
+        <Linear direction="vertical-reverse">
+            <ContextItem name="1" />
+            <ContextItem name="2" />
+        </Linear>
+    </DemoStage.Area>,
+
+    <DemoStage.Area name="nested" border>
+        <Linear direction="horizontal">
+            <ContextItem name="1" />
+
+            <Linear direction="vertical">
+                <ContextItem name="2" />
+                <Linear direction="horizontal-reverse">
+                    <ContextItem name="3" />
+                    <ContextItem name="4" />
                 </Linear>
             </Linear>
         </Linear>
