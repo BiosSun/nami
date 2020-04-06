@@ -813,6 +813,84 @@ export const ItemCol = () => [
     </DemoStage.Area>,
 ]
 
+export const ItemFlexAndCol = () => [
+    <DemoStage.Area title="horizontal">
+        <DemoStage.Area
+            name="在 $flex 和 $col 同时使用时，若容器空间足够，则 $flex 不会对栅格产生任何影响："
+            border
+        >
+            <Linear spacing padding>
+                <Item $flex $col={12} />
+            </Linear>
+        </DemoStage.Area>
+        <DemoStage.Area border>
+            <Linear spacing padding>
+                <Item $flex $col={12} />
+                <Item $flex $col={12} />
+            </Linear>
+        </DemoStage.Area>
+        <DemoStage.Area border>
+            <Linear spacing padding>
+                <Item $flex $col={12} />
+                <Item name="1" />
+            </Linear>
+        </DemoStage.Area>
+        <DemoStage.Area border>
+            <Linear spacing padding>
+                <Item $flex $col={12} />
+                <Item $flex name="1" />
+            </Linear>
+        </DemoStage.Area>
+        <DemoStage.Area name="影响出现在空间不足时，声明了 $flex 的栅格子元素会自动收缩：" border>
+            <Linear spacing padding>
+                <Item name="1" />
+                <Item $flex $col={12} />
+                <Item name="1" />
+                <Item $flex $col={12} />
+                <Item name="1" />
+            </Linear>
+        </DemoStage.Area>
+    </DemoStage.Area>,
+
+    <DemoStage.Area title="vertical">
+        <DemoStage.Area
+            name="在 $flex 和 $col 同时使用时，若容器空间足够，则 $flex 不会对栅格产生任何影响："
+            border
+        >
+            <Linear className={styles.linearHeight} direction="vertical" spacing padding>
+                <Item $flex $col={12} />
+            </Linear>
+        </DemoStage.Area>
+        <DemoStage.Area border>
+            <Linear className={styles.linearHeight} direction="vertical" spacing padding>
+                <Item $flex $col={12} />
+                <Item $flex $col={12} />
+            </Linear>
+        </DemoStage.Area>
+        <DemoStage.Area border>
+            <Linear className={styles.linearHeight} direction="vertical" spacing padding>
+                <Item $flex $col={12} />
+                <Item name="1" />
+            </Linear>
+        </DemoStage.Area>
+        <DemoStage.Area border>
+            <Linear className={styles.linearHeight} direction="vertical" spacing padding>
+                <Item $flex $col={12} />
+                <Item $flex name="1" />
+            </Linear>
+        </DemoStage.Area>
+        <DemoStage.Area name="影响出现在空间不足时，声明了 $flex 的栅格子元素会自动收缩：" border>
+            <Linear className={styles.linearHeight} direction="vertical" spacing padding>
+                <Item name="1" />
+                <Item $flex $col={12} />
+                <Item name="1" />
+                <Item $flex $col={12} />
+                <Item name="1" />
+            </Linear>
+        </DemoStage.Area>
+    </DemoStage.Area>,
+]
+
 export const ItemAlign = () => [
     <DemoStage.Area title="horizontal">
         <DemoStage.Area name="stretch" border>

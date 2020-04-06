@@ -108,11 +108,8 @@
 .nami-linear__item {
     flex: 0 0 auto;
 
-    // flex
-    // ---------------------------
-
-    &--flex {
-        flex: 1 1 auto;
+    @at-root %item {
+        box-sizing: border-box;
 
         .nami-linear--horizontal > &,
         .nami-linear--horizontal-reverse > & {
@@ -125,29 +122,28 @@
         }
     }
 
-    @for $i from 1 through 10 {
-        &--flex-#{$i} {
-            flex: $i $i auto;
-        }
+    // flex & col
+    // ---------------------------
+
+    &--flex {
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 0;
+
+        @extend %item;
     }
 
     // col
     // ---------------------------
 
     &--col {
-        box-sizing: border-box;
-
         flex-grow: 0;
         flex-shrink: 0;
 
-        .nami-linear--horizontal > &,
-        .nami-linear--horizontal-reverse > & {
-            min-width: 0;
-        }
+        @extend %item;
 
-        .nami-linear--vertical > &,
-        .nami-linear--vertical-reverse > & {
-            min-height: 0;
+        &.nami-linear__item--flex {
+            flex-shrink: 1;
         }
     }
 
@@ -176,54 +172,38 @@
     // ---------------------------
 
     .nami-linear--horizontal > & {
-        margin-left: calc(var(--nami-linear--spacing) / 2);
-        margin-right: calc(var(--nami-linear--spacing) / 2);
-
-        &:first-child {
-            margin-left: 0;
+        &:not(:first-child) {
+            margin-left: calc(var(--nami-linear--spacing) / 2);
         }
-
-        &:last-child {
-            margin-right: 0;
+        &:not(:last-child) {
+            margin-right: calc(var(--nami-linear--spacing) / 2);
         }
     }
 
     .nami-linear--horizontal-reverse > & {
-        margin-left: calc(var(--nami-linear--spacing) / 2);
-        margin-right: calc(var(--nami-linear--spacing) / 2);
-
-        &:first-child {
-            margin-right: 0;
-        }
-
         &:last-child {
-            margin-left: 0;
+            margin-left: calc(var(--nami-linear--spacing) / 2);
+        }
+        &:not(:first-child) {
+            margin-right: calc(var(--nami-linear--spacing) / 2);
         }
     }
 
     .nami-linear--vertical > & {
-        margin-top: calc(var(--nami-linear--spacing) / 2);
-        margin-bottom: calc(var(--nami-linear--spacing) / 2);
-
-        &:first-child {
-            margin-top: 0;
+        &:not(:first-child) {
+            margin-top: calc(var(--nami-linear--spacing) / 2);
         }
-
-        &:last-child {
-            margin-bottom: 0;
+        &:not(:last-child) {
+            margin-bottom: calc(var(--nami-linear--spacing) / 2);
         }
     }
 
     .nami-linear--vertical-reverse > & {
-        margin-top: calc(var(--nami-linear--spacing) / 2);
-        margin-bottom: calc(var(--nami-linear--spacing) / 2);
-
-        &:first-child {
-            margin-bottom: 0;
+        &:not(:last-child) {
+            margin-top: calc(var(--nami-linear--spacing) / 2);
         }
-
-        &:last-child {
-            margin-top: 0;
+        &:not(:first-child) {
+            margin-bottom: calc(var(--nami-linear--spacing) / 2);
         }
     }
 }
