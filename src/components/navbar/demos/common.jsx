@@ -1,4 +1,4 @@
-import { Navbar, Icon, Menu, FlexibleSpace } from 'nami'
+import { Navbar, Icon, Menu, Space } from 'nami'
 
 render(
     <Navbar>
@@ -17,7 +17,7 @@ render(
                 <a href="#about">关于</a>
             </Menu.Item>
 
-            <FlexibleSpace />
+            <Space $flex />
 
             <Menu.Item>
                 v3.x
@@ -32,7 +32,8 @@ render(
             </Menu.Item>
             <Menu.Item>
                 <a href="https://github.com/biossun/nami">
-                    <Icon name="github" />&nbsp;Github
+                    <Icon name="github" />
+                    &nbsp;Github
                 </a>
             </Menu.Item>
         </Menu>

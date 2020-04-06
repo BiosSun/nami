@@ -19,7 +19,6 @@ export { default as Menu } from './components/menu'
 export * from './components/linear'
 export * from './components/divider'
 export { default as Space } from './components/space'
-export { default as FlexibleSpace } from './components/flexible-space'
 
 // form
 // -----------------------------------------------------------------------------

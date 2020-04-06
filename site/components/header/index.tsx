@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import classnames from 'classnames'
 import { RouteComponentProps } from 'react-router-dom'
-import { Navbar, Menu, Icon, FlexibleSpace } from 'nami'
+import { Navbar, Menu, Icon, Space } from 'nami'
 
 import Logo from '@site/components/logo'
 import MenuItemLink from '@site/components/menu-item-link'
@@ -31,7 +31,7 @@ export default class Header extends Component<HeaderProps> {
                             </MenuItemLink>
                             <MenuItemLink to="/documents">{lang.documents}</MenuItemLink>
 
-                            <FlexibleSpace />
+                            <Space $flex />
 
                             <Menu.Item>
                                 <a href="https://github.com/biossun/nami" target="_blank">

@@ -127,8 +127,7 @@ $app-demo-border-radius: 6px;
         width: 160px;
     }
 
-    .nami-space,
-    .nami-flexible-space {
+    .nami-space {
         background: var(--background-color-loud);
     }
 }
@@ -202,23 +201,20 @@ $app-demo-border-radius: 6px;
     }
 }
 
-// divider, space, flexible-space
+// divider, space
 // -----------------------------------------------------------------------------
 
 .demo-divider {
     line-height: 40px;
 }
 
-.demo-divider,
-.demo-space,
-.demo-flexible-space {
-    .nami-space,
-    .nami-flexible-space {
+.demo-space {
+    .nami-space {
         background: var(--background-color-loud);
     }
 }
 
-.demo-flexible-space {
+.demo-space-flexible {
     .nami-linear--vertical {
         height: 270px;
     }

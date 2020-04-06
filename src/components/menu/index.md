@@ -64,13 +64,12 @@ _注：与 Item 类似，ItemGroup 中的第一个子元素将做为此分组的
 
 ## 分隔菜单项
 
-Menu 支持 Nami 中所提供的三种分隔符组件：
+Menu 支持 Nami 中所提供的两种分隔符组件：
 
 -   分隔线 `Divider`
 -   空隔 `Space`
--   弹性空隔 `FlexibleSpace`
 
-_注：以下 Demo 中 Space 及 FlexibleSpace 的背景色仅是为了体现分隔效果而添加的，实际上都是透明的。_
+_注：以下 Demo 中 Space 的背景色仅是为了体现分隔效果而添加的，实际上都是透明的。_
 
 {@demo "./demos/divider.jsx"}
 {@demo "./demos/space.jsx"}
