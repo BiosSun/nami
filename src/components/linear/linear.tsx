@@ -169,8 +169,14 @@ function linearItem(child: ReactNode): ReactNode {
 
     const closed = (
         <child.type
+            // 因为需要删除子元素上的 $flex, $col 及 $align 三个属性，因此无法使用 React.cloneElement，
+            // 虽然官方文档中在说明 clonseElement 时有提到其几乎与 `<element.type {...element.props} />` 相同，
+            // 但除了文档中说的 `ref` 之外，还有几个属性是需要注意的：
+            //     https://github.com/facebook/react/blob/master/packages/react/src/ReactElement.js#L360-L381
             key={child.key}
-            {...otherProps}
+            ref={(child as any).ref}
+            __self={(child as any).__self}
+            __source={(child as any).__source}
             className={classnames(
                 'nami-linear__item',
                 {
@@ -182,6 +188,7 @@ function linearItem(child: ReactNode): ReactNode {
                 },
                 className
             )}
+            {...otherProps}
         />
     )
 
