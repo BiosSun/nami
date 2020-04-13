@@ -1,7 +1,6 @@
 import React, { HTMLAttributes, FunctionComponent, useContext } from 'react'
 import classnames from 'classnames'
-import { LinearContext } from '../linear/context'
-import { LinearItemProps } from '../linear/linear'
+import { LinearContext, LinearItemProps } from '../linear'
 
 import './index.scss'
 

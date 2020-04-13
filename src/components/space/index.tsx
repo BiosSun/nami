@@ -1,6 +1,6 @@
 import React, { HTMLAttributes, FunctionComponent } from 'react'
 import classnames from 'classnames'
-import { LinearItemProps } from '../linear/linear'
+import { LinearItemProps } from '../linear'
 
 import './index.scss'
 

@@ -3,9 +3,9 @@ import './styles'
 // layout
 // -----------------------------------------------------------------------------
 
+export * from './components/linear'
 export * from './components/divider'
 export * from './components/space'
-export * from './components/linear'
 
 // general
 // -----------------------------------------------------------------------------
