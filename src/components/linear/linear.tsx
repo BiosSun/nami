@@ -7,7 +7,7 @@ import React, {
     ReactNode,
     useMemo,
 } from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import { LinearContext, LinearContextType } from './context'
 
 declare module 'react' {
@@ -92,7 +92,7 @@ export const Linear: LinearType = ({
         }
     }, [direction])
 
-    className = classnames(
+    className = clsx(
         'nami-linear',
         `nami-linear--${direction}`,
         {
@@ -177,7 +177,7 @@ function linearItem(child: ReactNode): ReactNode {
             ref={(child as any).ref}
             __self={(child as any).__self}
             __source={(child as any).__source}
-            className={classnames(
+            className={clsx(
                 'nami-linear__item',
                 {
                     [`nami-linear__item--flex`]: flex,

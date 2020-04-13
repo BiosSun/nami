@@ -1,5 +1,5 @@
 import React, { Component, ReactNode, ReactElement, HTMLAttributes } from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import omit from 'object.omit'
 import { Children as ChildrenUtils } from '../../utils'
 import { Linear } from '../linear'
@@ -74,8 +74,8 @@ export default class ItemGroup extends Component<ItemGroupProps, ItemGroupState>
         const { headerContent, items } = this.state
 
         const classes = {
-            root: classnames('nami-menu__item-group', className),
-            header: classnames('nami-menu__item-group__header', {
+            root: clsx('nami-menu__item-group', className),
+            header: clsx('nami-menu__item-group__header', {
                 [`nami-menu__item-group__header--indent-${itemDepth}`]: !!itemDepth,
             }),
             items: 'nami-menu__item-group__items',

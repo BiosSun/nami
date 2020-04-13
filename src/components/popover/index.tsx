@@ -12,7 +12,7 @@ import React, {
 } from 'react'
 import { createPortal } from 'react-dom'
 import Popper from 'popper.js'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import omit from 'object.omit'
 import shallowequal from 'shallowequal'
 import Reference from './reference'
@@ -236,7 +236,7 @@ export default class Popover extends Component<PopoverProps, PopoverState> {
         }
 
         const classes = {
-            root: classnames(
+            root: clsx(
                 'nami-popover',
                 {
                     [`nami-popover--open`]: open,
@@ -245,8 +245,8 @@ export default class Popover extends Component<PopoverProps, PopoverState> {
                 className
             ),
 
-            inner: classnames('nami-popover__inner'),
-            arrow: classnames('nami-popover__arrow'),
+            inner: clsx('nami-popover__inner'),
+            arrow: clsx('nami-popover__arrow'),
         }
 
         const otherProps = omit(this.props, Popover.propKeys)

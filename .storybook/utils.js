@@ -1,5 +1,5 @@
 import React from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 
 import styles from './utils.module.scss'
 
@@ -18,7 +18,7 @@ DemoStage.Area = function Area({
 }) {
     return (
         <div
-            className={classnames(
+            className={clsx(
                 styles.stageArea,
                 {
                     [styles.stageAreaBorder]: border,

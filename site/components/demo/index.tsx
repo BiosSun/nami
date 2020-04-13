@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import Loadable from 'react-loadable'
 import { Icon } from 'nami'
 
@@ -113,11 +113,11 @@ export default class Demo extends Component<DemoProps, DemoState> {
         const { demoInfo, expand } = this.state
 
         const classes = {
-            root: classnames(`app-demo rio-block`, {
+            root: clsx(`app-demo rio-block`, {
                 'app-demo--expand': expand,
             }),
 
-            stage: classnames(
+            stage: clsx(
                 `app-demo__stage`,
                 `demo-${docInfo.name.toLowerCase()}`,
                 `demo-${docInfo.name.toLowerCase()}-${demoInfo.name.toLowerCase()}`

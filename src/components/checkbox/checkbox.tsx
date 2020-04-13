@@ -5,7 +5,7 @@ import React, {
     LabelHTMLAttributes,
     useContext,
 } from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import { State, useValue } from '../../utils'
 import Icon from '../icon'
 import { CheckBoxGroupContext } from './checkbox-group-context'
@@ -96,7 +96,7 @@ export const CheckBox: CheckBoxType = ({
     }
 
     const classNames = {
-        root: classnames(
+        root: clsx(
             'nami-checkbox',
             {
                 [`nami-checkbox--${state}`]: !!state,

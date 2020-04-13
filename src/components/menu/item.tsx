@@ -1,5 +1,5 @@
 import React, { Component, ReactNode, ReactElement, HTMLAttributes, isValidElement } from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import omit from 'object.omit'
 import Icon from '../icon'
 import { MenuMode, SubMenuModeEnum } from './utils'
@@ -102,7 +102,7 @@ export default class Item extends Component<ItemProps, ItemState> {
         const subMenu = this.renderSubMenu(header)
 
         const classes = {
-            root: classnames(
+            root: clsx(
                 'nami-menu__item',
                 {
                     [`nami-menu__item--active`]: active || hover || open,
@@ -126,7 +126,7 @@ export default class Item extends Component<ItemProps, ItemState> {
         const { headerContent, subMenu } = this.state
 
         const classes = {
-            root: classnames('nami-menu__item__header', {
+            root: clsx('nami-menu__item__header', {
                 [`nami-menu__item__header--indent-${itemDepth}`]: !!itemDepth,
             }),
             arrows: 'nami-menu__item__header__arrows',

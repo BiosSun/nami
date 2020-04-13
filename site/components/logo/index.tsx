@@ -1,13 +1,13 @@
 import React from 'react'
 
-import classnames from 'classnames'
+import clsx from 'clsx'
 
 export interface LogoProps {
     className?: string
 }
 
 export default function Logo({ className }: LogoProps) {
-    const classes = classnames('app-logo', className)
+    const classes = clsx('app-logo', className)
 
     return (
         <svg

@@ -1,5 +1,5 @@
 import React, { SVGAttributes } from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 
 import icons from './icons'
 
@@ -13,7 +13,7 @@ export type IconProps = SVGAttributes<SVGElement> & {
 }
 
 export default function Icon({ name, className, ...otherProps }: IconProps) {
-    className = classnames('nami-icon', className)
+    className = clsx('nami-icon', className)
 
     return (
         <svg {...otherProps} className={className} width="16" height="16" viewBox="0 0 1024 1024">

@@ -1,5 +1,5 @@
 import React, { HTMLAttributes, FunctionComponent, useContext } from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import { LinearContext, LinearItemProps } from '../linear'
 
 import './index.scss'
@@ -11,7 +11,7 @@ export type DividerType = FunctionComponent<DividerProps>
 export const Divider: DividerType = ({ className, ...otherProps }) => {
     const linear = useContext(LinearContext)
 
-    className = classnames(
+    className = clsx(
         'nami-divider',
         `nami-divider--${linear.direction === 'horizontal' ? 'vertical' : 'horizontal'}`,
         className

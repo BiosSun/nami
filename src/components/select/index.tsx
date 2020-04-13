@@ -7,7 +7,7 @@ import React, {
     ReactElement,
     ReactNode,
 } from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 
 import { log, noop, isReactFragment, State } from '../../utils'
 import Icon from '../icon'
@@ -156,7 +156,7 @@ export default class Select extends Component<SelectProps, SelectState> {
         const { value, label, open } = this.state
 
         const classes = {
-            root: classnames(
+            root: clsx(
                 'nami-select',
                 {
                     [`nami-select--${state}`]: !!state,

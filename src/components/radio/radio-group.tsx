@@ -1,5 +1,5 @@
 import React, { PureComponent, ChangeEvent, HTMLAttributes, ReactNode, createContext } from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import omit from 'object.omit'
 import { State, noop } from '../../utils'
 
@@ -113,7 +113,7 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, RadioGrou
         const { name, state, disabled, className, style, children } = this.props
         const { value } = this.state
 
-        const classes = classnames('nami-radio-group', className)
+        const classes = clsx('nami-radio-group', className)
         const context = {
             name,
             value,

@@ -1,5 +1,5 @@
 import React, { Component, ReactNode } from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import Markdown from 'react-markdown'
 import { DocInfo } from '@site/utils/doc-info.interface'
 import Demo from '@site/components/demo'
@@ -44,7 +44,7 @@ export default class Document extends Component<DocumentProps, DocumentState> {
     }
 
     render() {
-        const classes = classnames('app-document', 'rio', this.props.className)
+        const classes = clsx('app-document', 'rio', this.props.className)
         const { docInfo } = this.state
 
         return (
@@ -74,7 +74,7 @@ export default class Document extends Component<DocumentProps, DocumentState> {
     }
 
     private renderLoading(): ReactNode {
-        const classes = classnames('app-document--loading', this.props.className)
+        const classes = clsx('app-document--loading', this.props.className)
         return <div className={classes}>loading ...</div>
     }
 

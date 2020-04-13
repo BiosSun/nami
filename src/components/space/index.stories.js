@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-key */
 import React from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 
 import { Space, HLinear, VLinear } from '@biossun/nami'
 import { DemoStage } from '@biossun/nami/storybook-utils'
@@ -13,7 +13,7 @@ export default {
 
 function Item({ name, className, children, ...otherProps }) {
     return (
-        <div className={classnames(className, styles.item, styles[`item${name}`])} {...otherProps}>
+        <div className={clsx(className, styles.item, styles[`item${name}`])} {...otherProps}>
             Item {name} {children}
         </div>
     )

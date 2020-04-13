@@ -1,5 +1,5 @@
 import React, { PureComponent, InputHTMLAttributes, ChangeEvent, LabelHTMLAttributes } from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import { State, noop } from '../../utils'
 import { default as Group, RadioGroupContext, RadioGroupContextData } from './radio-group'
 
@@ -95,7 +95,7 @@ export default class Radio extends PureComponent<RadioProps> {
         }
 
         const classes = {
-            root: classnames(
+            root: clsx(
                 'nami-radio',
                 {
                     [`nami-radio--${state}`]: !!state,

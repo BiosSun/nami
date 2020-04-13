@@ -1,5 +1,5 @@
 import React, { ReactNode, MouseEvent, ButtonHTMLAttributes } from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 
 import { State } from '../../utils'
 
@@ -60,7 +60,7 @@ export default function Button({
     ...otherProps
 }: ButtonProps) {
     const classNames = {
-        root: classnames(
+        root: clsx(
             'nami-button',
             {
                 [`nami-button--${type}`]: !!type,

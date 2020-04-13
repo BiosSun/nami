@@ -1,5 +1,5 @@
 import React, { Component, Fragment, ReactNode, HTMLAttributes, ReactElement } from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import omit from 'object.omit'
 
 import { Children as ChildrenUtils } from '../../utils'
@@ -88,7 +88,7 @@ export default class Menu extends Component<MenuProps> {
     private renderMenu(mode: MenuMode, isSubMenu: boolean = false): ReactNode {
         const { className, menuDepth, itemDepth } = this.props
 
-        const classes = classnames(
+        const classes = clsx(
             `nami-menu`,
             `nami-menu--${mode}`,
             {

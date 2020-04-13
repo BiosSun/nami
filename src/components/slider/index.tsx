@@ -1,5 +1,5 @@
 import React, { PureComponent, HTMLAttributes, CSSProperties, createRef } from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import omit from 'object.omit'
 import { noop, State } from '../../utils'
 import EventListener from 'react-event-listener'
@@ -165,7 +165,7 @@ export default class Slider extends PureComponent<SliderProps, SliderState> {
         const { knobDragInitInfo } = this.state
 
         const classes = {
-            root: classnames(
+            root: clsx(
                 'nami-slider',
                 {
                     [`nami-slider--${state}`]: !!state,
@@ -220,7 +220,7 @@ export default class Slider extends PureComponent<SliderProps, SliderState> {
         const active = knobHoverIndex === 0 || (knobDragInitInfo && knobDragInitInfo.index === 0)
 
         const classes = {
-            knob: classnames('nami-slider__knob', {
+            knob: clsx('nami-slider__knob', {
                 'nami-slider__knob--active': active,
             }),
             tip: 'nami-slider__knob-tip',

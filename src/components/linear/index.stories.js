@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-key */
 import React, { useContext } from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import styles from './index.stories.module.scss'
 
 import { Linear, HLinear, VLinear, HrLinear, VrLinear, LinearContext } from '@biossun/nami'
@@ -14,7 +14,7 @@ export default {
 function Item({ name, component: Component = 'div', height, className, children, ...otherProps }) {
     return (
         <Component
-            className={classnames(
+            className={clsx(
                 className,
                 styles.item,
                 styles[`item${name}`],

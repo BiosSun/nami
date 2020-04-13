@@ -1,5 +1,5 @@
 import React, { FunctionComponent, HTMLAttributes, ChangeEvent, ReactNode } from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import { State, useValue } from '../../utils'
 import { CheckBoxGroupContext } from './checkbox-group-context'
 
@@ -77,7 +77,7 @@ export const CheckBoxGroup: CheckBoxGroupType = ({
         onChange: handleItemChange,
     }
 
-    className = classnames('nami-checkbox-group', className)
+    className = clsx('nami-checkbox-group', className)
 
     return (
         <div {...otherProps} className={className}>

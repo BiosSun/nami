@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import { RouteComponentProps } from 'react-router-dom'
 import { Navbar, Menu, Icon, Space } from 'nami'
 
@@ -13,7 +13,7 @@ export interface HeaderProps extends RouteComponentProps<{}, {}> {}
 
 export default class Header extends Component<HeaderProps> {
     render() {
-        const classes = classnames('app-header', {
+        const classes = clsx('app-header', {
             'app-header--borderless': this.props.location.pathname === '/',
         })
 

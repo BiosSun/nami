@@ -1,6 +1,6 @@
 import React, { Component, ReactNode, HTMLAttributes, createRef } from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import { SelectValue, SelectEvent, selectEventFactory } from './utils'
 import shallowequal from 'shallowequal'
 import { noop } from '../../utils'
@@ -102,7 +102,7 @@ export default class Option extends Component<OptionProps> {
         } = this.props
 
         const classes = {
-            root: classnames('nami-select-panel__option', {
+            root: clsx('nami-select-panel__option', {
                 'nami-select-panel__option--selected': this.isSelected(),
                 'nami-select-panel__option--disabled': disabled,
             }),

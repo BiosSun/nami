@@ -1,5 +1,5 @@
 import React, { Component, InputHTMLAttributes, ChangeEvent } from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import { State, noop } from '../../utils'
 
 import './index.scss'
@@ -56,7 +56,7 @@ export default class TextBox extends Component<TextBoxProps> {
         }: TextBoxProps = this.props // NOTE: 这里通过指定 TextBoxProps 类型以使 otherProps 变为可写的
 
         const classes = {
-            root: classnames(
+            root: clsx(
                 'nami-textbox',
                 {
                     [`nami-textbox--${state}`]: !!state,

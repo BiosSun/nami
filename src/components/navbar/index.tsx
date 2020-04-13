@@ -1,5 +1,5 @@
 import React, { Component, HTMLAttributes } from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 
 import Brand from './brand'
 export { default as NavbarBrand, BrandProps as NavbarBrandProps } from './brand'
@@ -21,7 +21,7 @@ export default class Navbar extends Component<NavbarProps> {
     render() {
         const { children, className, ...otherProps } = this.props
 
-        const classes = classnames('nami-navbar', className)
+        const classes = clsx('nami-navbar', className)
 
         return (
             <div {...otherProps} className={classes}>

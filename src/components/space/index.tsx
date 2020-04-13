@@ -1,5 +1,5 @@
 import React, { HTMLAttributes, FunctionComponent } from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import { LinearItemProps } from '../linear'
 
 import './index.scss'
@@ -13,7 +13,7 @@ export type SpaceProps = HTMLAttributes<HTMLDivElement> &
 export type SpaceType = FunctionComponent<SpaceProps>
 
 export const Space: SpaceType = ({ size, className, ...otherProps }) => {
-    className = classnames(
+    className = clsx(
         'nami-space',
         {
             [`nami-space--size-${size}`]: size,
