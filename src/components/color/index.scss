@@ -3,3 +3,34 @@
 .nami-color {
     color: red;
 }
+
+.nami-color__screen {
+    box-sizing: border-box;
+
+    width: var(--nami-color__screen--size);
+    height: var(--nami-color__screen--size);
+    min-width: var(--nami-color__screen--size);
+    min-height: var(--nami-color__screen--size);
+
+    @each $name in (small, large) {
+        &--size-#{$name} {
+            --nami-color__screen--size: var(--nami-color__screen--size-#{$name});
+        }
+    }
+
+    border-radius: 50px;
+    overflow: hidden;
+
+    $bg-linear: linear-gradient(45deg, #afafaf 25%, transparent 25%, transparent 75%, #afafaf 75%);
+    background: $bg-linear 0 0 / 14px 14px, $bg-linear 7px 7px / 14px 14px, #fff;
+
+    &:after {
+        content: '';
+
+        display: block;
+        width: 100%;
+        height: 100%;
+
+        background-color: var(--nami-color__screen--color);
+    }
+}

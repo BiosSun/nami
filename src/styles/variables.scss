@@ -186,4 +186,12 @@
     --nami-space--size: var(--distance-horizontal);
     --nami-space--size-small: calc(var(--distance-horizontal) / 2);
     --nami-space--size-large: calc(var(--distance-horizontal) * 2);
+
+    /// Color
+    /// ---------------------------
+
+    --nami-color__screen--size: 50px;
+    --nami-color__screen--size-small: 25px;
+    --nami-color__screen--size-large: 75px;
+    --nami-color__screen--color: transparent;
 }
