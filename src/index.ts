@@ -13,6 +13,7 @@ export * from './components/space'
 export { default as Button } from './components/button'
 export { default as Icon } from './components/icon'
 export { default as Popover } from './components/popover'
+export * from './components/color'
 
 // navigation
 // -----------------------------------------------------------------------------
