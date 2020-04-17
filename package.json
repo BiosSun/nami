@@ -46,6 +46,7 @@
         "prop-types": "^15.6.2",
         "react-event-listener": "^0.6.3",
         "react-is": "^16.13.1",
+        "react-swipeable": "^5.5.1",
         "shallowequal": "^1.0.2"
     },
     "devDependencies": {

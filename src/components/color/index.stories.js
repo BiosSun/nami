@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-key */
-import React from 'react'
+import React, { useState } from 'react'
+import clsx from 'clsx'
 
-import { Color, ColorScreen, HLinear, VLinear } from '@biossun/nami'
+import { Color, ColorScreen, ColorHueSlider, HLinear, VLinear } from '@biossun/nami'
 import { DemoStage } from '@biossun/nami/storybook-utils'
 import styles from './index.stories.module.scss'
 
@@ -39,3 +40,29 @@ export const colorScreen = () => [
         </VLinear>
     </DemoStage.Area>,
 ]
+
+function HueSliderStory({ defaultValue, ...otherProps }) {
+    const [value, setValue] = useState(defaultValue)
+
+    return (
+        <HLinear align="center" spacing {...otherProps}>
+            <ColorHueSlider value={value} onChange={setValue} $flex />
+            <ColorHueSlider value={value} onChange={setValue} $flex />
+            <ColorHueSlider value={value} onChange={setValue} $flex />
+            <ColorHueSlider value={value} onChange={setValue} $flex />
+            <span style={{ width: 80 }}>{value}</span>
+        </HLinear>
+    )
+}
+
+export const hueSlider = () => (
+    <DemoStage.Area name="用于选择色相，注意：在 U(60, 30) 的领域区间内，knob 会额外添加黑色描边，越靠近领域中心，描边越明显">
+        <VLinear spacing="small">
+            {Array(25)
+                .fill(0)
+                .map((_, index) => (
+                    <HueSliderStory defaultValue={index * 15} />
+                ))}
+        </VLinear>
+    </DemoStage.Area>
+)
