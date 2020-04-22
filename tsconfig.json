@@ -5,6 +5,8 @@
         "baseUrl": ".",
         "paths": {
             "nami": ["./src/index.ts"],
+            "@biossun/nami": ["./src/index.ts"],
+            "@biossun/nami/storybook-utils": [".storybook/utils.tsx"],
             "@site/components/*": ["./site/components/*"],
             "@site/views/*": ["./site/views/*"],
             "@site/utils/*": ["./site/utils/*"],
@@ -23,6 +25,7 @@
         "noUnusedParameters": true,
         "removeComments": false,
         "preserveConstEnums": true,
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "plugins": [{ "name": "typescript-plugin-css-modules" }]
     }
 }

@@ -1,12 +1,19 @@
 const path = require('path')
 
 module.exports = {
-    stories: ['../stories/**/*.stories.js', '../src/**/*.stories.js'],
+    stories: [
+        '../stories/**/*.stories.js',
+        '../stories/**/*.stories.ts',
+        '../stories/**/*.stories.tsx',
+        '../src/**/*.stories.js',
+        '../src/**/*.stories.ts',
+        '../src/**/*.stories.tsx',
+    ],
     addons: ['@storybook/addon-actions', '@storybook/addon-links'],
     webpackFinal: async config => {
         // 定义 storybook 工具组件的别名
         // ---------------------------
-        config.resolve.alias['@biossun/nami/storybook-utils'] = path.join(__dirname, 'utils.js')
+        config.resolve.alias['@biossun/nami/storybook-utils'] = path.join(__dirname, 'utils.tsx')
 
         // 定义 @biossun/nami 的别名
         // ---------------------------
@@ -23,6 +30,7 @@ module.exports = {
                     loader: 'ts-loader',
                     options: {
                         onlyCompileBundledFiles: true,
+                        configFile: path.resolve(__dirname, '..', 'tsconfig.json'),
                     },
                 },
             ],

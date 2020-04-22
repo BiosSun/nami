@@ -1,10 +1,23 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import clsx from 'clsx'
 
 import styles from './utils.module.scss'
 
-export function DemoStage({ children, ...otherProps }) {
+interface DemoStageProps {
+    children: React.ReactNode
+}
+
+export const DemoStage = ({ children, ...otherProps }: DemoStageProps) => {
     return <div {...otherProps}>{children}</div>
+}
+
+interface AreaProps {
+    title?: string
+    name?: string
+    className?: string
+    border?: boolean
+    padding?: boolean
+    children: ReactNode
 }
 
 DemoStage.Area = function Area({
@@ -15,7 +28,7 @@ DemoStage.Area = function Area({
     padding,
     children,
     ...otherProps
-}) {
+}: AreaProps) {
     return (
         <div
             className={clsx(
