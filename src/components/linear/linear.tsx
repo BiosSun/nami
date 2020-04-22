@@ -10,16 +10,6 @@ import React, {
 import clsx from 'clsx'
 import { LinearContext, LinearContextType } from './context'
 
-declare module 'react' {
-    interface CSSProperties {
-        '--nami-linear--direction': string
-        '--nami-linear--justify': string
-        '--nami-linear--align': string
-        '--nami-linear--padding': string
-        '--nami-linear--spacing': string
-    }
-}
-
 type LinearComponentProps = {
     className?: string
 }
