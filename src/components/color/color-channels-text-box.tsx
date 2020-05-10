@@ -106,7 +106,7 @@ export const ColorChannelsTextBox: FunctionComponent<Props> = ({
             nums[i] = num
         }
 
-        return { ...model.value, value: nums as ColorValue }
+        return { ...model.value, model: colorModel, format: colorModel, value: nums as ColorValue }
     }
 
     return (
