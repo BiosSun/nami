@@ -6,6 +6,7 @@ import {
     ColorHueSlider,
     ColorAlphaSlider,
     ColorScreen,
+    ColorPickerInnerDebug,
     HLinear,
     ColorSaturationAndValueSlider,
 } from '@biossun/nami'
@@ -26,19 +27,27 @@ export const common = () => {
                 <HLinear spacing="large">
                     <VLinear $col={6}>
                         <span>受控状态</span>
-                        <ColorPicker value={color} onChange={setColor} />
+                        <ColorPicker value={color} onChange={setColor}>
+                            <ColorPickerInnerDebug />
+                        </ColorPicker>
                     </VLinear>
                     <VLinear $col={6}>
                         <span>受控状态</span>
-                        <ColorPicker value={color} onChange={setColor} />
+                        <ColorPicker value={color} onChange={setColor}>
+                            <ColorPickerInnerDebug />
+                        </ColorPicker>
                     </VLinear>
                     <VLinear $col={6}>
                         <span>非受控状态，绑定 onChange</span>
-                        <ColorPicker defaultValue={color} onChange={setColor} />
+                        <ColorPicker defaultValue={color} onChange={setColor}>
+                            <ColorPickerInnerDebug />
+                        </ColorPicker>
                     </VLinear>
                     <VLinear $col={6}>
                         <span>非受控状态</span>
-                        <ColorPicker $flex defaultValue={color} />
+                        <ColorPicker $flex defaultValue={color}>
+                            <ColorPickerInnerDebug />
+                        </ColorPicker>
                     </VLinear>
                 </HLinear>
                 <span>{color}</span>
