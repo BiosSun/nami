@@ -43,9 +43,9 @@ export const ColorSaturationAndValueSlider: FunctionComponent<Props> = ({
         },
     })
 
-    const h = Color.get(model.value, 'hue')
-    const s = Color.get(model.value, 'saturationv')
-    const v = Color.get(model.value, 'value')
+    const h = Color.round.hue(Color.get(model.value, 'hue'))
+    const s = Color.round.saturationv(Color.get(model.value, 'saturationv'))
+    const v = Color.round.value(Color.get(model.value, 'value'))
 
     style = {
         ...style,
