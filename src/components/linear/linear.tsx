@@ -18,42 +18,43 @@ type LinearComponentProps = {
     className?: string
 }
 
-export type LinearProps = HTMLAttributes<HTMLDivElement> & {
-    /**
-     * 布局方向
-     * @default 'horizontal'
-     */
-    direction: 'horizontal' | 'horizontal-reverse' | 'vertical' | 'vertical-reverse'
+export type LinearProps = HTMLAttributes<HTMLDivElement> &
+    LinearItemProps & {
+        /**
+         * 布局方向
+         * @default 'horizontal'
+         */
+        direction: 'horizontal' | 'horizontal-reverse' | 'vertical' | 'vertical-reverse'
 
-    /**
-     * 所有元素在主轴上的对齐方式
-     */
-    justify?: 'start' | 'end' | 'center' | 'between' | 'around'
+        /**
+         * 所有元素在主轴上的对齐方式
+         */
+        justify?: 'start' | 'end' | 'center' | 'between' | 'around'
 
-    /**
-     * 所有元素在副轴上的对齐方式
-     */
-    align?: 'start' | 'end' | 'center' | 'stretch'
+        /**
+         * 所有元素在副轴上的对齐方式
+         */
+        align?: 'start' | 'end' | 'center' | 'stretch'
 
-    /**
-     * 子项与容器之间的间距
-     */
-    padding?: boolean | 'common' | 'small' | 'large'
+        /**
+         * 子项与容器之间的间距
+         */
+        padding?: boolean | 'common' | 'small' | 'large'
 
-    /**
-     * 子项之间的间距
-     */
-    spacing?: boolean | 'common' | 'small' | 'large'
+        /**
+         * 子项之间的间距
+         */
+        spacing?: boolean | 'common' | 'small' | 'large'
 
-    /**
-     * 用于渲染 Linear 容器的组件
-     * @default "div"
-     */
-    component?:
-        | FunctionComponent<LinearComponentProps>
-        | ComponentClass<LinearComponentProps>
-        | string
-}
+        /**
+         * 用于渲染 Linear 容器的组件
+         * @default "div"
+         */
+        component?:
+            | FunctionComponent<LinearComponentProps>
+            | ComponentClass<LinearComponentProps>
+            | string
+    }
 
 export type LinearType = FunctionComponent<LinearProps>
 
