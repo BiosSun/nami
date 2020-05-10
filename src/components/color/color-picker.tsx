@@ -11,6 +11,7 @@ import { ColorScreen } from './color-screen'
 import { ColorHexTextBox } from './color-hex-text-box'
 import { ColorAlphaTextBox } from './color-alpha-text-box'
 import { ColorChannelsTextBox } from './color-channels-text-box'
+import { ColorPickerInnerDebug } from './color-picker-inner-debug'
 import { Space } from '../space'
 
 type Props = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> &
@@ -30,6 +31,7 @@ export const ColorPicker: FunctionComponent<Props> = ({
     defaultValue,
     onChange,
     className,
+    children,
     ...otherProps
 }) => {
     return (
@@ -52,6 +54,7 @@ export const ColorPicker: FunctionComponent<Props> = ({
                     <ColorChannelsTextBox $col={12} $flex />
                     <ColorAlphaTextBox $col={4} $flex />
                 </HLinear>
+                {children}
             </VLinear>
         </ColorPickerBase>
     )
