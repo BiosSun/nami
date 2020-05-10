@@ -10,6 +10,10 @@ import React, {
 import clsx from 'clsx'
 import { LinearContext, LinearContextType } from './context'
 
+declare module 'react' {
+    interface HTMLAttributes<T> extends LinearItemProps {}
+}
+
 type LinearComponentProps = {
     className?: string
 }
