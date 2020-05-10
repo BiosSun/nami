@@ -40,7 +40,7 @@ export const ColorHueSlider: FunctionComponent<Props> = ({
         },
     })
 
-    const h = Color.get(model.value, 'hue')
+    const h = Color.round.hue(Color.get(model.value, 'hue'))
 
     style = {
         ...style,
