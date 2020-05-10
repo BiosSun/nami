@@ -17,7 +17,7 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> &
         onChange?: (value: string) => void
     }
 
-export const ColorHueSlider: FunctionComponent<Props> = ({
+export const ColorAlphaSlider: FunctionComponent<Props> = ({
     value,
     defaultValue,
     onChange,
@@ -35,24 +35,28 @@ export const ColorHueSlider: FunctionComponent<Props> = ({
 
         onChange({ px }) {
             let { value, onChange } = model
-            value = Color.set(value, 'hue', px * 360)
+            value = Color.set(value, 'alpha', px)
             onChange(value)
         },
     })
 
-    const h = Color.get(model.value, 'hue')
+    const h = Color.get(model.normalizedValue, 'hue')
+    const s = Color.get(model.normalizedValue, 'saturationl')
+    const l = Color.get(model.normalizedValue, 'lightness')
+    const a = Color.get(model.normalizedValue, 'alpha') ?? 1
 
     style = {
         ...style,
-        '--value': String(h),
-        '--percent': `${(h / 360) * 100}%`,
+        '--value': `hsla(${h}, ${s}%, ${l}%, ${a})`,
+        '--color': `hsl(${h}, ${s}%, ${l}%)`,
+        '--percent': `${a * 100}%`,
     }
 
     return (
         <div
             className={clsx(
                 'nami-color__slider',
-                'nami-color__hue-slider',
+                'nami-color__alpha-slider',
                 { 'nami-color__slider--sliding': slider.sliding },
                 className
             )}

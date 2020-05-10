@@ -1,9 +1,9 @@
-import React, { HTMLAttributes, FunctionComponent, RefObject, useRef } from 'react'
+import React, { HTMLAttributes, FunctionComponent, useRef, RefObject } from 'react'
 import clsx from 'clsx'
 import { useSlider } from '../../hooks'
 import { LinearItemProps } from '../linear'
-import { useColor } from './color-picker-base'
 import Color from '@biossun/color'
+import { useColor } from './color-picker-base'
 
 type Props = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> &
     LinearItemProps & {
@@ -13,11 +13,11 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> &
         // 默认颜色值
         defaultValue?: string
 
-        // 颜色值改变后的回调
+        // 新的颜色值
         onChange?: (value: string) => void
     }
 
-export const ColorHueSlider: FunctionComponent<Props> = ({
+export const ColorSaturationAndValueSlider: FunctionComponent<Props> = ({
     value,
     defaultValue,
     onChange,
@@ -33,26 +33,33 @@ export const ColorHueSlider: FunctionComponent<Props> = ({
             return knobBarRef.current.getBoundingClientRect()
         },
 
-        onChange({ px }) {
+        onChange({ px, py }) {
             let { value, onChange } = model
-            value = Color.set(value, 'hue', px * 360)
+
+            value = Color.set(value, 'saturationv', px * 100)
+            value = Color.set(value, 'value', (1 - py) * 100)
+
             onChange(value)
         },
     })
 
     const h = Color.get(model.value, 'hue')
+    const s = Color.get(model.value, 'saturationv')
+    const v = Color.get(model.value, 'value')
 
     style = {
         ...style,
-        '--value': String(h),
-        '--percent': `${(h / 360) * 100}%`,
+        backgroundColor: `hsl(${h}, 100%, 50%)`,
     }
+
+    const hsl = Color.format(Color.set(model.value, 'alpha', 1), 'hsl')
 
     return (
         <div
             className={clsx(
                 'nami-color__slider',
-                'nami-color__hue-slider',
+                'nami-color__slider--panel',
+                'nami-color__saturation-and-value-slider',
                 { 'nami-color__slider--sliding': slider.sliding },
                 className
             )}
@@ -61,7 +68,15 @@ export const ColorHueSlider: FunctionComponent<Props> = ({
             ref={slider.ref as RefObject<HTMLDivElement>}
         >
             <div className="nami-color__slider__knob-bar" ref={knobBarRef}>
-                <div role="slider" className="nami-color__slider__knob" />
+                <div
+                    role="slider"
+                    className="nami-color__slider__knob"
+                    style={{
+                        left: `${s}%`,
+                        top: `${100 - v}%`,
+                        backgroundColor: hsl,
+                    }}
+                />
             </div>
         </div>
     )

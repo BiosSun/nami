@@ -1,23 +1,25 @@
 import React, { HTMLAttributes, FunctionComponent } from 'react'
 import clsx from 'clsx'
+import { useColor } from './color-picker-base'
+import Color from '@biossun/color'
 
-declare module 'react' {
-    interface CSSProperties {
-        '--nami-color__screen--color': string
-    }
-}
-
-export type ColorScreenProps = HTMLAttributes<HTMLDivElement> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
     // 颜色值
-    color: string
+    value?: string
 
     // 尺寸
     size?: boolean | 'large' | 'small'
 }
 
-export type ColorScreenType = FunctionComponent<ColorScreenProps>
+export const ColorScreen: FunctionComponent<Props> = ({
+    value,
+    size,
+    className,
+    style,
+    ...otherProps
+}) => {
+    const model = useColor(value)
 
-export const ColorScreen: ColorScreenType = ({ color, size, className, style, ...otherProps }) => {
     className = clsx(
         'nami-color__screen',
         {
@@ -28,7 +30,7 @@ export const ColorScreen: ColorScreenType = ({ color, size, className, style, ..
 
     style = {
         ...style,
-        '--nami-color__screen--color': color,
+        '--color': Color.format(model.value, 'hsl'),
     }
 
     return <div className={className} style={style} {...otherProps} />
