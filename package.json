@@ -38,6 +38,7 @@
         "build-storybook": "build-storybook"
     },
     "dependencies": {
+        "@biossun/color": "^1.1.0",
         "clsx": "^1.1.0",
         "iterall": "^1.2.2",
         "nojiko": "^1.0.0",
