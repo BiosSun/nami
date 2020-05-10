@@ -21,8 +21,6 @@
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
         "noImplicitAny": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
         "removeComments": false,
         "preserveConstEnums": true,
         "skipLibCheck": true,
