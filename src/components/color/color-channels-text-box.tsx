@@ -48,7 +48,7 @@ export const ColorChannelsTextBox: FunctionComponent<Props> = ({
 
     useEffect(() => {
         if (!focused) {
-            setChannelsWith(model.normalizedValue)
+            setChannelsWith(Color.round(model.value))
         }
     }, [model.value, colorModel])
 
@@ -90,7 +90,7 @@ export const ColorChannelsTextBox: FunctionComponent<Props> = ({
     }
 
     function setChannelsWith(color: ColorInfo) {
-        setChannels(Color.normalize(Color.convert(color, colorModel)).value.map(val => String(val)))
+        setChannels(Color.round(Color.convert(color, colorModel)).value.map(val => String(val)))
     }
 
     function getChangedColorBy(value: string[]): ColorInfo {
