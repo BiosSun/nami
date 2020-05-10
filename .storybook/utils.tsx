@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react'
 import clsx from 'clsx'
 
 import styles from './utils.module.scss'
+import { LinearItemProps } from 'nami'
 
 interface DemoStageProps {
     children: React.ReactNode
@@ -11,7 +12,7 @@ export const DemoStage = ({ children, ...otherProps }: DemoStageProps) => {
     return <div {...otherProps}>{children}</div>
 }
 
-interface AreaProps {
+type AreaProps = LinearItemProps & {
     title?: string
     name?: string
     className?: string

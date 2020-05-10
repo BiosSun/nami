@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
     stories: [
@@ -19,6 +20,14 @@ module.exports = {
         // ---------------------------
         config.resolve.alias['@biossun/nami'] = path.join(__dirname, '..', 'src')
 
+        // __DEV__
+        // ---------------------------
+        config.plugins.push(
+            new webpack.DefinePlugin({
+                __DEV__: true,
+            })
+        )
+
         // 支持 typescript
         // ---------------------------
         config.resolve.extensions.push('.ts', '.tsx')
@@ -31,6 +40,9 @@ module.exports = {
                     options: {
                         onlyCompileBundledFiles: true,
                         configFile: path.resolve(__dirname, '..', 'tsconfig.json'),
+                        compilerOptions: {
+                            sourceMap: true,
+                        },
                     },
                 },
             ],
