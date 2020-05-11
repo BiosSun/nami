@@ -102,7 +102,7 @@ export const ColorPickerBase: FunctionComponent<ColorPickerBaseProps> = ({
     return <ColorPickerContext.Provider value={model}>{children}</ColorPickerContext.Provider>
 }
 
-export function useColor(value: Value, defaultValue?: Value, onChange?: OnChange): ContextValue {
+export function useColor(value?: Value, defaultValue?: Value, onChange?: OnChange): ContextValue {
     let context = useContext(ColorPickerContext)
 
     // NOTE 在组件的整个生命周期中，要么是作为 ColorPickerBase 的子元素，要么独立存在，不会在这两种状态之间切换，
