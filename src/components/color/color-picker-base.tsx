@@ -21,7 +21,7 @@ interface ContextValue extends InnerColorState {
 const ColorPickerContext = createContext<ContextValue>(null)
 
 // 默认颜色值
-const DEFAULT_COLOR = 'hsla(0, 100%, 50%, 1)'
+const DEFAULT_COLOR = 'hsl(0, 100%, 50%)'
 
 function parseInnerColor(value: string, currentColor?: InnerColorState) {
     let colorInfo = Color.parse(value)
