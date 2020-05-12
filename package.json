@@ -38,6 +38,7 @@
         "build-storybook": "build-storybook"
     },
     "dependencies": {
+        "@biossun/color": "^1.1.1",
         "clsx": "^1.1.0",
         "iterall": "^1.2.2",
         "nojiko": "^1.0.0",
@@ -122,6 +123,7 @@
         "style-loader": "^1.1.2",
         "ts-loader": "^6.2.1",
         "typescript": "^3.0.1",
+        "typescript-plugin-css-modules": "^2.2.0",
         "webpack": "^4.41.5",
         "webpack-bundle-analyzer": "^3.6.0",
         "webpack-log": "^3.0.1",

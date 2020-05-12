@@ -1,0 +1,271 @@
+@use '~nojiko/sass/nojiko';
+@use "../../styles/nami";
+
+.nami-color {
+    color: red;
+}
+
+.nami-color__screen {
+    box-sizing: border-box;
+
+    width: var(--nami-color__screen--size);
+    height: var(--nami-color__screen--size);
+    min-width: var(--nami-color__screen--size);
+    min-height: var(--nami-color__screen--size);
+
+    @each $name in (small, large) {
+        &--size-#{$name} {
+            --nami-color__screen--size: var(--nami-color__screen--size-#{$name});
+        }
+    }
+
+    border-radius: 3px;
+    overflow: hidden;
+
+    background: nami.bg-transparent-grid(), #fff;
+
+    &:after {
+        content: '';
+
+        display: block;
+        width: 100%;
+        height: 100%;
+
+        background-color: var(--color);
+        box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.34);
+
+        border-radius: inherit;
+    }
+}
+
+.nami-color__slider {
+    $B: &;
+
+    $bar-size: 20px;
+    $knob-size: 12px;
+    $big-knob-size: $knob-size * 2;
+    $motion-duration: 270ms;
+
+    height: $bar-size;
+    border-radius: 3px;
+
+    box-shadow: inset 0 0px 3px rgba(0, 0, 0, 0.4);
+
+    cursor: pointer;
+
+    &__knob-bar {
+        margin-left: $bar-size / 2;
+        margin-right: $bar-size / 2;
+        height: 100%;
+        position: relative;
+    }
+
+    &__knob {
+        box-sizing: border-box;
+        width: $knob-size;
+        height: $knob-size;
+
+        position: absolute;
+        top: ($bar-size - $knob-size) / 2;
+        left: 0;
+
+        border-radius: $knob-size;
+        box-shadow: inset 0 0 1px hsla(0, 0, 100%, 1), 0 0 0 1px hsla(0, 0, 100%, 1),
+            0 0 0px 2px hsla(0, 0, 0, 0.27), 0 0 3px hsla(0, 0, 0, 0.8);
+        cursor: grab;
+
+        transform: translate(-50%, 0);
+        transition: width $motion-duration, height $motion-duration, transform $motion-duration;
+
+        @include nojiko.expand-scope(-10px, $position: null);
+    }
+
+    &--sliding {
+        cursor: grabbing;
+
+        #{$B}__knob {
+            cursor: grabbing;
+        }
+    }
+
+    &--sliding &__knob,
+    &__knob:hover {
+        width: $big-knob-size;
+        height: $big-knob-size;
+        transform: translate(-50%, ($big-knob-size - $knob-size) / -2);
+    }
+
+    &--panel {
+        height: auto;
+        border-radius: 0;
+        box-shadow: 0;
+
+        #{$B}__knob-bar {
+            margin: $bar-size / 2;
+        }
+
+        #{$B}__knob {
+            transform: translate(-50%, -50%);
+        }
+
+        &#{$B}--sliding,
+        &:hover {
+            #{$B}__knob {
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+}
+
+.nami-color__hue-slider {
+    background: linear-gradient(
+        90deg,
+        hsl(0, 100%, 50%) 10px,
+        hsl(60, 100%, 50%),
+        hsl(120, 100%, 50%),
+        hsl(180, 100%, 50%),
+        hsl(240, 100%, 50%),
+        hsl(300, 100%, 50%),
+        hsl(360, 100%, 50%) calc(100% - 10px)
+    );
+
+    .nami-color__slider__knob {
+        left: var(--percent);
+        background-color: hsl(var(--value), 100%, 50%);
+    }
+}
+
+.nami-color__alpha-slider {
+    background: nami.bg-alpha-gradivent(var(--color), 90deg, 10px), nami.bg-transparent-grid(), #fff;
+
+    .nami-color__slider__knob {
+        left: var(--percent);
+        background: nami.bg-single-color(var(--value)), nami.bg-transparent-grid(), #fff;
+    }
+}
+
+.nami-color__saturation-and-value-slider {
+    position: relative;
+
+    &:before {
+        content: '';
+        display: block;
+        padding-top: 74.3243243%;
+
+        background: nami.bg-alpha-gradivent(#fff, 270deg);
+    }
+
+    &:after {
+        content: '';
+        display: block;
+        @include nojiko.position(absolute, 0);
+        background: nami.bg-alpha-gradivent(#000, 180deg);
+    }
+
+    .nami-color__slider__knob-bar {
+        height: auto;
+        @include nojiko.position(absolute, 0);
+    }
+
+    .nami-color__slider__knob {
+        z-index: 1;
+    }
+}
+
+.nami-color__text-box {
+    &__input {
+        box-sizing: border-box;
+        @include nami.box-size($size: 'small', $is-single: true);
+        margin-bottom: calc(var(--distance-vertical) / 4);
+
+        border-color: var(--line-color-loud);
+
+        text-align: center;
+        font-family: monospace;
+    }
+
+    &__label {
+        font-size: 12px;
+        line-height: 20px;
+        text-align: center;
+        font-family: monospace;
+    }
+}
+
+.nami-color__labels-group {
+    $m: &;
+
+    position: relative;
+
+    &__header {
+        &:hover,
+        &:focus {
+            outline: none;
+
+            #{$m}__indicator {
+                display: flex;
+                border-radius: 3px 0 0 3px;
+                background: #f0f0f1;
+            }
+
+            #{$m}__labels {
+                border-radius: 0 3px 3px 0;
+                background: #f0f0f1;
+            }
+        }
+
+        &:focus {
+            + #{$m}__options {
+                display: block;
+            }
+
+            #{$m}__labels {
+                border-radius: 0 3px 0 0;
+                background: #f0f0f1;
+            }
+        }
+
+        #{$m}__indicator {
+            position: absolute;
+            left: -31px;
+            height: 100%;
+            width: 30px;
+
+            display: none;
+            justify-content: center;
+            align-items: center;
+
+            .nami-icon {
+                width: 12px;
+                height: 12px;
+            }
+        }
+    }
+
+    &__options {
+        position: absolute;
+        top: calc(100% + 1px);
+        left: 0;
+        right: 0;
+        cursor: pointer;
+
+        display: none;
+
+        border-radius: 0 0 3px 3px;
+        background: #f0f0f1;
+
+        overflow: hidden;
+
+        #{$m}__labels {
+            padding: 0 10px;
+            font-size: 12px;
+            line-height: 20px;
+            font-family: monospace;
+
+            &:hover,
+            &--selected {
+                background: #d7d7d8;
+            }
+        }
+    }
+}

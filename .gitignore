@@ -29,6 +29,10 @@ npm-debug.log
 # yarn 的 debug 日志文件
 yarn-debug.log
 
+# yalc 的 lock 文件及模块存放目录
+yalc.lock
+.yalc/
+
 # bower 的模块存储目录
 bower_components/
 

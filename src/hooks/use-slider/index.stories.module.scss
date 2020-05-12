@@ -1,0 +1,151 @@
+%slider {
+    background-color: #ddd;
+    cursor: pointer;
+    position: relative;
+
+    &.grabbing {
+        cursor: grabbing;
+
+        .thumb {
+            cursor: grabbing;
+        }
+    }
+
+    .rail {
+        position: relative;
+        height: 100%;
+    }
+
+    .thumb {
+        width: 40px;
+        height: 40px;
+        background: #000;
+        cursor: grab;
+        position: absolute;
+    }
+
+    .note {
+        position: absolute;
+        left: 100%;
+        width: 100%;
+        height: 100%;
+        user-select: none;
+        white-space: pre;
+        font-size: 13px;
+        font-family: monospace;
+    }
+}
+
+.debugSlider {
+    @extend %slider;
+
+    width: 400px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .rail {
+        margin: 20px;
+    }
+
+    .thumb {
+        left: 0;
+        top: 0;
+        transform: translate(-20px, -20px);
+    }
+}
+
+.horizontalSlider {
+    @extend %slider;
+
+    height: 40px;
+    width: 400px;
+
+    .rail {
+        margin: 0 20px;
+    }
+
+    .thumb {
+        left: 0;
+        top: 0;
+        transform: translate(-20px, 0);
+    }
+}
+
+.verticalSlider {
+    @extend %slider;
+
+    height: 400px;
+    width: 40px;
+    display: flex;
+    flex-direction: column;
+
+    .rail {
+        margin: 20px 0;
+        height: 100%;
+    }
+
+    .thumb {
+        left: 0;
+        top: 0;
+        transform: translate(0, -20px);
+    }
+}
+
+.circleSlider {
+    @extend %slider;
+
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 50%;
+    background-image: linear-gradient(
+            90deg,
+            transparent 49.8333333%,
+            #f00 49.8333333%,
+            #f00 50.1666667%,
+            transparent 50.1666667%
+        ),
+        linear-gradient(
+            transparent 49.8333333%,
+            #f00 49.8333333%,
+            #f00 50.1666667%,
+            transparent 50.1666667%
+        );
+
+    background-size: 100% 100%, 100% 100%;
+
+    .rail {
+        margin: 20px;
+        height: 100%;
+    }
+
+    .thumb {
+        border-radius: 50%;
+        left: 50%;
+        top: 0;
+        transform: translate(-20px, -20px);
+    }
+}
+
+.planarSlider {
+    @extend %slider;
+
+    height: 400px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+
+    .rail {
+        margin: 20px;
+        height: 100%;
+    }
+
+    .thumb {
+        left: 0;
+        top: 0;
+        transform: translate(-20px, -20px);
+    }
+}

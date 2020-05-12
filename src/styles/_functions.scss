@@ -68,3 +68,25 @@
         @return $t $r $b $l;
     }
 }
+
+/// 返回一个透明背景网格
+@function bg-transparent-grid() {
+    $size: 13.4px;
+    $half-size: $size / 2;
+    $bg-half: linear-gradient(45deg, #ddd 25%, transparent 25%, transparent 75%, #ddd 75%);
+    @return $bg-half 0 0 / #{$size} #{$size},
+        $bg-half #{$half-size} #{$half-size} / #{$size} #{$size};
+}
+
+// 返回一个单一色值的渐变（通常用于在多背景时将一个半透明颜色放在上层）
+@function bg-single-color($color) {
+    @return linear-gradient($color 0%, $color 100%);
+}
+
+@function bg-alpha-gradivent($color, $direction, $offset: 0) {
+    @if $offset == 0 {
+        @return linear-gradient($direction, transparent, $color);
+    } @else {
+        @return linear-gradient($direction, transparent $offset, $color calc(100% - #{$offset}));
+    }
+}
